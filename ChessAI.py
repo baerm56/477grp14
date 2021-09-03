@@ -2,50 +2,71 @@ import chess
 import chess.engine
 import serial
 
-port = serial.Serial("/dev/ttyS0", baudrate=9600)
+class chessGame():
+    def __init__(self, path='stockfish', difficulty=20):
+        self.engine = chess.engine.SimpleEngine.popen_uci(path)
+        self.board = chess.Board()
+        self.cpu_turn = False
 
-engine = chess.engine.SimpleEngine.popen_uci("stockfish")
+        self.engine.configure({"Skill Level": difficulty}) # can be 0-20
 
-board = chess.Board()
-print(board)
+    def send_move(self, move):
+        if type(move) is not chess.Move:
+            move = chess.Move.from_uci(move)
+        self.board.push(move)
+        if not self.board.is_valid():
+            self.board.pop()
+            return False
+        return True
 
-engine.configure({"Skill Level": 20}) # can be 0-20
+    def get_best_move(self, time=2):
+        return self.engine.play(self.board, chess.engine.Limit(time=time)).move
 
-cpu_turn = True
-
-while not board.is_game_over() and not board.is_stalemate():
-    if cpu_turn:
-        result = engine.play(board, chess.engine.Limit(time=2))
-        board.push(result.move)
-        print(result.move)
-        print(board)
-        move = str.encode(str(result.move))
-        port.write(b"\rAI Move: ")
-        port.write(move)
-        port.write(b'\n')
+    def check_game_over(self):
+        return self.board.is_game_over()
         
+    def get_board(self):
+        print(self.board)
+        print('')
+
+    def change_turn(self):
+        self.cpu_turn = not self.cpu_turn
+
+class serialConnection():
+    def __init__(self, baudrate=9600):
+        self.port = serial.Serial("/dev/ttyS0", baudrate=baudrate)
+
+    def send_data(self, data):
+        byte_data = str.encode(data)
+        self.port.write(byte_data)
+
+    def receive_data(self):
+        byte_data = self.port.read(4)
+        data = byte_data.decode("utf-8")
+        return data
+
+
+uart = serialConnection()
+game = chessGame()
+
+while not game.check_game_over():
+    game.get_board()
+    if game.cpu_turn:
+        cpu_move = game.get_best_move()
+        while not game.send_move(cpu_move):
+            print("Not Valid Move!")
+            cpu_move = game.get_best_move()
+        uart.send_data('\r\nAI Move: ' + str(cpu_move))
     else:
-        try:
-            port.write(b"\rMove: ")
-            move_in = port.read(4)
-            port.write(move_in)
-            port.write(b'\n')
-            print(move_in.decode("utf-8"))
+        uart.send_data("\r\nMove: ")
+        player_move = uart.receive_data()
+        uart.send_data(player_move)
+        while not game.send_move(player_move):
+            print("Not Valid Move!")
+            uart.send_data("\r\nMove: ")
+            player_move = uart.receive_data()
+            uart.send_data(player_move)
 
-            move = chess.Move.from_uci(move_in.decode("utf-8"))
-            board.is_valid()
-            board.push(move)
-            if not board.is_valid():
-                board.pop()
-                raise Exception
-            print(board)
-        except:
-            print("Must be a valid move!")
-            cpu_turn = not cpu_turn
+    game.change_turn()
 
-    #cpu_turn = not cpu_turn
-        
-
-print("Game Over!")
-
-engine.quit()
+game.engine.quit()

@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "tracker.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -92,37 +92,17 @@ int main(void)
   MX_USART1_UART_Init();
   MX_UART4_Init();
   /* USER CODE BEGIN 2 */
-
+  TrackerInit();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t myUserData[4];
-  uint8_t * move = (uint8_t *) "\r\nMove\r\n";
-  uint8_t * newline = (uint8_t *) "\r\n";
   while (1)
   {
-   /* USER CODE END WHILE */
-   HAL_UART_Transmit(&huart1, move, 8 * sizeof(uint8_t), 5);
-   HAL_Delay (250);
+    /* USER CODE END WHILE */
 
-   HAL_UART_Receive(&huart1, myUserData, 4 * sizeof(uint8_t), 100000);
-   HAL_Delay (250);
-
-   HAL_UART_Transmit(&huart1, myUserData, 4 * sizeof(uint8_t), 5);
-   HAL_Delay (250);
-
-   HAL_UART_Transmit(&huart4, myUserData, 4 * sizeof(uint8_t), 5);
-   HAL_Delay (250);
-
-   HAL_UART_Receive(&huart4, myUserData, 4 * sizeof(uint8_t), 10000);
-   HAL_Delay (250);
-
-   HAL_UART_Transmit(&huart1, newline, 2 * sizeof(uint8_t), 5);
-   HAL_Delay (250);
-
-   HAL_UART_Transmit(&huart1, myUserData, 4 * sizeof(uint8_t), 5);
-   HAL_Delay (250);
+    /* USER CODE BEGIN 3 */
+	  Track();
   }
   /* USER CODE END 3 */
 }

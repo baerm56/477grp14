@@ -3,17 +3,45 @@ Write(8, 0x04, 0x01); // shutdown mode off
 Stop();
 
 Start();
-Write(8, 0x03, 0x01);  // Scan range
+Write(8, 0x03, 0x07);  // Scan range
 Stop();
 
 Start();
-Write(8, 0x02, 0x05);  // Intensity
+Write(8, 0x02, 0x07);  // Intensity
 Stop();
 
 Start();
-Write(8, 0x60, 0x00);  // digit 0
+Write(8, 0x01, 0x00);  // Hex decode
 Stop();
 
 Start();
-Write(8, 0x61, 0xFF);  // digit 1
+Write(8, 0x60, 0x00);  // digit 0      dp a b c  d e f g
+Stop();
+
+Start();
+Write(8, 0x61, 0x00);  // digit 1
+Stop();
+
+Start();
+Write(8, 0x62, 0x00);  // digit 2
+Stop();
+
+Start();
+Write(8, 0x63, 0x00);  // digit 3  
+Stop();
+
+Start();
+Write(8, 0x64, 0x00);  // digit 4
+Stop();
+
+Start();
+Write(8, 0x65, 0x00);  // digit 5
+Stop();
+
+Start();
+Write(8, 0x66, 0x00);  // digit 6
+Stop();
+
+Start();
+Write(8, 0x67, 0x00);  // digit 7
 Stop();

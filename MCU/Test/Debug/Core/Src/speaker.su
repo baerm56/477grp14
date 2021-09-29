@@ -1,0 +1,4 @@
+speaker.c:3:6:configure_DAC	32	static
+speaker.c:15:6:configure_GPIO	32	static
+speaker.c:26:6:SpeakerInit	56	static
+speaker.c:48:6:Delay_ms	24	static

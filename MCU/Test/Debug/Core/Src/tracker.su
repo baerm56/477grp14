@@ -1,0 +1,6 @@
+tracker.c:26:13:InitGPIO_Pin	72	static
+tracker.c:60:6:InitTracker	16	static
+tracker.c:75:13:WriteColumn	24	static
+tracker.c:86:22:ReadRow	32	static
+tracker.c:97:6:Track	16	static
+tracker.c:111:9:IsPiecePresent	16	static

@@ -1,4 +1,152 @@
-16:57:53 **** Incremental Build of configuration Debug for project Test ****
+15:56:48 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7876	     20	   1572	   9468	   24fc	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+15:56:53 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-size   Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+   7876	     20	   1572	   9468	   24fc	Test.elf
+Finished building: default.size.stdout
+ 
+16:03:02 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/leds.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/leds.d" -MT"Core/Src/leds.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/leds.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/leds.c:1:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7908	     20	   1572	   9500	   251c	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.list
+ 
+Finished building: Test.bin
+ 
+16:04:24 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:109:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  109 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[0], 2, 100);
+      |                            ^
+../Core/Src/main.c:113:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  113 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[2], 2, 100);
+      |                            ^
+../Core/Src/main.c:117:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  117 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[4], 2, 100);
+      |                            ^
+../Core/Src/main.c:121:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  121 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[6], 2, 100);
+      |                            ^
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8020	     20	   1572	   9612	   258c	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:06:03 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/leds.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/leds.d" -MT"Core/Src/leds.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/leds.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:108:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  108 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[0], 2, 100);
+      |                            ^
+In file included from ../Core/Src/leds.c:1:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+../Core/Src/main.c:113:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  113 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[2], 2, 100);
+      |                            ^
+../Core/Src/main.c:118:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  118 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[4], 2, 100);
+      |                            ^
+../Core/Src/main.c:123:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  123 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[6], 2, 100);
+      |                            ^
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8028	     20	   1572	   9620	   2594	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:07:16 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:108:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  108 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[0], 2, 100);
+      |                            ^
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7900	     20	   1572	   9492	   2514	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:08:13 **** Incremental Build of configuration Debug for project Test ****
 make -j8 all 
 arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.o"
 arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.o"
@@ -18,12 +166,25 @@ arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_spi.c" -mcp
 arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim.o"
 arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim_ex.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_tim_ex.o"
 arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_uart.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_uart.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_uart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_uart.o"
+arm-none-eabi-gcc "../Core/Src/leds.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/leds.d" -MT"Core/Src/leds.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/leds.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc "../Core/Src/speaker.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/speaker.d" -MT"Core/Src/speaker.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/speaker.o"
 arm-none-eabi-gcc "../Core/Src/stm32l1xx_hal_msp.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l1xx_hal_msp.d" -MT"Core/Src/stm32l1xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32l1xx_hal_msp.o"
 arm-none-eabi-gcc "../Core/Src/stm32l1xx_it.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32l1xx_it.d" -MT"Core/Src/stm32l1xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32l1xx_it.o"
+In file included from ../Core/Src/leds.c:1:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
 arm-none-eabi-gcc "../Core/Src/system_stm32l1xx.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32l1xx.d" -MT"Core/Src/system_stm32l1xx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/system_stm32l1xx.o"
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
 arm-none-eabi-gcc "../Core/Src/tracker.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tracker.d" -MT"Core/Src/tracker.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tracker.o"
+      |         ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:118:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  118 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[0], 2, 100);
+      |                            ^
 arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Test.elf
  
@@ -31,27 +192,24 @@ arm-none-eabi-size   Test.elf
 arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
 arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
    text	   data	    bss	    dec	    hex	filename
-   9128	     20	   1748	  10896	   2a90	Test.elf
+   9524	     20	   1748	  11292	   2c1c	Test.elf
 Finished building: default.size.stdout
  
 Finished building: Test.bin
  
 Finished building: Test.list
  
-16:58:19 **** Incremental Build of configuration Debug for project Test ****
-make -j8 all 
-arm-none-eabi-size   Test.elf 
-   text	   data	    bss	    dec	    hex	filename
-   9128	     20	   1748	  10896	   2a90	Test.elf
-Finished building: default.size.stdout
- 
-16:59:35 **** Incremental Build of configuration Debug for project Test ****
+16:08:58 **** Incremental Build of configuration Debug for project Test ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:110:3: warning: implicit declaration of function 'SpeakerInit' [-Wimplicit-function-declaration]
-  110 |   SpeakerInit(&DAC_Config);
-      |   ^~~~~~~~~~~
+../Core/Src/main.c:118:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  118 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[0], 2, 100);
+      |                            ^
 arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Test.elf
  
@@ -59,20 +217,45 @@ arm-none-eabi-size   Test.elf
 arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
 arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
    text	   data	    bss	    dec	    hex	filename
-  10024	     20	   1748	  11792	   2e10	Test.elf
+   9524	     20	   1748	  11292	   2c1c	Test.elf
 Finished building: default.size.stdout
  
 Finished building: Test.bin
  
 Finished building: Test.list
  
-17:00:32 **** Incremental Build of configuration Debug for project Test ****
+16:09:42 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/leds.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/leds.d" -MT"Core/Src/leds.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/leds.o"
+In file included from ../Core/Src/leds.c:1:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   9524	     20	   1748	  11292	   2c1c	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+Finished building: Test.list
+ 
+ 
+16:10:25 **** Incremental Build of configuration Debug for project Test ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
 ../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:113:3: warning: implicit declaration of function 'SpeakerInit' [-Wimplicit-function-declaration]
-  113 |   SpeakerInit(&DAC_Config);
-      |   ^~~~~~~~~~~
+../Core/Src/main.c:118:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  118 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[0], 2, 100);
+      |                            ^
 arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Test.elf
  
@@ -80,23 +263,20 @@ arm-none-eabi-size   Test.elf
 arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
 arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
    text	   data	    bss	    dec	    hex	filename
-  10044	     20	   1748	  11812	   2e24	Test.elf
+   9304	     20	   1748	  11072	   2b40	Test.elf
 Finished building: default.size.stdout
  
 Finished building: Test.bin
  
 Finished building: Test.list
  
-17:06:17 **** Incremental Build of configuration Debug for project Test ****
+16:11:03 **** Incremental Build of configuration Debug for project Test ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:116:3: warning: implicit declaration of function 'SpeakerInit' [-Wimplicit-function-declaration]
-  116 |   SpeakerInit(&DAC_Config);
-      |   ^~~~~~~~~~~
-../Core/Src/main.c:107:17: warning: unused variable 'testval' [-Wunused-variable]
-  107 |   const uint8_t testval = 0x01;
-      |                 ^~~~~~~
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
 arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Test.elf
  
@@ -104,17 +284,267 @@ arm-none-eabi-size   Test.elf
 arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
 arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
    text	   data	    bss	    dec	    hex	filename
-  10136	     20	   1748	  11904	   2e80	Test.elf
+   7876	     20	   1572	   9468	   24fc	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+Finished building: Test.list
+ 
+ 
+16:11:32 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:121:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  121 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[0], 2, 100);
+      |                            ^
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   9320	     20	   1748	  11088	   2b50	Test.elf
 Finished building: default.size.stdout
  
 Finished building: Test.bin
  
 Finished building: Test.list
  
-17:06:40 **** Incremental Build of configuration Debug for project Test ****
+16:12:23 **** Incremental Build of configuration Debug for project Test ****
 make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
 arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
    text	   data	    bss	    dec	    hex	filename
-  10136	     20	   1748	  11904	   2e80	Test.elf
+   7876	     20	   1572	   9468	   24fc	Test.elf
 Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:13:04 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:96:16: error: invalid suffix "xLED_DISPLAY_TEST" on integer constant
+   96 |   spi_buf[0] = 0xLED_DISPLAY_TEST;
+      |                ^~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:43: Core/Src/main.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+16:13:15 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7876	     20	   1572	   9468	   24fc	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:15:03 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7924	     20	   1572	   9516	   252c	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.list
+ 
+Finished building: Test.bin
+ 
+16:15:44 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7904	     20	   1572	   9496	   2518	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:16:25 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7924	     20	   1572	   9516	   252c	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+Finished building: Test.list
+ 
+ 
+16:17:29 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:110:28: warning: cast to pointer from integer of different size [-Wint-to-pointer-cast]
+  110 |   HAL_SPI_Transmit(&hspi1, (uint8_t *)spi_buf[2], 2, 100);
+      |                            ^
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7928	     20	   1572	   9520	   2530	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:20:56 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/leds.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/leds.d" -MT"Core/Src/leds.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/leds.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+In file included from ../Core/Src/leds.c:1:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7932	     20	   1572	   9524	   2534	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+16:21:50 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   7992	     20	   1572	   9584	   2570	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+Finished building: Test.list
+ 
+ 
+16:22:59 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8080	     20	   1572	   9672	   25c8	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+Finished building: Test.list
+ 
+ 
+16:23:22 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+In file included from ../Core/Src/main.c:27:
+../Core/Inc/leds.h:6:9: warning: ISO C99 requires whitespace after the macro name
+    6 | #define LED_NO-OP 0x00
+      |         ^~~~~~
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+   8112	     20	   1572	   9704	   25e8	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
  

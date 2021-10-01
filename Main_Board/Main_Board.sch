@@ -1,0 +1,718 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr D 34000 22000
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:VSSA #PWR0103
+U 1 1 61396569
+P 10950 2100
+F 0 "#PWR0103" H 10950 1950 50  0001 C CNN
+F 1 "VSSA" H 10967 2273 50  0000 C CNN
+F 2 "" H 10950 2100 50  0001 C CNN
+F 3 "" H 10950 2100 50  0001 C CNN
+	1    10950 2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10950 2100 10650 2100
+$Comp
+L Driver_LED:MAX7219 MatrixCntrl1
+U 1 1 613B5B71
+P 5750 -2100
+F 0 "MatrixCntrl1" V 5520 -2199 50  0000 R CNN
+F 1 "MAX7219" V 5705 -3144 50  0000 R CNN
+F 2 "MAXIM:MAX7219ENG&plus_" H 5700 -2050 50  0001 C CNN
+F 3 "https://datasheets.maximintegrated.com/en/ds/MAX7219-MAX7221.pdf" H 5800 -2250 50  0001 C CNN
+	1    5750 -2100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6550 -1350 6550 -1700
+Wire Wire Line
+	1700 -1700 1700 -1350
+Wire Wire Line
+	1600 -1550 1600 -1700
+Wire Wire Line
+	6450 -1550 6450 -1700
+Wire Wire Line
+	1500 -1700 1500 -1150
+Wire Wire Line
+	6350 -1700 6350 -1100
+$Comp
+L power:GND #PWR0107
+U 1 1 613D1CAE
+P 6750 -2100
+F 0 "#PWR0107" H 6750 -2350 50  0001 C CNN
+F 1 "GND" H 6755 -2273 50  0000 C CNN
+F 2 "" H 6750 -2100 50  0001 C CNN
+F 3 "" H 6750 -2100 50  0001 C CNN
+	1    6750 -2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0109
+U 1 1 613A8C5D
+P -100 -2100
+F 0 "#PWR0109" H -100 -2250 50  0001 C CNN
+F 1 "+5V" H -85 -1927 50  0000 C CNN
+F 2 "" H -100 -2100 50  0001 C CNN
+F 3 "" H -100 -2100 50  0001 C CNN
+	1    -100 -2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR0111
+U 1 1 613AB74E
+P 4750 -2100
+F 0 "#PWR0111" H 4750 -2250 50  0001 C CNN
+F 1 "+5V" H 4765 -1927 50  0000 C CNN
+F 2 "" H 4750 -2100 50  0001 C CNN
+F 3 "" H 4750 -2100 50  0001 C CNN
+	1    4750 -2100
+	1    0    0    -1  
+$EndComp
+Text Label 1700 -2500 1    50   ~ 0
+DIG_OUT_1
+Text Label 1600 -2500 1    50   ~ 0
+DIG_7_1
+Text Label 1500 -2500 1    50   ~ 0
+DIG_6_1
+Text Label 1400 -2500 1    50   ~ 0
+DIG_5_1
+Text Label 1300 -2500 1    50   ~ 0
+DIG_4_1
+Text Label 1200 -2500 1    50   ~ 0
+DIG_3_1
+Text Label 1100 -2500 1    50   ~ 0
+DIG_2_1
+Text Label 1000 -2500 1    50   ~ 0
+DIG_1_1
+Text Label 900  -2500 1    50   ~ 0
+DIG_0_1
+Text Label 800  -2500 1    50   ~ 0
+SEG_DP_1
+Text Label 700  -2500 1    50   ~ 0
+SEG_G_1
+Text Label 600  -2500 1    50   ~ 0
+SEG_F_1
+Text Label 500  -2500 1    50   ~ 0
+SEG_E_1
+Text Label 400  -2500 1    50   ~ 0
+SEG_D_1
+Text Label 300  -2500 1    50   ~ 0
+SEG_C_1
+Text Label 200  -2500 1    50   ~ 0
+SEG_B_1
+Text Label 100  -2500 1    50   ~ 0
+SEG_A_1
+$Comp
+L Driver_LED:MAX7219 Timer1Cntrl1
+U 1 1 613B272F
+P 900 -2100
+F 0 "Timer1Cntrl1" V 787 -2002 50  0000 R CNN
+F 1 "MAX7219" V 855 -3144 50  0000 R CNN
+F 2 "MAXIM:MAX7219ENG&plus_" H 850 -2050 50  0001 C CNN
+F 3 "https://datasheets.maximintegrated.com/en/ds/MAX7219-MAX7221.pdf" H 950 -2250 50  0001 C CNN
+	1    900  -2100
+	0    -1   -1   0   
+$EndComp
+Text Label 6550 -2500 1    50   ~ 0
+DIG_OUT_MATRIX
+Text Label 6450 -2500 1    50   ~ 0
+DIG_7_MATRIX
+Text Label 6350 -2500 1    50   ~ 0
+DIG_6_MATRIX
+Text Label 6250 -2500 1    50   ~ 0
+DIG_5_MATRIX
+Text Label 6150 -2500 1    50   ~ 0
+DIG_4_MATRIX
+Text Label 6050 -2500 1    50   ~ 0
+DIG_3_MATRIX
+Text Label 5950 -2500 1    50   ~ 0
+DIG_2_MATRIX
+Text Label 5850 -2500 1    50   ~ 0
+DIG_1_MATRIX
+Text Label 5750 -2500 1    50   ~ 0
+DIG_0_MATRIX
+Text Label 5650 -2500 1    50   ~ 0
+SEG_DP_MATRIX
+Text Label 5550 -2500 1    50   ~ 0
+SEG_G_MATRIX
+Text Label 5450 -2500 1    50   ~ 0
+SEG_F_MATRIX
+Text Label 5350 -2500 1    50   ~ 0
+SEG_E_MATRIX
+Text Label 5250 -2500 1    50   ~ 0
+SEG_D_MATRIX
+Text Label 5150 -2500 1    50   ~ 0
+SEG_C_MATRIX
+Text Label 5050 -2500 1    50   ~ 0
+SEG_B_MATRIX
+Text Label 4950 -2500 1    50   ~ 0
+SEG_A_MATRIX
+Text Label 100  -1700 3    50   ~ 0
+ISET_1
+Text Label 4950 -1700 3    50   ~ 0
+ISET_MATRIX
+Wire Wire Line
+	1600 -1550 2650 -1550
+Text Label 2550 1450 1    50   ~ 0
+LED_Matrix_NSS
+Text Label 2450 1400 1    50   ~ 0
+7Seg_NSS
+Wire Wire Line
+	3150 -550 3150 1500
+Wire Wire Line
+	3050 -450 3050 1500
+Text Label 2850 1400 1    50   ~ 0
+SPI1_MOSI_AF5
+Text Label 2750 1400 1    50   ~ 0
+SPI1_MISO_AF5
+Text Label 2650 1400 1    50   ~ 0
+SPI1_SCK_AF5
+Wire Wire Line
+	2750 1500 2750 750 
+Text Label 3150 1500 1    50   ~ 0
+USART1_RX_AF7
+Text Label 3050 1450 1    50   ~ 0
+USART1_TX_AF7
+Wire Wire Line
+	2450 -1050 2350 -1050
+Wire Wire Line
+	2350 -1050 2350 -1150
+Wire Wire Line
+	2450 -1050 2450 1500
+Wire Wire Line
+	2550 -1100 2550 1500
+Wire Wire Line
+	2550 -1100 6350 -1100
+Wire Wire Line
+	1750 1800 1450 1800
+$Comp
+L MCU_ST_STM32L1:STM32L152ZCTx U1
+U 1 1 61411083
+P 5450 2600
+F 0 "U1" V 5496 6244 50  0000 L CNN
+F 1 "STM32L152ZCTx" V 5405 6244 50  0000 L CNN
+F 2 "Package_QFP:LQFP-144_20x20mm_P0.5mm" H 4550 -800 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00111457.pdf" H 5450 2600 50  0001 C CNN
+	1    5450 2600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:VDDA #PWR0104
+U 1 1 6139840E
+P 1450 1800
+F 0 "#PWR0104" H 1450 1650 50  0001 C CNN
+F 1 "VDDA" H 1467 1973 50  0000 C CNN
+F 2 "" H 1450 1800 50  0001 C CNN
+F 3 "" H 1450 1800 50  0001 C CNN
+	1    1450 1800
+	1    0    0    -1  
+$EndComp
+Text Label 2950 1450 1    50   ~ 0
+USART1_CK
+Wire Wire Line
+	3250 1500 3250 -550
+Text Label 3250 1400 1    50   ~ 0
+USART1_CTS
+Wire Wire Line
+	3350 1500 3350 -550
+Text Label 3350 1400 1    50   ~ 0
+USART1_RTS
+Connection ~ 2850 -1350
+Wire Wire Line
+	2850 -1350 2850 1500
+Wire Wire Line
+	1700 -1350 2850 -1350
+Wire Wire Line
+	2650 -1550 2650 1500
+Connection ~ 2650 -1550
+$Comp
+L power:GND #PWR0106
+U 1 1 613D176F
+P 1900 -2100
+F 0 "#PWR0106" H 1900 -2350 50  0001 C CNN
+F 1 "GND" H 1905 -2273 50  0000 C CNN
+F 2 "" H 1900 -2100 50  0001 C CNN
+F 3 "" H 1900 -2100 50  0001 C CNN
+	1    1900 -2100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 -1350 6550 -1350
+Wire Wire Line
+	2650 -1550 6450 -1550
+Wire Wire Line
+	1500 -1150 2350 -1150
+Wire Wire Line
+	3450 1500 3450 700 
+Wire Wire Line
+	3550 1500 3550 700 
+Wire Wire Line
+	3650 1500 3650 700 
+Wire Wire Line
+	4150 1500 4150 700 
+Text Label 3450 1350 1    50   ~ 0
+JTMS-SWDIO
+Text Label 3550 1350 1    50   ~ 0
+JTCK-SWCLK
+Text Label 3650 1350 1    50   ~ 0
+JTDI
+Text Label 4150 1350 1    50   ~ 0
+JTDO
+Text Label 3650 3700 3    50   ~ 0
+PH2
+Text Label 3450 3700 3    50   ~ 0
+PH0OSC_IN
+Text Label 3550 3700 3    50   ~ 0
+PH1OSC_OUT
+$Comp
+L power:GND #PWR0102
+U 1 1 61415946
+P -2250 1500
+F 0 "#PWR0102" H -2250 1250 50  0001 C CNN
+F 1 "GND" V -2245 1372 50  0000 R CNN
+F 2 "" H -2250 1500 50  0001 C CNN
+F 3 "" H -2250 1500 50  0001 C CNN
+	1    -2250 1500
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR0108
+U 1 1 614165D7
+P -2250 1600
+F 0 "#PWR0108" H -2250 1450 50  0001 C CNN
+F 1 "+5V" V -2235 1728 50  0000 L CNN
+F 2 "" H -2250 1600 50  0001 C CNN
+F 3 "" H -2250 1600 50  0001 C CNN
+	1    -2250 1600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 6141D027
+P 250 2350
+F 0 "C2" H 365 2396 50  0000 L CNN
+F 1 "C" H 365 2305 50  0000 L CNN
+F 2 "" H 288 2200 50  0001 C CNN
+F 3 "~" H 250 2350 50  0001 C CNN
+	1    250  2350
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR0110
+U 1 1 6141D5E0
+P 250 2500
+F 0 "#PWR0110" H 250 2250 50  0001 C CNN
+F 1 "GND" V 255 2372 50  0000 R CNN
+F 2 "" H 250 2500 50  0001 C CNN
+F 3 "" H 250 2500 50  0001 C CNN
+	1    250  2500
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9050 2800 9050 2700
+Connection ~ 250  2200
+Connection ~ 9050 2800
+Connection ~ 9050 2200
+Wire Wire Line
+	9050 2200 9050 2100
+Connection ~ 9050 2300
+Wire Wire Line
+	9050 2300 9050 2200
+Connection ~ 9050 2400
+Wire Wire Line
+	9050 2400 9050 2300
+Connection ~ 9050 2500
+Wire Wire Line
+	9050 2500 9050 2400
+Connection ~ 9050 2600
+Wire Wire Line
+	9050 2600 9050 2500
+Connection ~ 9050 2700
+Wire Wire Line
+	9050 2700 9050 2600
+Wire Wire Line
+	9050 2800 9050 2900
+Connection ~ 9050 2900
+Wire Wire Line
+	9050 2900 9050 3000
+Connection ~ 9050 3000
+Wire Wire Line
+	9050 3000 9050 3100
+$Comp
+L power:GND #PWR0112
+U 1 1 61423AF4
+P -800 -3400
+F 0 "#PWR0112" H -800 -3650 50  0001 C CNN
+F 1 "GND" H -795 -3573 50  0000 C CNN
+F 2 "" H -800 -3400 50  0001 C CNN
+F 3 "" H -800 -3400 50  0001 C CNN
+	1    -800 -3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	-800 -3500 -1000 -3500
+$Comp
+L Device:R R1
+U 1 1 61426A28
+P -1000 -3350
+F 0 "R1" H -930 -3304 50  0000 L CNN
+F 1 "R" H -930 -3395 50  0000 L CNN
+F 2 "" V -1070 -3350 50  0001 C CNN
+F 3 "~" H -1000 -3350 50  0001 C CNN
+	1    -1000 -3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0113
+U 1 1 614271EB
+P -1000 -3200
+F 0 "#PWR0113" H -1000 -3450 50  0001 C CNN
+F 1 "GND" H -995 -3373 50  0000 C CNN
+F 2 "" H -1000 -3200 50  0001 C CNN
+F 3 "" H -1000 -3200 50  0001 C CNN
+	1    -1000 -3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 61427D52
+P 2400 -3250
+F 0 "C1" H 2515 -3204 50  0000 L CNN
+F 1 "C" H 2515 -3295 50  0000 L CNN
+F 2 "" H 2438 -3400 50  0001 C CNN
+F 3 "~" H 2400 -3250 50  0001 C CNN
+	1    2400 -3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0114
+U 1 1 614284DE
+P 2400 -3100
+F 0 "#PWR0114" H 2400 -3350 50  0001 C CNN
+F 1 "GND" H 2405 -3273 50  0000 C CNN
+F 2 "" H 2400 -3100 50  0001 C CNN
+F 3 "" H 2400 -3100 50  0001 C CNN
+	1    2400 -3100
+	1    0    0    -1  
+$EndComp
+Text Label 0    -4750 1    50   ~ 0
+DIG_OUT_1
+Text Label 2400 -3600 0    50   ~ 0
+DIG_7_1
+Text Label 2400 -3700 0    50   ~ 0
+DIG_6_1
+Text Label 2400 -3800 0    50   ~ 0
+DIG_5_1
+Text Label 2400 -3900 0    50   ~ 0
+DIG_4_1
+Text Label -800 -3900 2    50   ~ 0
+DIG_3_1
+Text Label -800 -3800 2    50   ~ 0
+DIG_2_1
+Text Label -800 -3700 2    50   ~ 0
+DIG_1_1
+Text Label -800 -3600 2    50   ~ 0
+DIG_0_1
+Text Label -900 -4750 1    50   ~ 0
+SEG_DP_1
+Text Label -1000 -4750 1    50   ~ 0
+SEG_G_1
+Text Label -1100 -4750 1    50   ~ 0
+SEG_F_1
+Text Label -1200 -4750 1    50   ~ 0
+SEG_E_1
+Text Label -1300 -4750 1    50   ~ 0
+SEG_D_1
+Text Label -1400 -4750 1    50   ~ 0
+SEG_C_1
+Text Label -1500 -4750 1    50   ~ 0
+SEG_B_1
+Text Label -1600 -4750 1    50   ~ 0
+SEG_A_1
+$Comp
+L power:+3V3 #PWR0115
+U 1 1 61430628
+P 2400 -4100
+F 0 "#PWR0115" H 2400 -4250 50  0001 C CNN
+F 1 "+3V3" H 2415 -3927 50  0000 C CNN
+F 2 "" H 2400 -4100 50  0001 C CNN
+F 3 "" H 2400 -4100 50  0001 C CNN
+	1    2400 -4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L MAX6951CEE+:MAX6951CEE+ TimerCntrl
+U 1 1 61421261
+P -800 -4100
+F 0 "TimerCntrl" H 800 -3713 60  0000 C CNN
+F 1 "MAX6951CEE+" H 800 -3819 60  0000 C CNN
+F 2 "21-0055H_16_MXM" H 800 -3860 60  0001 C CNN
+F 3 "" H -800 -4100 60  0000 C CNN
+	1    -800 -4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0116
+U 1 1 614328FA
+P -650 1600
+F 0 "#PWR0116" H -650 1450 50  0001 C CNN
+F 1 "+3V3" H -635 1773 50  0000 C CNN
+F 2 "" H -650 1600 50  0001 C CNN
+F 3 "" H -650 1600 50  0001 C CNN
+	1    -650 1600
+	0    1    1    0   
+$EndComp
+$Comp
+L SamacSys_Parts:ZLDO1117K33TC IC1
+U 1 1 614BD75F
+P -2250 1500
+F 0 "IC1" H -1450 1135 50  0000 C CNN
+F 1 "ZLDO1117K33TC" H -1450 1226 50  0000 C CNN
+F 2 "ZLDO1117K33TC-pcb-part-libraries:TO-252_1" H -800 1600 50  0001 L CNN
+F 3 "http://uk.rs-online.com/web/p/products/7515192" H -800 1500 50  0001 L CNN
+F 4 "LDO Regulator Pos 3.3V 1A 3Pin TO252 Diodes Inc ZLDO1117 ZLDO1117K33TC, Single Linear Voltage Regulator, 1A 3.3 V, 2%, 3-Pin TO-252" H -800 1400 50  0001 L CNN "Description"
+F 5 "" H -800 1300 50  0001 L CNN "Height"
+F 6 "Diodes Inc." H -800 1200 50  0001 L CNN "Manufacturer_Name"
+F 7 "ZLDO1117K33TC" H -800 1100 50  0001 L CNN "Manufacturer_Part_Number"
+F 8 "522-ZLDO1117K33TC" H -800 1000 50  0001 L CNN "Mouser Part Number"
+F 9 "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/ZLDO1117K33TC?qs=4YT44p7w2bsiRusTnYhn1g%3D%3D" H -800 900 50  0001 L CNN "Mouser Price/Stock"
+F 10 "ZLDO1117K33TC" H -800 800 50  0001 L CNN "Arrow Part Number"
+F 11 "https://www.arrow.com/en/products/zldo1117k33tc/diodes-incorporated?region=nac" H -800 700 50  0001 L CNN "Arrow Price/Stock"
+	1    -2250 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	-650 2200 -650 1600
+Wire Wire Line
+	2150 1500 2150 -850
+Wire Wire Line
+	2250 1500 2250 -750
+Wire Wire Line
+	2350 1500 2350 -650
+Wire Wire Line
+	2950 1500 2950 800 
+Text Label 2150 1500 1    50   ~ 0
+Hall_Select_[0]
+Text Label 2250 1500 1    50   ~ 0
+Hall_Select_[1]
+Text Label 2350 1500 1    50   ~ 0
+Hall_Select_[2]
+Wire Wire Line
+	7950 1500 7950 850 
+Wire Wire Line
+	7250 600  10000 600 
+Wire Wire Line
+	7250 600  7250 1500
+$Comp
+L power:+5V #PWR0119
+U 1 1 614DF4EE
+P 14400 3150
+F 0 "#PWR0119" H 14400 3000 50  0001 C CNN
+F 1 "+5V" H 14415 3323 50  0000 C CNN
+F 2 "" H 14400 3150 50  0001 C CNN
+F 3 "" H 14400 3150 50  0001 C CNN
+	1    14400 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0120
+U 1 1 614E0033
+P 14900 3150
+F 0 "#PWR0120" H 14900 3000 50  0001 C CNN
+F 1 "+3V3" H 14915 3323 50  0000 C CNN
+F 2 "" H 14900 3150 50  0001 C CNN
+F 3 "" H 14900 3150 50  0001 C CNN
+	1    14900 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED5V1
+U 1 1 614E1141
+P 14250 3400
+F 0 "LED5V1" V 14296 3172 50  0000 R CNN
+F 1 "5V" V 14205 3172 50  0000 R CNN
+F 2 "LED Lib:XCXZCFBB53W-8VF" H 14250 3400 50  0001 C CNN
+F 3 "" H 14250 3400 50  0001 C CNN
+	1    14250 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED3V3
+U 1 1 614E1E21
+P 14750 3400
+F 0 "LED3V3" V 14796 3172 50  0000 R CNN
+F 1 "3V3" V 14705 3172 50  0000 R CNN
+F 2 "LED Lib:XCXZCFBB53W-8VF" H 14750 3400 50  0001 C CNN
+F 3 "" H 14750 3400 50  0001 C CNN
+	1    14750 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 614E2AC4
+P 14400 3800
+F 0 "R2" H 14470 3846 50  0000 L CNN
+F 1 "R" H 14470 3755 50  0000 L CNN
+F 2 "" V 14330 3800 50  0001 C CNN
+F 3 "~" H 14400 3800 50  0001 C CNN
+	1    14400 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 614E349A
+P 14900 3800
+F 0 "R3" H 14970 3846 50  0000 L CNN
+F 1 "R" H 14970 3755 50  0000 L CNN
+F 2 "" V 14830 3800 50  0001 C CNN
+F 3 "~" H 14900 3800 50  0001 C CNN
+	1    14900 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0121
+U 1 1 614E3C31
+P 14900 3950
+F 0 "#PWR0121" H 14900 3700 50  0001 C CNN
+F 1 "GND" H 14905 3777 50  0000 C CNN
+F 2 "" H 14900 3950 50  0001 C CNN
+F 3 "" H 14900 3950 50  0001 C CNN
+	1    14900 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0122
+U 1 1 614E45B1
+P 14400 3950
+F 0 "#PWR0122" H 14400 3700 50  0001 C CNN
+F 1 "GND" H 14405 3777 50  0000 C CNN
+F 2 "" H 14400 3950 50  0001 C CNN
+F 3 "" H 14400 3950 50  0001 C CNN
+	1    14400 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 3700 1550 3700
+Wire Wire Line
+	1550 3700 1550 3900
+Wire Wire Line
+	1550 3700 1300 3700
+Connection ~ 1550 3700
+$Comp
+L power:+3V3 #PWR?
+U 1 1 6154F005
+P 1200 3700
+F 0 "#PWR?" H 1200 3550 50  0001 C CNN
+F 1 "+3V3" H 1215 3873 50  0000 C CNN
+F 2 "" H 1200 3700 50  0001 C CNN
+F 3 "" H 1200 3700 50  0001 C CNN
+	1    1200 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_MEC_5G nRST
+U 1 1 61550690
+P 1550 4100
+F 0 "nRST" V 1596 4052 50  0000 R CNN
+F 1 "SW_MEC_5G" V 1505 4052 50  0000 R CNN
+F 2 "" H 1550 4300 50  0001 C CNN
+F 3 "http://www.apem.com/int/index.php?controller=attachment&id_attachment=488" H 1550 4300 50  0001 C CNN
+	1    1550 4100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61551660
+P 1350 4300
+F 0 "#PWR?" H 1350 4050 50  0001 C CNN
+F 1 "GND" H 1355 4127 50  0000 C CNN
+F 2 "" H 1350 4300 50  0001 C CNN
+F 3 "" H 1350 4300 50  0001 C CNN
+	1    1350 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61552494
+P 1300 3850
+F 0 "C?" H 1415 3896 50  0000 L CNN
+F 1 "C" H 1415 3805 50  0000 L CNN
+F 2 "" H 1338 3700 50  0001 C CNN
+F 3 "~" H 1300 3850 50  0001 C CNN
+	1    1300 3850
+	1    0    0    -1  
+$EndComp
+Connection ~ 1300 3700
+Wire Wire Line
+	1300 3700 1200 3700
+Wire Wire Line
+	1300 4000 1300 4300
+Wire Wire Line
+	1300 4300 1350 4300
+Connection ~ 1350 4300
+Wire Wire Line
+	1350 4300 1550 4300
+Wire Wire Line
+	1850 2100 1850 2200
+Connection ~ 1850 2200
+Wire Wire Line
+	1850 2200 1850 2300
+Connection ~ 1850 2300
+Wire Wire Line
+	1850 2300 1850 2400
+Connection ~ 1850 2400
+Wire Wire Line
+	1850 2400 1850 2500
+Connection ~ 1850 2500
+Wire Wire Line
+	1850 2500 1850 2600
+Connection ~ 1850 2600
+Wire Wire Line
+	1850 2600 1850 2700
+Connection ~ 1850 2700
+Wire Wire Line
+	1850 2700 1850 2800
+Connection ~ 1850 2800
+Wire Wire Line
+	1850 2800 1850 2900
+Connection ~ 1850 2900
+Wire Wire Line
+	1850 2900 1850 3000
+Connection ~ 1850 3000
+Wire Wire Line
+	1850 3000 1850 3100
+Wire Wire Line
+	250  2200 1850 2200
+Connection ~ -650 1600
+Wire Wire Line
+	-650 1600 -650 1500
+Wire Wire Line
+	-650 2200 250  2200
+Wire Wire Line
+	9050 2500 9300 2500
+$Comp
+L power:GND #PWR?
+U 1 1 61575AE3
+P 9300 2500
+F 0 "#PWR?" H 9300 2250 50  0001 C CNN
+F 1 "GND" V 9305 2372 50  0000 R CNN
+F 2 "" H 9300 2500 50  0001 C CNN
+F 3 "" H 9300 2500 50  0001 C CNN
+	1    9300 2500
+	0    -1   -1   0   
+$EndComp
+$EndSCHEMATC

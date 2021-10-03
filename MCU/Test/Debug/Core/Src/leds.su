@@ -1,0 +1,2 @@
+leds.c:3:19:LEDSInit	128	static
+leds.c:35:6:writeHexVal	8	static

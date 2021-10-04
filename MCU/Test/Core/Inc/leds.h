@@ -18,7 +18,8 @@
 #define LED_7 0x66
 #define LED_8 0x67
 
-SPI_HandleTypeDef LEDSInit();
-void writeHexVal(SPI_HandleTypeDef hspi1, uint8_t reg, uint8_t val);
+void LEDSInit(SPI_HandleTypeDef * hspi);
+void writeHexVal(SPI_HandleTypeDef * hspi1, uint8_t reg, uint8_t val);
+void ChessTimerLEDInit(SPI_HandleTypeDef * hspi);
 
 #endif

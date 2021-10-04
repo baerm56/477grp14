@@ -1,2 +1,7 @@
-leds.c:3:19:LEDSInit	128	static
-leds.c:35:6:writeHexVal	8	static
+leds.c:3:6:enableHex	16	static
+leds.c:7:6:setIntensity	16	static
+leds.c:11:6:setScanLimit	16	static
+leds.c:15:6:enableOutput	16	static
+leds.c:19:6:LEDSInit	40	static
+leds.c:50:6:ChessTimerLEDInit	16	static
+leds.c:57:6:writeHexVal	16	static

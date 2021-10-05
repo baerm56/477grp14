@@ -141,12 +141,15 @@ int main(void)
   LEDSInit(&hspi1);
   ChessTimerLEDInit(&hspi1);
   writeHexVal(&hspi1, LED_1, 0x02);
+
+  InitTracker();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  Track();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

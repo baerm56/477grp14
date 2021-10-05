@@ -3,21 +3,69 @@
 
 #include "stm32l1xx_hal.h"
 
-#define NUM_ROWS 4
-#define NUM_COLS 4
+struct GPIO_Pin {
+	uint16_t pin;
+	GPIO_TypeDef* bus;
+};
 
-#define GPIO_COL_SEL0 GPIO_PIN_0
-#define GPIO_COL_SEL1 GPIO_PIN_1
-#define GPIO_COL_SEL2 GPIO_PIN_2
-#define GPIO_ROW0 GPIO_PIN_0
-#define GPIO_ROW1 GPIO_PIN_1
-#define GPIO_ROW2 GPIO_PIN_2
-#define GPIO_ROW3 GPIO_PIN_3
-#define GPIO_BUS_COL GPIOA
-#define GPIO_BUS_ROW GPIOD
+enum PieceType {
+	NONE,
+	PAWN,
+	KNIGHT,
+	BISHOP,
+	CASTLE,
+	QUEEN,
+	KING
+};
 
-void TrackerInit(void);
+enum PieceOwner {
+	NEUTRAL,
+	WHITE,
+	BLACK
+};
 
+struct Piece {
+	enum PieceType type;
+	enum PieceOwner owner;
+};
+
+#define NUM_COLS 8
+#define NUM_ROWS 8
+#define NUM_COL_BITS 3
+
+/**
+ * @brief Write column bits to MUXs and read the value of each row. Keep track of piece moves.
+ */
 void Track(void);
+
+
+/**
+ * @brief Initialize IO ports to use for tracking via the Hall Effect sensors.
+ */
+void InitTracker(void);
+
+
+/**
+ * @brief Make sure that all the pieces are in the 0th, 1st, 7th and 6th rows, and no piece is anywhere else.
+ */
+uint8_t ValidateStartPositions(void);
+
+
+/**
+ * @brief Returns the piece at the specified row and column.
+ */
+struct Piece GetPiece(uint8_t row, uint8_t column);
+
+
+/**
+ * @brief Sets the piece at the specified row and column
+ */
+void SetPiece(uint8_t row, uint8_t column, struct Piece piece);
+
+
+/**
+ * @brief Kills the piece, marking it as off of the board
+ */
+void KillPiece(struct Piece piece);
 
 #endif // TRACKER_H

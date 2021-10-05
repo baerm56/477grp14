@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP SN74HCS151QPWRQ1
+D Encoders, Decoders, Multiplexers & Demultiplexers 8-to-1 multiplexer with Schmitt-trigger inputs 16-TSSOP -40 to 125
+F https://www.ti.com/lit/gpn/SN74HCS151-Q1
+$ENDCMP
+#
+#End Doc Library

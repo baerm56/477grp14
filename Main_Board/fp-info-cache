@@ -1,4 +1,4 @@
-19225867664365308
+19237298833887857
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -76306,6 +76306,27 @@ rotary encoder
 0
 5
 4
+SN74HCS151QPWRQ1
+SOP65P640X120-16N
+PW0016A
+Integrated Circuit
+0
+16
+16
+SamacSys_Parts
+CAPC1005X55N
+0402
+Capacitor
+0
+2
+2
+SamacSys_Parts
+CAPPRD200W52D500H1250
+5.0 x 11.0
+Capacitor Polarised
+0
+2
+2
 SamacSys_Parts
 NE555DR
 D (R-PDSO-G8)
@@ -76313,6 +76334,13 @@ Integrated Circuit
 0
 8
 8
+SamacSys_Parts
+SOP64P602X173-17N
+MAX6951CEE+
+Integrated Circuit
+0
+17
+17
 SamacSys_Parts
 SOP65P640X120-16N
 PW0016A
@@ -83062,12 +83090,33 @@ varistor SIOV
 2
 2
 ZLDO1117K33TC-pcb-part-libraries
+CAPC1005X55N
+0402
+Capacitor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
+CAPPRD200W52D500H1250
+5.0 x 11.0
+Capacitor Polarised
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
 NE555DR
 D (R-PDSO-G8)
 Integrated Circuit
 0
 8
 8
+ZLDO1117K33TC-pcb-part-libraries
+SOP64P602X173-17N
+MAX6951CEE+
+Integrated Circuit
+0
+17
+17
 ZLDO1117K33TC-pcb-part-libraries
 SOP65P640X120-16N
 PW0016A

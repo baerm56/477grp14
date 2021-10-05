@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ZLDO1117K33TC
+D LDO Regulator Pos 3.3V 1A 3Pin TO252 Diodes Inc ZLDO1117 ZLDO1117K33TC, Single Linear Voltage Regulator, 1A 3.3 V, 2%, 3-Pin TO-252
+F http://uk.rs-online.com/web/p/products/7515192
+$ENDCMP
+#
+#End Doc Library

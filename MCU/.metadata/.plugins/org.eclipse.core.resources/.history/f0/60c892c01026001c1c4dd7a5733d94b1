@@ -1,0 +1,7 @@
+#ifndef WAVEPLAYER_H_
+#define WAVEPLAYER_H
+
+void WaveplayerInit(SPI_HandleTypeDef * hspi)
+
+
+#endif /* WAVEPLAYER_H */

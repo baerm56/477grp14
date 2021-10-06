@@ -1,0 +1,4 @@
+waveplayer.c:11:5:GetFile	64	static
+waveplayer.c:32:6:readFile	24	static
+waveplayer.c:38:6:closeFile	8	static
+waveplayer.c:43:6:WaveplayerInit	40	static

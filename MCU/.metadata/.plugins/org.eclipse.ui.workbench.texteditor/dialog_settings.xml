@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="HAL_DAC_Star"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="TIM6"/>
+			<item value="TIM6_IR"/>
+			<item value="TIM6_IRQ"/>
+			<item value="IRQ"/>
+			<item value="f_open"/>
+			<item value="f_mount"/>
 			<item value="HAL_DAC_Star"/>
 			<item value="Column_Select_Init"/>
 			<item value="MX_GPIO_Init"/>

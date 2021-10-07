@@ -15,7 +15,7 @@
 
 #define TIMER_NAME TIM2
 #define TIMER_PSC 0
-#define TIMER_ARR 250-1
+#define TIMER_ARR 4000-1
 
 void SpeakerInit(DAC_HandleTypeDef * hdac, TIM_HandleTypeDef * htim);
 

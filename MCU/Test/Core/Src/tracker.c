@@ -1,27 +1,38 @@
 #include "tracker.h"
 
-static const struct GPIO_Pin COL_BIT0_PIN = { .pin = GPIO_PIN_0,  .bus = GPIOA }; // A0
-const struct GPIO_Pin COL_BIT1_PIN = { .pin = GPIO_PIN_1,  .bus = GPIOA }; // A1
-const struct GPIO_Pin COL_BIT2_PIN = { .pin = GPIO_PIN_4,  .bus = GPIOA }; // A2
-
-const struct GPIO_Pin ROW0_PIN = { .pin = GPIO_PIN_10, .bus = GPIOA }; // D2
-const struct GPIO_Pin ROW1_PIN = { .pin = GPIO_PIN_3,  .bus = GPIOB }; // D3
-const struct GPIO_Pin ROW2_PIN = { .pin = GPIO_PIN_5,  .bus = GPIOB }; // D4
-const struct GPIO_Pin ROW3_PIN = { .pin = GPIO_PIN_4,  .bus = GPIOB }; // D5
-const struct GPIO_Pin ROW4_PIN = { .pin = GPIO_PIN_10, .bus = GPIOB }; // D6
-const struct GPIO_Pin ROW5_PIN = { .pin = GPIO_PIN_8,  .bus = GPIOA }; // D7
-const struct GPIO_Pin ROW6_PIN = { .pin = GPIO_PIN_9,  .bus = GPIOA }; // D8
-const struct GPIO_Pin ROW7_PIN = { .pin = GPIO_PIN_7,  .bus = GPIOC }; // D9
-
 volatile static struct GPIO_Pin RowNumberToPinTable[NUM_ROWS] = {
-	ROW0_PIN, ROW1_PIN, ROW2_PIN, ROW3_PIN, // ROW4_PIN, ROW5_PIN, ROW6_PIN, ROW7_PIN
+	{ GPIO_PIN_10, GPIOA }, // D2
+	{ GPIO_PIN_3,  GPIOB }, // D3
+	{ GPIO_PIN_5,  GPIOB }, // D4
+	{ GPIO_PIN_4,  GPIOB }, // D5
+	{ GPIO_PIN_10, GPIOB }, // D6
+	{ GPIO_PIN_8,  GPIOA }, // D7
+	{ GPIO_PIN_9,  GPIOA }, // D8
+	{ GPIO_PIN_7,  GPIOC }, // D9
+
 };
 
 volatile static struct GPIO_Pin ColumnBitToPinTable[NUM_COL_BITS] = {
-	COL_BIT0_PIN, COL_BIT1_PIN, // COL_BIT2_PIN
+	{ GPIO_PIN_0,  GPIOA }, // A0
+	{ GPIO_PIN_1,  GPIOA }, // A1
+	{ GPIO_PIN_4,  GPIOA }, // A2
+
 };
 
-volatile static GPIO_PinState Board[NUM_COLS][NUM_ROWS] = {0};
+volatile static struct Piece Chessboard[NUM_ROWS][NUM_COLS];
+volatile static struct Piece InitialChessboard[NUM_ROWS][NUM_COLS] = {
+	{{CASTLE, WHITE}, {KNIGHT, WHITE}, {BISHOP, WHITE}, {QUEEN, WHITE},  {KING, WHITE},   {BISHOP, WHITE}, {KNIGHT, WHITE}, {CASTLE, WHITE}},
+	{{PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE},   {PAWN, WHITE}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK}},
+	{{CASTLE, BLACK}, {KNIGHT, BLACK}, {BISHOP, BLACK}, {QUEEN, BLACK},  {KING, BLACK},   {BISHOP, BLACK}, {KNIGHT, BLACK}, {CASTLE, BLACK}},
+};
+
+
+volatile struct Piece LastPickedUpPiece = {NONE, NEUTRAL};
 
 static void InitGPIO_Pin(struct GPIO_Pin pin, uint32_t mode, uint32_t pull)
 {
@@ -59,8 +70,10 @@ static void InitGPIO_Pin(struct GPIO_Pin pin, uint32_t mode, uint32_t pull)
 
 void InitTracker()
 {
-	// Initialize output column bits
-	for(uint8_t columnNumber = 0; columnNumber < NUM_COLS; columnNumber++)
+	enum PieceType bottomRow[] = {};
+
+	// Initialize output column bits IO and the chessboard data structure
+	for(uint8_t columnNumber = 0; columnNumber < NUM_COL_BITS; columnNumber++)
 	{
 		InitGPIO_Pin(ColumnBitToPinTable[columnNumber], GPIO_MODE_OUTPUT_PP, GPIO_NOPULL);
 	}
@@ -70,6 +83,16 @@ void InitTracker()
 	{
 		InitGPIO_Pin(RowNumberToPinTable[rowNumber], GPIO_MODE_INPUT, GPIO_NOPULL);
 	}
+
+	for(uint8_t columnNumber = 0; columnNumber < NUM_COL_BITS; columnNumber++)
+	{
+		for(uint8_t rowNumber = 0; rowNumber < NUM_ROWS; rowNumber++)
+		{
+			Chessboard[rowNumber][columnNumber] = InitialChessboard[rowNumber][columnNumber];
+		}
+	}
+
+
 }
 
 static void WriteColumn(uint8_t columnNumber)
@@ -78,9 +101,9 @@ static void WriteColumn(uint8_t columnNumber)
 	uint8_t columnBit1 = (columnNumber & 2) >> 1;
 	uint8_t columnBit2 = (columnNumber & 4) >> 2;
 
-	HAL_GPIO_WritePin(COL_BIT0_PIN.bus, COL_BIT0_PIN.pin, columnBit0);
-	HAL_GPIO_WritePin(COL_BIT1_PIN.bus, COL_BIT1_PIN.pin, columnBit1);
-	HAL_GPIO_WritePin(COL_BIT2_PIN.bus, COL_BIT2_PIN.pin, columnBit2);
+	HAL_GPIO_WritePin(ColumnBitToPinTable[0].bus, ColumnBitToPinTable[0].pin, columnBit0);
+	HAL_GPIO_WritePin(ColumnBitToPinTable[1].bus, ColumnBitToPinTable[1].pin, columnBit1);
+	HAL_GPIO_WritePin(ColumnBitToPinTable[2].bus, ColumnBitToPinTable[2].pin, columnBit2);
 }
 
 static GPIO_PinState ReadRow(uint8_t rowNumber)
@@ -91,9 +114,6 @@ static GPIO_PinState ReadRow(uint8_t rowNumber)
 	return value;
 }
 
-/**
- * @brief Write column bits to MUXs and read the value of each row. Store into Board data structure
- */
 void Track()
 {
 	for(uint8_t columnNumber = 0; columnNumber < NUM_COLS; columnNumber++)
@@ -102,13 +122,84 @@ void Track()
 
 		for(uint8_t rowNumber = 0; rowNumber < NUM_ROWS; rowNumber++)
 		{
-			GPIO_PinState rowValue = ReadRow(rowNumber);
-			Board[columnNumber][rowNumber] = rowValue;
+			GPIO_PinState cellValue = ReadRow(rowNumber);
+			struct Piece currentPiece = GetPiece(rowNumber, columnNumber);
+
+			// If there was no piece here but the IO is HIGH, a previously picked-up piece was placed
+			if((currentPiece.type == NONE) && (cellValue == GPIO_PIN_SET))
+			{
+				SetPiece(rowNumber, columnNumber, LastPickedUpPiece);
+			}
+
+			// If there was a piece here but the IO is LOW, a piece has been picked up
+			else if ((currentPiece.type != NONE) && (cellValue == GPIO_PIN_RESET))
+			{
+				struct Piece emptyPiece = {NONE, NEUTRAL};
+				SetPiece(rowNumber, columnNumber, emptyPiece);
+
+				// If the last picked-up piece owner is not the same as the current piece owner,
+				// the current piece owner's piece is being killed by the last picked-up piece
+				if(LastPickedUpPiece.owner != currentPiece.owner)
+				{
+					KillPiece(currentPiece);
+				}
+
+				// If the piece wasn't killed, store it as the last picked up piece
+				else
+				{
+					LastPickedUpPiece = currentPiece;
+				}
+			}
 		}
 	}
 }
 
-uint8_t IsPiecePresent(uint8_t x, uint8_t y)
+uint8_t ValidateStartPositions()
 {
-	return Board[x][y] == GPIO_PIN_SET;
+	for(uint8_t columnNumber = 0; columnNumber < NUM_COLS; columnNumber++)
+	{
+		for(uint8_t rowNumber = 0; rowNumber < NUM_ROWS; rowNumber++)
+		{
+			struct Piece piece = GetPiece(rowNumber, columnNumber);
+
+			switch(rowNumber)
+			{
+
+			// Make sure rows 0, 1, 6, 7 are all filled with pieces
+			case 0:
+			case 1:
+			case 6:
+			case 7:
+				if(piece.type == NONE)
+				{
+					return 0;
+				}
+				break;
+
+			// Make sure other rows do not have a piece
+			default:
+				if(piece.type != NONE)
+				{
+					return 0;
+				}
+			}
+		}
+	}
+
+	return 1;
+}
+
+inline void KillPiece(struct Piece piece)
+{
+
+}
+
+inline void SetPiece(uint8_t row, uint8_t column, struct Piece piece)
+{
+	Chessboard[row][column] = piece;
+}
+
+inline struct Piece GetPiece(uint8_t row, uint8_t column)
+{
+	return Chessboard[row][column];
 }

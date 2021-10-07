@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP AZ1085CD-3.3TRG1
+D LDO Voltage Regulators LDO BJT HiCurr TO252
+F https://www.diodes.com/assets/Datasheets/AZ1085C.pdf
+$ENDCMP
+#
+#End Doc Library

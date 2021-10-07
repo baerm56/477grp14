@@ -27,6 +27,93 @@ X GAIN 8 100 -300 250 U 50 20 1 1 I
 ENDDRAW
 ENDDEF
 #
+# Connector_Conn_01x02_Male
+#
+DEF Connector_Conn_01x02_Male J 0 40 Y N 1 F N
+F0 "J" 0 100 50 H V C CNN
+F1 "Connector_Conn_01x02_Male" 0 -200 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S 34 -95 0 -105 1 1 6 F
+S 34 5 0 -5 1 1 6 F
+P 2 1 1 6 50 -100 34 -100 N
+P 2 1 1 6 50 0 34 0 N
+X Pin_1 1 200 0 150 L 50 50 1 1 P
+X Pin_2 2 200 -100 150 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Connector_Conn_01x04_Male
+#
+DEF Connector_Conn_01x04_Male J 0 40 Y N 1 F N
+F0 "J" 0 200 50 H V C CNN
+F1 "Connector_Conn_01x04_Male" 0 -300 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S 34 -195 0 -205 1 1 6 F
+S 34 -95 0 -105 1 1 6 F
+S 34 5 0 -5 1 1 6 F
+S 34 105 0 95 1 1 6 F
+P 2 1 1 6 50 -200 34 -200 N
+P 2 1 1 6 50 -100 34 -100 N
+P 2 1 1 6 50 0 34 0 N
+P 2 1 1 6 50 100 34 100 N
+X Pin_1 1 200 100 150 L 50 50 1 1 P
+X Pin_2 2 200 0 150 L 50 50 1 1 P
+X Pin_3 3 200 -100 150 L 50 50 1 1 P
+X Pin_4 4 200 -200 150 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
+# Connector_Conn_01x09_Male
+#
+DEF Connector_Conn_01x09_Male J 0 40 Y N 1 F N
+F0 "J" 0 500 50 H V C CNN
+F1 "Connector_Conn_01x09_Male" 0 -500 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ Connector*:*_1x??_*
+$ENDFPLIST
+DRAW
+S 34 -395 0 -405 1 1 6 F
+S 34 -295 0 -305 1 1 6 F
+S 34 -195 0 -205 1 1 6 F
+S 34 -95 0 -105 1 1 6 F
+S 34 5 0 -5 1 1 6 F
+S 34 105 0 95 1 1 6 F
+S 34 205 0 195 1 1 6 F
+S 34 305 0 295 1 1 6 F
+S 34 405 0 395 1 1 6 F
+P 2 1 1 6 50 -400 34 -400 N
+P 2 1 1 6 50 -300 34 -300 N
+P 2 1 1 6 50 -200 34 -200 N
+P 2 1 1 6 50 -100 34 -100 N
+P 2 1 1 6 50 0 34 0 N
+P 2 1 1 6 50 100 34 100 N
+P 2 1 1 6 50 200 34 200 N
+P 2 1 1 6 50 300 34 300 N
+P 2 1 1 6 50 400 34 400 N
+X Pin_1 1 200 400 150 L 50 50 1 1 P
+X Pin_2 2 200 300 150 L 50 50 1 1 P
+X Pin_3 3 200 200 150 L 50 50 1 1 P
+X Pin_4 4 200 100 150 L 50 50 1 1 P
+X Pin_5 5 200 0 150 L 50 50 1 1 P
+X Pin_6 6 200 -100 150 L 50 50 1 1 P
+X Pin_7 7 200 -200 150 L 50 50 1 1 P
+X Pin_8 8 200 -300 150 L 50 50 1 1 P
+X Pin_9 9 200 -400 150 L 50 50 1 1 P
+ENDDRAW
+ENDDEF
+#
 # Connector_Generic_Conn_02x05_Odd_Even
 #
 DEF Connector_Generic_Conn_02x05_Odd_Even J 0 40 Y N 1 F N
@@ -330,6 +417,52 @@ X 1 1 0 -100 100 U 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+# SamacSys_Parts_47352-1001
+#
+DEF SamacSys_Parts_47352-1001 J 0 30 Y Y 1 F N
+F0 "J" 1250 300 50 H V L CNN
+F1 "SamacSys_Parts_47352-1001" 1250 200 50 H V L CNN
+F2 "47352-1001" 1250 100 50 H I L CNN
+F3 "http://www.molex.com/pdm_docs/sd/473521001_sd.pdf" 1250 0 50 H I L CNN
+F4 "Molex 47388 Series 8 Way Right Angle Micro SD Memory Card Connector with Solder Termination" 1250 -100 50 H I L CNN "Description"
+F5 "538-47352-1001" 1250 -300 50 H I L CNN "Mouser Part Number"
+F6 "https://www.mouser.co.uk/ProductDetail/Molex/47352-1001?qs=c2CV6XM0DweyUS%2F9lG4Ycg%3D%3D" 1250 -400 50 H I L CNN "Mouser Price/Stock"
+F7 "Molex" 1250 -500 50 H I L CNN "Manufacturer_Name"
+F8 "47352-1001" 1250 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 5 0 1 6 200 100 1200 100 1200 -400 200 -400 200 100 N
+X DATA2 1 0 0 200 R 50 50 0 0 P
+X CD/DATA3 2 0 -100 200 R 50 50 0 0 P
+X CMD 3 0 -200 200 R 50 50 0 0 P
+X VDD 4 0 -300 200 R 50 50 0 0 P
+X CLK 5 1400 0 200 L 50 50 0 0 P
+X VSS 6 1400 -100 200 L 50 50 0 0 P
+X DATA0 7 1400 -200 200 L 50 50 0 0 P
+X DATA1 8 1400 -300 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# SamacSys_Parts_AZ1085CD-3.3TRG1
+#
+DEF SamacSys_Parts_AZ1085CD-3.3TRG1 IC 0 30 Y Y 1 F N
+F0 "IC" 1250 300 50 H V L CNN
+F1 "SamacSys_Parts_AZ1085CD-3.3TRG1" 1250 200 50 H V L CNN
+F2 "AZ1085CD33TRG1" 1250 100 50 H I L CNN
+F3 "https://www.diodes.com/assets/Datasheets/AZ1085C.pdf" 1250 0 50 H I L CNN
+F4 "LDO Voltage Regulators LDO BJT HiCurr TO252" 1250 -100 50 H I L CNN "Description"
+F5 "2.38" 1250 -200 50 H I L CNN "Height"
+F6 "621-AZ1085CD-3.3TRG1" 1250 -300 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/AZ1085CD-33TRG1?qs=M%2FOdCRO8QQ1dDSfZXnl9PA%3D%3D" 1250 -400 50 H I L CNN "Mouser Price/Stock"
+F8 "Diodes Inc." 1250 -500 50 H I L CNN "Manufacturer_Name"
+F9 "AZ1085CD-3.3TRG1" 1250 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 5 0 1 6 200 100 1200 100 1200 -200 200 -200 200 100 N
+X ADJ/GND 1 0 0 200 R 50 50 0 0 P
+X OUTPUT 2 1400 0 200 L 50 50 0 0 P
+X INPUT 3 0 -100 200 R 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
 # SamacSys_Parts_MAX6951CEE+
 #
 DEF SamacSys_Parts_MAX6951CEE+ IC 0 30 Y Y 1 F N
@@ -362,50 +495,6 @@ X DIG0/SEG0 6 0 -500 200 R 50 50 0 0 P
 X ISET 7 0 -600 200 R 50 50 0 0 P
 X GND 8 0 -700 200 R 50 50 0 0 P
 X OSC 9 1800 -700 200 L 50 50 0 0 P
-ENDDRAW
-ENDDEF
-#
-# SamacSys_Parts_ZLDO1117K33TC
-#
-DEF SamacSys_Parts_ZLDO1117K33TC IC 0 30 Y Y 1 F N
-F0 "IC" 1450 300 50 H V L CNN
-F1 "SamacSys_Parts_ZLDO1117K33TC" 1450 200 50 H V L CNN
-F2 "TO-252_1" 1450 100 50 H I L CNN
-F3 "http://uk.rs-online.com/web/p/products/7515192" 1450 0 50 H I L CNN
-F4 "LDO Regulator Pos 3.3V 1A 3Pin TO252 Diodes Inc ZLDO1117 ZLDO1117K33TC, Single Linear Voltage Regulator, 1A 3.3 V, 2%, 3-Pin TO-252" 1450 -100 50 H I L CNN "Description"
-F5 "Diodes Inc." 1450 -300 50 H I L CNN "Manufacturer_Name"
-F6 "ZLDO1117K33TC" 1450 -400 50 H I L CNN "Manufacturer_Part_Number"
-F7 "522-ZLDO1117K33TC" 1450 -500 50 H I L CNN "Mouser Part Number"
-F8 "https://www.mouser.co.uk/ProductDetail/Diodes-Incorporated/ZLDO1117K33TC?qs=4YT44p7w2bsiRusTnYhn1g%3D%3D" 1450 -600 50 H I L CNN "Mouser Price/Stock"
-F9 "ZLDO1117K33TC" 1450 -700 50 H I L CNN "Arrow Part Number"
-F10 "https://www.arrow.com/en/products/zldo1117k33tc/diodes-incorporated?region=nac" 1450 -800 50 H I L CNN "Arrow Price/Stock"
-DRAW
-P 5 0 1 6 200 100 1400 100 1400 -200 200 -200 200 100 N
-X AD(GND) 1 0 0 200 R 50 50 0 0 P
-X VIN 2 0 -100 200 R 50 50 0 0 P
-X VOUT_(TAB) 3 1600 0 200 L 50 50 0 0 P
-ENDDRAW
-ENDDEF
-#
-# Switch_SW_MEC_5G
-#
-DEF Switch_SW_MEC_5G SW 0 40 N N 1 F N
-F0 "SW" 50 100 50 H V L CNN
-F1 "Switch_SW_MEC_5G" 0 -60 50 H V C CNN
-F2 "" 0 200 50 H I C CNN
-F3 "" 0 200 50 H I C CNN
-$FPLIST
- SW*MEC*5G*
-$ENDFPLIST
-DRAW
-C -80 0 20 0 1 0 N
-C 80 0 20 0 1 0 N
-P 2 0 1 0 0 50 0 120 N
-P 2 0 1 0 100 50 -100 50 N
-X A 1 -200 0 100 R 50 50 0 1 P
-X B 3 200 0 100 L 50 50 0 1 P
-X A 2 -200 0 100 R 50 50 1 1 P N
-X B 4 200 0 100 L 50 50 1 1 P N
 ENDDRAW
 ENDDEF
 #

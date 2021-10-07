@@ -5,39 +5,94 @@ static FATFS FatFs;
 
 static uint32_t fileLength;
 static __IO uint32_t audioRemainSize = 0;
+static uint8_t audioBuffer[AUDIO_BUFFER_SIZE];
 
-static uint32_t samplingFreq;
+static UINT playerReadBytes = 0;
+static uint8_t isFinished = 0;
 
-int GetFile(const char* filePath)
-{
+static volatile WAVEPLAYER_E waveplayerStatus = WAVEPLAYER_IDLE;
+
+static void ResetAudio(DAC_HandleTypeDef * hdac){
+	audioRemainSize = 0;
+	playerReadBytes = 0;
+	HAL_DAC_Stop_DMA(hdac, DAC_CHANNEL_1);
+}
+
+void GetFile(const char* filePath){
   WAV_Header wavHeader;
   UINT readBytes = 0;
 
   f_mount(&FatFs, "", 1);
-  //Open WAV file
-  if(f_open(&wavFile, filePath, FA_READ) != FR_OK)
-  {
-    return 0;
-  }
-  //Read WAV file Header
+  f_open(&wavFile, filePath, FA_READ);
+
   f_read(&wavFile, &wavHeader, sizeof(wavHeader), &readBytes);
-  //Get audio data size
+
   fileLength = wavHeader.FileSize;
-  //Play the WAV file with frequency specified in header
-  samplingFreq = wavHeader.SampleRate;
 
-  return fileLength;
 }
 
-void readFile(uint8_t * buffer){
-	UINT readBytes = 0;
+void PlayAudio(DAC_HandleTypeDef * hdac, const char* filePath){
+	GetFile(filePath);
+	isFinished = 0;
 
-	f_read(&wavFile, buffer, 512, &readBytes);
+	f_read(&wavFile, &audioBuffer[0], AUDIO_BUFFER_SIZE, &playerReadBytes);
+	audioRemainSize = fileLength - playerReadBytes - sizeof(WAV_Header);
+
+	HAL_DAC_Start_DMA(hdac, DAC_CHANNEL_1, (uint32_t *) audioBuffer, AUDIO_BUFFER_SIZE, DAC_ALIGN_8B_R);
+	while(!GetAudioStatus()){
+		ProcessAudio(hdac);
+	}
+	HAL_Delay(200);
 }
 
-void closeFile(){
-	f_close(&wavFile);
-	f_mount(NULL, "", 0);
+void ProcessAudio(DAC_HandleTypeDef * hdac){
+	switch(waveplayerStatus) {
+		case WAVEPLAYER_IDLE:
+			break;
+
+		case WAVEPLAYER_HALFBUFFER:
+			playerReadBytes = 0;
+			waveplayerStatus = WAVEPLAYER_IDLE;
+			f_read(&wavFile, &audioBuffer[0], AUDIO_BUFFER_SIZE / 2, &playerReadBytes);
+			if (audioRemainSize > (AUDIO_BUFFER_SIZE / 2))
+				audioRemainSize -= playerReadBytes;
+			else {
+				audioRemainSize = 0;
+				waveplayerStatus = WAVEPLAYER_EOF;
+			}
+			break;
+
+		case WAVEPLAYER_FULLBUFFER:
+			playerReadBytes = 0;
+			waveplayerStatus = WAVEPLAYER_IDLE;
+			f_read(&wavFile, &audioBuffer[AUDIO_BUFFER_SIZE / 2], AUDIO_BUFFER_SIZE / 2, &playerReadBytes);
+			if (audioRemainSize > (AUDIO_BUFFER_SIZE / 2))
+				audioRemainSize -= playerReadBytes;
+			else {
+				audioRemainSize = 0;
+				waveplayerStatus = WAVEPLAYER_EOF;
+			}
+			break;
+
+		case WAVEPLAYER_EOF:
+			f_close(&wavFile);
+			f_mount(NULL, "", 0);
+			ResetAudio(hdac);
+			isFinished = 1;
+			waveplayerStatus = WAVEPLAYER_IDLE;
+	}
+}
+
+int GetAudioStatus(){
+  return isFinished;
+}
+
+void HAL_DAC_ConvCpltCallbackCh1(DAC_HandleTypeDef *hdac){
+	waveplayerStatus = WAVEPLAYER_FULLBUFFER;
+}
+
+void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac){
+	waveplayerStatus = WAVEPLAYER_HALFBUFFER;
 }
 
 void WaveplayerInit(SPI_HandleTypeDef * hspi){

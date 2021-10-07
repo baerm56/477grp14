@@ -1,4 +1,4 @@
-Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Inc/tracker.h \
+Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Src/tracker.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h \
  ../Core/Inc/stm32l1xx_hal_conf.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_rcc.h \
@@ -29,7 +29,7 @@ Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Inc/tracker.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_tim_ex.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h
 
-../Core/Inc/tracker.h:
+../Core/Src/tracker.h:
 
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:
 

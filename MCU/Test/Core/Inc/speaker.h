@@ -15,8 +15,17 @@
 
 #define TIMER_NAME TIM2
 #define TIMER_PSC 0
-#define TIMER_ARR 4000-1
+
+#define TIMER_8000 4000-1
+#define TIMER_11025 2902-1
+#define TIMER_22050 1451-1
+#define TIMER_44100 726-1
+
+#define TIMER_ARR TIMER_11025
 
 void SpeakerInit(DAC_HandleTypeDef * hdac, TIM_HandleTypeDef * htim);
+void DMAInit();
+void DACInit(DAC_HandleTypeDef * hdac);
+void SpeakerGPIOInit();
 
 #endif /* SPEAKER_H */

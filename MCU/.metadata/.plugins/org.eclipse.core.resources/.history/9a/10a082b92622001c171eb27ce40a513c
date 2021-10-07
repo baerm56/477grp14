@@ -1,6 +1,0 @@
-#ifndef 7_SEG_HD
-#define 7_SEG_HD
-
-#include "stm32l1xx_hal.h"
-
-#endif

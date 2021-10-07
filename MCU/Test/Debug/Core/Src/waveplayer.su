@@ -1,4 +1,8 @@
-waveplayer.c:11:5:GetFile	64	static
-waveplayer.c:32:6:readFile	24	static
-waveplayer.c:38:6:closeFile	8	static
-waveplayer.c:43:6:WaveplayerInit	40	static
+waveplayer.c:15:13:ResetAudio	16	static
+waveplayer.c:21:6:GetFile	64	static
+waveplayer.c:34:6:PlayAudio	24	static
+waveplayer.c:48:6:ProcessAudio	16	static
+waveplayer.c:86:5:GetAudioStatus	4	static
+waveplayer.c:90:6:HAL_DAC_ConvCpltCallbackCh1	16	static
+waveplayer.c:94:6:HAL_DAC_ConvHalfCpltCallbackCh1	16	static
+waveplayer.c:98:6:WaveplayerInit	40	static

@@ -1,4 +1,4 @@
-269068531323241
+278871392743127
 MountingHole
 MountingHole_2.1mm
 Mounting Hole 2.1mm, no annular
@@ -1161,3 +1161,45 @@ mounting hole 8.4mm m8
 0
 9
 1
+SamacSys_Parts
+DIPS762W50P254L1290H725Q10N
+10-DIP (0.300", 7.62mm)
+Display
+0
+10
+10
+SamacSys_Parts
+HDRV9W63P0X254_1X9_2286X369X950P
+825433-9
+Connector
+0
+9
+9
+SamacSys_Parts
+NE555DR
+D (R-PDSO-G8)
+Integrated Circuit
+0
+8
+8
+footprints
+7seg
+825433-9
+Connector
+0
+9
+9
+footprints
+MountingHole_2.2mm_M2_Pad
+Mounting Hole 2.2mm, M2
+mounting hole 2.2mm m2
+0
+1
+1
+footprints
+header
+825433-9
+Connector
+0
+9
+9

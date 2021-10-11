@@ -1,6 +1,0 @@
-#ifndef SPEAKER_H_
-#define SPEAKER_H_
-
-#include "stm32l1xx_hal.h"
-
-#endif /* SPEAKER_H_ */

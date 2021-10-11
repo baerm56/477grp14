@@ -1,6 +1,9 @@
-tracker.c:26:13:InitGPIO_Pin	72	static
-tracker.c:60:6:InitTracker	16	static
-tracker.c:75:13:WriteColumn	24	static
-tracker.c:86:22:ReadRow	32	static
-tracker.c:97:6:Track	16	static
-tracker.c:111:9:IsPiecePresent	16	static
+tracker.c:37:13:InitGPIO_Pin	72	static
+tracker.c:71:6:InitTracker	24	static
+tracker.c:98:13:WriteColumn	24	static
+tracker.c:109:22:ReadRow	32	static
+tracker.c:117:6:Track	24	static
+tracker.c:157:9:ValidateStartPositions	16	static
+tracker.c:192:13:KillPiece	16	static
+tracker.c:197:13:SetPiece	16	static
+tracker.c:202:21:GetPiece	24	static

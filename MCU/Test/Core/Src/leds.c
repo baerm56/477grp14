@@ -16,6 +16,23 @@ void enableOutput(SPI_HandleTypeDef * hspi){
 	writeHexVal(hspi, LED_CONFIGURATION, 0x01);
 }
 
+void writeTime(SPI_HandleTypeDef * hspi, int time, int player){
+	int sec = time % 60;
+	int min = time / 60;
+	if (!player){
+		writeHexVal(hspi, LED_1, sec % 10);
+		writeHexVal(hspi, LED_2, sec / 10);
+		writeHexVal(hspi, LED_3, min % 10);
+		writeHexVal(hspi, LED_4, min / 10);
+	}
+	else{
+		writeHexVal(hspi, LED_5, sec % 10);
+		writeHexVal(hspi, LED_6, sec / 10);
+		writeHexVal(hspi, LED_7, min % 10);
+		writeHexVal(hspi, LED_8, min / 10);
+	}
+}
+
 void LEDSInit(SPI_HandleTypeDef * hspi){
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 

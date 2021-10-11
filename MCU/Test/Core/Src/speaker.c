@@ -61,5 +61,6 @@ void SpeakerInit(DAC_HandleTypeDef * hdac, TIM_HandleTypeDef * htim){
 	DMAInit();
 	DACInit(hdac);
 	TimerInit(htim);
+	HAL_TIM_Base_Start(htim);
 }
 

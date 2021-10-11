@@ -8,6 +8,8 @@
 #define SD_CS_GPIO_Port GPIOB
 #define SD_SPI_HANDLE hspi2
 
+#define AUDIO_BUFFER_SIZE  4096
+
 typedef struct
 {
   uint32_t   ChunkID;       /* 0 */ // RIFF
@@ -27,9 +29,18 @@ typedef struct
 
 }WAV_Header;
 
+typedef enum
+{
+  WAVEPLAYER_IDLE=0,
+  WAVEPLAYER_HALFBUFFER,
+  WAVEPLAYER_FULLBUFFER,
+  WAVEPLAYER_EOF,
+}WAVEPLAYER_E;
+
 void WaveplayerInit(SPI_HandleTypeDef * hspi);
-int GetFile(const char* filePath);
-void readFile(uint8_t * buffer);
-void closeFile();
+void PlayAudio(DAC_HandleTypeDef * hdac, const char* filePath);
+void ProcessAudio(DAC_HandleTypeDef * hdac);
+int GetAudioStatus();
+void GetFile(const char* filePath);
 
 #endif /* WAVEPLAYER_H */

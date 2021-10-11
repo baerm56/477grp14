@@ -1,6 +1,0 @@
-#ifndef LEDS_H
-#define LEDS_H
-
-#include "stm32l1xx_hal.h"
-
-#endif

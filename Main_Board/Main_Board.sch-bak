@@ -160,10 +160,6 @@ F 3 "" H 22400 5550 50  0001 C CNN
 	1    22400 5550
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	17000 4550 17000 3750
-Text Label 17000 4400 1    50   ~ 0
-JTRST
 Text GLabel 16200 3750 1    50   Input ~ 0
 JTMS-SWDIO
 Text GLabel 16300 3750 1    50   Input ~ 0
@@ -172,8 +168,6 @@ Text GLabel 16400 3750 1    50   Input ~ 0
 JTDI
 Text GLabel 16900 3750 1    50   Input ~ 0
 JTDO-SWO
-Text GLabel 17000 3750 1    50   Input ~ 0
-JTRST
 Wire Wire Line
 	15800 4550 15800 3900
 Wire Wire Line
@@ -709,7 +703,7 @@ U 1 1 616FEEA4
 P 10400 3500
 F 0 "JTAGHEADER1" H 10450 3917 50  0000 C CNN
 F 1 "Conn_02x05_Odd_Even" H 10450 3826 50  0000 C CNN
-F 2 "Connector_PinHeader_2.00mm:PinHeader_2x05_P2.00mm_Vertical" H 10400 3500 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 10400 3500 50  0001 C CNN
 F 3 "~" H 10400 3500 50  0001 C CNN
 	1    10400 3500
 	1    0    0    -1  
@@ -813,10 +807,6 @@ Wire Notes Line
 	15050 9600 15050 8250
 Wire Notes Line
 	13550 2250 13550 9600
-Wire Wire Line
-	14250 8550 14250 6750
-Wire Wire Line
-	14300 6750 14900 6750
 $Comp
 L Mechanical:MountingHole_Pad TL1
 U 1 1 6196843A
@@ -1219,7 +1209,7 @@ U 1 1 615E1FF9
 P 9300 8600
 F 0 "R4" V 9093 8600 50  0000 C CNN
 F 1 "3300" V 9184 8600 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 9230 8600 50  0001 C CNN
+F 2 "SamacSys_Parts:CRGCQ2512F3K3" V 9230 8600 50  0001 C CNN
 F 3 "~" H 9300 8600 50  0001 C CNN
 	1    9300 8600
 	0    1    1    0   
@@ -1230,7 +1220,7 @@ U 1 1 615FF22D
 P 9550 8800
 F 0 "R5" H 9620 8846 50  0000 L CNN
 F 1 "150" H 9620 8755 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 9480 8800 50  0001 C CNN
+F 2 "SamacSys_Parts:ERJ1TRQF1R0U" V 9480 8800 50  0001 C CNN
 F 3 "~" H 9550 8800 50  0001 C CNN
 	1    9550 8800
 	1    0    0    -1  
@@ -1241,7 +1231,7 @@ U 1 1 6160E1B7
 P 9850 8600
 F 0 "R6" V 9643 8600 50  0000 C CNN
 F 1 "100" V 9734 8600 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 9780 8600 50  0001 C CNN
+F 2 "SamacSys_Parts:RESC5025X70N" V 9780 8600 50  0001 C CNN
 F 3 "~" H 9850 8600 50  0001 C CNN
 	1    9850 8600
 	0    1    1    0   
@@ -1938,10 +1928,10 @@ F 3 "~" H 10950 5200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Connector:Conn_01x04_Male HallSensorHeader
+L Connector:Conn_01x04_Male HallSensorHeader1
 U 1 1 6194C5F4
 P 9600 6000
-F 0 "HallSensorHeader" V 9662 6144 50  0000 L CNN
+F 0 "HallSensorHeader1" V 9662 6144 50  0000 L CNN
 F 1 "Conn_01x04_Male" V 9753 6144 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x04_P2.54mm_Vertical" H 9600 6000 50  0001 C CNN
 F 3 "~" H 9600 6000 50  0001 C CNN
@@ -1971,10 +1961,10 @@ Wire Wire Line
 Wire Wire Line
 	9500 6400 9500 6200
 $Comp
-L Connector:Conn_01x02_Male UARTHeader
+L Connector:Conn_01x02_Male UARTHeader1
 U 1 1 61A028AD
 P 11250 6250
-F 0 "UARTHeader" V 11312 6294 50  0000 L CNN
+F 0 "UARTHeader1" V 11312 6294 50  0000 L CNN
 F 1 "Conn_01x02_Male" V 11150 5700 50  0000 L CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 11250 6250 50  0001 C CNN
 F 3 "~" H 11250 6250 50  0001 C CNN
@@ -1989,4 +1979,106 @@ Wire Wire Line
 	10950 6600 11150 6600
 Wire Wire Line
 	11150 6600 11150 6450
+Text GLabel 14900 6750 3    50   Input ~ 0
+nRST
+$Comp
+L Device:Crystal Y1
+U 1 1 61878275
+P 16250 7200
+F 0 "Y1" H 16250 7468 50  0000 C CNN
+F 1 "Crystal" H 16250 7377 50  0000 C CNN
+F 2 "Crystal:Crystal_HC18-U_Vertical" H 16250 7200 50  0001 C CNN
+F 3 "~" H 16250 7200 50  0001 C CNN
+	1    16250 7200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C24
+U 1 1 6187994F
+P 16550 7350
+F 0 "C24" H 16665 7396 50  0000 L CNN
+F 1 "30p" H 16665 7305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 16588 7200 50  0001 C CNN
+F 3 "~" H 16550 7350 50  0001 C CNN
+	1    16550 7350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C11
+U 1 1 6187AF45
+P 15900 7350
+F 0 "C11" H 16015 7396 50  0000 L CNN
+F 1 "30p" H 16015 7305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 15938 7200 50  0001 C CNN
+F 3 "~" H 15900 7350 50  0001 C CNN
+	1    15900 7350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0118
+U 1 1 6187B618
+P 16250 7600
+F 0 "#PWR0118" H 16250 7350 50  0001 C CNN
+F 1 "GND" H 16255 7427 50  0000 C CNN
+F 2 "" H 16250 7600 50  0001 C CNN
+F 3 "" H 16250 7600 50  0001 C CNN
+	1    16250 7600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	16550 7500 16250 7500
+Wire Wire Line
+	16250 7500 16250 7600
+Wire Wire Line
+	15900 7500 16250 7500
+Connection ~ 16250 7500
+Wire Wire Line
+	15900 7200 16100 7200
+Wire Wire Line
+	16400 7200 16550 7200
+Wire Wire Line
+	16200 6750 16200 6800
+Wire Wire Line
+	16200 6800 15900 6800
+Wire Wire Line
+	15900 6800 15900 6900
+Connection ~ 15900 7200
+Wire Wire Line
+	16300 6750 16300 6800
+Wire Wire Line
+	16300 6800 16550 6800
+Wire Wire Line
+	16550 6800 16550 6900
+Connection ~ 16550 7200
+Text Label 15900 6800 0    50   ~ 0
+OSC_IN
+Text Label 16350 6800 0    50   ~ 0
+OSC_OUT
+$Comp
+L Device:R R1
+U 1 1 61922B72
+P 16250 6900
+F 0 "R1" V 16043 6900 50  0000 C CNN
+F 1 "1M" V 16134 6900 50  0000 C CNN
+F 2 "SamacSys_Parts:RESC5025X70N" V 16180 6900 50  0001 C CNN
+F 3 "~" H 16250 6900 50  0001 C CNN
+	1    16250 6900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	16400 6900 16550 6900
+Connection ~ 16550 6900
+Wire Wire Line
+	16550 6900 16550 7200
+Wire Wire Line
+	16100 6900 15900 6900
+Connection ~ 15900 6900
+Wire Wire Line
+	15900 6900 15900 7200
+Wire Wire Line
+	15100 6750 15100 7000
+Text GLabel 15100 7000 3    50   Input ~ 0
+Boot
+Text Label 15100 6900 0    50   ~ 0
+Boot
 $EndSCHEMATC

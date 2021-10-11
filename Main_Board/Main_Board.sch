@@ -160,10 +160,6 @@ F 3 "" H 22400 5550 50  0001 C CNN
 	1    22400 5550
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	17000 4550 17000 3750
-Text Label 17000 4400 1    50   ~ 0
-JTRST
 Text GLabel 16200 3750 1    50   Input ~ 0
 JTMS-SWDIO
 Text GLabel 16300 3750 1    50   Input ~ 0
@@ -172,8 +168,6 @@ Text GLabel 16400 3750 1    50   Input ~ 0
 JTDI
 Text GLabel 16900 3750 1    50   Input ~ 0
 JTDO-SWO
-Text GLabel 17000 3750 1    50   Input ~ 0
-JTRST
 Wire Wire Line
 	15800 4550 15800 3900
 Wire Wire Line
@@ -554,23 +548,6 @@ Wire Notes Line
 Text Notes 4450 2350 0    50   ~ 0
 LED Driver Circuit
 $Comp
-L SamacSys_Parts:MAX6951CEE+ 7SEGDriver1
-U 1 1 616F30CA
-P 6350 3400
-F 0 "7SEGDriver1" H 7250 3400 50  0000 C CNN
-F 1 "MAX6951CEE+" H 7250 2650 50  0000 C CNN
-F 2 "SOP64P602X173-17N" H 8000 3500 50  0001 L CNN
-F 3 "https://datasheets.maximintegrated.com/en/ds/MAX6950-MAX6951.pdf" H 8000 3400 50  0001 L CNN
-F 4 "LED Driver 64Segment 3.3V/5V" H 8000 3300 50  0001 L CNN "Description"
-F 5 "1.73" H 8000 3200 50  0001 L CNN "Height"
-F 6 "700-MAX6951CEE" H 8000 3100 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/Maxim-Integrated/MAX6951CEE%2b?qs=1THa7WoU59G039lytpTsUQ%3D%3D" H 8000 3000 50  0001 L CNN "Mouser Price/Stock"
-F 8 "Maxim Integrated" H 8000 2900 50  0001 L CNN "Manufacturer_Name"
-F 9 "MAX6951CEE+" H 8000 2800 50  0001 L CNN "Manufacturer_Part_Number"
-	1    6350 3400
-	1    0    0    -1  
-$EndComp
-$Comp
 L Device:R_Small RSET7SEG1
 U 1 1 616F30D0
 P 5750 4100
@@ -709,7 +686,7 @@ U 1 1 616FEEA4
 P 10400 3500
 F 0 "JTAGHEADER1" H 10450 3917 50  0000 C CNN
 F 1 "Conn_02x05_Odd_Even" H 10450 3826 50  0000 C CNN
-F 2 "Connector_PinHeader_2.00mm:PinHeader_2x05_P2.00mm_Vertical" H 10400 3500 50  0001 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x05_P2.54mm_Vertical" H 10400 3500 50  0001 C CNN
 F 3 "~" H 10400 3500 50  0001 C CNN
 	1    10400 3500
 	1    0    0    -1  
@@ -813,10 +790,6 @@ Wire Notes Line
 	15050 9600 15050 8250
 Wire Notes Line
 	13550 2250 13550 9600
-Wire Wire Line
-	14250 8550 14250 6750
-Wire Wire Line
-	14300 6750 14900 6750
 $Comp
 L Mechanical:MountingHole_Pad TL1
 U 1 1 6196843A
@@ -1219,7 +1192,7 @@ U 1 1 615E1FF9
 P 9300 8600
 F 0 "R4" V 9093 8600 50  0000 C CNN
 F 1 "3300" V 9184 8600 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 9230 8600 50  0001 C CNN
+F 2 "SamacSys_Parts:CRGCQ2512F3K3" V 9230 8600 50  0001 C CNN
 F 3 "~" H 9300 8600 50  0001 C CNN
 	1    9300 8600
 	0    1    1    0   
@@ -1230,7 +1203,7 @@ U 1 1 615FF22D
 P 9550 8800
 F 0 "R5" H 9620 8846 50  0000 L CNN
 F 1 "150" H 9620 8755 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 9480 8800 50  0001 C CNN
+F 2 "SamacSys_Parts:ERJ1TRQF1R0U" V 9480 8800 50  0001 C CNN
 F 3 "~" H 9550 8800 50  0001 C CNN
 	1    9550 8800
 	1    0    0    -1  
@@ -1241,7 +1214,7 @@ U 1 1 6160E1B7
 P 9850 8600
 F 0 "R6" V 9643 8600 50  0000 C CNN
 F 1 "100" V 9734 8600 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0309_L9.0mm_D3.2mm_P12.70mm_Horizontal" V 9780 8600 50  0001 C CNN
+F 2 "SamacSys_Parts:RESC5025X70N" V 9780 8600 50  0001 C CNN
 F 3 "~" H 9850 8600 50  0001 C CNN
 	1    9850 8600
 	0    1    1    0   
@@ -1516,7 +1489,7 @@ U 1 1 61805E11
 P 4000 3300
 F 0 "C17" H 4092 3346 50  0000 L CNN
 F 1 "22u" H 4092 3255 50  0000 L CNN
-F 2 "" H 4000 3300 50  0001 C CNN
+F 2 "SamacSys_Parts:CAPC2012X95N" H 4000 3300 50  0001 C CNN
 F 3 "~" H 4000 3300 50  0001 C CNN
 	1    4000 3300
 	1    0    0    -1  
@@ -1558,14 +1531,13 @@ U 1 1 618403AE
 P 8350 3300
 F 0 "C20" H 8442 3346 50  0000 L CNN
 F 1 "22u" H 8442 3255 50  0000 L CNN
-F 2 "" H 8350 3300 50  0001 C CNN
+F 2 "SamacSys_Parts:CAPC2012X95N" H 8350 3300 50  0001 C CNN
 F 3 "~" H 8350 3300 50  0001 C CNN
 	1    8350 3300
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	8450 3400 8350 3400
-Connection ~ 8150 3400
 Connection ~ 8350 3400
 Wire Wire Line
 	8350 3400 8150 3400
@@ -1814,12 +1786,6 @@ Wire Wire Line
 Wire Wire Line
 	6700 3050 6700 2700
 Wire Wire Line
-	5850 2950 5850 3600
-Wire Wire Line
-	5750 2900 5750 3700
-Wire Wire Line
-	5650 2850 5650 3800
-Wire Wire Line
 	5550 2800 5550 3900
 Wire Wire Line
 	7350 3150 6500 3150
@@ -1989,4 +1955,130 @@ Wire Wire Line
 	10950 6600 11150 6600
 Wire Wire Line
 	11150 6600 11150 6450
+Text GLabel 14900 6750 3    50   Input ~ 0
+nRST
+$Comp
+L Device:Crystal Y1
+U 1 1 61878275
+P 16250 7200
+F 0 "Y1" H 16250 7468 50  0000 C CNN
+F 1 "Crystal" H 16250 7377 50  0000 C CNN
+F 2 "Crystal:Crystal_HC18-U_Vertical" H 16250 7200 50  0001 C CNN
+F 3 "~" H 16250 7200 50  0001 C CNN
+	1    16250 7200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C24
+U 1 1 6187994F
+P 16550 7350
+F 0 "C24" H 16665 7396 50  0000 L CNN
+F 1 "30p" H 16665 7305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 16588 7200 50  0001 C CNN
+F 3 "~" H 16550 7350 50  0001 C CNN
+	1    16550 7350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C11
+U 1 1 6187AF45
+P 15900 7350
+F 0 "C11" H 16015 7396 50  0000 L CNN
+F 1 "30p" H 16015 7305 50  0000 L CNN
+F 2 "Capacitor_SMD:C_1206_3216Metric_Pad1.33x1.80mm_HandSolder" H 15938 7200 50  0001 C CNN
+F 3 "~" H 15900 7350 50  0001 C CNN
+	1    15900 7350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR0118
+U 1 1 6187B618
+P 16250 7600
+F 0 "#PWR0118" H 16250 7350 50  0001 C CNN
+F 1 "GND" H 16255 7427 50  0000 C CNN
+F 2 "" H 16250 7600 50  0001 C CNN
+F 3 "" H 16250 7600 50  0001 C CNN
+	1    16250 7600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	16550 7500 16250 7500
+Wire Wire Line
+	16250 7500 16250 7600
+Wire Wire Line
+	15900 7500 16250 7500
+Connection ~ 16250 7500
+Wire Wire Line
+	15900 7200 16100 7200
+Wire Wire Line
+	16400 7200 16550 7200
+Wire Wire Line
+	16200 6750 16200 6800
+Wire Wire Line
+	16200 6800 15900 6800
+Wire Wire Line
+	15900 6800 15900 6900
+Connection ~ 15900 7200
+Wire Wire Line
+	16300 6750 16300 6800
+Wire Wire Line
+	16300 6800 16550 6800
+Wire Wire Line
+	16550 6800 16550 6900
+Connection ~ 16550 7200
+Text Label 15900 6800 0    50   ~ 0
+OSC_IN
+Text Label 16350 6800 0    50   ~ 0
+OSC_OUT
+$Comp
+L Device:R R1
+U 1 1 61922B72
+P 16250 6900
+F 0 "R1" V 16043 6900 50  0000 C CNN
+F 1 "1M" V 16134 6900 50  0000 C CNN
+F 2 "SamacSys_Parts:RESC5025X70N" V 16180 6900 50  0001 C CNN
+F 3 "~" H 16250 6900 50  0001 C CNN
+	1    16250 6900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	16400 6900 16550 6900
+Connection ~ 16550 6900
+Wire Wire Line
+	16550 6900 16550 7200
+Wire Wire Line
+	16100 6900 15900 6900
+Connection ~ 15900 6900
+Wire Wire Line
+	15900 6900 15900 7200
+Wire Wire Line
+	15100 6750 15100 7000
+Text GLabel 15100 7000 3    50   Input ~ 0
+Boot
+Text Label 15100 6900 0    50   ~ 0
+Boot
+Connection ~ 8150 3400
+Wire Wire Line
+	5650 2850 5650 3800
+Wire Wire Line
+	5750 2900 5750 3700
+Wire Wire Line
+	5850 2950 5850 3600
+$Comp
+L SamacSys_Parts:MAX6951CEE+ 7SEGDriver1
+U 1 1 616F30CA
+P 6350 3400
+F 0 "7SEGDriver1" H 7250 3400 50  0000 C CNN
+F 1 "MAX6951CEE+" H 7250 2650 50  0000 C CNN
+F 2 "SOP64P602X173-17N" H 8000 3500 50  0001 L CNN
+F 3 "https://datasheets.maximintegrated.com/en/ds/MAX6950-MAX6951.pdf" H 8000 3400 50  0001 L CNN
+F 4 "LED Driver 64Segment 3.3V/5V" H 8000 3300 50  0001 L CNN "Description"
+F 5 "1.73" H 8000 3200 50  0001 L CNN "Height"
+F 6 "700-MAX6951CEE" H 8000 3100 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Maxim-Integrated/MAX6951CEE%2b?qs=1THa7WoU59G039lytpTsUQ%3D%3D" H 8000 3000 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Maxim Integrated" H 8000 2900 50  0001 L CNN "Manufacturer_Name"
+F 9 "MAX6951CEE+" H 8000 2800 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6350 3400
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

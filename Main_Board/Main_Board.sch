@@ -84,7 +84,7 @@ F 3 "" H 22550 10450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED5V1
+L Main_Board-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED5V1
 U 1 1 614E1141
 P 21900 10700
 F 0 "LED5V1" V 21946 10472 50  0000 R CNN
@@ -95,7 +95,7 @@ F 3 "" H 21900 10700 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED3V3
+L Main_Board-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED3V3
 U 1 1 614E1E21
 P 22400 10700
 F 0 "LED3V3" V 22446 10472 50  0000 R CNN
@@ -554,7 +554,7 @@ Wire Notes Line
 Text Notes 4450 2350 0    50   ~ 0
 LED Driver Circuit
 $Comp
-L SamacSys_Parts:MAX6951CEE+ 7SEGDriver1
+L Main_Board-rescue:MAX6951CEE+-SamacSys_Parts 7SEGDriver1
 U 1 1 616F30CA
 P 6350 3400
 F 0 "7SEGDriver1" H 7250 3400 50  0000 C CNN
@@ -1483,7 +1483,7 @@ F 3 "" H 2200 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:MAX6951CEE+ LEDDriver1
+L Main_Board-rescue:MAX6951CEE+-SamacSys_Parts LEDDriver1
 U 1 1 6164861C
 P 2200 3400
 F 0 "LEDDriver1" H 3100 3400 50  0000 C CNN
@@ -1586,7 +1586,7 @@ F 3 "" H 7950 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:AZ1085CD-3.3TRG1 IC1
+L Main_Board-rescue:AZ1085CD-3.3TRG1-SamacSys_Parts IC1
 U 1 1 6187B1FB
 P 11450 5350
 F 0 "IC1" H 12150 5615 50  0000 C CNN
@@ -1836,7 +1836,7 @@ Wire Notes Line
 Wire Notes Line
 	6000 7150 13550 7150
 $Comp
-L SamacSys_Parts:47352-1001 SD_CARD1
+L Main_Board-rescue:47352-1001-SamacSys_Parts SD_CARD1
 U 1 1 6161C0A1
 P 6450 6300
 F 0 "SD_CARD1" H 7150 6565 50  0000 C CNN

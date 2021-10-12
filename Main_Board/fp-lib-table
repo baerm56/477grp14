@@ -1,5 +1,4 @@
 (fp_lib_table
   (lib (name SamacSys_Parts)(type KiCad)(uri C:/Users/agf20/Downloads/ZLDO1117K33TC-pcb-part-libraries/SamacSys_Parts.pretty)(options "")(descr ""))
   (lib (name SN74HCS151QPWRQ1)(type Legacy)(uri C:/Users/agf20/Downloads/LIB_SN74HCS151QPWRQ1/SN74HCS151QPWRQ1/KiCad/SN74HCS151QPWRQ1.mod)(options "")(descr ""))
-  (lib (name Main_Board)(type KiCad)(uri ${KIPRJMOD}/footprints/Main_Board.pretty)(options "")(descr ""))
 )

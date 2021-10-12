@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L SN74HCS151QPWRQ1:SN74HCS151QPWRQ1 HM#1
+L led_sensor-rescue:SN74HCS151QPWRQ1-SN74HCS151QPWRQ1 HM#1
 U 1 1 615917A2
 P 3300 2950
 F 0 "HM#1" H 3800 3215 50  0000 C CNN
@@ -42,7 +42,7 @@ Wire Wire Line
 Wire Wire Line
 	2600 3950 2600 4400
 $Comp
-L HallSensor:AH3362Q H#0
+L led_sensor-rescue:AH3362Q-HallSensor H#0
 U 1 1 615A38AC
 P 4750 3350
 F 0 "H#0" H 4825 3365 50  0000 C CNN
@@ -53,7 +53,7 @@ F 3 "" H 4750 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L HallSensor:AH3362Q U#1
+L led_sensor-rescue:AH3362Q-HallSensor U#1
 U 1 1 615A5ADB
 P 5500 3350
 F 0 "U#1" H 5575 3365 50  0000 C CNN
@@ -64,7 +64,7 @@ F 3 "" H 5500 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L HallSensor:AH3362Q U#2
+L led_sensor-rescue:AH3362Q-HallSensor U#2
 U 1 1 615A5DEF
 P 6150 3350
 F 0 "U#2" H 6225 3365 50  0000 C CNN
@@ -75,7 +75,7 @@ F 3 "" H 6150 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L HallSensor:AH3362Q U#3
+L led_sensor-rescue:AH3362Q-HallSensor U#3
 U 1 1 615A6394
 P 6800 3350
 F 0 "U#3" H 6875 3365 50  0000 C CNN
@@ -86,7 +86,7 @@ F 3 "" H 6800 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L HallSensor:AH3362Q U#4
+L led_sensor-rescue:AH3362Q-HallSensor U#4
 U 1 1 615A67A4
 P 7500 3350
 F 0 "U#4" H 7575 3365 50  0000 C CNN
@@ -97,7 +97,7 @@ F 3 "" H 7500 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L HallSensor:AH3362Q U#5
+L led_sensor-rescue:AH3362Q-HallSensor U#5
 U 1 1 615A6E92
 P 8200 3350
 F 0 "U#5" H 8275 3365 50  0000 C CNN
@@ -108,7 +108,7 @@ F 3 "" H 8200 3350 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L HallSensor:AH3362Q U#6
+L led_sensor-rescue:AH3362Q-HallSensor U#6
 U 1 1 615A72E7
 P 8850 3350
 F 0 "U#6" H 8925 3365 50  0000 C CNN
@@ -201,7 +201,7 @@ Wire Wire Line
 Wire Wire Line
 	8600 4100 8600 3700
 $Comp
-L HallSensor:AH3362Q H#7
+L led_sensor-rescue:AH3362Q-HallSensor H#7
 U 1 1 615B3333
 P 9500 3350
 F 0 "H#7" H 9575 3365 50  0000 C CNN
@@ -223,7 +223,7 @@ Wire Wire Line
 Wire Wire Line
 	9250 4150 9250 3700
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED0
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED0
 U 1 1 6153BA49
 P 4050 5100
 F 0 "LED0" V 4096 4872 50  0000 R CNN
@@ -234,7 +234,7 @@ F 3 "" H 4050 5100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED1
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED1
 U 1 1 6153D881
 P 5150 5100
 F 0 "LED1" V 5196 4872 50  0000 R CNN
@@ -245,7 +245,7 @@ F 3 "" H 5150 5100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED2
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED2
 U 1 1 6153E4EA
 P 5750 5100
 F 0 "LED2" V 5704 5038 50  0000 L CNN
@@ -256,7 +256,7 @@ F 3 "" H 5750 5100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED3
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED3
 U 1 1 615401E5
 P 6800 5100
 F 0 "LED3" H 6800 5175 50  0000 C CNN
@@ -267,7 +267,7 @@ F 3 "" H 6800 5100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED6
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED6
 U 1 1 61544A04
 P 9450 5100
 F 0 "LED6" V 9404 5038 50  0000 L CNN
@@ -278,7 +278,7 @@ F 3 "" H 9450 5100 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED7
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED7
 U 1 1 61544A0A
 P 10350 5100
 F 0 "LED7" H 10350 5175 50  0000 C CNN
@@ -295,7 +295,7 @@ bin
 Text Label 7700 4550 1    50   ~ 0
 din
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED4
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED4
 U 1 1 615449F8
 P 7850 5100
 F 0 "LED4" V 7896 4872 50  0000 R CNN
@@ -521,7 +521,7 @@ Wire Wire Line
 	7700 5350 8450 5350
 Connection ~ 8450 5350
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED5
+L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED5
 U 1 1 615449FE
 P 8600 5100
 F 0 "LED5" V 8646 4872 50  0000 R CNN

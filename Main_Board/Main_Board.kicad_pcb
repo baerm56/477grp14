@@ -1,12 +1,12 @@
-(kicad_pcb (version 20171130) (host pcbnew "(5.1.10)-1")
+(kicad_pcb (version 20171130) (host pcbnew "(5.1.5)-3")
 
   (general
     (thickness 1.6)
     (drawings 11)
-    (tracks 628)
+    (tracks 627)
     (zones 0)
     (modules 59)
-    (nets 159)
+    (nets 158)
   )
 
   (page A4)
@@ -15,8 +15,8 @@
     (1 In1.Cu signal hide)
     (2 In2.Cu signal hide)
     (31 B.Cu signal)
-    (32 B.Adhes user)
-    (33 F.Adhes user)
+    (32 B.Adhes user hide)
+    (33 F.Adhes user hide)
     (34 B.Paste user hide)
     (35 F.Paste user hide)
     (36 B.SilkS user)
@@ -36,7 +36,7 @@
   )
 
   (setup
-    (last_trace_width 0.508)
+    (last_trace_width 0.25)
     (user_trace_width 0.381)
     (user_trace_width 0.508)
     (user_trace_width 1.27)
@@ -255,7 +255,6 @@
   (net 155 "Net-(U1-Pad134)")
   (net 156 /OSC_IN)
   (net 157 /OSC_OUT)
-  (net 158 Boot)
 
   (net_class Default "This is the default net class."
     (clearance 0.2)
@@ -286,7 +285,6 @@
     (add_net /SEG7_LED)
     (add_net /SEG8_7SEG)
     (add_net /SEG8_LED)
-    (add_net Boot)
     (add_net DAC_OUT)
     (add_net GND)
     (add_net HALLOUT)
@@ -617,7 +615,7 @@
     (pad 139 smd roundrect (at -6.25 -10.6625 270) (size 0.3 1.475) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25)
       (net 21 "Net-(U1-Pad139)"))
     (pad 138 smd roundrect (at -5.75 -10.6625 270) (size 0.3 1.475) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25)
-      (net 158 Boot))
+      (net 3 GND))
     (pad 137 smd roundrect (at -5.25 -10.6625 270) (size 0.3 1.475) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25)
       (net 22 "Net-(U1-Pad137)"))
     (pad 136 smd roundrect (at -4.75 -10.6625 270) (size 0.3 1.475) (layers F.Cu F.Paste F.Mask) (roundrect_rratio 0.25)
@@ -3647,7 +3645,6 @@
   (segment (start 115.3155 53.8988) (end 115.3155 52.36226) (width 0.25) (layer F.Cu) (net 157))
   (segment (start 115.48658 44.01058) (end 115.31386 44.0055) (width 0.25) (layer F.Cu) (net 157))
   (segment (start 115.38932 48.14824) (end 115.48658 44.01058) (width 0.25) (layer F.Cu) (net 157))
-  (segment (start 130.1695 61.687) (end 135.1565 61.687) (width 0.25) (layer F.Cu) (net 158))
 
   (zone (net 3) (net_name GND) (layer In1.Cu) (tstamp 0) (hatch edge 0.508)
     (connect_pads (clearance 0.508))

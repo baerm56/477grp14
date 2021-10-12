@@ -1,0 +1,13 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP header
+D MOD 2 PINHDR 1X9 P.
+F https://componentsearchengine.com/Datasheets/1/825433-9.pdf
+$ENDCMP
+#
+$CMP switch
+D C & K COMPONENTS - OS103011MS8QP1 - SWITCH, SP3T, 0.1A, 12VDC, PCB, ON-ON-ON
+F https://www.ckswitches.com/media/1428/os.pdf
+$ENDCMP
+#
+#End Doc Library

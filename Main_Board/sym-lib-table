@@ -1,9 +1,9 @@
 (sym_lib_table
-  (lib (name SamacSys_Parts)(type Legacy)(uri C:/Users/agf20/Downloads/ZLDO1117K33TC-pcb-part-libraries/SamacSys_Parts.lib)(options "")(descr ""))
   (lib (name sn74hcs151qpwrq1)(type Legacy)(uri ${KIPRJMOD}/libs/sn74hcs151qpwrq1.lib)(options "")(descr ""))
   (lib (name 860020472001)(type Legacy)(uri ${KIPRJMOD}/libs/860020472001.lib)(options "")(descr ""))
   (lib (name cl05b104ko5nnwc)(type Legacy)(uri ${KIPRJMOD}/libs/cl05b104ko5nnwc.lib)(options "")(descr ""))
   (lib (name max6951cee+)(type Legacy)(uri ${KIPRJMOD}/libs/max6951cee+.lib)(options "")(descr ""))
   (lib (name zldo1117k33tc)(type Legacy)(uri ${KIPRJMOD}/libs/zldo1117k33tc.lib)(options "")(descr ""))
   (lib (name Main_Board-rescue)(type Legacy)(uri ${KIPRJMOD}/Main_Board-rescue.lib)(options "")(descr ""))
+  (lib (name main_board_parts)(type Legacy)(uri ${KIPRJMOD}/footprints/main_board_parts.lib)(options "")(descr ""))
 )

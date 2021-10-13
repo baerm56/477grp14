@@ -1,6 +1,26 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
+# 350210RFT-SamacSys_Parts
+#
+DEF 350210RFT-SamacSys_Parts R 0 30 Y Y 1 F N
+F0 "R" 550 250 50 H V L CNN
+F1 "350210RFT-SamacSys_Parts" 550 150 50 H V L CNN
+F2 "RESC5025X120N" 550 50 50 H I L CNN
+F3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773204-4&DocType=DS&DocLang=English" 550 -50 50 H I L CNN
+F4 "Thick Film Resistors - SMD 3502 10R 1%" 550 -150 50 H I L CNN "Description"
+F5 "1.2" 550 -250 50 H I L CNN "Height"
+F6 "279-350210RFT" 550 -350 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/TE-Connectivity-Holsworthy/350210RFT/?qs=gZXFycFWdANS2d3vKAhy%2Fw%3D%3D" 550 -450 50 H I L CNN "Mouser Price/Stock"
+F8 "TE Connectivity" 550 -550 50 H I L CNN "Manufacturer_Name"
+F9 "350210RFT" 550 -650 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 5 0 1 6 200 50 500 50 500 -50 200 -50 200 50 N
+X ~ 1 0 0 200 R 50 50 0 0 P
+X ~ 2 700 0 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
 # 47352-1001-SamacSys_Parts
 #
 DEF 47352-1001-SamacSys_Parts J 0 30 Y Y 1 F N
@@ -26,6 +46,28 @@ X DATA1 8 1400 -300 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
+# ABM10W-16.0000MHZ-4-B1U-T3-SamacSys_Parts
+#
+DEF ABM10W-16.0000MHZ-4-B1U-T3-SamacSys_Parts Y 0 30 Y Y 1 F N
+F0 "Y" 650 300 50 H V L CNN
+F1 "ABM10W-16.0000MHZ-4-B1U-T3-SamacSys_Parts" 650 200 50 H V L CNN
+F2 "ABM10W400000MHZ4K1ZT3" 650 100 50 H I L CNN
+F3 "" 650 0 50 H I L CNN
+F4 "Crystals 16MHz 4pF -20C +70C 10ppm" 650 -100 50 H I L CNN "Description"
+F5 "0.6" 650 -200 50 H I L CNN "Height"
+F6 "815-10W16-4B1UT" 650 -300 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/ABRACON/ABM10W-160000MHZ-4-B1U-T3?qs=5aG0NVq1C4x2nD%252BLlu9wCg%3D%3D" 650 -400 50 H I L CNN "Mouser Price/Stock"
+F8 "ABRACON" 650 -500 50 H I L CNN "Manufacturer_Name"
+F9 "ABM10W-16.0000MHZ-4-B1U-T3" 650 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 5 0 1 6 200 100 600 100 600 -200 200 -200 200 100 N
+X 1 1 0 -100 200 R 50 50 0 0 P
+X 2 2 800 -100 200 L 50 50 0 0 P
+X 3 3 800 0 200 L 50 50 0 0 P
+X 4 4 0 0 200 R 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
 # AZ1085CD-3.3TRG1-SamacSys_Parts
 #
 DEF AZ1085CD-3.3TRG1-SamacSys_Parts IC 0 30 Y Y 1 F N
@@ -44,6 +86,92 @@ P 5 0 1 6 200 100 1200 100 1200 -200 200 -200 200 100 N
 X ADJ/GND 1 0 0 200 R 50 50 0 0 P
 X OUTPUT 2 1400 0 200 L 50 50 0 0 P
 X INPUT 3 0 -100 200 R 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# CRGP2512F82R-SamacSys_Parts
+#
+DEF CRGP2512F82R-SamacSys_Parts R 0 30 Y Y 1 F N
+F0 "R" 550 250 50 H V L CNN
+F1 "CRGP2512F82R-SamacSys_Parts" 550 150 50 H V L CNN
+F2 "RESC6432X65N" 550 50 50 H I L CNN
+F3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F82R.pdf" 550 -50 50 H I L CNN
+F4 "Thick Film Resistors - SMD CRGP 2512 82R 1% SMD Resistor" 550 -150 50 H I L CNN "Description"
+F5 "0.65" 550 -250 50 H I L CNN "Height"
+F6 "279-CRGP2512F82R" 550 -350 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.com/Search/Refine.aspx?Keyword=279-CRGP2512F82R" 550 -450 50 H I L CNN "Mouser Price/Stock"
+F8 "TE Connectivity" 550 -550 50 H I L CNN "Manufacturer_Name"
+F9 "CRGP2512F82R" 550 -650 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 5 0 1 6 200 50 500 50 500 -50 200 -50 200 50 N
+X ~ 1 0 0 200 R 50 50 0 0 P
+X ~ 2 700 0 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# ECA-0JHG221B-SamacSys_Parts
+#
+DEF ECA-0JHG221B-SamacSys_Parts C 0 30 Y Y 1 F N
+F0 "C" 350 250 50 H V L CNN
+F1 "ECA-0JHG221B-SamacSys_Parts" 350 150 50 H V L CNN
+F2 "CAPPRD200W55D500H1200" 350 50 50 H I L CNN
+F3 "http://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1215.pdf" 350 -50 50 H I L CNN
+F4 "Aluminum Electrolytic Capacitors - Radial Leaded Al Lytic Cap Radial NHG Series 105C" 350 -150 50 H I L CNN "Description"
+F5 "12" 350 -250 50 H I L CNN "Height"
+F6 "667-ECA-0JHG221B" 350 -350 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/Panasonic/ECA-0JHG221B?qs=rMMd5vBiahqri%2F10E8OnQw%3D%3D" 350 -450 50 H I L CNN "Mouser Price/Stock"
+F8 "Panasonic" 350 -550 50 H I L CNN "Manufacturer_Name"
+F9 "ECA-0JHG221B" 350 -650 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 2 0 1 6 100 0 200 0 N
+P 2 0 1 6 160 70 160 30 N
+P 2 0 1 6 180 50 140 50 N
+P 2 0 1 6 300 0 400 0 N
+P 5 0 1 6 200 100 200 -100 230 -100 230 100 200 100 N
+P 5 0 1 10 300 100 300 -100 270 -100 270 100 300 100 F
+X ~ 1 0 0 100 R 50 50 0 0 P
+X ~ 2 500 0 100 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# ERJ-UP8F6800V-SamacSys_Parts
+#
+DEF ERJ-UP8F6800V-SamacSys_Parts R 0 30 Y Y 1 F N
+F0 "R" 550 250 50 H V L CNN
+F1 "ERJ-UP8F6800V-SamacSys_Parts" 550 150 50 H V L CNN
+F2 "RESC3116X70N" 550 50 50 H I L CNN
+F3 "" 550 -50 50 H I L CNN
+F4 "Thick Film Resistors - SMD 1206 0.66W 1% 680ohm Anti-Sulfur AEC-Q200" 550 -150 50 H I L CNN "Description"
+F5 "0.7" 550 -250 50 H I L CNN "Height"
+F6 "667-ERJ-UP8F6800V" 550 -350 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/Panasonic/ERJ-UP8F6800V?qs=gTYE2QTfZfSi66P59%2F8AvQ%3D%3D" 550 -450 50 H I L CNN "Mouser Price/Stock"
+F8 "Panasonic" 550 -550 50 H I L CNN "Manufacturer_Name"
+F9 "ERJ-UP8F6800V" 550 -650 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 5 0 1 6 200 50 500 50 500 -50 200 -50 200 50 N
+X ~ 1 0 0 200 R 50 50 0 0 P
+X ~ 2 700 0 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# GCQ1555C1H4R0CB01D-SamacSys_Parts
+#
+DEF GCQ1555C1H4R0CB01D-SamacSys_Parts C 0 30 Y Y 1 F N
+F0 "C" 350 250 50 H V L CNN
+F1 "GCQ1555C1H4R0CB01D-SamacSys_Parts" 350 150 50 H V L CNN
+F2 "CAPC1005X55N" 350 50 50 H I L CNN
+F3 "https://psearch.en.murata.com/capacitor/product/GCQ1555C1H4R0CB01%23.html" 350 -50 50 H I L CNN
+F4 "Capacitor GCQ15_0.05 L=1.0mm W=0.5mm T=0.5mm" 350 -150 50 H I L CNN "Description"
+F5 "0.55" 350 -250 50 H I L CNN "Height"
+F6 "Murata Electronics" 350 -550 50 H I L CNN "Manufacturer_Name"
+F7 "GCQ1555C1H4R0CB01D" 350 -650 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 2 0 1 6 200 0 220 0 N
+P 2 0 1 6 220 100 220 -100 N
+P 2 0 1 6 280 0 300 0 N
+P 2 0 1 6 280 100 280 -100 N
+X ~ 1 0 0 200 R 50 50 0 0 P
+X ~ 2 500 0 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
@@ -79,6 +207,55 @@ X DIG0/SEG0 6 0 -500 200 R 50 50 0 0 P
 X ISET 7 0 -600 200 R 50 50 0 0 P
 X GND 8 0 -700 200 R 50 50 0 0 P
 X OSC 9 1800 -700 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# PTS647SM50SMTR2LFS-SamacSys_Parts
+#
+DEF PTS647SM50SMTR2LFS-SamacSys_Parts S 0 30 Y Y 1 F N
+F0 "S" 650 300 50 H V L CNN
+F1 "PTS647SM50SMTR2LFS-SamacSys_Parts" 650 200 50 H V L CNN
+F2 "PTS647SM50SMTR2LFS" 650 100 50 H I L CNN
+F3 "https://www.ckswitches.com/media/2567/pts647.pdf" 650 0 50 H I L CNN
+F4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" 650 -100 50 H I L CNN "Description"
+F5 "5.25" 650 -200 50 H I L CNN "Height"
+F6 "611-PTS647SM50SMTR2L" 650 -300 50 H I L CNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" 650 -400 50 H I L CNN "Mouser Price/Stock"
+F8 "C & K COMPONENTS" 650 -500 50 H I L CNN "Manufacturer_Name"
+F9 "PTS647SM50SMTR2LFS" 650 -600 50 H I L CNN "Manufacturer_Part_Number"
+DRAW
+P 5 0 1 6 200 100 600 100 600 -200 200 -200 200 100 N
+X 1 1 0 0 200 R 50 50 0 0 P
+X 2 2 0 -100 200 R 50 50 0 0 P
+X 3 3 800 -100 200 L 50 50 0 0 P
+X 4 4 800 0 200 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# SMLD12BN1WT86-SamacSys_Parts
+#
+DEF SMLD12BN1WT86-SamacSys_Parts LED 0 30 Y Y 1 F N
+F0 "LED" 500 350 50 H V L BNN
+F1 "SMLD12BN1WT86-SamacSys_Parts" 500 250 50 H V L BNN
+F2 "LEDM168X65N" 500 150 50 H I L BNN
+F3 "https://www.rohm.com/datasheet/SMLD12BN1W/smld12-e" 500 50 50 H I L BNN
+F4 "Standard LEDs - SMD Blue 470nm; 40mcd 0603; 66mW" 500 -50 50 H I L BNN "Description"
+F5 "0.65" 500 -150 50 H I L BNN "Height"
+F6 "755-SMLD12BN1WT86" 500 -250 50 H I L BNN "Mouser Part Number"
+F7 "https://www.mouser.co.uk/ProductDetail/ROHM-Semiconductor/SMLD12BN1WT86?qs=qSfuJ%252Bfl%2Fd43hcPp9hYPwA%3D%3D" 500 -350 50 H I L BNN "Mouser Price/Stock"
+F8 "ROHM Semiconductor" 500 -450 50 H I L BNN "Manufacturer_Name"
+F9 "SMLD12BN1WT86" 500 -550 50 H I L BNN "Manufacturer_Part_Number"
+DRAW
+P 2 0 1 6 100 0 200 0 N
+P 2 0 1 6 200 100 200 -100 N
+P 2 0 1 6 250 100 150 200 N
+P 2 0 1 6 350 100 250 200 N
+P 2 0 1 6 400 0 500 0 N
+P 4 0 1 10 200 0 400 100 400 -100 200 0 F
+P 4 0 1 10 210 170 180 140 150 200 210 170 F
+P 4 0 1 10 310 170 280 140 250 200 310 170 F
+X ~ 1 0 0 100 R 50 50 0 0 P
+X ~ 2 600 0 100 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #

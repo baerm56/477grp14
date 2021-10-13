@@ -84,7 +84,7 @@ F 3 "" H 4700 5500 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L xzcfbb53w-8vf:XZCFBB53W-8VF LED5V1
+L Main_Board-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED5V1
 U 1 1 614E1141
 P 3500 5800
 F 0 "LED5V1" V 3546 5572 50  0000 R CNN
@@ -1385,7 +1385,7 @@ F 3 "" H 2200 4450 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:MAX6951CEE+ LEDDriver1
+L Main_Board-rescue:MAX6951CEE+-SamacSys_Parts LEDDriver1
 U 1 1 6164861C
 P 2200 3400
 F 0 "LEDDriver1" H 3100 3400 50  0000 C CNN
@@ -1487,7 +1487,7 @@ F 3 "" H 7950 3200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:AZ1085CD-3.3TRG1 IC1
+L Main_Board-rescue:AZ1085CD-3.3TRG1-SamacSys_Parts IC1
 U 1 1 6187B1FB
 P 11450 5350
 F 0 "IC1" H 12150 5615 50  0000 C CNN
@@ -1727,7 +1727,7 @@ Wire Wire Line
 Wire Wire Line
 	7850 3250 6300 3250
 $Comp
-L SamacSys_Parts:47352-1001 SD_CARD1
+L Main_Board-rescue:47352-1001-SamacSys_Parts SD_CARD1
 U 1 1 6161C0A1
 P 6450 6300
 F 0 "SD_CARD1" H 7150 6565 50  0000 C CNN
@@ -1879,7 +1879,7 @@ Wire Wire Line
 Wire Wire Line
 	5850 2950 5850 3600
 $Comp
-L SamacSys_Parts:MAX6951CEE+ 7SEGDriver1
+L Main_Board-rescue:MAX6951CEE+-SamacSys_Parts 7SEGDriver1
 U 1 1 616F30CA
 P 6350 3400
 F 0 "7SEGDriver1" H 7250 3400 50  0000 C CNN
@@ -2219,7 +2219,7 @@ Wire Wire Line
 Text Notes 15850 8350 0    50   ~ 0
 GPIO Header
 $Comp
-L SamacSys_Parts:350210RFT R7
+L Main_Board-rescue:350210RFT-SamacSys_Parts R7
 U 1 1 6222D435
 P 11650 9050
 F 0 "R7" V 11900 9150 50  0000 L CNN
@@ -2254,7 +2254,7 @@ Connection ~ 10850 9300
 Wire Wire Line
 	10850 9300 10850 9350
 $Comp
-L SamacSys_Parts:SMLD12BN1WT86 LED3V3
+L Main_Board-rescue:SMLD12BN1WT86-SamacSys_Parts LED3V3
 U 1 1 622EEDCF
 P 4700 6100
 F 0 "LED3V3" V 5046 5970 50  0000 R CNN
@@ -2283,7 +2283,7 @@ Wire Notes Line
 Wire Notes Line
 	8600 5800 8600 9850
 $Comp
-L SamacSys_Parts:CRGP2512F82R R3
+L Main_Board-rescue:CRGP2512F82R-SamacSys_Parts R3
 U 1 1 6259D6C6
 P 4700 6100
 F 0 "R3" V 5004 6188 50  0000 L CNN
@@ -2300,7 +2300,7 @@ F 9 "CRGP2512F82R" H 5250 5450 50  0001 L CNN "Manufacturer_Part_Number"
 	0    1    1    0   
 $EndComp
 $Comp
-L SamacSys_Parts:ERJ-UP8F6800V R2
+L Main_Board-rescue:ERJ-UP8F6800V-SamacSys_Parts R2
 U 1 1 62633D18
 P 3650 6050
 F 0 "R2" V 3954 6138 50  0000 L CNN
@@ -2319,7 +2319,7 @@ $EndComp
 Wire Wire Line
 	12450 8700 12400 8700
 $Comp
-L SamacSys_Parts:ECA-0JHG221B C16
+L Main_Board-rescue:ECA-0JHG221B-SamacSys_Parts C16
 U 1 1 627085A6
 P 11900 8700
 F 0 "C16" H 12150 8967 50  0000 C CNN
@@ -2336,7 +2336,7 @@ F 9 "ECA-0JHG221B" H 12250 8050 50  0001 L CNN "Manufacturer_Part_Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:PTS647SM50SMTR2LFS nRST1
+L Main_Board-rescue:PTS647SM50SMTR2LFS-SamacSys_Parts nRST1
 U 1 1 627772E3
 P 14500 8900
 F 0 "nRST1" V 14854 9028 50  0000 L CNN
@@ -2361,7 +2361,7 @@ Wire Wire Line
 Wire Wire Line
 	13900 9200 13900 9700
 $Comp
-L SamacSys_Parts:ABM10W-16.0000MHZ-4-B1U-T3 Y1
+L Main_Board-rescue:ABM10W-16.0000MHZ-4-B1U-T3-SamacSys_Parts Y1
 U 1 1 6281C654
 P 16900 8550
 F 0 "Y1" H 17300 8815 50  0000 C CNN
@@ -2396,7 +2396,7 @@ Wire Wire Line
 	17200 9300 17750 9300
 Connection ~ 17200 9300
 $Comp
-L SamacSys_Parts:GCQ1555C1H4R0CB01D C24
+L Main_Board-rescue:GCQ1555C1H4R0CB01D-SamacSys_Parts C24
 U 1 1 62B1EF4C
 P 17750 8750
 F 0 "C24" V 17954 8878 50  0000 L CNN
@@ -2413,7 +2413,7 @@ F 9 "GCQ1555C1H4R0CB01D" H 18100 8100 50  0001 L CNN "Manufacturer_Part_Number"
 	0    1    1    0   
 $EndComp
 $Comp
-L SamacSys_Parts:GCQ1555C1H4R0CB01D C11
+L Main_Board-rescue:GCQ1555C1H4R0CB01D-SamacSys_Parts C11
 U 1 1 62B45D13
 P 16850 8750
 F 0 "C11" V 17054 8878 50  0000 L CNN

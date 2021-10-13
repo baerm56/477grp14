@@ -481,27 +481,11 @@ X PC9 99 1100 -1000 200 L 50 50 1 1 B
 ENDDRAW
 ENDDEF
 #
-# Mechanical_MountingHole_Pad
+# Main_Board-rescue_350210RFT-SamacSys_Parts
 #
-DEF Mechanical_MountingHole_Pad H 0 40 N N 1 F N
-F0 "H" 0 250 50 H V C CNN
-F1 "Mechanical_MountingHole_Pad" 0 175 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-$FPLIST
- MountingHole*Pad*
-$ENDFPLIST
-DRAW
-C 0 50 50 0 1 50 N
-X 1 1 0 -100 100 U 50 50 1 1 I
-ENDDRAW
-ENDDEF
-#
-# SamacSys_Parts_350210RFT
-#
-DEF SamacSys_Parts_350210RFT R 0 30 Y Y 1 F N
+DEF Main_Board-rescue_350210RFT-SamacSys_Parts R 0 30 Y Y 1 F N
 F0 "R" 550 250 50 H V L CNN
-F1 "SamacSys_Parts_350210RFT" 550 150 50 H V L CNN
+F1 "Main_Board-rescue_350210RFT-SamacSys_Parts" 550 150 50 H V L CNN
 F2 "RESC5025X120N" 550 50 50 H I L CNN
 F3 "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1773204-4&DocType=DS&DocLang=English" 550 -50 50 H I L CNN
 F4 "Thick Film Resistors - SMD 3502 10R 1%" 550 -150 50 H I L CNN "Description"
@@ -517,11 +501,11 @@ X ~ 2 700 0 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_47352-1001
+# Main_Board-rescue_47352-1001-SamacSys_Parts
 #
-DEF SamacSys_Parts_47352-1001 J 0 30 Y Y 1 F N
+DEF Main_Board-rescue_47352-1001-SamacSys_Parts J 0 30 Y Y 1 F N
 F0 "J" 1250 300 50 H V L CNN
-F1 "SamacSys_Parts_47352-1001" 1250 200 50 H V L CNN
+F1 "Main_Board-rescue_47352-1001-SamacSys_Parts" 1250 200 50 H V L CNN
 F2 "47352-1001" 1250 100 50 H I L CNN
 F3 "http://www.molex.com/pdm_docs/sd/473521001_sd.pdf" 1250 0 50 H I L CNN
 F4 "Molex 47388 Series 8 Way Right Angle Micro SD Memory Card Connector with Solder Termination" 1250 -100 50 H I L CNN "Description"
@@ -542,11 +526,11 @@ X DATA1 8 1400 -300 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_ABM10W-16.0000MHZ-4-B1U-T3
+# Main_Board-rescue_ABM10W-16.0000MHZ-4-B1U-T3-SamacSys_Parts
 #
-DEF SamacSys_Parts_ABM10W-16.0000MHZ-4-B1U-T3 Y 0 30 Y Y 1 F N
+DEF Main_Board-rescue_ABM10W-16.0000MHZ-4-B1U-T3-SamacSys_Parts Y 0 30 Y Y 1 F N
 F0 "Y" 650 300 50 H V L CNN
-F1 "SamacSys_Parts_ABM10W-16.0000MHZ-4-B1U-T3" 650 200 50 H V L CNN
+F1 "Main_Board-rescue_ABM10W-16.0000MHZ-4-B1U-T3-SamacSys_Parts" 650 200 50 H V L CNN
 F2 "ABM10W400000MHZ4K1ZT3" 650 100 50 H I L CNN
 F3 "" 650 0 50 H I L CNN
 F4 "Crystals 16MHz 4pF -20C +70C 10ppm" 650 -100 50 H I L CNN "Description"
@@ -564,11 +548,11 @@ X 4 4 0 0 200 R 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_AZ1085CD-3.3TRG1
+# Main_Board-rescue_AZ1085CD-3.3TRG1-SamacSys_Parts
 #
-DEF SamacSys_Parts_AZ1085CD-3.3TRG1 IC 0 30 Y Y 1 F N
+DEF Main_Board-rescue_AZ1085CD-3.3TRG1-SamacSys_Parts IC 0 30 Y Y 1 F N
 F0 "IC" 1250 300 50 H V L CNN
-F1 "SamacSys_Parts_AZ1085CD-3.3TRG1" 1250 200 50 H V L CNN
+F1 "Main_Board-rescue_AZ1085CD-3.3TRG1-SamacSys_Parts" 1250 200 50 H V L CNN
 F2 "AZ1085CD33TRG1" 1250 100 50 H I L CNN
 F3 "https://www.diodes.com/assets/Datasheets/AZ1085C.pdf" 1250 0 50 H I L CNN
 F4 "LDO Voltage Regulators LDO BJT HiCurr TO252" 1250 -100 50 H I L CNN "Description"
@@ -585,11 +569,11 @@ X INPUT 3 0 -100 200 R 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_CRGP2512F82R
+# Main_Board-rescue_CRGP2512F82R-SamacSys_Parts
 #
-DEF SamacSys_Parts_CRGP2512F82R R 0 30 Y Y 1 F N
+DEF Main_Board-rescue_CRGP2512F82R-SamacSys_Parts R 0 30 Y Y 1 F N
 F0 "R" 550 250 50 H V L CNN
-F1 "SamacSys_Parts_CRGP2512F82R" 550 150 50 H V L CNN
+F1 "Main_Board-rescue_CRGP2512F82R-SamacSys_Parts" 550 150 50 H V L CNN
 F2 "RESC6432X65N" 550 50 50 H I L CNN
 F3 "https://componentsearchengine.com/Datasheets/1/CRGP2512F82R.pdf" 550 -50 50 H I L CNN
 F4 "Thick Film Resistors - SMD CRGP 2512 82R 1% SMD Resistor" 550 -150 50 H I L CNN "Description"
@@ -605,11 +589,11 @@ X ~ 2 700 0 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_ECA-0JHG221B
+# Main_Board-rescue_ECA-0JHG221B-SamacSys_Parts
 #
-DEF SamacSys_Parts_ECA-0JHG221B C 0 30 Y Y 1 F N
+DEF Main_Board-rescue_ECA-0JHG221B-SamacSys_Parts C 0 30 Y Y 1 F N
 F0 "C" 350 250 50 H V L CNN
-F1 "SamacSys_Parts_ECA-0JHG221B" 350 150 50 H V L CNN
+F1 "Main_Board-rescue_ECA-0JHG221B-SamacSys_Parts" 350 150 50 H V L CNN
 F2 "CAPPRD200W55D500H1200" 350 50 50 H I L CNN
 F3 "http://industrial.panasonic.com/cdbs/www-data/pdf/RDF0000/ABA0000C1215.pdf" 350 -50 50 H I L CNN
 F4 "Aluminum Electrolytic Capacitors - Radial Leaded Al Lytic Cap Radial NHG Series 105C" 350 -150 50 H I L CNN "Description"
@@ -630,11 +614,11 @@ X ~ 2 500 0 100 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_ERJ-UP8F6800V
+# Main_Board-rescue_ERJ-UP8F6800V-SamacSys_Parts
 #
-DEF SamacSys_Parts_ERJ-UP8F6800V R 0 30 Y Y 1 F N
+DEF Main_Board-rescue_ERJ-UP8F6800V-SamacSys_Parts R 0 30 Y Y 1 F N
 F0 "R" 550 250 50 H V L CNN
-F1 "SamacSys_Parts_ERJ-UP8F6800V" 550 150 50 H V L CNN
+F1 "Main_Board-rescue_ERJ-UP8F6800V-SamacSys_Parts" 550 150 50 H V L CNN
 F2 "RESC3116X70N" 550 50 50 H I L CNN
 F3 "" 550 -50 50 H I L CNN
 F4 "Thick Film Resistors - SMD 1206 0.66W 1% 680ohm Anti-Sulfur AEC-Q200" 550 -150 50 H I L CNN "Description"
@@ -650,11 +634,11 @@ X ~ 2 700 0 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_GCQ1555C1H4R0CB01D
+# Main_Board-rescue_GCQ1555C1H4R0CB01D-SamacSys_Parts
 #
-DEF SamacSys_Parts_GCQ1555C1H4R0CB01D C 0 30 Y Y 1 F N
+DEF Main_Board-rescue_GCQ1555C1H4R0CB01D-SamacSys_Parts C 0 30 Y Y 1 F N
 F0 "C" 350 250 50 H V L CNN
-F1 "SamacSys_Parts_GCQ1555C1H4R0CB01D" 350 150 50 H V L CNN
+F1 "Main_Board-rescue_GCQ1555C1H4R0CB01D-SamacSys_Parts" 350 150 50 H V L CNN
 F2 "CAPC1005X55N" 350 50 50 H I L CNN
 F3 "https://psearch.en.murata.com/capacitor/product/GCQ1555C1H4R0CB01%23.html" 350 -50 50 H I L CNN
 F4 "Capacitor GCQ15_0.05 L=1.0mm W=0.5mm T=0.5mm" 350 -150 50 H I L CNN "Description"
@@ -671,11 +655,11 @@ X ~ 2 500 0 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_MAX6951CEE+
+# Main_Board-rescue_MAX6951CEE+-SamacSys_Parts
 #
-DEF SamacSys_Parts_MAX6951CEE+ IC 0 30 Y Y 1 F N
+DEF Main_Board-rescue_MAX6951CEE+-SamacSys_Parts IC 0 30 Y Y 1 F N
 F0 "IC" 1650 300 50 H V L CNN
-F1 "SamacSys_Parts_MAX6951CEE+" 1650 200 50 H V L CNN
+F1 "Main_Board-rescue_MAX6951CEE+-SamacSys_Parts" 1650 200 50 H V L CNN
 F2 "SOP64P602X173-17N" 1650 100 50 H I L CNN
 F3 "https://datasheets.maximintegrated.com/en/ds/MAX6950-MAX6951.pdf" 1650 0 50 H I L CNN
 F4 "LED Driver 64Segment 3.3V/5V" 1650 -100 50 H I L CNN "Description"
@@ -706,11 +690,11 @@ X OSC 9 1800 -700 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_PTS647SM50SMTR2LFS
+# Main_Board-rescue_PTS647SM50SMTR2LFS-SamacSys_Parts
 #
-DEF SamacSys_Parts_PTS647SM50SMTR2LFS S 0 30 Y Y 1 F N
+DEF Main_Board-rescue_PTS647SM50SMTR2LFS-SamacSys_Parts S 0 30 Y Y 1 F N
 F0 "S" 650 300 50 H V L CNN
-F1 "SamacSys_Parts_PTS647SM50SMTR2LFS" 650 200 50 H V L CNN
+F1 "Main_Board-rescue_PTS647SM50SMTR2LFS-SamacSys_Parts" 650 200 50 H V L CNN
 F2 "PTS647SM50SMTR2LFS" 650 100 50 H I L CNN
 F3 "https://www.ckswitches.com/media/2567/pts647.pdf" 650 0 50 H I L CNN
 F4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" 650 -100 50 H I L CNN "Description"
@@ -728,11 +712,11 @@ X 4 4 800 0 200 L 50 50 0 0 P
 ENDDRAW
 ENDDEF
 #
-# SamacSys_Parts_SMLD12BN1WT86
+# Main_Board-rescue_SMLD12BN1WT86-SamacSys_Parts
 #
-DEF SamacSys_Parts_SMLD12BN1WT86 LED 0 30 Y Y 1 F N
+DEF Main_Board-rescue_SMLD12BN1WT86-SamacSys_Parts LED 0 30 Y Y 1 F N
 F0 "LED" 500 350 50 H V L BNN
-F1 "SamacSys_Parts_SMLD12BN1WT86" 500 250 50 H V L BNN
+F1 "Main_Board-rescue_SMLD12BN1WT86-SamacSys_Parts" 500 250 50 H V L BNN
 F2 "LEDM168X65N" 500 150 50 H I L BNN
 F3 "https://www.rohm.com/datasheet/SMLD12BN1W/smld12-e" 500 50 50 H I L BNN
 F4 "Standard LEDs - SMD Blue 470nm; 40mcd 0603; 66mW" 500 -50 50 H I L BNN "Description"
@@ -752,6 +736,36 @@ P 4 0 1 10 210 170 180 140 150 200 210 170 F
 P 4 0 1 10 310 170 280 140 250 200 310 170 F
 X ~ 1 0 0 100 R 50 50 0 0 P
 X ~ 2 600 0 100 L 50 50 0 0 P
+ENDDRAW
+ENDDEF
+#
+# Main_Board-rescue_XZCFBB53W-8VF-xzcfbb53w-8vf
+#
+DEF Main_Board-rescue_XZCFBB53W-8VF-xzcfbb53w-8vf U 0 40 Y Y 1 F N
+F0 "U" 0 0 50 H V C CNN
+F1 "Main_Board-rescue_XZCFBB53W-8VF-xzcfbb53w-8vf" 50 100 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+DRAW
+S -150 -100 150 -200 0 1 0 N
+X - 1 -250 -150 100 R 50 50 0 0 O
+X + 2 250 -150 100 L 50 50 0 0 I
+ENDDRAW
+ENDDEF
+#
+# Mechanical_MountingHole_Pad
+#
+DEF Mechanical_MountingHole_Pad H 0 40 N N 1 F N
+F0 "H" 0 250 50 H V C CNN
+F1 "Mechanical_MountingHole_Pad" 0 175 50 H V C CNN
+F2 "" 0 0 50 H I C CNN
+F3 "" 0 0 50 H I C CNN
+$FPLIST
+ MountingHole*Pad*
+$ENDFPLIST
+DRAW
+C 0 50 50 0 1 50 N
+X 1 1 0 -100 100 U 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
@@ -811,20 +825,6 @@ F3 "" 0 0 50 H I C CNN
 DRAW
 P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
 X GND 1 0 0 0 D 50 50 1 1 W N
-ENDDRAW
-ENDDEF
-#
-# xzcfbb53w-8vf_XZCFBB53W-8VF
-#
-DEF xzcfbb53w-8vf_XZCFBB53W-8VF U 0 40 Y Y 1 F N
-F0 "U" 0 0 50 H V C CNN
-F1 "xzcfbb53w-8vf_XZCFBB53W-8VF" 50 100 50 H V C CNN
-F2 "" 0 0 50 H I C CNN
-F3 "" 0 0 50 H I C CNN
-DRAW
-S -150 -100 150 -200 0 1 0 N
-X - 1 -250 -150 100 R 50 50 0 0 O
-X + 2 250 -150 100 L 50 50 0 0 I
 ENDDRAW
 ENDDEF
 #

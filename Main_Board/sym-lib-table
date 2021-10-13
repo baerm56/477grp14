@@ -5,4 +5,5 @@
   (lib (name cl05b104ko5nnwc)(type Legacy)(uri ${KIPRJMOD}/libs/cl05b104ko5nnwc.lib)(options "")(descr ""))
   (lib (name max6951cee+)(type Legacy)(uri ${KIPRJMOD}/libs/max6951cee+.lib)(options "")(descr ""))
   (lib (name zldo1117k33tc)(type Legacy)(uri ${KIPRJMOD}/libs/zldo1117k33tc.lib)(options "")(descr ""))
+  (lib (name Main_Board-rescue)(type Legacy)(uri ${KIPRJMOD}/Main_Board-rescue.lib)(options "")(descr ""))
 )

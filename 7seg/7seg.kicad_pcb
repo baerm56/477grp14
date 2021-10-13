@@ -636,7 +636,7 @@
       (net 7 "Net-(J1-Pad3)"))
   )
 
-  (gr_text "ECE 477 - 7-segment display board Rev. 1\nTom Munsell, Aedan Frazier, Bilal Salha, Max Baer" (at 82.55 92.3544) (layer F.SilkS)
+  (gr_text "ECE 477 Group 14 7-segment display board Rev. 1\nTom Munsell, Aedan Frazier, Bilal Salha, Max Baer" (at 82.55 92.3544) (layer F.SilkS)
     (effects (font (size 0.5 0.5) (thickness 0.125)) (justify left))
   )
   (gr_line (start 163.83 66.0146) (end 69.9008 66.0146) (layer Edge.Cuts) (width 0.05))

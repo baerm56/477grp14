@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 12)
+    (drawings 15)
     (tracks 842)
     (zones 0)
     (modules 66)
@@ -3229,6 +3229,15 @@
     )
   )
 
+  (gr_text "ECE 477 Group 14" (at 129.794 45.6184) (layer F.SilkS)
+    (effects (font (size 0.8 0.8) (thickness 0.15)))
+  )
+  (gr_text - (at 118.618 31.4452) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (gr_text + (at 118.5672 34.417) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
   (gr_text - (at 162.052 45.6438) (layer F.SilkS)
     (effects (font (size 1 1) (thickness 0.15)))
   )
@@ -3248,7 +3257,7 @@
     (effects (font (size 0.508 0.508) (thickness 0.127)))
   )
   (gr_circle (center 119.61368 51.12258) (end 119.743195 51.12258) (layer F.SilkS) (width 0.15))
-  (gr_text "Pawn Takes Pawn\nMainboard PCB\nAedan Frazier\nBilal Sahla\nMax Baer\nThomas Munsell\n" (at 127.23368 48.65878) (layer F.SilkS)
+  (gr_text "Pawn Takes Pawn\nMainboard PCB\nAedan Frazier\nBilal Sahla\nMax Baer\nThomas Munsell\n" (at 126.492 50.292) (layer F.SilkS)
     (effects (font (size 0.762 0.762) (thickness 0.1905)) (justify left))
   )
   (gr_line (start 86.11108 100.47478) (end 166.62908 100.47478) (layer Dwgs.User) (width 0.15))

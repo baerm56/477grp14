@@ -36,7 +36,7 @@
   )
 
   (setup
-    (last_trace_width 0.381)
+    (last_trace_width 0.25)
     (user_trace_width 0.2286)
     (user_trace_width 0.381)
     (trace_clearance 0.2)
@@ -1269,7 +1269,7 @@
   (gr_text "Aedan Frazier\nBilal Salha\nMax Baer\nThomas Munsell" (at 24.13 121.9835) (layer F.SilkS)
     (effects (font (size 0.508 0.508) (thickness 0.127)) (justify left))
   )
-  (gr_text "Pawn Takes Pawn Daughterboard" (at 33.768393 119.253) (layer F.SilkS)
+  (gr_text "ECE 477 Group 14 Daughterboard Rev. 1" (at 35.9156 119.4816) (layer F.SilkS)
     (effects (font (size 0.762 0.762) (thickness 0.1905)))
   )
   (gr_line (start 183.642 118.364) (end 183.642 143.764) (layer Dwgs.User) (width 0.15) (tstamp 6153EA65))

@@ -303,4 +303,26 @@ F 3 "~" H 5100 3350 50  0001 C CNN
 	1    5100 3350
 	1    0    0    -1  
 $EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 61672EB2
+P 4600 3950
+F 0 "H2" H 4700 3996 50  0000 L CNN
+F 1 "MountingHole" H 4700 3905 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 4600 3950 50  0001 C CNN
+F 3 "~" H 4600 3950 50  0001 C CNN
+	1    4600 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 616738A9
+P 4600 4150
+F 0 "H1" H 4700 4196 50  0000 L CNN
+F 1 "MountingHole" H 4700 4105 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 4600 4150 50  0001 C CNN
+F 3 "~" H 4600 4150 50  0001 C CNN
+	1    4600 4150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

@@ -1197,7 +1197,7 @@ U 1 1 6164CCD8
 P 10950 8700
 F 0 "U2" H 11294 8746 50  0000 L CNN
 F 1 "LM386" H 11294 8655 50  0000 L CNN
-F 2 "SamacSys_Parts:SOP65P490X110-8N" H 11050 8800 50  0001 C CNN
+F 2 "SamacSys_Parts:SOIC127P600X175-8N" H 11050 8800 50  0001 C CNN
 F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 11150 8900 50  0001 C CNN
 	1    10950 8700
 	1    0    0    -1  
@@ -2518,7 +2518,7 @@ F 3 "" H 15250 7450 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L SamacSys_Parts:PJ-037A J1
+L Main_Board-rescue:PJ-037A-SamacSys_Parts J1
 U 1 1 6169B4AA
 P 4100 8550
 F 0 "J1" H 4728 8546 50  0000 L CNN

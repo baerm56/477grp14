@@ -3257,7 +3257,7 @@
     (effects (font (size 0.508 0.508) (thickness 0.127)))
   )
   (gr_circle (center 119.61368 51.12258) (end 119.743195 51.12258) (layer F.SilkS) (width 0.15))
-  (gr_text "Pawn Takes Pawn\nMainboard PCB\nAedan Frazier\nBilal Sahla\nMax Baer\nThomas Munsell\n" (at 126.492 50.292) (layer F.SilkS)
+  (gr_text "Pawn Takes Pawn\nMainboard Rev. 1\nAedan Frazier\nBilal Sahla\nMax Baer\nThomas Munsell\n" (at 126.492 50.292) (layer F.SilkS)
     (effects (font (size 0.762 0.762) (thickness 0.1905)) (justify left))
   )
   (gr_line (start 86.11108 100.47478) (end 166.62908 100.47478) (layer Dwgs.User) (width 0.15))

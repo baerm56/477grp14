@@ -1,26 +1,4 @@
-16:11:55 **** Incremental Build of configuration Debug for project Test ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/leds.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/leds.d" -MT"Core/Src/leds.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/leds.o"
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:101:10: warning: unused variable 'audio' [-Wunused-variable]
-  101 |   char * audio[] = {"8bit8k.wav", "8bit11k.wav", "8bit22k.wav", "8bit441.wav"};
-      |          ^~~~~
-arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: Test.elf
- 
-arm-none-eabi-size   Test.elf 
-arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
-arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
-   text	   data	    bss	    dec	    hex	filename
-  16192	     44	   3116	  19352	   4b98	Test.elf
-Finished building: default.size.stdout
- 
-Finished building: Test.bin
- 
-Finished building: Test.list
- 
-16:12:50 **** Incremental Build of configuration Debug for project Test ****
+14:19:25 **** Incremental Build of configuration Debug for project Test ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -30,10 +8,68 @@ arm-none-eabi-size   Test.elf
 arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
 arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
    text	   data	    bss	    dec	    hex	filename
-  10016	     20	   1964	  12000	   2ee0	Test.elf
+  26848	     44	   8380	  35272	   89c8	Test.elf
 Finished building: default.size.stdout
  
 Finished building: Test.bin
  
 Finished building: Test.list
+ 
+14:19:42 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-size   Test.elf 
+   text	   data	    bss	    dec	    hex	filename
+  26848	     44	   8380	  35272	   89c8	Test.elf
+Finished building: default.size.stdout
+ 
+14:20:31 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+   text	   data	    bss	    dec	    hex	filename
+  26864	     44	   8380	  35288	   89d8	Test.elf
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+14:22:15 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+  25424	     44	   8380	  33848	   8438	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.bin
+ 
+Finished building: Test.list
+ 
+14:35:06 **** Incremental Build of configuration Debug for project Test ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xE -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "Test.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\Test\STM32L152RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Test.elf
+ 
+arm-none-eabi-size   Test.elf 
+arm-none-eabi-objdump -h -S  Test.elf  > "Test.list"
+arm-none-eabi-objcopy  -O binary  Test.elf  "Test.bin"
+   text	   data	    bss	    dec	    hex	filename
+  25384	     44	   8380	  33808	   8410	Test.elf
+Finished building: default.size.stdout
+ 
+Finished building: Test.list
+ 
+Finished building: Test.bin
  

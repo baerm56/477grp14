@@ -772,4 +772,24 @@ Wire Wire Line
 Connection ~ 9300 5350
 Wire Wire Line
 	9300 5350 10200 5350
+Text Notes 1650 700  0    50   ~ 0
+Mounting Equipment
+Wire Notes Line
+	700  1450 700  550 
+Wire Notes Line
+	700  550  2500 550 
+Wire Notes Line
+	2500 550  2500 1450
+Wire Notes Line
+	2500 1450 700  1450
+Wire Notes Line
+	700  1500 10750 1500
+Wire Notes Line
+	10750 1500 10750 5900
+Wire Notes Line
+	10750 5900 700  5900
+Wire Notes Line
+	700  1500 700  6000
+Text Notes 8900 2150 0    197  ~ 0
+Circuit
 $EndSCHEMATC

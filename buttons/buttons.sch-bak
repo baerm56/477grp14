@@ -31,8 +31,6 @@ F 9 "OS103011MS8QP1" H 6950 1700 50  0001 L CNN "Manufacturer_Part_Number"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4550 3300 4650 3300
-Wire Wire Line
 	6050 3650 6050 3150
 Wire Wire Line
 	4550 3200 4650 3200
@@ -48,16 +46,9 @@ Wire Wire Line
 	4550 3100 4700 3100
 Wire Wire Line
 	4700 3100 4700 3250
-Wire Wire Line
-	4650 3300 4850 3300
-Wire Wire Line
-	4850 3300 4850 3650
-Wire Wire Line
-	4850 3650 5100 3650
-Connection ~ 4650 3300
 Connection ~ 6050 3650
 Wire Wire Line
-	4700 3250 4950 3250
+	4700 3250 4750 3250
 Wire Wire Line
 	4950 3250 4950 3550
 $Comp
@@ -92,7 +83,7 @@ Wire Wire Line
 	5450 3500 5450 3650
 Connection ~ 5450 3650
 Wire Wire Line
-	5450 3650 5800 3650
+	5450 3650 5550 3650
 Wire Wire Line
 	5800 3500 5800 3650
 Connection ~ 5800 3650
@@ -100,7 +91,6 @@ Wire Wire Line
 	5800 3650 6050 3650
 Wire Wire Line
 	5100 3500 5100 3650
-Connection ~ 5100 3650
 Wire Wire Line
 	5100 3650 5450 3650
 Wire Wire Line
@@ -306,23 +296,114 @@ $EndComp
 $Comp
 L Mechanical:MountingHole H2
 U 1 1 61672EB2
-P 4600 3950
-F 0 "H2" H 4700 3996 50  0000 L CNN
-F 1 "MountingHole" H 4700 3905 50  0000 L CNN
-F 2 "" H 4600 3950 50  0001 C CNN
-F 3 "~" H 4600 3950 50  0001 C CNN
-	1    4600 3950
+P 3050 2800
+F 0 "H2" H 3150 2846 50  0000 L CNN
+F 1 "MountingHole" H 3150 2755 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 2800 50  0001 C CNN
+F 3 "~" H 3050 2800 50  0001 C CNN
+	1    3050 2800
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H1
 U 1 1 616738A9
-P 4600 4150
-F 0 "H1" H 4700 4196 50  0000 L CNN
-F 1 "MountingHole" H 4700 4105 50  0000 L CNN
-F 2 "" H 4600 4150 50  0001 C CNN
-F 3 "~" H 4600 4150 50  0001 C CNN
-	1    4600 4150
+P 3050 3000
+F 0 "H1" H 3150 3046 50  0000 L CNN
+F 1 "MountingHole" H 3150 2955 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 3000 50  0001 C CNN
+F 3 "~" H 3050 3000 50  0001 C CNN
+	1    3050 3000
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4550 4150 4650 4150
+Wire Wire Line
+	4650 4250 4650 4150
+$Comp
+L Device:R R7
+U 1 1 616971F3
+P 4750 3600
+F 0 "R7" H 4820 3646 50  0000 L CNN
+F 1 "100k" H 4820 3555 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 4680 3600 50  0001 C CNN
+F 3 "~" H 4750 3600 50  0001 C CNN
+	1    4750 3600
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4550 3300 4550 3850
+Wire Wire Line
+	4900 3650 5100 3650
+Connection ~ 5100 3650
+Wire Wire Line
+	4900 3650 4900 3300
+Wire Wire Line
+	4650 3300 4900 3300
+Wire Wire Line
+	4750 3450 4750 3250
+Connection ~ 4750 3250
+Wire Wire Line
+	4750 3250 4950 3250
+Wire Wire Line
+	4750 3750 4750 3850
+Wire Wire Line
+	4750 3850 4550 3850
+Connection ~ 4550 3850
+Wire Wire Line
+	4550 3850 4550 4150
+Wire Wire Line
+	5550 3650 5550 4150
+Wire Wire Line
+	5550 4150 5450 4150
+Connection ~ 5550 3650
+Wire Wire Line
+	5550 3650 5800 3650
+Wire Wire Line
+	5450 4250 5450 4150
+$Comp
+L SamacSys_Parts:CL21B104KBCNNNC C1
+U 1 1 616A684B
+P 4800 4700
+F 0 "C1" H 5050 4965 50  0000 C CNN
+F 1 "CL21B104KBCNNNC" H 5050 4874 50  0000 C CNN
+F 2 "CAPC2012X95N" H 5150 4750 50  0001 L CNN
+F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/CL21B104KBCNNNC.jsp" H 5150 4650 50  0001 L CNN
+F 4 "Samsung Electro-Mechanics 0805 (2012M) 100nF Multilayer Ceramic Capacitor MLCC 50V dc +/-10% SMD CL21B104KBCNNNC" H 5150 4550 50  0001 L CNN "Description"
+F 5 "0.95" H 5150 4450 50  0001 L CNN "Height"
+F 6 "187-CL21B104KBCNNNC" H 5150 4350 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Samsung-Electro-Mechanics/CL21B104KBCNNNC?qs=349EhDEZ59pEfpnm5yBEmQ%3D%3D" H 5150 4250 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Samsung Electro-Mechanics" H 5150 4150 50  0001 L CNN "Manufacturer_Name"
+F 9 "CL21B104KBCNNNC" H 5150 4050 50  0001 L CNN "Manufacturer_Part_Number"
+	1    4800 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:PTS647SM50SMTR2LFS S1
+U 1 1 616AAC5F
+P 4650 4150
+F 0 "S1" H 5050 4415 50  0000 C CNN
+F 1 "PTS647SM50SMTR2LFS" H 5050 4324 50  0000 C CNN
+F 2 "PTS647SM50SMTR2LFS" H 5300 4250 50  0001 L CNN
+F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 5300 4150 50  0001 L CNN
+F 4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" H 5300 4050 50  0001 L CNN "Description"
+F 5 "5.25" H 5300 3950 50  0001 L CNN "Height"
+F 6 "611-PTS647SM50SMTR2L" H 5300 3850 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" H 5300 3750 50  0001 L CNN "Mouser Price/Stock"
+F 8 "C & K COMPONENTS" H 5300 3650 50  0001 L CNN "Manufacturer_Name"
+F 9 "PTS647SM50SMTR2LFS" H 5300 3550 50  0001 L CNN "Manufacturer_Part_Number"
+	1    4650 4150
+	1    0    0    -1  
+$EndComp
+Connection ~ 4650 4150
+Connection ~ 5450 4150
+Wire Wire Line
+	5300 4700 5450 4700
+Wire Wire Line
+	5450 4700 5450 4250
+Connection ~ 5450 4250
+Wire Wire Line
+	4800 4700 4650 4700
+Wire Wire Line
+	4650 4700 4650 4250
+Connection ~ 4650 4250
 $EndSCHEMATC

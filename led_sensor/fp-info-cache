@@ -1,4 +1,4 @@
-19284676539294276
+19333702344959606
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -76321,6 +76321,13 @@ LED
 4
 4
 SamacSys_Parts
+ABM10W400000MHZ4K1ZT3
+ABM10W-40.0000MHZ-4-K1Z-T3-2
+Crystal or Oscillator
+0
+4
+4
+SamacSys_Parts
 AZ1085CD33TRG1
 AZ1085CD-3.3TRG1-2
 Integrated Circuit
@@ -76328,8 +76335,22 @@ Integrated Circuit
 3
 3
 SamacSys_Parts
+C1608_Commercial
+C1608_Commercial
+Capacitor
+0
+2
+2
+SamacSys_Parts
+CAPC0402X22N
+JMK042
+Capacitor
+0
+2
+2
+SamacSys_Parts
 CAPC1005X55N
-0402
+GCQ15_0.05 L=1.0mm W=0.5mm T=0.5mm
 Capacitor
 0
 2
@@ -76363,6 +76384,20 @@ Capacitor Polarised
 2
 2
 SamacSys_Parts
+CAPPRD200W55D500H1200
+5*11(12)
+Capacitor Polarised
+0
+2
+2
+SamacSys_Parts
+CAPPRD200W55D500H1250
+5X11*
+Capacitor Polarised
+0
+2
+2
+SamacSys_Parts
 CRGCQ2512F3K3
 
 
@@ -76391,12 +76426,40 @@ HSMA-C380
 2
 2
 SamacSys_Parts
+LEDM168X65N
+SMLD12BN1WT86
+LED
+0
+2
+2
+SamacSys_Parts
+LQW2UAS12NG00L
+1008 (2520) T=1.83±0.2mm
+Inductor
+0
+2
+2
+SamacSys_Parts
 NE555DR
 D (R-PDSO-G8)
 Integrated Circuit
 0
 8
 8
+SamacSys_Parts
+PJ037A
+PJ-037A-1
+Connector
+0
+2
+2
+SamacSys_Parts
+PTS647SM50SMTR2LFS
+PTS647SM50SMTR2LFS-2
+Switch
+0
+4
+4
 SamacSys_Parts
 RESAD5000W100L2000D750
 WHE10RFET
@@ -76405,8 +76468,22 @@ Resistor
 2
 2
 SamacSys_Parts
+RESC1608X55N
+ERJUP3_20211
+Resistor
+0
+2
+2
+SamacSys_Parts
 RESC2012X60N
-0805
+0805-ren2
+Resistor
+0
+2
+2
+SamacSys_Parts
+RESC3116X70N
+ERJ-UP8F6800V
 Resistor
 0
 2
@@ -76419,12 +76496,33 @@ Resistor
 2
 2
 SamacSys_Parts
+RESC5025X120N
+3502
+Resistor
+0
+2
+2
+SamacSys_Parts
+RESC6432X65N
+2512-5
+Resistor
+0
+2
+2
+SamacSys_Parts
 RESM17073X710N
 SM_5
 Resistor
 0
 2
 2
+SamacSys_Parts
+SOIC127P600X175-8N
+8-Pin SOIC
+Attenuator or Isolator
+0
+8
+8
 SamacSys_Parts
 SOP64P602X173-17N
 MAX6951CEE+
@@ -76453,6 +76551,13 @@ Integrated Circuit
 0
 3
 3
+SamacSys_Parts
+UJ2MIBHGSMTTR
+UJ2-MIBH-G-SMT-TR-2
+Connector
+0
+9
+9
 Sensor
 Aosong_DHT11_5.5x12.0_P2.54mm
 Temperature and humidity module, http://akizukidenshi.com/download/ds/aosong/DHT11.pdf
@@ -83202,6 +83307,13 @@ LED
 4
 4
 ZLDO1117K33TC-pcb-part-libraries
+ABM10W400000MHZ4K1ZT3
+ABM10W-40.0000MHZ-4-K1Z-T3-2
+Crystal or Oscillator
+0
+4
+4
+ZLDO1117K33TC-pcb-part-libraries
 AZ1085CD33TRG1
 AZ1085CD-3.3TRG1-2
 Integrated Circuit
@@ -83209,8 +83321,22 @@ Integrated Circuit
 3
 3
 ZLDO1117K33TC-pcb-part-libraries
+C1608_Commercial
+C1608_Commercial
+Capacitor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
+CAPC0402X22N
+JMK042
+Capacitor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
 CAPC1005X55N
-0402
+GCQ15_0.05 L=1.0mm W=0.5mm T=0.5mm
 Capacitor
 0
 2
@@ -83244,6 +83370,20 @@ Capacitor Polarised
 2
 2
 ZLDO1117K33TC-pcb-part-libraries
+CAPPRD200W55D500H1200
+5*11(12)
+Capacitor Polarised
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
+CAPPRD200W55D500H1250
+5X11*
+Capacitor Polarised
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
 CRGCQ2512F3K3
 
 
@@ -83272,12 +83412,40 @@ HSMA-C380
 2
 2
 ZLDO1117K33TC-pcb-part-libraries
+LEDM168X65N
+SMLD12BN1WT86
+LED
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
+LQW2UAS12NG00L
+1008 (2520) T=1.83±0.2mm
+Inductor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
 NE555DR
 D (R-PDSO-G8)
 Integrated Circuit
 0
 8
 8
+ZLDO1117K33TC-pcb-part-libraries
+PJ037A
+PJ-037A-1
+Connector
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
+PTS647SM50SMTR2LFS
+PTS647SM50SMTR2LFS-2
+Switch
+0
+4
+4
 ZLDO1117K33TC-pcb-part-libraries
 RESAD5000W100L2000D750
 WHE10RFET
@@ -83286,8 +83454,22 @@ Resistor
 2
 2
 ZLDO1117K33TC-pcb-part-libraries
+RESC1608X55N
+ERJUP3_20211
+Resistor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
 RESC2012X60N
-0805
+0805-ren2
+Resistor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
+RESC3116X70N
+ERJ-UP8F6800V
 Resistor
 0
 2
@@ -83300,12 +83482,33 @@ Resistor
 2
 2
 ZLDO1117K33TC-pcb-part-libraries
+RESC5025X120N
+3502
+Resistor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
+RESC6432X65N
+2512-5
+Resistor
+0
+2
+2
+ZLDO1117K33TC-pcb-part-libraries
 RESM17073X710N
 SM_5
 Resistor
 0
 2
 2
+ZLDO1117K33TC-pcb-part-libraries
+SOIC127P600X175-8N
+8-Pin SOIC
+Attenuator or Isolator
+0
+8
+8
 ZLDO1117K33TC-pcb-part-libraries
 SOP64P602X173-17N
 MAX6951CEE+
@@ -83334,3 +83537,10 @@ Integrated Circuit
 0
 3
 3
+ZLDO1117K33TC-pcb-part-libraries
+UJ2MIBHGSMTTR
+UJ2-MIBH-G-SMT-TR-2
+Connector
+0
+9
+9

@@ -203,18 +203,18 @@ Wire Wire Line
 Wire Wire Line
 	2900 4150 9250 4150
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED0
+L xzcfbb53w-8vf:XZCFBB53W-8VF U1
 U 1 1 6153BA49
 P 3750 5100
-F 0 "LED0" H 3750 5050 50  0000 R CNN
-F 1 "XZCFBB53W-8VF" H 3700 4850 50  0000 R CNN
+F 0 "U1" H 3750 5050 50  0000 R CNN
+F 1 "XZCFBB53W-8VF-xzcfbb53w-8vf" H 3700 4850 50  0000 R CNN
 F 2 "SamacSys_Parts:HSMA-C380" H 3750 5100 50  0001 C CNN
 F 3 "" H 3750 5100 50  0001 C CNN
 	1    3750 5100
 	0    -1   -1   0   
 $EndComp
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED1
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED1
 U 1 1 6153D881
 P 4850 5100
 F 0 "LED1" H 4900 5150 50  0000 R CNN
@@ -225,7 +225,7 @@ F 3 "" H 4850 5100 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED2
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED2
 U 1 1 6153E4EA
 P 5450 5100
 F 0 "LED2" H 5404 5038 50  0000 L CNN
@@ -236,7 +236,7 @@ F 3 "" H 5450 5100 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED3
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED3
 U 1 1 615401E5
 P 6500 5100
 F 0 "LED3" H 6500 5175 50  0000 C CNN
@@ -247,7 +247,7 @@ F 3 "" H 6500 5100 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED6
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED6
 U 1 1 61544A04
 P 9150 5100
 F 0 "LED6" H 9104 5038 50  0000 L CNN
@@ -258,7 +258,7 @@ F 3 "" H 9150 5100 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED7
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED7
 U 1 1 61544A0A
 P 10050 5100
 F 0 "LED7" H 10050 5175 50  0000 C CNN
@@ -275,7 +275,7 @@ bin
 Text Label 7700 4550 1    50   ~ 0
 din
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED4
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED4
 U 1 1 615449F8
 P 7550 5100
 F 0 "LED4" H 7600 5100 50  0000 R CNN
@@ -492,7 +492,7 @@ Wire Wire Line
 	7700 5350 8450 5350
 Connection ~ 8450 5350
 $Comp
-L led_sensor-rescue:XZCFBB53W-8VF-xzcfbb53w-8vf LED5
+L xzcfbb53w-8vf:XZCFBB53W-8VF LED5
 U 1 1 615449FE
 P 8300 5100
 F 0 "LED5" H 8346 4872 50  0000 R CNN

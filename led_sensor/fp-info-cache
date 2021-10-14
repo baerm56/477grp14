@@ -1,4 +1,4 @@
-19333702344959606
+19333702695416438
 Battery
 BatteryHolder_Bulgin_BX0036_1xC
 Bulgin Battery Holder, BX0036, Battery Type C (https://www.bulgin.com/products/pub/media/bulgin/data/Battery_holders.pdf)
@@ -76350,7 +76350,7 @@ Capacitor
 2
 SamacSys_Parts
 CAPC1005X55N
-GCQ15_0.05 L=1.0mm W=0.5mm T=0.5mm
+1*0.5_2021
 Capacitor
 0
 2
@@ -83336,7 +83336,7 @@ Capacitor
 2
 ZLDO1117K33TC-pcb-part-libraries
 CAPC1005X55N
-GCQ15_0.05 L=1.0mm W=0.5mm T=0.5mm
+1*0.5_2021
 Capacitor
 0
 2

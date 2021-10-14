@@ -766,8 +766,8 @@ Wire Notes Line
 	10750 5900 700  5900
 Wire Notes Line
 	700  1500 700  6000
-Text Notes 8900 2150 0    197  ~ 0
-Circuit
+Text Notes 7300 2050 0    197  ~ 0
+Daughterboard Circuit
 Wire Wire Line
 	4400 3150 5150 3150
 Wire Wire Line

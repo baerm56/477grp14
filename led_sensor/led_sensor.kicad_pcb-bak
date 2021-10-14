@@ -259,7 +259,7 @@
     (fp_text reference LED4 (at 1.3843 3.9878 270) (layer F.SilkS)
       (effects (font (size 0.508 0.508) (thickness 0.127)))
     )
-    (fp_text value XZCFBB53W-8VF (at 1.9685 3.937 180) (layer F.Fab)
+    (fp_text value XZCFBB53W-8VF (at 1.9685 3.937 270) (layer F.Fab)
       (effects (font (size 0.254 0.254) (thickness 0.0635)))
     )
     (fp_line (start -1.27 2.515) (end 0.33 2.515) (layer F.SilkS) (width 0.12))
@@ -578,9 +578,9 @@
     (path /615917A2)
     (attr smd)
     (fp_text reference HM#1 (at 0 4.0005 90) (layer F.SilkS)
-      (effects (font (size 1.27 1.27) (thickness 0.254)))
+      (effects (font (size 0.508 0.508) (thickness 0.127)))
     )
-    (fp_text value SN74HCS151QPWRQ1 (at 3.937 -4.953 180) (layer F.SilkS) hide
+    (fp_text value SN74HCS151QPWRQ1 (at 0.0508 4.8514 270) (layer F.SilkS) hide
       (effects (font (size 0.254 0.254) (thickness 0.0635)))
     )
     (fp_line (start -3.675 -2.85) (end -2.2 -2.85) (layer F.SilkS) (width 0.2))

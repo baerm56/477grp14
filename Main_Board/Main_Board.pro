@@ -1,4 +1,4 @@
-update=10/14/2021 12:07:37 AM
+update=10/14/2021 2:38:55 AM
 version=1
 last_client=kicad
 [general]
@@ -29,7 +29,7 @@ LastNetListRead=Main_Board.net
 CopperLayerCount=4
 BoardThickness=1.6
 AllowMicroVias=0
-AllowBlindVias=1
+AllowBlindVias=0
 RequireCourtyardDefinitions=0
 ProhibitOverlappingCourtyards=0
 MinTrackWidth=0.2
@@ -72,18 +72,18 @@ OthersTextUpright=1
 SolderMaskClearance=0.051
 SolderMaskMinWidth=0.25
 SolderPasteClearance=0
-SolderPasteRatio=0
+SolderPasteRatio=-0
 [pcbnew/Layer.F.Cu]
 Name=F.Cu
 Type=0
 Enabled=1
 [pcbnew/Layer.In1.Cu]
 Name=In1.Cu
-Type=0
+Type=1
 Enabled=1
 [pcbnew/Layer.In2.Cu]
 Name=In2.Cu
-Type=0
+Type=1
 Enabled=1
 [pcbnew/Layer.In3.Cu]
 Name=In3.Cu

@@ -296,23 +296,23 @@ $EndComp
 $Comp
 L Mechanical:MountingHole H2
 U 1 1 61672EB2
-P 3050 2800
-F 0 "H2" H 3150 2846 50  0000 L CNN
-F 1 "MountingHole" H 3150 2755 50  0000 L CNN
-F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 2800 50  0001 C CNN
-F 3 "~" H 3050 2800 50  0001 C CNN
-	1    3050 2800
+P 3050 3000
+F 0 "H2" H 3150 3046 50  0000 L CNN
+F 1 "MountingHole" H 3150 2955 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 3000 50  0001 C CNN
+F 3 "~" H 3050 3000 50  0001 C CNN
+	1    3050 3000
 	1    0    0    -1  
 $EndComp
 $Comp
 L Mechanical:MountingHole H1
 U 1 1 616738A9
-P 3050 3000
-F 0 "H1" H 3150 3046 50  0000 L CNN
-F 1 "MountingHole" H 3150 2955 50  0000 L CNN
-F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 3000 50  0001 C CNN
-F 3 "~" H 3050 3000 50  0001 C CNN
-	1    3050 3000
+P 3050 3200
+F 0 "H1" H 3150 3246 50  0000 L CNN
+F 1 "MountingHole" H 3150 3155 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 3200 50  0001 C CNN
+F 3 "~" H 3050 3200 50  0001 C CNN
+	1    3050 3200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -361,7 +361,7 @@ Wire Wire Line
 Wire Wire Line
 	5450 4250 5450 4150
 $Comp
-L SamacSys_Parts:CL21B104KBCNNNC C1
+L buttons-rescue:CL21B104KBCNNNC-SamacSys_Parts C1
 U 1 1 616A684B
 P 4800 4700
 F 0 "C1" H 5050 4965 50  0000 C CNN
@@ -378,10 +378,10 @@ F 9 "CL21B104KBCNNNC" H 5150 4050 50  0001 L CNN "Manufacturer_Part_Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:PTS647SM50SMTR2LFS S1
+L SamacSys_Parts:PTS647SM50SMTR2LFS S3
 U 1 1 616AAC5F
 P 4650 4150
-F 0 "S1" H 5050 4415 50  0000 C CNN
+F 0 "S3" H 5050 4415 50  0000 C CNN
 F 1 "PTS647SM50SMTR2LFS" H 5050 4324 50  0000 C CNN
 F 2 "PTS647SM50SMTR2LFS" H 5300 4250 50  0001 L CNN
 F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 5300 4150 50  0001 L CNN
@@ -406,4 +406,26 @@ Wire Wire Line
 Wire Wire Line
 	4650 4700 4650 4250
 Connection ~ 4650 4250
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 6169594F
+P 3050 2800
+F 0 "H3" H 3150 2846 50  0000 L CNN
+F 1 "MountingHole" H 3150 2755 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 2800 50  0001 C CNN
+F 3 "~" H 3050 2800 50  0001 C CNN
+	1    3050 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H4
+U 1 1 6169622B
+P 3050 2600
+F 0 "H4" H 3150 2646 50  0000 L CNN
+F 1 "MountingHole" H 3150 2555 50  0000 L CNN
+F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 2600 50  0001 C CNN
+F 3 "~" H 3050 2600 50  0001 C CNN
+	1    3050 2600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

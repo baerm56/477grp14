@@ -294,25 +294,14 @@ F 3 "~" H 5100 3350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Mechanical:MountingHole H2
-U 1 1 61672EB2
-P 3050 2800
-F 0 "H2" H 3150 2846 50  0000 L CNN
-F 1 "MountingHole" H 3150 2755 50  0000 L CNN
-F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 2800 50  0001 C CNN
-F 3 "~" H 3050 2800 50  0001 C CNN
-	1    3050 2800
-	1    0    0    -1  
-$EndComp
-$Comp
 L Mechanical:MountingHole H1
 U 1 1 616738A9
-P 3050 3000
-F 0 "H1" H 3150 3046 50  0000 L CNN
-F 1 "MountingHole" H 3150 2955 50  0000 L CNN
-F 2 "buttons:MountingHole_2.5mm_Pad" H 3050 3000 50  0001 C CNN
-F 3 "~" H 3050 3000 50  0001 C CNN
-	1    3050 3000
+P 3050 3200
+F 0 "H1" H 3150 3246 50  0000 L CNN
+F 1 "MountingHole" H 3150 3155 50  0000 L CNN
+F 2 "buttons:MountingHole_3.2mm_M3_Pad" H 3050 3200 50  0001 C CNN
+F 3 "~" H 3050 3200 50  0001 C CNN
+	1    3050 3200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -361,7 +350,7 @@ Wire Wire Line
 Wire Wire Line
 	5450 4250 5450 4150
 $Comp
-L SamacSys_Parts:CL21B104KBCNNNC C1
+L buttons-rescue:CL21B104KBCNNNC-SamacSys_Parts C1
 U 1 1 616A684B
 P 4800 4700
 F 0 "C1" H 5050 4965 50  0000 C CNN
@@ -406,4 +395,15 @@ Wire Wire Line
 Wire Wire Line
 	4650 4700 4650 4250
 Connection ~ 4650 4250
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 6169FA5D
+P 3050 3000
+F 0 "H2" H 3150 3046 50  0000 L CNN
+F 1 "MountingHole" H 3150 2955 50  0000 L CNN
+F 2 "buttons:MountingHole_3.2mm_M3_Pad" H 3050 3000 50  0001 C CNN
+F 3 "~" H 3050 3000 50  0001 C CNN
+	1    3050 3000
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

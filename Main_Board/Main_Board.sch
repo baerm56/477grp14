@@ -1158,17 +1158,6 @@ F 3 "~" H 10500 8600 50  0001 C CNN
 	1    10500 8600
 	0    1    1    0   
 $EndComp
-$Comp
-L Amplifier_Audio:LM386 U2
-U 1 1 6164CCD8
-P 10950 8700
-F 0 "U2" H 11294 8746 50  0000 L CNN
-F 1 "LM386" H 11294 8655 50  0000 L CNN
-F 2 "SamacSys_Parts:SOIC127P600X175-8N" H 11050 8800 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 11150 8900 50  0001 C CNN
-	1    10950 8700
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	9550 9000 10200 9000
 Wire Wire Line
@@ -1239,24 +1228,8 @@ F 3 "" H 11400 8200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	10950 8400 11050 8400
-Text GLabel 11050 8400 2    50   Input ~ 0
-NC
-Wire Wire Line
-	10950 9000 11050 9000
-Wire Wire Line
-	11150 9000 11150 8950
-Wire Wire Line
-	11150 8950 11200 8950
-Connection ~ 11050 9000
-Wire Wire Line
-	11050 9000 11150 9000
-Text GLabel 11200 8950 2    50   Input ~ 0
-NC
-Wire Wire Line
 	10650 9000 10850 9000
 Connection ~ 10650 9000
-Connection ~ 10850 9000
 $Comp
 L power:GND #PWR0113
 U 1 1 617C10A6
@@ -2076,15 +2049,7 @@ $EndComp
 Wire Wire Line
 	12050 9100 12050 9750
 Wire Wire Line
-	10850 9750 10850 9550
-Wire Wire Line
-	10850 9550 11100 9550
-Wire Wire Line
-	11100 9550 11100 9300
-Wire Wire Line
 	11100 9300 10850 9300
-Wire Wire Line
-	10850 9750 11650 9750
 Connection ~ 11650 9750
 Wire Wire Line
 	11650 9750 12050 9750
@@ -2673,4 +2638,23 @@ NoConn ~ 17600 6750
 NoConn ~ 17500 6750
 NoConn ~ 16400 6750
 NoConn ~ 15300 6750
+Connection ~ 10850 9000
+$Comp
+L Amplifier_Audio:LM386 U2
+U 1 1 6164CCD8
+P 10950 8700
+F 0 "U2" H 11294 8746 50  0000 L CNN
+F 1 "LM386" H 11294 8655 50  0000 L CNN
+F 2 "SamacSys_Parts:SOIC127P600X175-8N" H 11050 8800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm386.pdf" H 11150 8900 50  0001 C CNN
+	1    10950 8700
+	1    0    0    -1  
+$EndComp
+NoConn ~ 10950 8400
+NoConn ~ 10950 9000
+NoConn ~ 11050 9000
+Wire Wire Line
+	11100 9750 11650 9750
+Wire Wire Line
+	11100 9300 11100 9750
 $EndSCHEMATC

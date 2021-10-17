@@ -333,10 +333,6 @@ Wire Wire Line
 	21300 7400 21300 6750
 Text GLabel 21300 7400 3    50   Input ~ 0
 SPI1_SCK
-Wire Wire Line
-	20000 4550 20000 3900
-Text GLabel 20000 3900 1    50   Input ~ 0
-SPI3_NSS
 Text GLabel 15600 3900 1    50   Input ~ 0
 SPI1_MOSI
 Wire Wire Line
@@ -351,8 +347,6 @@ Text GLabel 19500 3750 1    50   Input ~ 0
 SPI3_MOSI
 Text GLabel 19300 3750 1    50   Input ~ 0
 SPI3_SCK
-Text Label 20000 4350 1    50   ~ 0
-SPI3_NSS
 Text Label 21300 6800 3    50   ~ 0
 SPI1_SCK
 Text Label 15600 4550 1    50   ~ 0
@@ -2049,15 +2043,7 @@ $EndComp
 Wire Wire Line
 	12050 9100 12050 9750
 Wire Wire Line
-	10850 9750 10850 9550
-Wire Wire Line
-	10850 9550 11100 9550
-Wire Wire Line
-	11100 9550 11100 9300
-Wire Wire Line
 	11100 9300 10850 9300
-Wire Wire Line
-	10850 9750 11650 9750
 Connection ~ 11650 9750
 Wire Wire Line
 	11650 9750 12050 9750
@@ -2606,7 +2592,6 @@ NoConn ~ 20400 4550
 NoConn ~ 20500 4550
 NoConn ~ 20600 4550
 NoConn ~ 20700 4550
-NoConn ~ 20800 4550
 NoConn ~ 20900 4550
 NoConn ~ 21000 4550
 NoConn ~ 21100 4550
@@ -2661,4 +2646,15 @@ $EndComp
 NoConn ~ 10950 8400
 NoConn ~ 10950 9000
 NoConn ~ 11050 9000
+Wire Wire Line
+	11100 9750 11650 9750
+Wire Wire Line
+	11100 9300 11100 9750
+NoConn ~ 20800 4550
+Text Label 20000 4350 1    50   ~ 0
+SPI3_NSS
+Text GLabel 20000 3900 1    50   Input ~ 0
+SPI3_NSS
+Wire Wire Line
+	20000 4550 20000 3900
 $EndSCHEMATC

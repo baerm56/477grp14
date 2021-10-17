@@ -324,10 +324,10 @@ Wire Wire Line
 Wire Wire Line
 	17900 4550 17900 3750
 Wire Wire Line
-	17800 4550 17800 3750
+	20800 4550 20800 3750
 Text GLabel 17900 3750 1    50   Input ~ 0
 SPI2_SCK
-Text GLabel 17800 3750 1    50   Input ~ 0
+Text GLabel 20800 3750 1    50   Input ~ 0
 SPI2_NSS
 Wire Wire Line
 	21300 7400 21300 6750
@@ -351,7 +351,7 @@ Text Label 21300 6800 3    50   ~ 0
 SPI1_SCK
 Text Label 15600 4550 1    50   ~ 0
 SPI1_MOSI
-Text Label 17800 4400 1    50   ~ 0
+Text Label 20800 4400 1    50   ~ 0
 SPI2_NSS
 Text Label 17900 4400 1    50   ~ 0
 SPI2_SCK
@@ -2650,11 +2650,11 @@ Wire Wire Line
 	11100 9750 11650 9750
 Wire Wire Line
 	11100 9300 11100 9750
-NoConn ~ 20800 4550
 Text Label 20000 4350 1    50   ~ 0
 SPI3_NSS
 Text GLabel 20000 3900 1    50   Input ~ 0
 SPI3_NSS
 Wire Wire Line
 	20000 4550 20000 3900
+NoConn ~ 17800 4550
 $EndSCHEMATC

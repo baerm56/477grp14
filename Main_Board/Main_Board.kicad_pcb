@@ -871,10 +871,10 @@
     (tags "Integrated Circuit")
     (path /6164CCD8)
     (attr smd)
-    (fp_text reference U2 (at -1.99136 2.60604) (layer F.SilkS)
+    (fp_text reference U2 (at -1.5748 5.0292) (layer F.SilkS)
       (effects (font (size 1.27 1.27) (thickness 0.254)))
     )
-    (fp_text value LM386 (at -2.0574 2.413) (layer F.SilkS) hide
+    (fp_text value LM386 (at -1.4732 4.9784) (layer F.SilkS) hide
       (effects (font (size 1.27 1.27) (thickness 0.254)))
     )
     (fp_line (start -3.725 -2.75) (end 3.725 -2.75) (layer F.CrtYd) (width 0.05))
@@ -1809,7 +1809,7 @@
   )
 
   (module MountingHole:MountingHole_2.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 615DFAE8)
-    (at 128.78308 27.75458)
+    (at 128.8796 27.9146)
     (descr "Mounting Hole 2.5mm")
     (tags "mounting hole 2.5mm")
     (path /618643D2)
@@ -1946,6 +1946,11 @@
       (net 72 +3V3))
     (pad 3 smd rect (at 2.3 5.35 180) (size 1.5 2.5) (layers F.Cu F.Paste F.Mask)
       (net 17 +5V))
+    (model C:/Users/agf20/Downloads/ZLDO1117K33TC-pcb-part-libraries/SamacSys_Parts.3dshapes/IRLR8256PBF.stp
+      (offset (xyz -0 -1.524 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical (layer F.Cu) (tedit 59FED5CC) (tstamp 615E7FA9)

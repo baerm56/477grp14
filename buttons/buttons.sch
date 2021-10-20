@@ -16,394 +16,621 @@ $EndDescr
 $Comp
 L 477parts:switch S1
 U 1 1 6164C06F
-P 6300 2300
-F 0 "S1" H 6928 2096 50  0000 L CNN
-F 1 "switch" H 6928 2005 50  0000 L CNN
-F 2 "buttons:switch" H 6950 2400 50  0001 L CNN
-F 3 "https://www.ckswitches.com/media/1428/os.pdf" H 6950 2300 50  0001 L CNN
-F 4 "C & K COMPONENTS - OS103011MS8QP1 - SWITCH, SP3T, 0.1A, 12VDC, PCB, ON-ON-ON" H 6950 2200 50  0001 L CNN "Description"
-F 5 "8" H 6950 2100 50  0001 L CNN "Height"
-F 6 "611-OS103011MS8QP1" H 6950 2000 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/CK/OS103011MS8QP1?qs=86ySKn7Oc5W2%252Bzm5uDBfBA%3D%3D" H 6950 1900 50  0001 L CNN "Mouser Price/Stock"
-F 8 "C & K COMPONENTS" H 6950 1800 50  0001 L CNN "Manufacturer_Name"
-F 9 "OS103011MS8QP1" H 6950 1700 50  0001 L CNN "Manufacturer_Part_Number"
-	1    6300 2300
+P 9100 2350
+F 0 "S1" H 9728 2146 50  0000 L CNN
+F 1 "switch" H 9728 2055 50  0000 L CNN
+F 2 "buttons:switch" H 9750 2450 50  0001 L CNN
+F 3 "https://www.ckswitches.com/media/1428/os.pdf" H 9750 2350 50  0001 L CNN
+F 4 "C & K COMPONENTS - OS103011MS8QP1 - SWITCH, SP3T, 0.1A, 12VDC, PCB, ON-ON-ON" H 9750 2250 50  0001 L CNN "Description"
+F 5 "8" H 9750 2150 50  0001 L CNN "Height"
+F 6 "611-OS103011MS8QP1" H 9750 2050 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CK/OS103011MS8QP1?qs=86ySKn7Oc5W2%252Bzm5uDBfBA%3D%3D" H 9750 1950 50  0001 L CNN "Mouser Price/Stock"
+F 8 "C & K COMPONENTS" H 9750 1850 50  0001 L CNN "Manufacturer_Name"
+F 9 "OS103011MS8QP1" H 9750 1750 50  0001 L CNN "Manufacturer_Part_Number"
+	1    9100 2350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6050 3650 6050 3150
-Wire Wire Line
-	4550 3200 4650 3200
-Wire Wire Line
-	4650 3200 4650 3300
-Wire Wire Line
-	6050 3150 6050 2800
-Connection ~ 6050 3150
-Wire Wire Line
-	6050 2800 6050 2750
-Connection ~ 6050 2800
-Wire Wire Line
-	4550 3100 4700 3100
-Wire Wire Line
-	4700 3100 4700 3250
-Connection ~ 6050 3650
-Wire Wire Line
-	4700 3250 4750 3250
-Wire Wire Line
-	4950 3250 4950 3550
 $Comp
 L 477parts:switch S2
 U 1 1 6164DD98
-P 6300 3150
-F 0 "S2" H 6928 2946 50  0000 L CNN
-F 1 "switch" H 6928 2855 50  0000 L CNN
-F 2 "buttons:switch" H 6950 3250 50  0001 L CNN
-F 3 "https://www.ckswitches.com/media/1428/os.pdf" H 6950 3150 50  0001 L CNN
-F 4 "C & K COMPONENTS - OS103011MS8QP1 - SWITCH, SP3T, 0.1A, 12VDC, PCB, ON-ON-ON" H 6950 3050 50  0001 L CNN "Description"
-F 5 "8" H 6950 2950 50  0001 L CNN "Height"
-F 6 "611-OS103011MS8QP1" H 6950 2850 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/CK/OS103011MS8QP1?qs=86ySKn7Oc5W2%252Bzm5uDBfBA%3D%3D" H 6950 2750 50  0001 L CNN "Mouser Price/Stock"
-F 8 "C & K COMPONENTS" H 6950 2650 50  0001 L CNN "Manufacturer_Name"
-F 9 "OS103011MS8QP1" H 6950 2550 50  0001 L CNN "Manufacturer_Part_Number"
-	1    6300 3150
+P 9100 3200
+F 0 "S2" H 9728 2996 50  0000 L CNN
+F 1 "switch" H 9728 2905 50  0000 L CNN
+F 2 "buttons:switch" H 9750 3300 50  0001 L CNN
+F 3 "https://www.ckswitches.com/media/1428/os.pdf" H 9750 3200 50  0001 L CNN
+F 4 "C & K COMPONENTS - OS103011MS8QP1 - SWITCH, SP3T, 0.1A, 12VDC, PCB, ON-ON-ON" H 9750 3100 50  0001 L CNN "Description"
+F 5 "8" H 9750 3000 50  0001 L CNN "Height"
+F 6 "611-OS103011MS8QP1" H 9750 2900 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CK/OS103011MS8QP1?qs=86ySKn7Oc5W2%252Bzm5uDBfBA%3D%3D" H 9750 2800 50  0001 L CNN "Mouser Price/Stock"
+F 8 "C & K COMPONENTS" H 9750 2700 50  0001 L CNN "Manufacturer_Name"
+F 9 "OS103011MS8QP1" H 9750 2600 50  0001 L CNN "Manufacturer_Part_Number"
+	1    9100 3200
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4950 3550 6100 3550
-Wire Wire Line
-	6100 3550 6100 3350
-Wire Wire Line
-	6100 3350 6100 2500
-Connection ~ 6100 3350
-Text Label 4700 3100 0    50   ~ 0
-Vdd
-Text Label 4950 3650 0    50   ~ 0
-gnd
-Wire Wire Line
-	5450 3500 5450 3650
-Connection ~ 5450 3650
-Wire Wire Line
-	5450 3650 5550 3650
-Wire Wire Line
-	5800 3500 5800 3650
-Connection ~ 5800 3650
-Wire Wire Line
-	5800 3650 6050 3650
-Wire Wire Line
-	5100 3500 5100 3650
-Wire Wire Line
-	5100 3650 5450 3650
-Wire Wire Line
-	5800 3200 5800 3150
-Wire Wire Line
-	5800 3150 6000 3150
-Wire Wire Line
-	6000 3150 6000 3500
-Wire Wire Line
-	6000 3500 6150 3500
-Wire Wire Line
-	6150 3500 6150 3550
-Wire Wire Line
-	6050 3650 6300 3650
-Wire Wire Line
-	6150 3550 6300 3550
-Wire Wire Line
-	6100 3350 6300 3350
-Wire Wire Line
-	6050 3150 6300 3150
-Wire Wire Line
-	6300 3450 6150 3450
-Wire Wire Line
-	6150 3450 6150 3100
-Wire Wire Line
-	6150 3100 5450 3100
-Wire Wire Line
-	5450 3100 5450 3200
-Wire Wire Line
-	5100 3200 5100 3050
-Wire Wire Line
-	5100 3050 6200 3050
-Wire Wire Line
-	6200 3050 6200 3250
-Wire Wire Line
-	6200 3250 6300 3250
-Wire Wire Line
-	5100 3050 5100 3000
-Wire Wire Line
-	5100 3000 4550 3000
-Connection ~ 5100 3050
-Wire Wire Line
-	5450 3100 5450 2900
-Wire Wire Line
-	5450 2900 4550 2900
-Connection ~ 5450 3100
-Wire Wire Line
-	5800 3150 5800 2800
-Wire Wire Line
-	5800 2800 4550 2800
-Connection ~ 5800 3150
-Wire Wire Line
-	6050 2800 6300 2800
-Wire Wire Line
-	6050 2300 6300 2300
-Wire Wire Line
-	6050 2750 5800 2750
-Wire Wire Line
-	5100 2750 5100 2700
-Connection ~ 6050 2750
-Wire Wire Line
-	6050 2750 6050 2300
-Wire Wire Line
-	5450 2700 5450 2750
-Connection ~ 5450 2750
-Wire Wire Line
-	5450 2750 5100 2750
-Wire Wire Line
-	5800 2700 5800 2750
-Connection ~ 5800 2750
-Wire Wire Line
-	5800 2750 5450 2750
-Wire Wire Line
-	6100 2500 6300 2500
-Wire Wire Line
-	6300 2700 6150 2700
-Wire Wire Line
-	6150 2700 6150 2400
-Wire Wire Line
-	6150 2400 5800 2400
-Wire Wire Line
-	6300 2600 6200 2600
-Wire Wire Line
-	6200 2600 6200 2350
-Wire Wire Line
-	6200 2350 5450 2350
-Wire Wire Line
-	5450 2350 5450 2400
-Wire Wire Line
-	6300 2400 6250 2400
-Wire Wire Line
-	6250 2400 6250 2250
-Wire Wire Line
-	6250 2250 5100 2250
-Wire Wire Line
-	5100 2250 5100 2400
-Wire Wire Line
-	5100 2250 4550 2250
-Wire Wire Line
-	4550 2250 4550 2500
-Connection ~ 5100 2250
-Wire Wire Line
-	5450 2350 4600 2350
-Wire Wire Line
-	4600 2350 4600 2600
-Wire Wire Line
-	4600 2600 4550 2600
-Connection ~ 5450 2350
-Wire Wire Line
-	5800 2400 5800 2300
-Wire Wire Line
-	5800 2300 4650 2300
-Wire Wire Line
-	4650 2300 4650 2700
-Wire Wire Line
-	4650 2700 4550 2700
 $Comp
 L Device:R R1
 U 1 1 6165A726
-P 5100 2550
-F 0 "R1" H 5170 2596 50  0000 L CNN
-F 1 "100k" H 5170 2505 50  0000 L CNN
-F 2 "SamacSys_Parts:RESC3116X70N" V 5030 2550 50  0001 C CNN
-F 3 "~" H 5100 2550 50  0001 C CNN
-	1    5100 2550
-	1    0    0    -1  
-$EndComp
-$Comp
-L 477parts:header J1
-U 1 1 6165E65C
-P 4550 3300
-F 0 "J1" H 4842 2235 50  0000 C CNN
-F 1 "header" H 4842 2326 50  0000 C CNN
-F 2 "buttons:header" H 5200 3400 50  0001 L CNN
-F 3 "https://componentsearchengine.com/Datasheets/1/825433-9.pdf" H 5200 3300 50  0001 L CNN
-F 4 "MOD 2 PINHDR 1X9 P." H 5200 3200 50  0001 L CNN "Description"
-F 5 "9.5" H 5200 3100 50  0001 L CNN "Height"
-F 6 "TE Connectivity" H 5200 3000 50  0001 L CNN "Manufacturer_Name"
-F 7 "825433-9" H 5200 2900 50  0001 L CNN "Manufacturer_Part_Number"
-F 8 "571-825433-9" H 5200 2800 50  0001 L CNN "Mouser Part Number"
-F 9 "https://www.mouser.co.uk/ProductDetail/TE-Connectivity-AMP/825433-9?qs=Yxch5oR%2FTsOk9K64doCkZw%3D%3D" H 5200 2700 50  0001 L CNN "Mouser Price/Stock"
-F 10 "825433-9" H 5200 2600 50  0001 L CNN "Arrow Part Number"
-F 11 "https://www.arrow.com/en/products/825433-9/te-connectivity" H 5200 2500 50  0001 L CNN "Arrow Price/Stock"
-	1    4550 3300
-	-1   0    0    1   
+P 8400 2450
+F 0 "R1" H 8470 2496 50  0000 L CNN
+F 1 "100k" H 8470 2405 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 8330 2450 50  0001 C CNN
+F 3 "~" H 8400 2450 50  0001 C CNN
+	1    8400 2450
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R2
 U 1 1 61660A95
-P 5450 2550
-F 0 "R2" H 5520 2596 50  0000 L CNN
-F 1 "100k" H 5520 2505 50  0000 L CNN
-F 2 "SamacSys_Parts:RESC3116X70N" V 5380 2550 50  0001 C CNN
-F 3 "~" H 5450 2550 50  0001 C CNN
-	1    5450 2550
-	1    0    0    -1  
+P 8400 2650
+F 0 "R2" H 8470 2696 50  0000 L CNN
+F 1 "100k" H 8470 2605 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 8330 2650 50  0001 C CNN
+F 3 "~" H 8400 2650 50  0001 C CNN
+	1    8400 2650
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R3
 U 1 1 61660E97
-P 5800 2550
-F 0 "R3" H 5870 2596 50  0000 L CNN
-F 1 "100k" H 5870 2505 50  0000 L CNN
-F 2 "SamacSys_Parts:RESC3116X70N" V 5730 2550 50  0001 C CNN
-F 3 "~" H 5800 2550 50  0001 C CNN
-	1    5800 2550
-	1    0    0    -1  
+P 8400 2850
+F 0 "R3" H 8470 2896 50  0000 L CNN
+F 1 "100k" H 8470 2805 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 8330 2850 50  0001 C CNN
+F 3 "~" H 8400 2850 50  0001 C CNN
+	1    8400 2850
+	0    1    1    0   
 $EndComp
-Connection ~ 5800 2400
 $Comp
 L Device:R R6
 U 1 1 61660EE1
-P 5800 3350
-F 0 "R6" H 5870 3396 50  0000 L CNN
-F 1 "100k" H 5870 3305 50  0000 L CNN
-F 2 "SamacSys_Parts:RESC3116X70N" V 5730 3350 50  0001 C CNN
-F 3 "~" H 5800 3350 50  0001 C CNN
-	1    5800 3350
-	1    0    0    -1  
+P 8450 3300
+F 0 "R6" H 8520 3346 50  0000 L CNN
+F 1 "100k" H 8520 3255 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 8380 3300 50  0001 C CNN
+F 3 "~" H 8450 3300 50  0001 C CNN
+	1    8450 3300
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R5
 U 1 1 6166153F
-P 5450 3350
-F 0 "R5" H 5520 3396 50  0000 L CNN
-F 1 "100k" H 5520 3305 50  0000 L CNN
-F 2 "SamacSys_Parts:RESC3116X70N" V 5380 3350 50  0001 C CNN
-F 3 "~" H 5450 3350 50  0001 C CNN
-	1    5450 3350
-	1    0    0    -1  
+P 8450 3500
+F 0 "R5" H 8520 3546 50  0000 L CNN
+F 1 "100k" H 8520 3455 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 8380 3500 50  0001 C CNN
+F 3 "~" H 8450 3500 50  0001 C CNN
+	1    8450 3500
+	0    1    1    0   
 $EndComp
 $Comp
 L Device:R R4
 U 1 1 616616FD
-P 5100 3350
-F 0 "R4" H 5170 3396 50  0000 L CNN
-F 1 "100k" H 5170 3305 50  0000 L CNN
-F 2 "SamacSys_Parts:RESC3116X70N" V 5030 3350 50  0001 C CNN
-F 3 "~" H 5100 3350 50  0001 C CNN
-	1    5100 3350
-	1    0    0    -1  
+P 8450 3700
+F 0 "R4" H 8520 3746 50  0000 L CNN
+F 1 "100k" H 8520 3655 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 8380 3700 50  0001 C CNN
+F 3 "~" H 8450 3700 50  0001 C CNN
+	1    8450 3700
+	0    1    1    0   
 $EndComp
 $Comp
 L Mechanical:MountingHole H1
 U 1 1 616738A9
-P 3050 3200
-F 0 "H1" H 3150 3246 50  0000 L CNN
-F 1 "MountingHole" H 3150 3155 50  0000 L CNN
-F 2 "buttons:MountingHole_3.2mm_M3_Pad" H 3050 3200 50  0001 C CNN
-F 3 "~" H 3050 3200 50  0001 C CNN
-	1    3050 3200
+P 6100 1600
+F 0 "H1" H 6200 1646 50  0000 L CNN
+F 1 "MountingHole" H 6200 1555 50  0000 L CNN
+F 2 "buttons:MountingHole_3.2mm_M3_Pad" H 6100 1600 50  0001 C CNN
+F 3 "~" H 6100 1600 50  0001 C CNN
+	1    6100 1600
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4550 4150 4650 4150
-Wire Wire Line
-	4650 4250 4650 4150
 $Comp
 L Device:R R7
 U 1 1 616971F3
-P 4750 3600
-F 0 "R7" H 4820 3646 50  0000 L CNN
-F 1 "100k" H 4820 3555 50  0000 L CNN
-F 2 "SamacSys_Parts:RESC3116X70N" V 4680 3600 50  0001 C CNN
-F 3 "~" H 4750 3600 50  0001 C CNN
-	1    4750 3600
+P 7150 2100
+F 0 "R7" H 7220 2146 50  0000 L CNN
+F 1 "100k" H 7220 2055 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 7080 2100 50  0001 C CNN
+F 3 "~" H 7150 2100 50  0001 C CNN
+	1    7150 2100
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	4550 3300 4550 3850
-Wire Wire Line
-	4900 3650 5100 3650
-Connection ~ 5100 3650
-Wire Wire Line
-	4900 3650 4900 3300
-Wire Wire Line
-	4650 3300 4900 3300
-Wire Wire Line
-	4750 3450 4750 3250
-Connection ~ 4750 3250
-Wire Wire Line
-	4750 3250 4950 3250
-Wire Wire Line
-	4750 3750 4750 3850
-Wire Wire Line
-	4750 3850 4550 3850
-Connection ~ 4550 3850
-Wire Wire Line
-	4550 3850 4550 4150
-Wire Wire Line
-	5550 3650 5550 4150
-Wire Wire Line
-	5550 4150 5450 4150
-Connection ~ 5550 3650
-Wire Wire Line
-	5550 3650 5800 3650
-Wire Wire Line
-	5450 4250 5450 4150
 $Comp
 L buttons-rescue:CL21B104KBCNNNC-SamacSys_Parts C1
 U 1 1 616A684B
-P 4800 4700
-F 0 "C1" H 5050 4965 50  0000 C CNN
-F 1 "CL21B104KBCNNNC" H 5050 4874 50  0000 C CNN
-F 2 "CAPC2012X95N" H 5150 4750 50  0001 L CNN
-F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/CL21B104KBCNNNC.jsp" H 5150 4650 50  0001 L CNN
-F 4 "Samsung Electro-Mechanics 0805 (2012M) 100nF Multilayer Ceramic Capacitor MLCC 50V dc +/-10% SMD CL21B104KBCNNNC" H 5150 4550 50  0001 L CNN "Description"
-F 5 "0.95" H 5150 4450 50  0001 L CNN "Height"
-F 6 "187-CL21B104KBCNNNC" H 5150 4350 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/Samsung-Electro-Mechanics/CL21B104KBCNNNC?qs=349EhDEZ59pEfpnm5yBEmQ%3D%3D" H 5150 4250 50  0001 L CNN "Mouser Price/Stock"
-F 8 "Samsung Electro-Mechanics" H 5150 4150 50  0001 L CNN "Manufacturer_Name"
-F 9 "CL21B104KBCNNNC" H 5150 4050 50  0001 L CNN "Manufacturer_Part_Number"
-	1    4800 4700
+P 6200 2800
+F 0 "C1" H 6450 3065 50  0000 C CNN
+F 1 "CL21B104KBCNNNC" H 6450 2974 50  0000 C CNN
+F 2 "CAPC2012X95N" H 6550 2850 50  0001 L CNN
+F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/CL21B104KBCNNNC.jsp" H 6550 2750 50  0001 L CNN
+F 4 "Samsung Electro-Mechanics 0805 (2012M) 100nF Multilayer Ceramic Capacitor MLCC 50V dc +/-10% SMD CL21B104KBCNNNC" H 6550 2650 50  0001 L CNN "Description"
+F 5 "0.95" H 6550 2550 50  0001 L CNN "Height"
+F 6 "187-CL21B104KBCNNNC" H 6550 2450 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Samsung-Electro-Mechanics/CL21B104KBCNNNC?qs=349EhDEZ59pEfpnm5yBEmQ%3D%3D" H 6550 2350 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Samsung Electro-Mechanics" H 6550 2250 50  0001 L CNN "Manufacturer_Name"
+F 9 "CL21B104KBCNNNC" H 6550 2150 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6200 2800
 	1    0    0    -1  
 $EndComp
 $Comp
 L SamacSys_Parts:PTS647SM50SMTR2LFS S3
 U 1 1 616AAC5F
-P 4650 4150
-F 0 "S3" H 5050 4415 50  0000 C CNN
-F 1 "PTS647SM50SMTR2LFS" H 5050 4324 50  0000 C CNN
-F 2 "PTS647SM50SMTR2LFS" H 5300 4250 50  0001 L CNN
-F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 5300 4150 50  0001 L CNN
-F 4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" H 5300 4050 50  0001 L CNN "Description"
-F 5 "5.25" H 5300 3950 50  0001 L CNN "Height"
-F 6 "611-PTS647SM50SMTR2L" H 5300 3850 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" H 5300 3750 50  0001 L CNN "Mouser Price/Stock"
-F 8 "C & K COMPONENTS" H 5300 3650 50  0001 L CNN "Manufacturer_Name"
-F 9 "PTS647SM50SMTR2LFS" H 5300 3550 50  0001 L CNN "Manufacturer_Part_Number"
-	1    4650 4150
+P 6050 2300
+F 0 "S3" H 6450 2565 50  0000 C CNN
+F 1 "PTS647SM50SMTR2LFS" H 6450 2474 50  0000 C CNN
+F 2 "PTS647SM50SMTR2LFS" H 6700 2400 50  0001 L CNN
+F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 6700 2300 50  0001 L CNN
+F 4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" H 6700 2200 50  0001 L CNN "Description"
+F 5 "5.25" H 6700 2100 50  0001 L CNN "Height"
+F 6 "611-PTS647SM50SMTR2L" H 6700 2000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" H 6700 1900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "C & K COMPONENTS" H 6700 1800 50  0001 L CNN "Manufacturer_Name"
+F 9 "PTS647SM50SMTR2LFS" H 6700 1700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6050 2300
 	1    0    0    -1  
 $EndComp
-Connection ~ 4650 4150
-Connection ~ 5450 4150
-Wire Wire Line
-	5300 4700 5450 4700
-Wire Wire Line
-	5450 4700 5450 4250
-Connection ~ 5450 4250
-Wire Wire Line
-	4800 4700 4650 4700
-Wire Wire Line
-	4650 4700 4650 4250
-Connection ~ 4650 4250
 $Comp
 L Mechanical:MountingHole H2
 U 1 1 6169FA5D
-P 3050 3000
-F 0 "H2" H 3150 3046 50  0000 L CNN
-F 1 "MountingHole" H 3150 2955 50  0000 L CNN
-F 2 "buttons:MountingHole_3.2mm_M3_Pad" H 3050 3000 50  0001 C CNN
-F 3 "~" H 3050 3000 50  0001 C CNN
-	1    3050 3000
+P 6100 1400
+F 0 "H2" H 6200 1446 50  0000 L CNN
+F 1 "MountingHole" H 6200 1355 50  0000 L CNN
+F 2 "buttons:MountingHole_3.2mm_M3_Pad" H 6100 1400 50  0001 C CNN
+F 3 "~" H 6100 1400 50  0001 C CNN
+	1    6100 1400
 	1    0    0    -1  
 $EndComp
+$Comp
+L power:GND #PWR0101
+U 1 1 61709F40
+P 8800 2100
+F 0 "#PWR0101" H 8800 1850 50  0001 C CNN
+F 1 "GND" H 8900 2000 50  0000 C CNN
+F 2 "" H 8800 2100 50  0001 C CNN
+F 3 "" H 8800 2100 50  0001 C CNN
+	1    8800 2100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0102
+U 1 1 6170AF47
+P 8600 2100
+F 0 "#PWR0102" H 8600 1950 50  0001 C CNN
+F 1 "+3V3" H 8600 2250 50  0000 C CNN
+F 2 "" H 8600 2100 50  0001 C CNN
+F 3 "" H 8600 2100 50  0001 C CNN
+	1    8600 2100
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	8700 2100 8800 2100
+$Comp
+L power:+3V3 #PWR0103
+U 1 1 61711630
+P 9100 2550
+F 0 "#PWR0103" H 9100 2400 50  0001 C CNN
+F 1 "+3V3" V 9115 2678 50  0000 L CNN
+F 2 "" H 9100 2550 50  0001 C CNN
+F 3 "" H 9100 2550 50  0001 C CNN
+	1    9100 2550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0104
+U 1 1 6171208C
+P 9100 3400
+F 0 "#PWR0104" H 9100 3250 50  0001 C CNN
+F 1 "+3V3" V 9115 3528 50  0000 L CNN
+F 2 "" H 9100 3400 50  0001 C CNN
+F 3 "" H 9100 3400 50  0001 C CNN
+	1    9100 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR0105
+U 1 1 6171CA46
+P 8150 2850
+F 0 "#PWR0105" H 8150 2600 50  0001 C CNN
+F 1 "GND" H 8155 2677 50  0000 C CNN
+F 2 "" H 8150 2850 50  0001 C CNN
+F 3 "" H 8150 2850 50  0001 C CNN
+	1    8150 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8150 2850 8250 2850
+Wire Wire Line
+	8250 2650 8150 2650
+Wire Wire Line
+	8150 2650 8150 2850
+Connection ~ 8150 2850
+Wire Wire Line
+	8250 2450 8150 2450
+Wire Wire Line
+	8150 2450 8150 2650
+Connection ~ 8150 2650
+Wire Wire Line
+	8550 2450 8550 2400
+Wire Wire Line
+	8550 2650 8600 2650
+Wire Wire Line
+	8600 2650 8600 2350
+Wire Wire Line
+	8550 2850 8650 2850
+Wire Wire Line
+	8650 2300 8650 2750
+Wire Wire Line
+	9100 2750 8650 2750
+Connection ~ 8650 2750
+Wire Wire Line
+	8650 2750 8650 2850
+Wire Wire Line
+	9100 2650 8600 2650
+Connection ~ 8600 2650
+Wire Wire Line
+	9100 2450 8550 2450
+Connection ~ 8550 2450
+$Comp
+L power:GND #PWR0106
+U 1 1 61741D5A
+P 8200 3700
+F 0 "#PWR0106" H 8200 3450 50  0001 C CNN
+F 1 "GND" H 8205 3527 50  0000 C CNN
+F 2 "" H 8200 3700 50  0001 C CNN
+F 3 "" H 8200 3700 50  0001 C CNN
+	1    8200 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8200 3700 8300 3700
+Wire Wire Line
+	8300 3500 8200 3500
+Wire Wire Line
+	8200 3500 8200 3700
+Connection ~ 8200 3700
+Wire Wire Line
+	8300 3300 8200 3300
+Wire Wire Line
+	8200 3300 8200 3500
+Connection ~ 8200 3500
+Wire Wire Line
+	8600 3300 8600 3250
+Wire Wire Line
+	8600 3250 7950 3250
+Wire Wire Line
+	8600 3500 8650 3500
+Wire Wire Line
+	8650 3500 8650 3200
+Wire Wire Line
+	8650 3200 8000 3200
+Wire Wire Line
+	8600 3700 8700 3700
+Wire Wire Line
+	8700 3700 8700 3600
+Wire Wire Line
+	8700 3150 8050 3150
+Wire Wire Line
+	9100 3300 8600 3300
+Connection ~ 8600 3300
+Wire Wire Line
+	9100 3500 8650 3500
+Connection ~ 8650 3500
+Wire Wire Line
+	9100 3600 8700 3600
+Connection ~ 8700 3600
+Wire Wire Line
+	8700 3600 8700 3150
+$Comp
+L power:GND #PWR0107
+U 1 1 6176B323
+P 9100 2350
+F 0 "#PWR0107" H 9100 2100 50  0001 C CNN
+F 1 "GND" H 9100 2200 50  0000 C CNN
+F 2 "" H 9100 2350 50  0001 C CNN
+F 3 "" H 9100 2350 50  0001 C CNN
+	1    9100 2350
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0108
+U 1 1 6176BA80
+P 9100 2850
+F 0 "#PWR0108" H 9100 2600 50  0001 C CNN
+F 1 "GND" H 9100 2700 50  0000 C CNN
+F 2 "" H 9100 2850 50  0001 C CNN
+F 3 "" H 9100 2850 50  0001 C CNN
+	1    9100 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0109
+U 1 1 6176BFDD
+P 9100 3200
+F 0 "#PWR0109" H 9100 2950 50  0001 C CNN
+F 1 "GND" H 9100 3050 50  0000 C CNN
+F 2 "" H 9100 3200 50  0001 C CNN
+F 3 "" H 9100 3200 50  0001 C CNN
+	1    9100 3200
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0110
+U 1 1 6176C051
+P 9100 3700
+F 0 "#PWR0110" H 9100 3450 50  0001 C CNN
+F 1 "GND" H 9100 3550 50  0000 C CNN
+F 2 "" H 9100 3700 50  0001 C CNN
+F 3 "" H 9100 3700 50  0001 C CNN
+	1    9100 3700
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0111
+U 1 1 6177557E
+P 5800 4800
+F 0 "#PWR0111" H 5800 4550 50  0001 C CNN
+F 1 "GND" H 5900 4700 50  0000 C CNN
+F 2 "" H 5800 4800 50  0001 C CNN
+F 3 "" H 5800 4800 50  0001 C CNN
+	1    5800 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:PTS647SM50SMTR2LFS S4
+U 1 1 61776EC6
+P 6050 3250
+F 0 "S4" H 6450 3515 50  0000 C CNN
+F 1 "PTS647SM50SMTR2LFS" H 6450 3424 50  0000 C CNN
+F 2 "PTS647SM50SMTR2LFS" H 6700 3350 50  0001 L CNN
+F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 6700 3250 50  0001 L CNN
+F 4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" H 6700 3150 50  0001 L CNN "Description"
+F 5 "5.25" H 6700 3050 50  0001 L CNN "Height"
+F 6 "611-PTS647SM50SMTR2L" H 6700 2950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" H 6700 2850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "C & K COMPONENTS" H 6700 2750 50  0001 L CNN "Manufacturer_Name"
+F 9 "PTS647SM50SMTR2LFS" H 6700 2650 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6050 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L buttons-rescue:CL21B104KBCNNNC-SamacSys_Parts C2
+U 1 1 6177861B
+P 6200 3800
+F 0 "C2" H 6450 4065 50  0000 C CNN
+F 1 "CL21B104KBCNNNC" H 6450 3974 50  0000 C CNN
+F 2 "CAPC2012X95N" H 6550 3850 50  0001 L CNN
+F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/CL21B104KBCNNNC.jsp" H 6550 3750 50  0001 L CNN
+F 4 "Samsung Electro-Mechanics 0805 (2012M) 100nF Multilayer Ceramic Capacitor MLCC 50V dc +/-10% SMD CL21B104KBCNNNC" H 6550 3650 50  0001 L CNN "Description"
+F 5 "0.95" H 6550 3550 50  0001 L CNN "Height"
+F 6 "187-CL21B104KBCNNNC" H 6550 3450 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Samsung-Electro-Mechanics/CL21B104KBCNNNC?qs=349EhDEZ59pEfpnm5yBEmQ%3D%3D" H 6550 3350 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Samsung Electro-Mechanics" H 6550 3250 50  0001 L CNN "Manufacturer_Name"
+F 9 "CL21B104KBCNNNC" H 6550 3150 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6200 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:PTS647SM50SMTR2LFS S5
+U 1 1 6177922F
+P 6050 4250
+F 0 "S5" H 6450 4515 50  0000 C CNN
+F 1 "PTS647SM50SMTR2LFS" H 6450 4424 50  0000 C CNN
+F 2 "PTS647SM50SMTR2LFS" H 6700 4350 50  0001 L CNN
+F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 6700 4250 50  0001 L CNN
+F 4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" H 6700 4150 50  0001 L CNN "Description"
+F 5 "5.25" H 6700 4050 50  0001 L CNN "Height"
+F 6 "611-PTS647SM50SMTR2L" H 6700 3950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" H 6700 3850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "C & K COMPONENTS" H 6700 3750 50  0001 L CNN "Manufacturer_Name"
+F 9 "PTS647SM50SMTR2LFS" H 6700 3650 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6050 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L buttons-rescue:CL21B104KBCNNNC-SamacSys_Parts C3
+U 1 1 6177A774
+P 6200 4800
+F 0 "C3" H 6450 5065 50  0000 C CNN
+F 1 "CL21B104KBCNNNC" H 6450 4974 50  0000 C CNN
+F 2 "CAPC2012X95N" H 6550 4850 50  0001 L CNN
+F 3 "http://www.samsungsem.com/kr/support/product-search/mlcc/CL21B104KBCNNNC.jsp" H 6550 4750 50  0001 L CNN
+F 4 "Samsung Electro-Mechanics 0805 (2012M) 100nF Multilayer Ceramic Capacitor MLCC 50V dc +/-10% SMD CL21B104KBCNNNC" H 6550 4650 50  0001 L CNN "Description"
+F 5 "0.95" H 6550 4550 50  0001 L CNN "Height"
+F 6 "187-CL21B104KBCNNNC" H 6550 4450 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Samsung-Electro-Mechanics/CL21B104KBCNNNC?qs=349EhDEZ59pEfpnm5yBEmQ%3D%3D" H 6550 4350 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Samsung Electro-Mechanics" H 6550 4250 50  0001 L CNN "Manufacturer_Name"
+F 9 "CL21B104KBCNNNC" H 6550 4150 50  0001 L CNN "Manufacturer_Part_Number"
+	1    6200 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R8
+U 1 1 6177B243
+P 7100 3050
+F 0 "R8" H 7170 3096 50  0000 L CNN
+F 1 "100k" H 7170 3005 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 7030 3050 50  0001 C CNN
+F 3 "~" H 7100 3050 50  0001 C CNN
+	1    7100 3050
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:R R9
+U 1 1 6177B9C3
+P 7100 4050
+F 0 "R9" H 7170 4096 50  0000 L CNN
+F 1 "100k" H 7170 4005 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" V 7030 4050 50  0001 C CNN
+F 3 "~" H 7100 4050 50  0001 C CNN
+	1    7100 4050
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5800 4800 6200 4800
+Wire Wire Line
+	6050 4350 6050 4250
+Wire Wire Line
+	6050 4350 5800 4350
+Wire Wire Line
+	5800 4350 5800 4800
+Connection ~ 6050 4350
+Connection ~ 5800 4800
+Wire Wire Line
+	6200 3800 5800 3800
+Wire Wire Line
+	5800 3800 5800 4350
+Connection ~ 5800 4350
+Wire Wire Line
+	6050 3250 6050 3350
+Wire Wire Line
+	6050 3350 5800 3350
+Wire Wire Line
+	5800 3350 5800 3800
+Connection ~ 6050 3350
+Connection ~ 5800 3800
+Wire Wire Line
+	6200 2800 5800 2800
+Wire Wire Line
+	5800 2800 5800 3350
+Connection ~ 5800 3350
+Wire Wire Line
+	6050 2300 6050 2400
+Wire Wire Line
+	6050 2400 5800 2400
+Wire Wire Line
+	5800 2400 5800 2800
+Connection ~ 6050 2400
+Connection ~ 5800 2800
+$Comp
+L power:+3V3 #PWR0112
+U 1 1 617875E0
+P 7150 1950
+F 0 "#PWR0112" H 7150 1800 50  0001 C CNN
+F 1 "+3V3" H 7150 2100 50  0000 C CNN
+F 2 "" H 7150 1950 50  0001 C CNN
+F 3 "" H 7150 1950 50  0001 C CNN
+	1    7150 1950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0113
+U 1 1 617882EF
+P 7100 2900
+F 0 "#PWR0113" H 7100 2750 50  0001 C CNN
+F 1 "+3V3" H 7100 3050 50  0000 C CNN
+F 2 "" H 7100 2900 50  0001 C CNN
+F 3 "" H 7100 2900 50  0001 C CNN
+	1    7100 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0114
+U 1 1 61788A67
+P 7100 3900
+F 0 "#PWR0114" H 7100 3750 50  0001 C CNN
+F 1 "+3V3" H 7100 4050 50  0000 C CNN
+F 2 "" H 7100 3900 50  0001 C CNN
+F 3 "" H 7100 3900 50  0001 C CNN
+	1    7100 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6850 2300 6850 2400
+Wire Wire Line
+	7150 2250 7150 2400
+Wire Wire Line
+	7150 2400 6850 2400
+Connection ~ 6850 2400
+Wire Wire Line
+	6700 2800 6850 2800
+Wire Wire Line
+	6850 2800 6850 2400
+Wire Wire Line
+	7150 2400 7700 2400
+Wire Wire Line
+	7700 2400 7700 2100
+Connection ~ 7150 2400
+Wire Wire Line
+	6850 3250 6850 3350
+Wire Wire Line
+	6850 3350 7100 3350
+Wire Wire Line
+	7100 3350 7100 3200
+Connection ~ 6850 3350
+Wire Wire Line
+	6700 3800 6850 3800
+Wire Wire Line
+	6850 3800 6850 3350
+Wire Wire Line
+	7100 3350 7800 3350
+Wire Wire Line
+	7800 3350 7800 2100
+Connection ~ 7100 3350
+Wire Wire Line
+	6700 4800 6850 4800
+Wire Wire Line
+	6850 4800 6850 4350
+Connection ~ 6850 4350
+Wire Wire Line
+	6850 4350 6850 4250
+Wire Wire Line
+	6850 4350 7100 4350
+Wire Wire Line
+	7100 4350 7100 4200
+Wire Wire Line
+	7100 4350 7900 4350
+Wire Wire Line
+	7900 4350 7900 2100
+Connection ~ 7100 4350
+$Comp
+L 477parts:77311-862-11LF J1
+U 1 1 617A2208
+P 7700 2100
+F 0 "J1" V 8038 972 50  0000 R CNN
+F 1 "77311-862-11LF" V 7947 972 50  0000 R CNN
+F 2 "buttons:HDRV11W62P0X254_1X11_2794X240X853P" H 8350 2200 50  0001 L CNN
+F 3 "" H 8350 2100 50  0001 L CNN
+F 4 "Headers & Wire Housings BERGSTIK" H 8350 2000 50  0001 L CNN "Description"
+F 5 "8.53" H 8350 1900 50  0001 L CNN "Height"
+F 6 "" H 8350 1800 50  0001 L CNN "Mouser Part Number"
+F 7 "" H 8350 1700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Amphenol" H 8350 1600 50  0001 L CNN "Manufacturer_Name"
+F 9 "77311-862-11LF" H 8350 1500 50  0001 L CNN "Manufacturer_Part_Number"
+	1    7700 2100
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7950 2150 8300 2150
+Wire Wire Line
+	8300 2150 8300 2100
+Wire Wire Line
+	7950 2150 7950 3250
+Wire Wire Line
+	8000 2200 8400 2200
+Wire Wire Line
+	8400 2200 8400 2100
+Wire Wire Line
+	8000 2200 8000 3200
+Wire Wire Line
+	8050 2250 8500 2250
+Wire Wire Line
+	8500 2250 8500 2100
+Wire Wire Line
+	8050 2250 8050 3150
+Wire Wire Line
+	8100 2350 8100 2100
+Wire Wire Line
+	8100 2350 8600 2350
+Wire Wire Line
+	8200 2300 8200 2100
+Wire Wire Line
+	8200 2300 8650 2300
+Wire Wire Line
+	8150 2400 8150 2050
+Wire Wire Line
+	8150 2050 8000 2050
+Wire Wire Line
+	8000 2050 8000 2100
+Wire Wire Line
+	8150 2400 8550 2400
 $EndSCHEMATC

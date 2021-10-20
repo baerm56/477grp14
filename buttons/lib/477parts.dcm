@@ -1,5 +1,9 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP 77311-862-11LF
+D Headers & Wire Housings BERGSTIK
+$ENDCMP
+#
 $CMP header
 D MOD 2 PINHDR 1X9 P.
 F https://componentsearchengine.com/Datasheets/1/825433-9.pdf

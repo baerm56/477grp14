@@ -107,6 +107,12 @@ int main(void)
   writeTime(&hspi1, 320, 0);
 
 
+  InitTracker();
+  if(!ValidateStartPositions())
+  {
+	  /// @todo: cue audio to tell player the board is not set up correctly
+  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -116,6 +122,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  Track();
   }
   /* USER CODE END 3 */
 }

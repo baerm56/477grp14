@@ -3,7 +3,7 @@
   (general
     (thickness 1.6)
     (drawings 55)
-    (tracks 799)
+    (tracks 802)
     (zones 0)
     (modules 69)
     (nets 159)
@@ -36,10 +36,11 @@
   )
 
   (setup
-    (last_trace_width 0.25)
+    (last_trace_width 1.27)
     (user_trace_width 0.381)
     (user_trace_width 0.508)
     (user_trace_width 1.27)
+    (user_trace_width 3.5)
     (trace_clearance 0.2)
     (zone_clearance 0.508)
     (zone_45_only no)
@@ -3714,6 +3715,9 @@
   (segment (start 121.9454 38.66854) (end 122.026441 38.749581) (width 0.508) (layer F.Cu) (net 17))
   (segment (start 143.9164 41.4528) (end 144.038699 46.207199) (width 1.27) (layer F.Cu) (net 17))
   (segment (start 141.224 40.386) (end 143.9164 41.4528) (width 1.27) (layer F.Cu) (net 17))
+  (segment (start 148.209 38.481) (end 160.782 38.481) (width 3.5) (layer B.Cu) (net 17))
+  (segment (start 163.9062 38.481) (end 164.4142 38.989) (width 1.27) (layer B.Cu) (net 17))
+  (segment (start 160.782 38.481) (end 163.9062 38.481) (width 1.27) (layer B.Cu) (net 17))
   (via (at 134.49808 66.74358) (size 0.8) (drill 0.4) (layers F.Cu B.Cu) (net 28))
   (segment (start 131.390302 67.187) (end 130.1695 67.187) (width 0.25) (layer F.Cu) (net 28))
   (segment (start 132.889581 66.574079) (end 131.390302 67.187) (width 0.25) (layer F.Cu) (net 28))
@@ -5746,22 +5750,6 @@
       (pts
         (xy 156.6164 61.8744) (xy 134.645668 61.8744) (xy 134.670533 50.07592) (xy 152.42558 50.0507) (xy 152.426521 50.050695)
         (xy 156.6164 50.013725)
-      )
-    )
-  )
-  (zone (net 17) (net_name +5V) (layer B.Cu) (tstamp 0) (hatch edge 0.508)
-    (connect_pads yes (clearance 0.508))
-    (min_thickness 0.254)
-    (fill yes (arc_segments 32) (thermal_gap 0.508) (thermal_bridge_width 0.508))
-    (polygon
-      (pts
-        (xy 165.3159 39.6875) (xy 165.3286 40.1574) (xy 148.082 40.8686) (xy 148.1582 36.2458) (xy 165.3032 38.2016)
-      )
-    )
-    (filled_polygon
-      (pts
-        (xy 165.177165 38.315047) (xy 165.188905 39.688585) (xy 165.188946 39.690931) (xy 165.198263 40.035667) (xy 148.211201 40.736164)
-        (xy 148.282876 36.387846)
       )
     )
   )

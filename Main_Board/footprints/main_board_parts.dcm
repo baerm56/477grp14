@@ -1,5 +1,9 @@
 EESchema-DOCLIB  Version 2.0
 #
+$CMP 77311-862-11LF
+D Headers & Wire Housings BERGSTIK
+$ENDCMP
+#
 $CMP MAX6951CEE+
 D LED Driver 64Segment 3.3V/5V
 F https://datasheets.maximintegrated.com/en/ds/MAX6950-MAX6951.pdf

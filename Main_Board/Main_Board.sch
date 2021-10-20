@@ -1704,7 +1704,7 @@ U 1 1 61A028AD
 P 11250 6250
 F 0 "UARTHeader1" V 11312 6294 50  0000 L CNN
 F 1 "Conn_01x02_Male" V 11150 5700 50  0000 L CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 11250 6250 50  0001 C CNN
+F 2 "Main_Board:PinHeader_1x02_P2.54mm_Vertical" H 11250 6250 50  0001 C CNN
 F 3 "~" H 11250 6250 50  0001 C CNN
 	1    11250 6250
 	0    1    1    0   
@@ -1962,65 +1962,40 @@ Wire Wire Line
 	17200 6750 17200 7150
 Text Label 17400 7050 1    50   ~ 0
 S2[3]
-Text GLabel 1850 8800 3    50   Input ~ 0
+Text GLabel 1750 8650 3    50   Input ~ 0
 S1[1]
-Text GLabel 1950 8800 3    50   Input ~ 0
+Text GLabel 1850 8650 3    50   Input ~ 0
 S1[2]
-Text GLabel 2050 8800 3    50   Input ~ 0
+Text GLabel 1950 8650 3    50   Input ~ 0
 S1[3]
-Text GLabel 2150 8800 3    50   Input ~ 0
+Text GLabel 2050 8650 3    50   Input ~ 0
 S2[1]
-Text GLabel 2250 8800 3    50   Input ~ 0
+Text GLabel 2150 8650 3    50   Input ~ 0
 S2[2]
-Text GLabel 2350 8800 3    50   Input ~ 0
+Text GLabel 2250 8650 3    50   Input ~ 0
 S2[3]
-$Comp
-L Connector_Generic:Conn_01x09 GPIOHeader1
-U 1 1 61F622A8
-P 1950 8300
-F 0 "GPIOHeader1" V 2167 8296 50  0000 C CNN
-F 1 "Conn_01x09" V 2076 8296 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x09_P2.54mm_Vertical" H 1950 8300 50  0001 C CNN
-F 3 "~" H 1950 8300 50  0001 C CNN
-	1    1950 8300
-	0    -1   -1   0   
-$EndComp
 $Comp
 L power:GND #PWR0128
 U 1 1 6200EDD4
-P 1550 8700
-F 0 "#PWR0128" H 1550 8450 50  0001 C CNN
-F 1 "GND" H 1555 8527 50  0000 C CNN
-F 2 "" H 1550 8700 50  0001 C CNN
-F 3 "" H 1550 8700 50  0001 C CNN
-	1    1550 8700
+P 2450 8350
+F 0 "#PWR0128" H 2450 8100 50  0001 C CNN
+F 1 "GND" H 2550 8200 50  0000 C CNN
+F 2 "" H 2450 8350 50  0001 C CNN
+F 3 "" H 2450 8350 50  0001 C CNN
+	1    2450 8350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+3V3 #PWR0144
 U 1 1 62010503
-P 1700 8700
-F 0 "#PWR0144" H 1700 8550 50  0001 C CNN
-F 1 "+3V3" H 1715 8873 50  0000 C CNN
-F 2 "" H 1700 8700 50  0001 C CNN
-F 3 "" H 1700 8700 50  0001 C CNN
-	1    1700 8700
+P 2350 8350
+F 0 "#PWR0144" H 2350 8200 50  0001 C CNN
+F 1 "+3V3" H 2350 8500 50  0000 C CNN
+F 2 "" H 2350 8350 50  0001 C CNN
+F 3 "" H 2350 8350 50  0001 C CNN
+	1    2350 8350
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	1750 8650 1750 8500
-Wire Wire Line
-	1850 8800 1850 8500
-Wire Wire Line
-	1950 8800 1950 8500
-Wire Wire Line
-	2050 8800 2050 8500
-Wire Wire Line
-	2150 8800 2150 8500
-Wire Wire Line
-	2250 8800 2250 8500
-Wire Wire Line
-	2350 8800 2350 8500
 Text Notes 2450 7300 0    50   ~ 0
 GPIO Header
 $Comp
@@ -2411,24 +2386,9 @@ HeartbeatLED
 Wire Wire Line
 	16300 6750 16300 7300
 Wire Wire Line
-	17100 6750 17100 7150
-Wire Wire Line
-	19300 3750 19300 4550
-$Comp
-L MCU_ST_STM32L1:STM32L152ZCTx U1
-U 1 1 61411083
-P 18200 5650
-F 0 "U1" V 18250 9800 50  0000 L CNN
-F 1 "STM32L152ZCTx" V 18150 9450 50  0000 L CNN
-F 2 "Package_QFP:LQFP-144_20x20mm_P0.5mm" H 17300 2250 50  0001 R CNN
-F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00111457.pdf" H 18200 5650 50  0001 C CNN
-	1    18200 5650
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
 	16200 6750 16200 7300
 Text Notes 13000 2350 0    50   ~ 0
-5V Headers
+Power Headers
 Wire Wire Line
 	6350 4100 6050 4100
 Wire Wire Line
@@ -2455,12 +2415,6 @@ F 3 "" H 14100 5350 50  0001 C CNN
 	1    14100 5350
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	1650 8700 1550 8700
-Wire Wire Line
-	1750 8650 1700 8650
-Wire Wire Line
-	1700 8650 1700 8700
 Wire Wire Line
 	2250 3200 3250 3200
 Wire Wire Line
@@ -2524,22 +2478,6 @@ Wire Notes Line
 	1000 2250 1000 10050
 Wire Notes Line
 	1000 10050 13550 10050
-Wire Wire Line
-	16800 6750 16800 7400
-Text GLabel 16800 7400 3    50   Input ~ 0
-Reset_Line
-Text Label 16800 6950 3    50   ~ 0
-Reset_Line
-Wire Wire Line
-	1650 8500 1650 8700
-Wire Wire Line
-	1550 8500 1550 8650
-Wire Wire Line
-	1550 8650 1400 8650
-Wire Wire Line
-	1400 8650 1400 8800
-Text GLabel 1400 8800 3    50   Input ~ 0
-Reset_Line
 $Comp
 L power:PWR_FLAG #FLG0101
 U 1 1 616BB65E
@@ -2578,8 +2516,6 @@ NoConn ~ 18500 4550
 NoConn ~ 18600 4550
 NoConn ~ 18700 4550
 NoConn ~ 18800 4550
-NoConn ~ 18900 4550
-NoConn ~ 19000 4550
 NoConn ~ 19100 4550
 NoConn ~ 19200 4550
 NoConn ~ 19600 4550
@@ -2595,8 +2531,6 @@ NoConn ~ 20700 4550
 NoConn ~ 20900 4550
 NoConn ~ 21000 4550
 NoConn ~ 21100 4550
-NoConn ~ 21200 4550
-NoConn ~ 21300 4550
 NoConn ~ 21400 4550
 NoConn ~ 21500 4550
 NoConn ~ 21500 6750
@@ -2657,5 +2591,104 @@ SPI3_NSS
 Wire Wire Line
 	20000 4550 20000 3900
 NoConn ~ 17800 4550
-NoConn ~ 18100 4150
+$Comp
+L main_board_parts:77311-862-11LF J2
+U 1 1 6172F492
+P 1450 8350
+F 0 "J2" V 1788 7222 50  0000 R CNN
+F 1 "77311-862-11LF" V 1697 7222 50  0000 R CNN
+F 2 "HDRV11W62P0X254_1X11_2794X240X853P" H 2100 8450 50  0001 L CNN
+F 3 "" H 2100 8350 50  0001 L CNN
+F 4 "Headers & Wire Housings BERGSTIK" H 2100 8250 50  0001 L CNN "Description"
+F 5 "8.53" H 2100 8150 50  0001 L CNN "Height"
+F 6 "" H 2100 8050 50  0001 L CNN "Mouser Part Number"
+F 7 "" H 2100 7950 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Amphenol" H 2100 7850 50  0001 L CNN "Manufacturer_Name"
+F 9 "77311-862-11LF" H 2100 7750 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1450 8350
+	0    -1   -1   0   
+$EndComp
+Text GLabel 1550 8650 3    50   Input ~ 0
+B1
+Text GLabel 1650 8650 3    50   Input ~ 0
+B2
+NoConn ~ 16800 6750
+Text GLabel 21200 3750 1    50   Input ~ 0
+B1
+Text GLabel 21300 3750 1    50   Input ~ 0
+B2
+Wire Wire Line
+	1450 8650 1450 8350
+Wire Wire Line
+	1550 8650 1550 8350
+Wire Wire Line
+	1650 8650 1650 8350
+Wire Wire Line
+	1750 8350 1750 8650
+Wire Wire Line
+	1850 8650 1850 8350
+Wire Wire Line
+	1950 8650 1950 8350
+Wire Wire Line
+	2050 8650 2050 8350
+Wire Wire Line
+	2150 8350 2150 8650
+Wire Wire Line
+	2250 8350 2250 8650
+Text GLabel 1450 8650 3    50   Input ~ 0
+nRST
+Wire Wire Line
+	17100 6750 17100 7150
+Wire Wire Line
+	19300 3750 19300 4550
+$Comp
+L MCU_ST_STM32L1:STM32L152ZCTx U1
+U 1 1 61411083
+P 18200 5650
+F 0 "U1" V 18250 9800 50  0000 L CNN
+F 1 "STM32L152ZCTx" V 18150 9450 50  0000 L CNN
+F 2 "Package_QFP:LQFP-144_20x20mm_P0.5mm" H 17300 2250 50  0001 R CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00111457.pdf" H 18200 5650 50  0001 C CNN
+	1    18200 5650
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 19000 4550
+NoConn ~ 18900 4550
+Wire Wire Line
+	21300 3750 21300 4550
+Wire Wire Line
+	21200 3750 21200 4550
+$Comp
+L Connector:Conn_01x02_Male DBoardPower1
+U 1 1 6172C583
+P 12500 4250
+F 0 "DBoardPower1" V 12562 4294 50  0000 L CNN
+F 1 "Conn_01x02_Male" V 12400 3700 50  0000 L CNN
+F 2 "Main_Board:PinHeader_1x02_P2.54mm_Vertical" H 12500 4250 50  0001 C CNN
+F 3 "~" H 12500 4250 50  0001 C CNN
+	1    12500 4250
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0135
+U 1 1 6172D4C6
+P 12500 4450
+F 0 "#PWR0135" H 12500 4200 50  0001 C CNN
+F 1 "GND" H 12600 4250 50  0000 C CNN
+F 2 "" H 12500 4450 50  0001 C CNN
+F 3 "" H 12500 4450 50  0001 C CNN
+	1    12500 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR0143
+U 1 1 6172DEE6
+P 12400 4450
+F 0 "#PWR0143" H 12400 4300 50  0001 C CNN
+F 1 "+3V3" H 12500 4650 50  0000 C CNN
+F 2 "" H 12400 4450 50  0001 C CNN
+F 3 "" H 12400 4450 50  0001 C CNN
+	1    12400 4450
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC

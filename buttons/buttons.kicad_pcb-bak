@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 1)
+    (drawings 5)
     (tracks 178)
     (zones 0)
     (modules 20)
@@ -714,7 +714,7 @@
   )
 
   (module buttons:MountingHole_3.2mm_M3_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 617048CD)
-    (at 116.3955 47.3075)
+    (at 95.0595 68.707)
     (descr "Mounting Hole 3.2mm, M3")
     (tags "mounting hole 3.2mm m3")
     (path /6169FA5D)
@@ -734,7 +734,7 @@
   )
 
   (module buttons:MountingHole_3.2mm_M3_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 617048C5)
-    (at 129.54 48.26)
+    (at 147.193 68.707)
     (descr "Mounting Hole 3.2mm, M3")
     (tags "mounting hole 3.2mm m3")
     (path /616738A9)
@@ -858,6 +858,10 @@
     )
   )
 
+  (gr_line (start 152.2095 55.8165) (end 152.2095 78.1685) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 90.2335 55.8165) (end 152.2095 55.8165) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 90.2335 78.1685) (end 90.2335 55.8165) (layer Edge.Cuts) (width 0.05))
+  (gr_line (start 152.2095 78.1685) (end 90.2335 78.1685) (layer Edge.Cuts) (width 0.05))
   (gr_text "ECE 477 Group 14 \nSwitch Board Rev. 1" (at 153.543 55.245) (layer F.SilkS)
     (effects (font (size 0.4 0.4) (thickness 0.1)))
   )

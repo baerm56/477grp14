@@ -1,4 +1,3 @@
 (fp_lib_table
-  (lib (name SN74HCS151QPWRQ1)(type Legacy)(uri C:/Users/agf20/Downloads/LIB_SN74HCS151QPWRQ1/SN74HCS151QPWRQ1/KiCad/SN74HCS151QPWRQ1.mod)(options "")(descr ""))
   (lib (name Main_Board)(type KiCad)(uri ${KIPRJMOD}/footprints/Main_Board.pretty)(options "")(descr ""))
 )

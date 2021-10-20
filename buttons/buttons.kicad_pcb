@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 5)
+    (drawings 6)
     (tracks 178)
     (zones 0)
     (modules 20)
@@ -858,11 +858,14 @@
     )
   )
 
+  (gr_text Reset (at 107.6325 68.707 90) (layer F.SilkS)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
   (gr_line (start 152.2095 55.8165) (end 152.2095 78.1685) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 90.2335 55.8165) (end 152.2095 55.8165) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 90.2335 78.1685) (end 90.2335 55.8165) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 152.2095 78.1685) (end 90.2335 78.1685) (layer Edge.Cuts) (width 0.05))
-  (gr_text "ECE 477 Group 14 \nSwitch Board Rev. 1" (at 153.543 55.245) (layer F.SilkS)
+  (gr_text "ECE 477 Group 14 \nSwitch Board Rev. 1" (at 145.7325 58.928) (layer F.SilkS)
     (effects (font (size 0.4 0.4) (thickness 0.1)))
   )
 

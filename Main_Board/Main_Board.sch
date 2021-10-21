@@ -690,8 +690,6 @@ DACOUT_2
 Text Notes 22750 2400 0    50   ~ 0
 STM32
 Wire Notes Line
-	1000 4950 13550 4950
-Wire Notes Line
 	10550 6100 13550 6100
 Text GLabel 10950 6600 3    50   Input ~ 0
 USART1_TX
@@ -717,8 +715,6 @@ Text GLabel 6750 7950 3    50   Input ~ 0
 HALLSEL[0]
 Text Notes 7450 7250 0    50   ~ 0
 Hall Sensor Select Circuitry\n
-Wire Notes Line
-	1000 2250 23100 2250
 Text Notes 2400 5050 0    50   ~ 0
 Reset Circuitry
 $Comp
@@ -1606,8 +1602,7 @@ F 9 "47352-1001" H 7900 5700 50  0001 L CNN "Manufacturer_Part_Number"
 	1    6650 6300
 	1    0    0    -1  
 $EndComp
-NoConn ~ 6650 6300
-Text GLabel 6650 6400 0    50   Input ~ 0
+Text GLabel 6400 6400 0    50   Input ~ 0
 SPI3_NSS
 Text GLabel 6650 6500 0    50   Input ~ 0
 SPI3_MOSI
@@ -1639,7 +1634,6 @@ Text GLabel 19400 3750 1    50   Input ~ 0
 SPI3_MISO
 Text Label 19400 4350 1    50   ~ 0
 SPI3_MISO
-NoConn ~ 8050 6600
 Text GLabel 8050 6300 2    50   Input ~ 0
 SPI3_SCK
 Text GLabel 8050 6500 2    50   Input ~ 0
@@ -1962,38 +1956,34 @@ Wire Wire Line
 	17200 6750 17200 7150
 Text Label 17400 7050 1    50   ~ 0
 S2[3]
-Text GLabel 1750 8650 3    50   Input ~ 0
+Text GLabel 1700 9350 3    50   Input ~ 0
 S1[1]
-Text GLabel 1850 8650 3    50   Input ~ 0
+Text GLabel 1950 9350 3    50   Input ~ 0
 S1[2]
-Text GLabel 1950 8650 3    50   Input ~ 0
+Text GLabel 2150 9350 3    50   Input ~ 0
 S1[3]
-Text GLabel 2050 8650 3    50   Input ~ 0
+Text GLabel 2350 9350 3    50   Input ~ 0
 S2[1]
-Text GLabel 2150 8650 3    50   Input ~ 0
-S2[2]
-Text GLabel 2250 8650 3    50   Input ~ 0
-S2[3]
 $Comp
 L power:GND #PWR0128
 U 1 1 6200EDD4
-P 2450 8350
-F 0 "#PWR0128" H 2450 8100 50  0001 C CNN
-F 1 "GND" H 2550 8200 50  0000 C CNN
-F 2 "" H 2450 8350 50  0001 C CNN
-F 3 "" H 2450 8350 50  0001 C CNN
-	1    2450 8350
+P 2300 8100
+F 0 "#PWR0128" H 2300 7850 50  0001 C CNN
+F 1 "GND" H 2400 7950 50  0000 C CNN
+F 2 "" H 2300 8100 50  0001 C CNN
+F 3 "" H 2300 8100 50  0001 C CNN
+	1    2300 8100
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+3V3 #PWR0144
 U 1 1 62010503
-P 2350 8350
-F 0 "#PWR0144" H 2350 8200 50  0001 C CNN
-F 1 "+3V3" H 2350 8500 50  0000 C CNN
-F 2 "" H 2350 8350 50  0001 C CNN
-F 3 "" H 2350 8350 50  0001 C CNN
-	1    2350 8350
+P 2200 8100
+F 0 "#PWR0144" H 2200 7950 50  0001 C CNN
+F 1 "+3V3" H 2200 8250 50  0000 C CNN
+F 2 "" H 2200 8100 50  0001 C CNN
+F 3 "" H 2200 8100 50  0001 C CNN
+	1    2200 8100
 	-1   0    0    1   
 $EndComp
 Text Notes 2450 7300 0    50   ~ 0
@@ -2471,13 +2461,7 @@ Wire Notes Line
 Wire Notes Line
 	13550 2250 13550 10050
 Wire Notes Line
-	1000 7150 13550 7150
-Wire Notes Line
-	3000 4950 3000 10050
-Wire Notes Line
-	1000 2250 1000 10050
-Wire Notes Line
-	1000 10050 13550 10050
+	800  2250 800  10050
 $Comp
 L power:PWR_FLAG #FLG0101
 U 1 1 616BB65E
@@ -2594,23 +2578,23 @@ NoConn ~ 17800 4550
 $Comp
 L main_board_parts:77311-862-11LF J2
 U 1 1 6172F492
-P 1450 8350
-F 0 "J2" V 1788 7222 50  0000 R CNN
-F 1 "77311-862-11LF" V 1697 7222 50  0000 R CNN
-F 2 "HDRV11W62P0X254_1X11_2794X240X853P" H 2100 8450 50  0001 L CNN
-F 3 "" H 2100 8350 50  0001 L CNN
-F 4 "Headers & Wire Housings BERGSTIK" H 2100 8250 50  0001 L CNN "Description"
-F 5 "8.53" H 2100 8150 50  0001 L CNN "Height"
-F 6 "" H 2100 8050 50  0001 L CNN "Mouser Part Number"
-F 7 "" H 2100 7950 50  0001 L CNN "Mouser Price/Stock"
-F 8 "Amphenol" H 2100 7850 50  0001 L CNN "Manufacturer_Name"
-F 9 "77311-862-11LF" H 2100 7750 50  0001 L CNN "Manufacturer_Part_Number"
-	1    1450 8350
+P 1300 8100
+F 0 "J2" V 1638 6972 50  0000 R CNN
+F 1 "77311-862-11LF" V 1547 6972 50  0000 R CNN
+F 2 "Main_Board:HDRV11W62P0X254_1X11_2794X240X853P" H 1950 8200 50  0001 L CNN
+F 3 "" H 1950 8100 50  0001 L CNN
+F 4 "Headers & Wire Housings BERGSTIK" H 1950 8000 50  0001 L CNN "Description"
+F 5 "8.53" H 1950 7900 50  0001 L CNN "Height"
+F 6 "" H 1950 7800 50  0001 L CNN "Mouser Part Number"
+F 7 "" H 1950 7700 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Amphenol" H 1950 7600 50  0001 L CNN "Manufacturer_Name"
+F 9 "77311-862-11LF" H 1950 7500 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1300 8100
 	0    -1   -1   0   
 $EndComp
-Text GLabel 1550 8650 3    50   Input ~ 0
+Text GLabel 1250 9350 3    50   Input ~ 0
 B1
-Text GLabel 1650 8650 3    50   Input ~ 0
+Text GLabel 1500 9350 3    50   Input ~ 0
 B2
 NoConn ~ 16800 6750
 Text GLabel 21200 3750 1    50   Input ~ 0
@@ -2618,24 +2602,10 @@ B1
 Text GLabel 21300 3750 1    50   Input ~ 0
 B2
 Wire Wire Line
-	1450 8650 1450 8350
+	1300 8400 1300 8100
 Wire Wire Line
-	1550 8650 1550 8350
-Wire Wire Line
-	1650 8650 1650 8350
-Wire Wire Line
-	1750 8350 1750 8650
-Wire Wire Line
-	1850 8650 1850 8350
-Wire Wire Line
-	1950 8650 1950 8350
-Wire Wire Line
-	2050 8650 2050 8350
-Wire Wire Line
-	2150 8350 2150 8650
-Wire Wire Line
-	2250 8350 2250 8650
-Text GLabel 1450 8650 3    50   Input ~ 0
+	2100 8100 2100 8400
+Text GLabel 1000 9350 3    50   Input ~ 0
 nRST
 Wire Wire Line
 	17100 6750 17100 7150
@@ -2691,4 +2661,320 @@ F 3 "" H 12400 4450 50  0001 C CNN
 	1    12400 4450
 	-1   0    0    1   
 $EndComp
+$Comp
+L Device:R_Small R19
+U 1 1 6210A139
+P 6600 6050
+F 0 "R19" H 6659 6096 50  0000 L CNN
+F 1 "10k" H 6659 6005 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" H 6600 6050 50  0001 C CNN
+F 3 "~" H 6600 6050 50  0001 C CNN
+	1    6600 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R9
+U 1 1 62263B47
+P 1000 9350
+F 0 "R9" V 1396 9272 50  0000 R CNN
+F 1 "50k" V 1305 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 1550 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 1550 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 1550 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 1550 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 1550 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 1550 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 1550 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 1550 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1000 9350
+	0    -1   -1   0   
+$EndComp
+Wire Notes Line
+	3000 4950 3000 10050
+Text GLabel 2750 9350 3    50   Input ~ 0
+S2[3]
+Text GLabel 2550 9350 3    50   Input ~ 0
+S2[2]
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R10
+U 1 1 62370C66
+P 1250 9350
+F 0 "R10" V 1646 9272 50  0000 R CNN
+F 1 "50k" V 1555 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 1800 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 1800 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 1800 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 1800 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 1800 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 1800 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 1800 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 1800 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1250 9350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R11
+U 1 1 623712AF
+P 1500 9350
+F 0 "R11" V 1896 9272 50  0000 R CNN
+F 1 "50k" V 1805 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 2050 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 2050 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 2050 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 2050 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 2050 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 2050 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 2050 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 2050 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1500 9350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R12
+U 1 1 623717A7
+P 1700 9350
+F 0 "R12" V 2096 9272 50  0000 R CNN
+F 1 "50k" V 2005 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 2250 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 2250 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 2250 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 2250 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 2250 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 2250 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 2250 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 2250 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1700 9350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R13
+U 1 1 62371BCC
+P 1950 9350
+F 0 "R13" V 2346 9272 50  0000 R CNN
+F 1 "50k" V 2255 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 2500 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 2500 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 2500 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 2500 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 2500 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 2500 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 2500 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 2500 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    1950 9350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R14
+U 1 1 623720F0
+P 2150 9350
+F 0 "R14" V 2546 9272 50  0000 R CNN
+F 1 "50k" V 2455 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 2700 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 2700 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 2700 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 2700 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 2700 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 2700 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 2700 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 2700 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    2150 9350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R15
+U 1 1 6237253B
+P 2350 9350
+F 0 "R15" V 2746 9272 50  0000 R CNN
+F 1 "50k" V 2655 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 2900 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 2900 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 2900 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 2900 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 2900 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 2900 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 2900 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 2900 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    2350 9350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R16
+U 1 1 62372846
+P 2550 9350
+F 0 "R16" V 2946 9272 50  0000 R CNN
+F 1 "50k" V 2855 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 3100 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 3100 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 3100 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 3100 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 3100 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 3100 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 3100 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 3100 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    2550 9350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L SamacSys_Parts:CRCW040250K0FKED R17
+U 1 1 62372D0D
+P 2750 9350
+F 0 "R17" V 3146 9272 50  0000 R CNN
+F 1 "50k" V 3055 9272 50  0000 R CNN
+F 2 "RESC1005X40N" H 3300 9400 50  0001 L CNN
+F 3 "http://www.vishay.com/docs/20035/dcrcwe3.pdf" H 3300 9300 50  0001 L CNN
+F 4 "Thick Film Resistors - SMD 1/16watt 50Kohms 1% Non Standard" H 3300 9200 50  0001 L CNN "Description"
+F 5 "0.4" H 3300 9100 50  0001 L CNN "Height"
+F 6 "71-CRCW0402-50K-E3" H 3300 9000 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/Vishay-Dale/CRCW040250K0FKED?qs=ZTJSYgkXUA0CX%252BZe0ESa5A%3D%3D" H 3300 8900 50  0001 L CNN "Mouser Price/Stock"
+F 8 "Vishay" H 3300 8800 50  0001 L CNN "Manufacturer_Name"
+F 9 "CRCW040250K0FKED" H 3300 8700 50  0001 L CNN "Manufacturer_Part_Number"
+	1    2750 9350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1000 8650 1000 8400
+Wire Wire Line
+	1000 8400 1300 8400
+Wire Wire Line
+	1250 8650 1250 8450
+Wire Wire Line
+	1250 8450 1400 8450
+Wire Wire Line
+	1400 8100 1400 8450
+Wire Wire Line
+	1500 8100 1500 8650
+Wire Wire Line
+	1700 8650 1600 8650
+Wire Wire Line
+	1600 8100 1600 8650
+Wire Wire Line
+	1950 8650 1800 8650
+Wire Wire Line
+	1800 8650 1800 8600
+Wire Wire Line
+	1800 8600 1700 8600
+Wire Wire Line
+	1700 8100 1700 8600
+Wire Wire Line
+	1800 8550 2000 8550
+Wire Wire Line
+	2000 8550 2000 8650
+Wire Wire Line
+	2000 8650 2150 8650
+Wire Wire Line
+	1800 8100 1800 8550
+Wire Wire Line
+	1900 8500 2100 8500
+Wire Wire Line
+	2100 8500 2100 8550
+Wire Wire Line
+	2100 8550 2200 8550
+Wire Wire Line
+	2200 8550 2200 8650
+Wire Wire Line
+	2200 8650 2350 8650
+Wire Wire Line
+	1900 8100 1900 8500
+Wire Wire Line
+	2000 8450 2150 8450
+Wire Wire Line
+	2150 8450 2150 8500
+Wire Wire Line
+	2150 8500 2250 8500
+Wire Wire Line
+	2250 8500 2250 8600
+Wire Wire Line
+	2250 8600 2550 8600
+Wire Wire Line
+	2550 8600 2550 8650
+Wire Wire Line
+	2000 8100 2000 8450
+Wire Wire Line
+	2100 8400 2200 8400
+Wire Wire Line
+	2200 8400 2200 8450
+Wire Wire Line
+	2200 8450 2300 8450
+Wire Wire Line
+	2300 8450 2300 8550
+Wire Wire Line
+	2300 8550 2750 8550
+Wire Wire Line
+	2750 8550 2750 8650
+Wire Notes Line
+	800  10050 13550 10050
+Wire Notes Line
+	800  7150 13550 7150
+Wire Notes Line
+	800  4950 13550 4950
+Wire Notes Line
+	800  2250 23100 2250
+$Comp
+L Device:R_Small R18
+U 1 1 626A8802
+P 6450 6300
+F 0 "R18" H 6509 6346 50  0000 L CNN
+F 1 "10k" H 6509 6255 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" H 6450 6300 50  0001 C CNN
+F 3 "~" H 6450 6300 50  0001 C CNN
+	1    6450 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R20
+U 1 1 626D6AC7
+P 8050 6700
+F 0 "R20" H 8109 6746 50  0000 L CNN
+F 1 "10k" H 8109 6655 50  0000 L CNN
+F 2 "SamacSys_Parts:RESC3116X70N" H 8050 6700 50  0001 C CNN
+F 3 "~" H 8050 6700 50  0001 C CNN
+	1    8050 6700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 6400 6450 6400
+Connection ~ 6450 6400
+Wire Wire Line
+	6450 6400 6400 6400
+Wire Wire Line
+	6650 6300 6650 6150
+Wire Wire Line
+	6650 6150 6600 6150
+$Comp
+L power:+3V3 #PWR0154
+U 1 1 6276050B
+P 6600 5900
+F 0 "#PWR0154" H 6600 5750 50  0001 C CNN
+F 1 "+3V3" H 6550 6050 50  0000 C CNN
+F 2 "" H 6600 5900 50  0001 C CNN
+F 3 "" H 6600 5900 50  0001 C CNN
+	1    6600 5900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0155
+U 1 1 62761692
+P 6450 6150
+F 0 "#PWR0155" H 6450 6000 50  0001 C CNN
+F 1 "+3V3" H 6465 6323 50  0000 C CNN
+F 2 "" H 6450 6150 50  0001 C CNN
+F 3 "" H 6450 6150 50  0001 C CNN
+	1    6450 6150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+3V3 #PWR0156
+U 1 1 62762460
+P 8050 6800
+F 0 "#PWR0156" H 8050 6650 50  0001 C CNN
+F 1 "+3V3" H 8065 6973 50  0000 C CNN
+F 2 "" H 8050 6800 50  0001 C CNN
+F 3 "" H 8050 6800 50  0001 C CNN
+	1    8050 6800
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6600 5900 6600 5950
+Wire Wire Line
+	6450 6150 6450 6200
 $EndSCHEMATC

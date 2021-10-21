@@ -21,7 +21,7 @@
 #define TIMER_22050 1451-1
 #define TIMER_44100 726-1
 
-#define TIMER_ARR TIMER_11025
+#define TIMER_ARR TIMER_44100
 
 void SpeakerInit(DAC_HandleTypeDef * hdac, TIM_HandleTypeDef * htim);
 void DMAInit();

@@ -33,7 +33,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Src/tracker.h ../Core/Inc/speaker.h ../Core/Inc/leds.h \
+ ../Core/Inc/tracker.h ../Core/Inc/speaker.h ../Core/Inc/leds.h \
  ../Core/Inc/waveplayer.h
 
 ../Core/Inc/main.h:
@@ -112,7 +112,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../FATFS/Target/user_diskio.h:
 
-../Core/Src/tracker.h:
+../Core/Inc/tracker.h:
 
 ../Core/Inc/speaker.h:
 

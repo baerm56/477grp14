@@ -37,9 +37,9 @@ typedef enum
   WAVEPLAYER_EOF,
 }WAVEPLAYER_E;
 
-void WaveplayerInit(SPI_HandleTypeDef * hspi);
-void PlayAudio(DAC_HandleTypeDef * hdac, const char* filePath);
-void ProcessAudio(DAC_HandleTypeDef * hdac);
+void WaveplayerInit(SPI_HandleTypeDef * hspi, DAC_HandleTypeDef *hdac);
+void PlayAudio(const char* filePath);
+void ProcessAudio();
 int GetAudioStatus();
 void GetFile(const char* filePath);
 

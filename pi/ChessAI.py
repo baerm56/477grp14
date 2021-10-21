@@ -61,8 +61,10 @@ while not game.check_game_over():
             print("Not Valid CPU Move!")
             cpu_move = game.get_best_move()
         uart.send_data(str(cpu_move) + '-')
+        print(str(cpu_move) + '-')
     else:
-        player_move = uart.receive_data()
+        #player_move = uart.receive_data()
+        player_move = str(input())
         while not game.send_move(player_move):
             print("Not Valid Move!")
             time.sleep(0.5)

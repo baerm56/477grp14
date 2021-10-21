@@ -1,4 +1,5 @@
 #include "waveplayer.h"
+#include <string.h>
 
 static FIL wavFile;
 static FATFS FatFs;
@@ -12,10 +13,10 @@ static uint8_t isFinished = 0;
 
 static volatile WAVEPLAYER_E waveplayerStatus = WAVEPLAYER_IDLE;
 
-static void ResetAudio(DAC_HandleTypeDef * hdac){
+static void ResetAudio(){
 	audioRemainSize = 0;
 	playerReadBytes = 0;
-	HAL_DAC_Stop_DMA(hdac, DAC_CHANNEL_1);
+	memset(audioBuffer, 128, AUDIO_BUFFER_SIZE * sizeof(audioBuffer[0]));
 }
 
 void GetFile(const char* filePath){
@@ -31,21 +32,20 @@ void GetFile(const char* filePath){
 
 }
 
-void PlayAudio(DAC_HandleTypeDef * hdac, const char* filePath){
+void PlayAudio(const char* filePath){
 	GetFile(filePath);
 	isFinished = 0;
 
 	f_read(&wavFile, &audioBuffer[0], AUDIO_BUFFER_SIZE, &playerReadBytes);
 	audioRemainSize = fileLength - playerReadBytes - sizeof(WAV_Header);
 
-	HAL_DAC_Start_DMA(hdac, DAC_CHANNEL_1, (uint32_t *) audioBuffer, AUDIO_BUFFER_SIZE, DAC_ALIGN_8B_R);
 	while(!GetAudioStatus()){
-		ProcessAudio(hdac);
+		ProcessAudio();
 	}
 	HAL_Delay(200);
 }
 
-void ProcessAudio(DAC_HandleTypeDef * hdac){
+void ProcessAudio(){
 	switch(waveplayerStatus) {
 		case WAVEPLAYER_IDLE:
 			break;
@@ -77,7 +77,7 @@ void ProcessAudio(DAC_HandleTypeDef * hdac){
 		case WAVEPLAYER_EOF:
 			f_close(&wavFile);
 			f_mount(NULL, "", 0);
-			ResetAudio(hdac);
+			ResetAudio();
 			isFinished = 1;
 			waveplayerStatus = WAVEPLAYER_IDLE;
 	}
@@ -95,7 +95,7 @@ void HAL_DAC_ConvHalfCpltCallbackCh1(DAC_HandleTypeDef *hdac){
 	waveplayerStatus = WAVEPLAYER_HALFBUFFER;
 }
 
-void WaveplayerInit(SPI_HandleTypeDef * hspi){
+void WaveplayerInit(SPI_HandleTypeDef * hspi, DAC_HandleTypeDef *hdac){
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 
 	// SPI setup
@@ -126,4 +126,6 @@ void WaveplayerInit(SPI_HandleTypeDef * hspi){
 
 	MX_FATFS_Init();
 
+	memset(audioBuffer, 128, AUDIO_BUFFER_SIZE * sizeof(audioBuffer[0]));
+	HAL_DAC_Start_DMA(hdac, DAC_CHANNEL_1, (uint32_t *) audioBuffer, AUDIO_BUFFER_SIZE, DAC_ALIGN_8B_R);
 }

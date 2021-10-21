@@ -22,5 +22,7 @@ void LEDSInit(SPI_HandleTypeDef * hspi);
 void writeHexVal(SPI_HandleTypeDef * hspi1, uint8_t reg, uint8_t val);
 void ChessTimerLEDInit(SPI_HandleTypeDef * hspi);
 void writeTime(SPI_HandleTypeDef * hspi, int time, int player);
+void disableOutput(SPI_HandleTypeDef * hspi);
+void enableOutput(SPI_HandleTypeDef * hspi);
 
 #endif

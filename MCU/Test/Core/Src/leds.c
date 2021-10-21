@@ -16,6 +16,10 @@ void enableOutput(SPI_HandleTypeDef * hspi){
 	writeHexVal(hspi, LED_CONFIGURATION, 0x01);
 }
 
+void disableOutput(SPI_HandleTypeDef * hspi){
+	writeHexVal(hspi, LED_CONFIGURATION, 0x00);
+}
+
 void writeTime(SPI_HandleTypeDef * hspi, int time, int player){
 	int sec = time % 60;
 	int min = time / 60;
@@ -51,16 +55,16 @@ void LEDSInit(SPI_HandleTypeDef * hspi){
 	hspi->Init.CRCPolynomial = 10;
 	HAL_SPI_Init(hspi);
 
-	// Setting up PA4 for CS
-	__HAL_RCC_GPIOA_CLK_ENABLE();
+	// Setting up PB6 for CS
+	__HAL_RCC_GPIOB_CLK_ENABLE();
 
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 
-	GPIO_InitStruct.Pin = GPIO_PIN_5;
+	GPIO_InitStruct.Pin = GPIO_PIN_6;
 	GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+	HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
@@ -72,10 +76,9 @@ void ChessTimerLEDInit(SPI_HandleTypeDef * hspi){
 }
 
 void writeHexVal(SPI_HandleTypeDef * hspi, uint8_t reg, uint8_t val){
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 	HAL_SPI_Transmit(hspi, &reg, 1, 100);
 	HAL_SPI_Transmit(hspi, &val, 1, 100);
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
-	//HAL_Delay(100);
+	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_SET);
 }

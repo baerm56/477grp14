@@ -1,8 +1,0 @@
-#ifndef WAVEPLAYER_H_
-#define WAVEPLAYER_H
-
-#include "stm32l1xx_hal.h"
-
-void WaveplayerInit(SPI_HandleTypeDef * hspi);
-
-#endif /* WAVEPLAYER_H */

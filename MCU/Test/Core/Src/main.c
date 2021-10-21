@@ -36,7 +36,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define NS  128
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -52,12 +51,15 @@ SPI_HandleTypeDef hspi1;
 SPI_HandleTypeDef hspi2;
 
 TIM_HandleTypeDef htim2;
+TIM_HandleTypeDef htim4;
 
 /* USER CODE BEGIN PV */
+uint16_t timer_p1 = 300;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+static void MX_TIM4_Init(void);
 /* USER CODE BEGIN PFP */
 /* USER CODE END PFP */
 
@@ -88,34 +90,42 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 
-  /*char * audio[] = {"8bit8k.wav", "8bit11k.wav", "8bit22k.wav", "8bit441.wav"};
-  WaveplayerInit(&hspi2);
+  char * audio[] = {"max.wav", "tom.wav", "jazz.wav"};
   SpeakerInit(&hdac, &htim2);
-
-  PlayAudio(&hdac, audio[2]);
-  PlayAudio(&hdac, audio[1]); */
-
+  WaveplayerInit(&hspi2, &hdac);
 
   LEDSInit(&hspi1);
   ChessTimerLEDInit(&hspi1);
-  writeTime(&hspi1, 320, 0);
+  writeTime(&hspi1, timer_p1, 0);
+
+  HAL_TIM_Base_Start_IT(&htim4);
+
+  InitTracker();
+//  if(!ValidateStartPositions())
+//  {
+//	  /// @todo: cue audio to tell player the board is not set up correctly
+//  }
 
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  disableOutput(&hspi1);
+  PlayAudio(audio[1]);
+  enableOutput(&hspi1);
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  Track();
   }
   /* USER CODE END 3 */
 }
@@ -161,14 +171,53 @@ void SystemClock_Config(void)
   }
 }
 
+
 /**
-  * @brief DAC Initialization Function
+  * @brief TIM4 Initialization Function
   * @param None
   * @retval None
   */
+static void MX_TIM4_Init(void)
+{
+
+  /* USER CODE BEGIN TIM4_Init 0 */
+
+  /* USER CODE END TIM4_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM4_Init 1 */
+
+  /* USER CODE END TIM4_Init 1 */
+  htim4.Instance = TIM4;
+  htim4.Init.Prescaler = 32000-1;
+  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim4.Init.Period = 1000-1;
+  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM4_Init 2 */
+
+  /* USER CODE END TIM4_Init 2 */
+
+}
 
 /* USER CODE BEGIN 4 */
-
 /* USER CODE END 4 */
 
 /**
@@ -188,7 +237,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
+if (htim->Instance == TIM4){
+	timer_p1--;
+	writeTime(&hspi1, timer_p1, 0);
+}
   /* USER CODE END Callback 1 */
 }
 

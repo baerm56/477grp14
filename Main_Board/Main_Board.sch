@@ -2673,7 +2673,7 @@ F 3 "~" H 6600 6050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R9
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R9
 U 1 1 62263B47
 P 1000 9350
 F 0 "R9" V 1396 9272 50  0000 R CNN
@@ -2696,7 +2696,7 @@ S2[3]
 Text GLabel 2550 9350 3    50   Input ~ 0
 S2[2]
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R10
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R10
 U 1 1 62370C66
 P 1250 9350
 F 0 "R10" V 1646 9272 50  0000 R CNN
@@ -2713,7 +2713,7 @@ F 9 "CRCW040250K0FKED" H 1800 8700 50  0001 L CNN "Manufacturer_Part_Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R11
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R11
 U 1 1 623712AF
 P 1500 9350
 F 0 "R11" V 1896 9272 50  0000 R CNN
@@ -2730,7 +2730,7 @@ F 9 "CRCW040250K0FKED" H 2050 8700 50  0001 L CNN "Manufacturer_Part_Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R12
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R12
 U 1 1 623717A7
 P 1700 9350
 F 0 "R12" V 2096 9272 50  0000 R CNN
@@ -2747,7 +2747,7 @@ F 9 "CRCW040250K0FKED" H 2250 8700 50  0001 L CNN "Manufacturer_Part_Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R13
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R13
 U 1 1 62371BCC
 P 1950 9350
 F 0 "R13" V 2346 9272 50  0000 R CNN
@@ -2764,7 +2764,7 @@ F 9 "CRCW040250K0FKED" H 2500 8700 50  0001 L CNN "Manufacturer_Part_Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R14
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R14
 U 1 1 623720F0
 P 2150 9350
 F 0 "R14" V 2546 9272 50  0000 R CNN
@@ -2781,7 +2781,7 @@ F 9 "CRCW040250K0FKED" H 2700 8700 50  0001 L CNN "Manufacturer_Part_Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R15
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R15
 U 1 1 6237253B
 P 2350 9350
 F 0 "R15" V 2746 9272 50  0000 R CNN
@@ -2798,7 +2798,7 @@ F 9 "CRCW040250K0FKED" H 2900 8700 50  0001 L CNN "Manufacturer_Part_Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R16
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R16
 U 1 1 62372846
 P 2550 9350
 F 0 "R16" V 2946 9272 50  0000 R CNN
@@ -2815,7 +2815,7 @@ F 9 "CRCW040250K0FKED" H 3100 8700 50  0001 L CNN "Manufacturer_Part_Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L SamacSys_Parts:CRCW040250K0FKED R17
+L Main_Board-rescue:CRCW040250K0FKED-SamacSys_Parts R17
 U 1 1 62372D0D
 P 2750 9350
 F 0 "R17" V 3146 9272 50  0000 R CNN

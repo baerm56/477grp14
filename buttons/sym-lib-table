@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name 477parts)(type Legacy)(uri ${KIPRJMOD}/lib/477parts.lib)(options "")(descr ""))
+  (lib (name buttons-rescue)(type Legacy)(uri ${KIPRJMOD}/buttons-rescue.lib)(options "")(descr ""))
 )

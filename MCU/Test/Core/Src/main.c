@@ -112,7 +112,6 @@ int main(void)
 //	  /// @todo: cue audio to tell player the board is not set up correctly
 //  }
 
-
   /* USER CODE END 2 */
 
   /* Infinite loop */

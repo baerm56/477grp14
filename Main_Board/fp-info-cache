@@ -1,15 +1,36 @@
-3268309630442
-SamacSys_Parts
-NE555DR
-D (R-PDSO-G8)
-Integrated Circuit
+8171795543079
+Main_Board
+HDRV11W62P0X254_1X11_2794X240X853P
+77311-118-11LF
+Connector
 0
-8
-8
-SamacSys_Parts
-SOIC127P600X175-8N
-+soic d
-Integrated Circuit
+11
+11
+Main_Board
+PJ037A
+PJ-037A-1
+Connector
 0
-8
-8
+2
+2
+Main_Board
+PTS647SM50SMTR2LFS
+PTS647SM50SMTR2LFS-2
+Switch
+0
+4
+4
+Main_Board
+PinHeader_1x02_P2.54mm_Vertical
+Through hole straight pin header, 1x02, 2.54mm pitch, single row
+Through hole pin header THT 1x02 2.54mm single row
+0
+2
+2
+Main_Board
+RESC3116X70N
+ERJ-8GEYJ104V
+Resistor
+0
+2
+2

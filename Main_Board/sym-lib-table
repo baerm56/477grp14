@@ -6,5 +6,4 @@
   (lib (name zldo1117k33tc)(type Legacy)(uri ${KIPRJMOD}/libs/zldo1117k33tc.lib)(options "")(descr ""))
   (lib (name Main_Board-rescue)(type Legacy)(uri ${KIPRJMOD}/Main_Board-rescue.lib)(options "")(descr ""))
   (lib (name main_board_parts)(type Legacy)(uri ${KIPRJMOD}/footprints/main_board_parts.lib)(options "")(descr ""))
-  (lib (name Main_Board_1.2-rescue)(type Legacy)(uri ${KIPRJMOD}/Main_Board_1.2-rescue.lib)(options "")(descr ""))
 )

@@ -1,4 +1,4 @@
-update=10/13/2021 10:26:30 AM
+update=10/20/2021 04:55:50 PM
 version=1
 last_client=kicad
 [general]
@@ -25,11 +25,11 @@ ERC_TestSimilarLabels=1
 [pcbnew]
 version=1
 PageLayoutDescrFile=
-LastNetListRead=Main_Board_1.2.net
+LastNetListRead=Main_Board.net
 CopperLayerCount=4
 BoardThickness=1.6
 AllowMicroVias=0
-AllowBlindVias=1
+AllowBlindVias=0
 RequireCourtyardDefinitions=0
 ProhibitOverlappingCourtyards=0
 MinTrackWidth=0.2
@@ -42,11 +42,12 @@ TrackWidth1=0.25
 TrackWidth2=0.381
 TrackWidth3=0.508
 TrackWidth4=1.27
+TrackWidth5=3.5
 ViaDiameter1=0.8
 ViaDrill1=0.4
 ViaDiameter2=1.27
 ViaDrill2=0.635
-dPairWidth1=0.2
+dPairWidth1=0.2286
 dPairGap1=0.25
 dPairViaGap1=0.25
 SilkLineWidth=0.12
@@ -69,8 +70,8 @@ OthersTextSizeH=1
 OthersTextSizeThickness=0.15
 OthersTextItalic=0
 OthersTextUpright=1
-SolderMaskClearance=0.051
-SolderMaskMinWidth=0.25
+SolderMaskClearance=0
+SolderMaskMinWidth=0
 SolderPasteClearance=0
 SolderPasteRatio=-0
 [pcbnew/Layer.F.Cu]
@@ -79,11 +80,11 @@ Type=0
 Enabled=1
 [pcbnew/Layer.In1.Cu]
 Name=In1.Cu
-Type=0
+Type=1
 Enabled=1
 [pcbnew/Layer.In2.Cu]
 Name=In2.Cu
-Type=0
+Type=1
 Enabled=1
 [pcbnew/Layer.In3.Cu]
 Name=In3.Cu
@@ -248,7 +249,7 @@ ViaDiameter=0.8
 ViaDrill=0.4
 uViaDiameter=0.3
 uViaDrill=0.1
-dPairWidth=0.2
+dPairWidth=0.2286
 dPairGap=0.25
 dPairViaGap=0.25
 [pcbnew/Netclasses/1]

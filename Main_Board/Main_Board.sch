@@ -1765,17 +1765,11 @@ F 3 "~" H 1600 5950 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1600 5650 1600 5750
-Wire Wire Line
-	1600 5750 2100 5750
 Connection ~ 1600 5750
 Wire Wire Line
 	1600 5750 1600 5850
 Wire Wire Line
-	1600 6550 1800 6550
-Wire Wire Line
 	1800 6550 1800 6600
-Wire Wire Line
-	2200 6550 2100 6550
 Connection ~ 1800 6550
 $Comp
 L power:GND #PWR0123
@@ -1802,10 +1796,7 @@ F 3 "" H 1600 5350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2200 5750 2350 5750
-Wire Wire Line
 	2350 5750 2350 5700
-Connection ~ 2200 5750
 Text GLabel 2350 5700 1    50   Input ~ 0
 nRST
 Text GLabel 19700 7400 3    50   Input ~ 0
@@ -2090,26 +2081,20 @@ $EndComp
 $Comp
 L Main_Board-rescue:PTS647SM50SMTR2LFS-SamacSys_Parts nRST1
 U 1 1 627772E3
-P 2200 5750
-F 0 "nRST1" V 2554 5878 50  0000 L CNN
-F 1 "A" V 2645 5878 50  0001 L CNN
-F 2 "PTS647SM50SMTR2LFS" H 2850 5850 50  0001 L CNN
-F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 2850 5750 50  0001 L CNN
-F 4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" H 2850 5650 50  0001 L CNN "Description"
-F 5 "5.25" H 2850 5550 50  0001 L CNN "Height"
-F 6 "611-PTS647SM50SMTR2L" H 2850 5450 50  0001 L CNN "Mouser Part Number"
-F 7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" H 2850 5350 50  0001 L CNN "Mouser Price/Stock"
-F 8 "C & K COMPONENTS" H 2850 5250 50  0001 L CNN "Manufacturer_Name"
-F 9 "PTS647SM50SMTR2LFS" H 2850 5150 50  0001 L CNN "Manufacturer_Part_Number"
-	1    2200 5750
-	0    1    1    0   
+P 2550 6250
+F 0 "nRST1" V 2904 6378 50  0000 L CNN
+F 1 "A" V 2995 6378 50  0001 L CNN
+F 2 "PTS647SM50SMTR2LFS" H 3200 6350 50  0001 L CNN
+F 3 "https://www.ckswitches.com/media/2567/pts647.pdf" H 3200 6250 50  0001 L CNN
+F 4 "Tactile Switches 50mA 12VDC, 1.8N 5.0mm H, G leads" H 3200 6150 50  0001 L CNN "Description"
+F 5 "5.25" H 3200 6050 50  0001 L CNN "Height"
+F 6 "611-PTS647SM50SMTR2L" H 3200 5950 50  0001 L CNN "Mouser Part Number"
+F 7 "https://www.mouser.co.uk/ProductDetail/CK/PTS647SM50SMTR2LFS?qs=PqoDHHvF64%252BjK4ZB7f42kw%3D%3D" H 3200 5850 50  0001 L CNN "Mouser Price/Stock"
+F 8 "C & K COMPONENTS" H 3200 5750 50  0001 L CNN "Manufacturer_Name"
+F 9 "PTS647SM50SMTR2LFS" H 3200 5650 50  0001 L CNN "Manufacturer_Part_Number"
+	1    2550 6250
+	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	2200 5750 2100 5750
-Connection ~ 2100 5750
-Connection ~ 2100 6550
-Wire Wire Line
-	2100 6550 1800 6550
 Wire Wire Line
 	1600 6050 1600 6550
 $Comp
@@ -2977,4 +2962,31 @@ Wire Wire Line
 	6600 5900 6600 5950
 Wire Wire Line
 	6450 6150 6450 6200
+Wire Wire Line
+	1600 5750 2200 5750
+Wire Wire Line
+	2550 6150 2550 5800
+Wire Wire Line
+	2550 5800 2200 5800
+Wire Wire Line
+	2200 5800 2200 5750
+Connection ~ 2200 5750
+Wire Wire Line
+	2200 5750 2350 5750
+Wire Wire Line
+	2200 5800 1750 5800
+Wire Wire Line
+	1750 5800 1750 6150
+Connection ~ 2200 5800
+Wire Wire Line
+	1750 6250 1750 6550
+Wire Wire Line
+	1600 6550 1750 6550
+Connection ~ 1750 6550
+Wire Wire Line
+	1750 6550 1800 6550
+Wire Wire Line
+	2550 6250 2550 6550
+Wire Wire Line
+	1800 6550 2550 6550
 $EndSCHEMATC

@@ -1,75 +1,132 @@
+#include <math.h>
 #include "tracker.h"
+#include "pathfinder.h"
+#include "types.h"
+#include "leds.h"
 
-volatile static struct Piece Chessboard[NUM_ROWS][NUM_COLS];
-volatile static enum PieceOwner CurrentTurn;
-volatile static enum TransitionType LastTransitionType;
-volatile static struct PieceCoordinate LastPickedUpPiece;
+// Debouncing //
+static void AppendHistory(uint8_t row, uint8_t column, uint8_t cellValue);
+static uint8_t IsHistoryConsensus(uint8_t row, uint8_t column);
+
+// Placement Handlers //
+static void HandlePlace(struct PieceCoordinate placedPiece);
+static void HandlePlaceIllegalState(struct PieceCoordinate placedPiece);
+static void HandlePlaceKill(struct PieceCoordinate placedPiece);
+static void HandlePlaceCastling(struct PieceCoordinate placedPiece);
+static void HandlePlaceMove(struct PieceCoordinate placedPiece);
+static void HandlePlaceNoMove(struct PieceCoordinate placedPiece);
+static void HandlePlacePreemptPromotion(struct PieceCoordinate placedPiece);
+static void HandlePlacePromotion(struct PieceCoordinate placedPiece);
+
+// Pickup Handlers //
+static void HandlePickup(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupIllegalState(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupPreemptKill(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupKill(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupCastling(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupMove(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupPromotion(struct PieceCoordinate pickedUpPiece);
+
+// Internal Updaters //
+static void UpdateCastleFlags();
+static void AddIllegalPiece(struct PieceCoordinate current, struct PieceCoordinate destination);
+static void RemoveIllegalPiece(uint8_t index);
+static void CheckChessboardValidity(uint8_t switchTurns);
+static void EndTurn();
+static void SetPiece(uint8_t row, uint8_t column, struct Piece piece);
+static void SetPieceCoordinate(struct PieceCoordinate pieceCoordinate);
+static void ClearPiece(struct PieceCoordinate* pieceCoordinate);
+static void CheckForPromotion();
+
+// Legal Move Detection //
+static uint8_t ValidateMove(struct PieceCoordinate from, struct PieceCoordinate to);
+static uint8_t ValidateKill(struct PieceCoordinate victim, struct PieceCoordinate killer);
+static uint8_t ValidateCastling(struct PieceCoordinate rook, struct PieceCoordinate king);
+static uint8_t DidOtherTeamPickupLast(struct Piece piece);
+static uint8_t DidSameTeamPickupLast(struct Piece piece);
+
+// Utilities //
+static uint8_t PawnReachedEnd(struct PieceCoordinate pieceCoordinate);
+static uint8_t PieceExists(struct PieceCoordinate placedPiece);
+static void GetPiecesForTeam(enum PieceOwner team, enum PieceType type, struct PieceCoordinate* pieces, uint8_t* numPieces);
+
+// Debouncing //
+uint8_t History[NUM_ROWS][NUM_COLS][NUM_HISTORY_ENTRIES];
+
+// State Fields //
+static struct Piece Chessboard[NUM_ROWS][NUM_COLS];
+static enum PieceOwner CurrentTurn;
+static enum TransitionType LastTransitionType;
+static struct PieceCoordinate LastPickedUpPiece;
+
+// Legal Piece Detection/Recovery Fields //
+static struct PieceCoordinate PieceToKill;
+static struct IllegalMove IllegalPieces[NUM_ILLEGAL_PIECES];
+static uint8_t NumIllegalPieces;
+static uint8_t SwitchTurnsAfterLegalState;
+
+// Castling //
+static uint8_t CanA1Castle;
+static uint8_t CanH1Castle;
+static uint8_t CanA8Castle;
+static uint8_t CanH8Castle;
+static uint8_t CanWhiteKingCastle;
+static uint8_t CanBlackKingCastle;
 static struct PieceCoordinate ExpectedKingCastleCoordinate;
 static struct PieceCoordinate ExpectedRookCastleCoordinate;
 
-static void InitGPIO_Pin(struct GPIO_Pin pin, uint32_t mode, uint32_t pull)
-{
-	// Enable GPIO Bus
-	if(pin.bus == GPIOA)
-	{
-	    __HAL_RCC_GPIOA_CLK_ENABLE();
-	}
-	else if(pin.bus == GPIOB)
-	{
-	    __HAL_RCC_GPIOB_CLK_ENABLE();
-	}
-	else if(pin.bus == GPIOC)
-	{
-	    __HAL_RCC_GPIOC_CLK_ENABLE();
-	}
-	else
-	{
-	    __HAL_RCC_GPIOD_CLK_ENABLE();
-	}
+// Promotion //
+static struct PieceCoordinate PawnToPromote;
 
-    if(mode == GPIO_MODE_OUTPUT_PP)
-    {
-        HAL_GPIO_WritePin(pin.bus, pin.pin, GPIO_PIN_RESET);
-    }
-
-    // Configure GPIO
-    GPIO_InitTypeDef GPIO_InitStruct = {0};
-	GPIO_InitStruct.Pin = pin.pin;
-	GPIO_InitStruct.Mode = mode;
-	GPIO_InitStruct.Pull = pull;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-	HAL_GPIO_Init(pin.bus, &GPIO_InitStruct);
-}
+// Integration //
+extern SPI_HandleTypeDef hspi1; // LED matrix controller
 
 void InitTracker()
 {
 	// Initialize globals
-	LastPickedUpPiece = EMPTY_PIECE_COORDINATE;
-	ExpectedKingCastleCoordinate = EMPTY_PIECE_COORDINATE;
-	ExpectedRookCastleCoordinate = EMPTY_PIECE_COORDINATE;
 	LastTransitionType = PLACE;
 	CurrentTurn = WHITE;
+	CanA1Castle = 1;
+	CanH1Castle = 1;
+	CanA8Castle = 1;
+	CanH8Castle = 1;
+	CanWhiteKingCastle = 1;
+	CanBlackKingCastle = 1;
+	SwitchTurnsAfterLegalState = 0;
 
-	// Initialize output column bits IO and the chessboard data structure
-	for(uint8_t columnBit = 0; columnBit < NUM_COL_BITS; columnBit++)
-	{
-		InitGPIO_Pin(COLUMN_BIT_TO_PIN_TABLE[columnBit], GPIO_MODE_OUTPUT_PP, GPIO_NOPULL);
-	}
+	ClearPiece(&LastPickedUpPiece);
+	ClearPiece(&PieceToKill);
+	ClearPiece(&ExpectedKingCastleCoordinate);
+	ClearPiece(&ExpectedRookCastleCoordinate);
+	ClearPiece(&PawnToPromote);
 
-	// Initialize input rows
-	for(uint8_t row = 0; row < NUM_ROWS; row++)
+	// Initialize the Chessboard to the initial chessboard and zero the debouncing Histroy array
+	for (uint8_t column = 0; column < NUM_COLS; column++)
 	{
-		InitGPIO_Pin(ROW_NUMBER_TO_PIN_TABLE[row], GPIO_MODE_INPUT, GPIO_NOPULL);
-	}
-
-	// Initialize the board data structure to the initial chessboard
-	for(uint8_t column = 0; column < NUM_COLS; column++)
-	{
-		for(uint8_t row = 0; row < NUM_ROWS; row++)
+		for (uint8_t row = 0; row < NUM_ROWS; row++)
 		{
 			Chessboard[row][column] = INITIAL_CHESSBOARD[row][column];
+
+			for(uint8_t i = 0; i < NUM_HISTORY_ENTRIES; i++)
+			{
+				History[row][column][i] = 0;
+			}
 		}
 	}
+
+	// Initialize illegal piece destinations to empty pieces
+	NumIllegalPieces = 0;
+	for (uint8_t i = 0; i < NUM_ILLEGAL_PIECES; i++)
+	{
+		IllegalPieces[i].destination = EMPTY_PIECE_COORDINATE;
+		IllegalPieces[i].current = EMPTY_PIECE_COORDINATE;
+	}
+
+	// Initialize debouncing history array
+
+
+	// Initialize PathFinder
+	CalculateTeamsLegalMoves(CurrentTurn);
 }
 
 static void WriteColumn(uint8_t column)
@@ -83,163 +140,524 @@ static void WriteColumn(uint8_t column)
 	HAL_GPIO_WritePin(COLUMN_BIT_TO_PIN_TABLE[2].bus, COLUMN_BIT_TO_PIN_TABLE[2].pin, columnBit2);
 }
 
-static GPIO_PinState ReadRow(uint8_t rowNumber)
+static uint8_t ReadRow(uint8_t rowNumber)
 {
 	struct GPIO_Pin rowPin = ROW_NUMBER_TO_PIN_TABLE[rowNumber];
-	GPIO_PinState value = HAL_GPIO_ReadPin(rowPin.bus, rowPin.pin);
-
-	return value;
+	return HAL_GPIO_ReadPin(rowPin.bus, rowPin.pin);
 }
 
-void HandleLowToHigh(struct PieceCoordinate pieceCoordinate)
+uint8_t Track()
 {
-	// Don't do anything except update board if piece did not move
-	if(IsPieceCoordinateSamePosition(pieceCoordinate, LastPickedUpPiece))
-	{
-		SetPiece(pieceCoordinate.row, pieceCoordinate.column, LastPickedUpPiece.piece);
-		LastTransitionType = PLACE;
-		return;
-	}
+	uint8_t transitionOccured = 0;
 
-	// If player filled the expected position of the KING during castle
-	if(IsPieceCoordinateSamePosition(ExpectedKingCastleCoordinate, pieceCoordinate))
+	for (uint8_t column = 0; column < NUM_COLS; column++)
 	{
-		SetPiece(pieceCoordinate.row, pieceCoordinate.column, ExpectedKingCastleCoordinate.piece);
-		ExpectedKingCastleCoordinate = EMPTY_PIECE_COORDINATE;
+		WriteColumn(column);
 
-		// If ROOK finished castle as well, switch turns
-		if(IsPieceCoordinateEqual(ExpectedRookCastleCoordinate, EMPTY_PIECE_COORDINATE))
+		for (uint8_t row = 0; row < NUM_ROWS; row++)
 		{
-			SwitchTeam();
+			uint8_t cellValue = ReadRow(row);
+
+			// Add cellValue to front of History array for this cell
+			AppendHistory(row, column, cellValue);
+
+			// If the History of this cell is all the same value, then we can consider it for a transition
+			if(IsHistoryConsensus(row, column))
+			{
+				struct PieceCoordinate currentPieceCoordinate = GetPieceCoordinate(row, column);
+
+				// If there was no piece here but the IO is HIGH, a piece was placed
+				if ((currentPieceCoordinate.piece.type == NONE) && (cellValue == 1))
+				{
+					HandlePlace(currentPieceCoordinate);
+					transitionOccured = 1;
+				}
+
+				// If there was a piece here but the IO is LOW, a piece has been picked up
+				else if ((currentPieceCoordinate.piece.type != NONE) && (cellValue == 0))
+				{
+					HandlePickup(currentPieceCoordinate);
+					transitionOccured = 1;
+				}
+			}
 		}
 	}
-	// If player filled the expected position of the ROOK during castle
-	else if(IsPieceCoordinateSamePosition(ExpectedRookCastleCoordinate, pieceCoordinate))
-	{
-		SetPiece(pieceCoordinate.row, pieceCoordinate.column, ExpectedRookCastleCoordinate.piece);
-		ExpectedRookCastleCoordinate = EMPTY_PIECE_COORDINATE;
 
-		// If KING finished castle as well, switch turns
-		if(IsPieceCoordinateEqual(ExpectedKingCastleCoordinate, EMPTY_PIECE_COORDINATE))
+	return transitionOccured;
+}
+
+static void AppendHistory(uint8_t row, uint8_t column, uint8_t cellValue)
+{
+	// Append cellValue to front of History array
+	for(int8_t i = NUM_HISTORY_ENTRIES - 1; i > 0; i--)
+	{
+		History[row][column][i] = History[row][column][i - 1];
+	}
+	History[row][column][0] = cellValue;
+}
+
+static uint8_t IsHistoryConsensus(uint8_t row, uint8_t column)
+{
+	// If any two History values are the same, there is not a consensus
+	for(uint8_t i = 0; i < NUM_HISTORY_ENTRIES - 1; i++)
+	{
+		if(History[row][column][i] != History[row][column][i + 1])
 		{
-			SwitchTeam();
+			return 0;
 		}
 	}
+
+	return 1;
+}
+
+static void HandlePlace(struct PieceCoordinate placedPiece)
+{
+	// If board is in illegal state
+	if (NumIllegalPieces > 0)
+	{
+		HandlePlaceIllegalState(placedPiece);
+	}
+
+	// If promotion is occurring, this placed piece must be a knight or queen placed into PawnToPromote's place
+	else if (PieceExists(PawnToPromote))
+	{
+		HandlePlacePromotion(placedPiece);
+	}
+
+	// If the piece lifted did not move, don't do anything except update Chessboard
+	else if (IsPieceCoordinateSamePosition(placedPiece, LastPickedUpPiece))
+	{
+		HandlePlaceNoMove(placedPiece);
+	}
+
+	// If there's a piece being killed, this placement should be in its stead
+	else if (PieceExists(PieceToKill))
+	{
+		HandlePlaceKill(placedPiece);
+	}
+
+	// If player is castling, this placement should be the king or rook being placed in the right spots
+	else if (PieceExists(ExpectedKingCastleCoordinate) || PieceExists(ExpectedRookCastleCoordinate))
+	{
+		HandlePlaceCastling(placedPiece);
+	}
+
 	// Any other move, the last picked up piece is set to this position
 	else
 	{
-		SetPiece(pieceCoordinate.row, pieceCoordinate.column, LastPickedUpPiece.piece);
-		SwitchTeam();
+		HandlePlaceMove(placedPiece);
 	}
-
-	// Calculate/Handle Checkmate //
-	/// @todo
 
 	LastTransitionType = PLACE;
 }
 
-void HandleHighToLow(struct PieceCoordinate pieceCoordinate)
+static void HandlePlaceIllegalState(struct PieceCoordinate placedPiece)
 {
-	SetPiece(pieceCoordinate.row, pieceCoordinate.column, EMPTY_PIECE);
-
-	// Handle Killing //
-
-	// Other team picked up piece right before picking up this team's piece - either killing this piece or illegal
-	if(DidOtherTeamPickupLast(pieceCoordinate.piece))
+	for (uint8_t i = 0; i < NumIllegalPieces; i++)
 	{
-		KillPiece(pieceCoordinate.piece);
-
-		/// @todo Expect LastPickedUpPiece to be placed in pieceCoordinate's place
-		return;
-	}
-
-
-	// Handle Castling //
-
-	// Same team picked up piece twice in a row - either castling or illegal
-	if(DidSameTeamPickupLast(pieceCoordinate.piece))
-	{
-		// If current piece picked up is ROOK and last piece was KING or vice versa, castling is occurring
-		if(pieceCoordinate.piece.type == ROOK && LastPickedUpPiece.piece.type == KING)
+		// If placing an illegal piece in it's proper destination, remove it from the illegal pieces array
+		if (IsPieceCoordinateSamePosition(IllegalPieces[i].destination, placedPiece))
 		{
-			CalculateCastlingPositions(pieceCoordinate, &ExpectedKingCastleCoordinate, &ExpectedRookCastleCoordinate);
-		}
-		else if(pieceCoordinate.piece.type == KING && LastPickedUpPiece.piece.type == ROOK)
-		{
-			CalculateCastlingPositions(LastPickedUpPiece, &ExpectedKingCastleCoordinate, &ExpectedRookCastleCoordinate);
-		}
-		else
-		{
-			/// @todo Illegal move, cannot have two picked up pieces at the same time that aren't ROOK/KING
+			SetPiece(placedPiece.row, placedPiece.column, IllegalPieces[i].destination.piece);
+
+			// Remove from illegal pieces array
+			RemoveIllegalPiece(i);
+
+			// If chessboard is valid, switch turns if flagged to do so
+			CheckChessboardValidity(SwitchTurnsAfterLegalState);
+
+			return;
 		}
 	}
 
-	// Handle Promotion //
-	/// @todo
+	// A piece was placed in an unexpected destination, add it as an illegal piece that must be removed from the board
+	AddIllegalPiece(placedPiece, OFFBOARD_PIECE_COORDINATE);
+}
+
+static void HandlePlaceNoMove(struct PieceCoordinate placedPiece)
+{
+	SetPiece(placedPiece.row, placedPiece.column, LastPickedUpPiece.piece);
+}
+
+static void HandlePlaceKill(struct PieceCoordinate placedPiece)
+{
+	SetPiece(placedPiece.row, placedPiece.column, LastPickedUpPiece.piece);
+
+	// If player put killer in victim's place, clear PieceToKill
+	if (IsPieceCoordinateSamePosition(PieceToKill, placedPiece))
+	{
+		ClearPiece(&PieceToKill);
+		EndTurn();
+	}
+	// If player didn't put killer in the victim's spot, must put the killer in the victim spot
+	else
+	{
+		// Put killer in victim spot
+		struct PieceCoordinate killerDestination = PieceToKill;
+		killerDestination.piece = LastPickedUpPiece.piece;
+		AddIllegalPiece(placedPiece, killerDestination);
+		SwitchTurnsAfterLegalState = 1;
+	}
+}
+
+static void HandlePlaceCastling(struct PieceCoordinate placedPiece)
+{
+	// If placing a piece in the King's expected location, assume it's a king and place it
+	if (IsPieceCoordinateSamePosition(ExpectedKingCastleCoordinate, placedPiece))
+	{
+		SetPiece(placedPiece.row, placedPiece.column, ExpectedKingCastleCoordinate.piece);
+		ClearPiece(&ExpectedKingCastleCoordinate);
+	}
+	// If placing a piece in the Rook's expected location, assume it's a rook and place it
+	else if (IsPieceCoordinateSamePosition(ExpectedRookCastleCoordinate, placedPiece))
+	{
+		SetPiece(placedPiece.row, placedPiece.column, ExpectedRookCastleCoordinate.piece);
+		ClearPiece(&ExpectedRookCastleCoordinate);
+	}
+	// If placing piece in wrong location
+	else
+	{
+		// If King wasn't already placed in correct spot, put it in the correct spot
+		if (PieceExists(ExpectedKingCastleCoordinate))
+		{
+			SetPiece(placedPiece.row, placedPiece.column, ExpectedKingCastleCoordinate.piece); // Assume the king was placed here (doesn't matter)
+			AddIllegalPiece(placedPiece, ExpectedKingCastleCoordinate);
+			SwitchTurnsAfterLegalState = 1;
+		}
+
+		// If Rook wasn't already placed in correct spot, put it in correct spot
+		if (PieceExists(ExpectedRookCastleCoordinate))
+		{
+			SetPiece(placedPiece.row, placedPiece.column, ExpectedRookCastleCoordinate.piece); // Assume the rook was placed here (doesn't matter)
+			AddIllegalPiece(placedPiece, ExpectedRookCastleCoordinate);
+			SwitchTurnsAfterLegalState = 1;
+		}
+	}
+
+	// If castling has been fulfilled
+	if (!PieceExists(ExpectedKingCastleCoordinate) && !PieceExists(ExpectedRookCastleCoordinate))
+	{
+		EndTurn();
+	}
+}
+
+static void HandlePlaceMove(struct PieceCoordinate placedPiece)
+{
+	uint8_t isMoveValid = ValidateMove(LastPickedUpPiece, placedPiece);
+	SetPiece(placedPiece.row, placedPiece.column, LastPickedUpPiece.piece);
+
+	if (isMoveValid)
+	{
+		EndTurn();
+	}
+	// If move was invalid, put piece back
+	else
+	{
+		AddIllegalPiece(placedPiece, LastPickedUpPiece);
+	}
+}
+
+static void HandlePlacePreemptPromotion(struct PieceCoordinate placedPiece)
+{
+	PawnToPromote = placedPiece;
+}
+
+static void HandlePlacePromotion(struct PieceCoordinate placedPiece)
+{
+	// If placed the promoted piece back into the pawn's old spot, get the PieceType (knight or queen) from the stored button state and set the piece as that type
+	if (IsPieceCoordinateSamePosition(placedPiece, PawnToPromote))
+	{
+		/// @todo get button data, and set the right piececoordinate to the right PieceType
+		struct Piece promotedPiece = {QUEEN, CurrentTurn};
+		SetPiece(placedPiece.row, placedPiece.column, promotedPiece);
+		ClearPiece(&PawnToPromote);
+		EndTurn();
+	}
+
+	// If player doesn't place the promotion into the pawn's old spot, it must be placed in the right spot
+	else
+	{
+		AddIllegalPiece(placedPiece, PawnToPromote);
+	}
+}
 
 
 
-	LastPickedUpPiece = pieceCoordinate;
+static void HandlePickup(struct PieceCoordinate pickedUpPiece)
+{
+	SetPiece(pickedUpPiece.row, pickedUpPiece.column, EMPTY_PIECE);
+
+	// If a piece is picked up during an illegal state, if it's not an illegal piece it is NOW illegal
+	if (NumIllegalPieces > 0)
+	{
+		HandlePickupIllegalState(pickedUpPiece);
+	}
+
+	// If player picked up piece from other team, they will kill it
+	else if (pickedUpPiece.piece.owner != CurrentTurn)
+	{
+		HandlePickupPreemptKill(pickedUpPiece);
+	}
+
+	// If there's a piece to kill, this picked up piece must be able to kill it
+	else if (PieceExists(PieceToKill))
+	{
+		HandlePickupKill(pickedUpPiece);
+	}
+
+	// If there's a pawn to promote, the picked up piece must be this pawn
+	else if (PieceExists(PawnToPromote))
+	{
+		HandlePickupPromotion(pickedUpPiece);
+	}
+
+	// Same team picked up piece twice in a row, so castling is occurring
+	else if (DidSameTeamPickupLast(pickedUpPiece.piece))
+	{
+		HandlePickupCastling(pickedUpPiece);
+	}
+
+	// If simple pickup
+	else
+	{
+		HandlePickupMove(pickedUpPiece);
+	}
+
+	LastPickedUpPiece = pickedUpPiece;
 	LastTransitionType = PICKUP;
 }
 
-void Track()
+static void HandlePickupIllegalState(struct PieceCoordinate pickedUpPiece)
 {
-	for(uint8_t column = 0; column < NUM_COLS; column++)
+	for (uint8_t i = 0; i < NumIllegalPieces; i++)
 	{
-		WriteColumn(column);
-
-		for(uint8_t row = 0; row < NUM_ROWS; row++)
+		// If pickup for illegal piece, let it slide
+		if (IsPieceCoordinateEqual(IllegalPieces[i].current, pickedUpPiece))
 		{
-			GPIO_PinState cellValue = ReadRow(row);
-
-			struct PieceCoordinate currentPieceCoordinate = {
-				.piece = GetPiece(row, column),
-				.row = row,
-				.column = column
-			};
-
-			// If there was no piece here but the IO is HIGH, a previously picked-up piece was placed
-			if((currentPieceCoordinate.piece.type == NONE) && (cellValue == GPIO_PIN_SET))
+			// If pickup an illegal piece which is to be removed from the board is picked up, it is no longer illegal
+			if (IsPieceCoordinateEqual(IllegalPieces[i].destination, OFFBOARD_PIECE_COORDINATE))
 			{
-				HandleLowToHigh(currentPieceCoordinate);
-			}
+				// Remove from illegal pieces array
+				RemoveIllegalPiece(i);
 
-			// If there was a piece here but the IO is LOW, a piece has been picked up
-			else if ((currentPieceCoordinate.piece.type != NONE) && (cellValue == GPIO_PIN_RESET))
-			{
-				HandleHighToLow(currentPieceCoordinate);
+				// If chessboard is valid, switch turns if flagged to do so
+				CheckChessboardValidity(SwitchTurnsAfterLegalState);
 			}
+			return;
 		}
 	}
+
+	// Player picked up a piece that wasn't illegal, so it must be added as an illegal piece which must be placed back
+	AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
+}
+
+static void HandlePickupPreemptKill(struct PieceCoordinate pickedUpPiece)
+{
+	PieceToKill = pickedUpPiece;
+}
+
+static void HandlePickupKill(struct PieceCoordinate pickedUpPiece)
+{
+	// If piece can't kill PieceToKill, they need to be put back to their initial positions, and PieceToKill is not a piece to kill anymore
+	if (!ValidateKill(PieceToKill, pickedUpPiece))
+	{
+		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, PieceToKill);
+		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
+		ClearPiece(&PieceToKill);
+	}
+}
+
+static void HandlePickupCastling(struct PieceCoordinate pickedUpPiece)
+{
+	struct PieceCoordinate rook;
+	struct PieceCoordinate king;
+
+	if (pickedUpPiece.piece.type == ROOK && LastPickedUpPiece.piece.type == KING)
+	{
+		rook = pickedUpPiece;
+		king = LastPickedUpPiece;
+	}
+	else if (pickedUpPiece.piece.type == KING && LastPickedUpPiece.piece.type == ROOK)
+	{
+		rook = LastPickedUpPiece;
+		king = pickedUpPiece;
+	}
+	// If the past two picked up pieces aren't a king and rook, put them back
+	else
+	{
+		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
+		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, LastPickedUpPiece);
+		return;
+	}
+
+	if (ValidateCastling(rook, king))
+	{
+		struct PieceCoordinate expectedKingPieceCoordinate;
+		struct PieceCoordinate expectedRookPieceCoordinate;
+		CalculateCastlingPositions(rook, &expectedKingPieceCoordinate, &expectedRookPieceCoordinate);
+
+		// If castling won't result in a self-check then it's valid so copy to globals. Otherwise fall through to AddIllegalPiece.
+		if (!WillResultInSelfCheck(rook, expectedRookPieceCoordinate) && !WillResultInSelfCheck(king, expectedKingPieceCoordinate))
+		{
+			ExpectedKingCastleCoordinate = expectedKingPieceCoordinate;
+			ExpectedRookCastleCoordinate = expectedRookPieceCoordinate;
+			return;
+		}
+	}
+
+	AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
+	AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, LastPickedUpPiece);
+}
+
+static void HandlePickupPromotion(struct PieceCoordinate pickedUpPiece)
+{
+	// All picked up pieces during a promotion must be the PawnToPromote, otherwise they must be placed back
+	if (!IsPieceCoordinateEqual(pickedUpPiece, PawnToPromote))
+	{
+		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
+	}
+}
+
+static void HandlePickupMove(struct PieceCoordinate pickedUpPiece)
+{
+	// If this piece isn't owned by the current team, then they must put it back down
+	if (pickedUpPiece.piece.owner != CurrentTurn)
+	{
+		AddIllegalPiece(EMPTY_PIECE_COORDINATE, pickedUpPiece);
+	}
+	else
+	{
+		// Calculate all legal paths
+		struct Coordinate allLegalPaths[MAX_LEGAL_MOVES];
+		uint8_t numLegalPaths;
+		CalculateAllLegalPathsAndChecks(pickedUpPiece, allLegalPaths, &numLegalPaths);
+
+		// Illuminate legal paths on LEDs
+		uint8_t board[NUM_ROWS][NUM_COLS] = {0};
+		for(uint8_t i = 0; i < numLegalPaths; i++)
+		{
+			struct Coordinate legalPath = allLegalPaths[i];
+			board[legalPath.row][legalPath.column] = 1;
+		}
+		writeBoardValue(&hspi1, board);
+	}
+}
+
+
+/**
+ * @brief Put an illegal piece in the IllegalPieceDestinations array. Destination is the correct destination of the piece and Current is the current position of the piece.
+ */
+static void AddIllegalPiece(struct PieceCoordinate current, struct PieceCoordinate destination)
+{
+	current.piece = destination.piece;
+
+	IllegalPieces[NumIllegalPieces].current = current;
+	IllegalPieces[NumIllegalPieces].destination = destination;
+	NumIllegalPieces++;
+}
+
+/**
+ * @brief Remove illegal piece from IllegalPieces array given its index
+ */
+static void RemoveIllegalPiece(uint8_t index)
+{
+	NumIllegalPieces--;
+	for (uint8_t i = index; i < NumIllegalPieces; i++)
+	{
+		IllegalPieces[i] = IllegalPieces[i + 1];
+	}
+}
+
+/**
+ * @brief Check if chessboard is valid and switch turns if flagged to do so
+ */
+static void CheckChessboardValidity(uint8_t switchTurns)
+{
+	if (NumIllegalPieces == 0)
+	{
+		if (switchTurns)
+		{
+			EndTurn();
+		}
+	}
+}
+
+/**
+ * @brief Return 1 if the given killer can take the victim, 0 otherwise. If the victim cannot be killed, then this is an illegal/impossible kill
+ * so the victim and killer must return to their original spots, and a new move must be done.
+ */
+static uint8_t ValidateKill(struct PieceCoordinate victim, struct PieceCoordinate killer)
+{
+	// Temporarily add back victim and then check if it can be killed (need to be done for PAWN)
+	SetPieceCoordinate(victim);
+
+	uint8_t valid = ValidateMove(killer, victim);
+
+	// Clear victim again
+	victim.piece = EMPTY_PIECE;
+	SetPieceCoordinate(victim);
+
+	return valid;
+}
+
+/**
+ * @brief Return 1 if the "to" is in the legal paths for "from", 0 otherwise. If the move is invalid, then the "from" must be placed back
+ * in its original spot, and a new move must be done.
+ */
+static uint8_t ValidateMove(struct PieceCoordinate from, struct PieceCoordinate to)
+{
+	return IsLegalMove(from, to);
+}
+
+/**
+ * @brief Return 1 if the given rook can castle with the given king. If not, they should return to their original positions.
+ */
+static uint8_t ValidateCastling(struct PieceCoordinate rook, struct PieceCoordinate king)
+{
+	// If white king can castle and the king and rook are in the starting row
+	if (king.row == 0 && rook.row == 0 && CanWhiteKingCastle)
+	{
+		return (rook.column == 0 && CanA1Castle) || (rook.column == 7 && CanH1Castle);
+	}
+	// If black king can castle and the king and rook are in the starting row
+	else if (king.row == 7 && rook.row == 7 && CanBlackKingCastle)
+	{
+		return (rook.column == 0 && CanA8Castle) || (rook.column == 7 && CanH8Castle);
+	}
+	return 0;
 }
 
 uint8_t ValidateStartPositions()
 {
-	for(uint8_t columnNumber = 0; columnNumber < NUM_COLS; columnNumber++)
+#ifdef TEST
+	WriteColumn(0);
+	uint8_t cellValue = ReadRow(0);
+	return (cellValue == 1);
+#else
+	for (uint8_t columnNumber = 0; columnNumber < NUM_COLS; columnNumber++)
 	{
 		WriteColumn(columnNumber);
-		for(uint8_t rowNumber = 0; rowNumber < NUM_ROWS; rowNumber++)
+		for (uint8_t rowNumber = 0; rowNumber < NUM_ROWS; rowNumber++)
 		{
 			GPIO_PinState cellValue = ReadRow(rowNumber);
 
-			switch(rowNumber)
+			switch (rowNumber)
 			{
 
-			// Make sure rows 0, 1, 6, 7 are all filled with pieces
+				// Make sure rows 0, 1, 6, 7 are all filled with pieces
 			case 0:
 			case 1:
 			case 6:
 			case 7:
-				if(cellValue == GPIO_PIN_RESET)
+				if (cellValue == GPIO_PIN_RESET)
 				{
 					return 0;
 				}
 				break;
 
-			// Make sure other rows do not have a piece
+				// Make sure other rows do not have a piece
 			default:
-				if(cellValue == GPIO_PIN_SET)
+				if (cellValue == GPIO_PIN_SET)
 				{
 					return 0;
 				}
@@ -248,85 +666,132 @@ uint8_t ValidateStartPositions()
 	}
 
 	return 1;
+#endif // TEST
 }
 
-void SwitchTeam()
+void TestLEDs()
 {
-	/// @todo Invoke necessary peripherals to switch teams
-}
+	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
 
-void CalculateCastlingPositions(
-		struct PieceCoordinate rookPieceCoordinate,
-		struct PieceCoordinate* expectedKingPieceCoordinate, struct PieceCoordinate* expectedRookPieceCoordinate)
-{
-	// Fill in the piece attributes
-	expectedKingPieceCoordinate->piece.owner = rookPieceCoordinate.piece.owner;
-	expectedRookPieceCoordinate->piece.owner = rookPieceCoordinate.piece.owner;
-	expectedKingPieceCoordinate->piece.type = KING;
-	expectedRookPieceCoordinate->piece.type = ROOK;
-
-	// Calculate expected ROOK and KING columns
-	if(rookPieceCoordinate.column == 0)
+	for(uint8_t column = 0; column < NUM_COLS; column++)
 	{
-		expectedKingPieceCoordinate->column = 2;
-		expectedRookPieceCoordinate->column = 3;
-	}
-	else if(rookPieceCoordinate.column == 7)
-	{
-		expectedKingPieceCoordinate->column = 6;
-		expectedRookPieceCoordinate->column = 5;
-	}
-
-	// Calculate expected ROOK and KING rows
-	if(rookPieceCoordinate.piece.owner == WHITE)
-	{
-		expectedKingPieceCoordinate->row = expectedRookPieceCoordinate->row = 0;
-	}
-	else if(rookPieceCoordinate.piece.owner == BLACK)
-	{
-		expectedKingPieceCoordinate->row = expectedRookPieceCoordinate->row = 7;
-	}
-}
-
-
-
-uint8_t KingCanCastle(struct PieceCoordinate kingCoordinate)
-{
-	if(kingCoordinate.column == 4)
-	{
-		if(kingCoordinate.piece.owner == WHITE && kingCoordinate.row == 0)
+		WriteColumn(column);
+		for(uint8_t row = 0; row < NUM_ROWS; row++)
 		{
-			return 1;
-		}
-		else if(kingCoordinate.piece.owner == BLACK && kingCoordinate.row == 7)
-		{
-			return 1;
+			GPIO_PinState cellValue = ReadRow(row);
+			board[row][column] = cellValue;
 		}
 	}
 
-	return 0;
+	writeBoardValue(&hspi1, board);
 }
 
-uint8_t RookCanCastle(struct PieceCoordinate rookCoordinate)
+static void EndTurn()
 {
-	if(rookCoordinate.column == 0 || rookCoordinate.column == 7)
+#ifndef TEST
+	// Check for a promotion. If found, do not end turn, HandlePlacePreemptPromotion
+	CheckForPromotion();
+	if (PieceExists(PawnToPromote))
 	{
-		if(rookCoordinate.piece.owner == WHITE && rookCoordinate.row == 0)
+		return;
+	}
+#endif // !TEST
+
+	// Turn LEDs off
+	uint8_t LEDs[NUM_ROWS][NUM_COLS] = {0};
+	writeBoardValue(&hspi1, LEDs);
+
+#ifndef TEST
+	// Check if any rooks or kings moved so they can be flagged as not castleable
+	UpdateCastleFlags();
+
+	SwitchTurnsAfterLegalState = 0;
+
+	// Switch teams
+	CurrentTurn = CurrentTurn == WHITE ? BLACK : WHITE;
+#endif // !TEST
+
+	// Invoke PathFinder to store all legal moves for this team
+	CalculateTeamsLegalMoves(CurrentTurn);
+}
+
+static void CheckForPromotion()
+{
+	// Get all pawns
+	struct PieceCoordinate pawns[NUM_PAWNS_PER_TEAM];
+	uint8_t numPawns;
+	GetPiecesForTeam(CurrentTurn, PAWN, pawns, &numPawns);
+
+	// If the pawn has reached the end, it must be promoted
+	for (uint8_t i = 0; i < numPawns; i++)
+	{
+		if (PawnReachedEnd(pawns[i]))
 		{
-			return 1;
-		}
-		else if(rookCoordinate.piece.owner == BLACK && rookCoordinate.row == 7)
-		{
-			return 1;
+			HandlePlacePreemptPromotion(pawns[i]);
 		}
 	}
-
-	return 0;
 }
 
-void KillPiece(struct Piece piece)
+static void UpdateCastleFlags()
 {
-	/// @todo handle killing a piece - maybe nothing needs to be done here...
+	// If any rooks moved, flag them as not castle-able
+	if (CanA1Castle && !IsPiecePresent(A1_COORDINATE))
+	{
+		CanA1Castle = 0;
+	}
+	else if (CanH1Castle && !IsPiecePresent(H1_COORDINATE))
+	{
+		CanH1Castle = 0;
+	}
+	else if (CanA8Castle && !IsPiecePresent(A8_COORDINATE))
+	{
+		CanA8Castle = 0;
+	}
+	else if (CanH8Castle && !IsPiecePresent(H8_COORDINATE))
+	{
+		CanH8Castle = 0;
+	}
+	// If any kings moved, flag them as not castle-able
+	else if (CanWhiteKingCastle && !IsPiecePresent(E1_COORDINATE))
+	{
+		CanWhiteKingCastle = 0;
+	}
+	else if (CanBlackKingCastle && !IsPiecePresent(E8_COORDINATE))
+	{
+		CanBlackKingCastle = 0;
+	}
+}
+
+static void GetPiecesForTeam(enum PieceOwner team, enum PieceType type, struct PieceCoordinate* pieces, uint8_t* numPieces)
+{
+	*numPieces = 0;
+	for (uint8_t row = 0; row < NUM_ROWS; row++)
+	{
+		for (uint8_t col = 0; col < NUM_COLS; col++)
+		{
+			struct PieceCoordinate pieceCoordinate = { Chessboard[row][col], row, col };
+			if (pieceCoordinate.piece.owner == team && pieceCoordinate.piece.type == type)
+			{
+				pieces[(*numPieces)++] = pieceCoordinate;
+			}
+		}
+	}
+}
+
+uint8_t PawnReachedEnd(struct PieceCoordinate pieceCoordinate)
+{
+	uint8_t finalRow = CurrentTurn == WHITE ? 7 : 0;
+	return (pieceCoordinate.piece.owner == CurrentTurn) && (pieceCoordinate.piece.type == PAWN) && (pieceCoordinate.row == finalRow);
+}
+
+inline uint8_t PieceExists(struct PieceCoordinate pieceCoordinate)
+{
+	return !IsPieceCoordinateEqual(pieceCoordinate, EMPTY_PIECE_COORDINATE);
+}
+
+inline void ClearPiece(struct PieceCoordinate* pieceCoordinate)
+{
+	*pieceCoordinate = EMPTY_PIECE_COORDINATE;
 }
 
 inline void SetPiece(uint8_t row, uint8_t column, struct Piece piece)
@@ -334,9 +799,20 @@ inline void SetPiece(uint8_t row, uint8_t column, struct Piece piece)
 	Chessboard[row][column] = piece;
 }
 
+inline void SetPieceCoordinate(struct PieceCoordinate pieceCoordinate)
+{
+	Chessboard[pieceCoordinate.row][pieceCoordinate.column] = pieceCoordinate.piece;
+}
+
 inline struct Piece GetPiece(uint8_t row, uint8_t column)
 {
 	return Chessboard[row][column];
+}
+
+inline struct PieceCoordinate GetPieceCoordinate(uint8_t row, uint8_t column)
+{
+	struct PieceCoordinate pieceCoordinate = { GetPiece(row, column), row, column };
+	return pieceCoordinate;
 }
 
 inline uint8_t DidOtherTeamPickupLast(struct Piece piece)
@@ -352,17 +828,27 @@ inline uint8_t DidSameTeamPickupLast(struct Piece piece)
 inline uint8_t IsPieceEqual(struct Piece piece1, struct Piece piece2)
 {
 	return piece1.owner == piece2.owner
-			&& piece1.type == piece2.type;
+		&& piece1.type == piece2.type;
+}
+
+uint8_t IsPiecePresent(uint8_t row, uint8_t column)
+{
+	return Chessboard[row][column].type != NONE;
 }
 
 inline uint8_t IsPieceCoordinateEqual(struct PieceCoordinate pieceCoordinate1, struct PieceCoordinate pieceCoordinate2)
 {
 	return IsPieceEqual(pieceCoordinate1.piece, pieceCoordinate2.piece)
-			&& pieceCoordinate1.row == pieceCoordinate2.row
-			&& pieceCoordinate1.column == pieceCoordinate2.column;
+		&& pieceCoordinate1.row == pieceCoordinate2.row
+		&& pieceCoordinate1.column == pieceCoordinate2.column;
 }
 
 inline uint8_t IsPieceCoordinateSamePosition(struct PieceCoordinate pieceCoordinate1, struct PieceCoordinate pieceCoordinate2)
 {
 	return pieceCoordinate1.row == pieceCoordinate2.row && pieceCoordinate1.column == pieceCoordinate2.column;
+}
+
+inline enum PieceOwner GetCurrentTurn()
+{
+	return CurrentTurn;
 }

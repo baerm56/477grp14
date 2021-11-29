@@ -1,5 +1,5 @@
 Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Inc/tracker.h \
- ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h \
+ ../Core/Inc/main.h ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h \
  ../Core/Inc/stm32l1xx_hal_conf.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_rcc.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_def.h \
@@ -28,9 +28,13 @@ Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Inc/tracker.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_tim.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_tim_ex.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_uart.h \
- ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h
+ ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h \
+ ../Core/Inc/types.h ../Core/Inc/pathfinder.h ../Core/Inc/types.h \
+ ../Core/Inc/leds.h
 
 ../Core/Inc/tracker.h:
+
+../Core/Inc/main.h:
 
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:
 
@@ -91,3 +95,11 @@ Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Inc/tracker.h \
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_uart.h:
 
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h:
+
+../Core/Inc/types.h:
+
+../Core/Inc/pathfinder.h:
+
+../Core/Inc/types.h:
+
+../Core/Inc/leds.h:

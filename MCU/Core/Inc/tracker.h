@@ -1,91 +1,50 @@
 #ifndef TRACKER_H
 #define TRACKER_H
 
-#include "stm32l1xx_hal.h"
+#include "main.h"
+#include "types.h"
 
 #define TEST 1
 
-#ifdef TEST
-#define NUM_COLS 4
-#define NUM_ROWS 4
-#else
-#define NUM_COLS 8
-#define NUM_ROWS 8
-#endif
-
-#define NUM_COL_BITS 3
-
-/* Types */
-
-enum PieceType {
-	NONE,
-	PAWN,
-	KNIGHT,
-	BISHOP,
-	ROOK,
-	QUEEN,
-	KING
-};
-
-enum PieceOwner {
-	NEUTRAL,
-	WHITE,
-	BLACK
-};
-
-enum TransitionType {
-	PICKUP,
-	PLACE
-};
-
-struct GPIO_Pin {
-	uint16_t pin;
-	GPIO_TypeDef* bus;
-};
-
-
-struct Piece {
-	enum PieceType type;
-	enum PieceOwner owner;
-};
-
-struct PieceCoordinate {
-	struct Piece piece;
-	uint8_t row;
-	uint8_t column;
-};
-
-
-
 /* Constants */
 
-volatile static const struct GPIO_Pin ROW_NUMBER_TO_PIN_TABLE[NUM_ROWS] = {
-	{ GPIO_PIN_10, GPIOA }, // D2
-	{ GPIO_PIN_3,  GPIOB }, // D3
-	{ GPIO_PIN_5,  GPIOB }, // D4
-	{ GPIO_PIN_4,  GPIOB }, // D5
-#ifndef TEST
-	{ GPIO_PIN_10, GPIOB }, // D6
-	{ GPIO_PIN_8,  GPIOA }, // D7
-	{ GPIO_PIN_9,  GPIOA }, // D8
-	{ GPIO_PIN_7,  GPIOC }, // D9
-#endif
+#define NUM_HISTORY_ENTRIES 8
+#define NUM_ILLEGAL_PIECES 32
+#define NUM_COL_BITS 3
+#define A1_COORDINATE 0, 0
+#define A8_COORDINATE 7, 0
+#define H1_COORDINATE 0, 7
+#define H8_COORDINATE 7, 7
+#define E1_COORDINATE 0, 4
+#define E8_COORDINATE 7, 4
 
+static const struct GPIO_Pin ROW_NUMBER_TO_PIN_TABLE[NUM_ROWS] = {
+	{ HALLOUT0_Pin, HALLOUT0_GPIO_Port },
+	{ HALLOUT1_Pin, HALLOUT1_GPIO_Port },
+	{ HALLOUT2_Pin, HALLOUT2_GPIO_Port },
+	{ HALLOUT3_Pin, HALLOUT3_GPIO_Port },
+	{ HALLOUT4_Pin, HALLOUT4_GPIO_Port },
+	{ HALLOUT5_Pin, HALLOUT5_GPIO_Port },
+	{ HALLOUT6_Pin, HALLOUT6_GPIO_Port },
+	{ HALLOUT7_Pin, HALLOUT7_GPIO_Port },
 };
 
-volatile static const struct GPIO_Pin COLUMN_BIT_TO_PIN_TABLE[NUM_COL_BITS] = {
-	{ GPIO_PIN_0,  GPIOA }, // A0
-	{ GPIO_PIN_1,  GPIOA }, // A1
-	{ GPIO_PIN_0,  GPIOB }, // A2
-
+static const struct GPIO_Pin COLUMN_BIT_TO_PIN_TABLE[NUM_COL_BITS] = {
+	{ HALLSEL0_Pin,  HALLSEL0_GPIO_Port },
+	{ HALLSEL1_Pin,  HALLSEL1_GPIO_Port },
+	{ HALLSEL2_Pin,  HALLSEL2_GPIO_Port },
 };
 
 #ifdef TEST
 volatile static const struct Piece INITIAL_CHESSBOARD[NUM_ROWS][NUM_COLS] = {
-	{{PAWN, WHITE},   {NONE, NEUTRAL}, {NONE, NEUTRAL}, {PAWN, WHITE}},
-	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
-	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
-	{{PAWN, BLACK},   {NONE, NEUTRAL}, {NONE, NEUTRAL}, {PAWN, BLACK}},
+	{{QUEEN, WHITE},  {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
+	{{NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}, {NONE, NEUTRAL}},
 };
 #else
 volatile static const struct Piece INITIAL_CHESSBOARD[NUM_ROWS][NUM_COLS] = {
@@ -98,19 +57,14 @@ volatile static const struct Piece INITIAL_CHESSBOARD[NUM_ROWS][NUM_COLS] = {
 	{{PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK},   {PAWN, BLACK}},
 	{{ROOK, BLACK},   {KNIGHT, BLACK}, {BISHOP, BLACK}, {QUEEN, BLACK},  {KING, BLACK},   {BISHOP, BLACK}, {KNIGHT, BLACK}, {ROOK, BLACK}},
 };
-#endif
-
-volatile static const struct Piece EMPTY_PIECE = {NONE, NEUTRAL};
-volatile static const struct PieceCoordinate EMPTY_PIECE_COORDINATE = {{NONE, NEUTRAL}, 0, 0};
-
-
+#endif // TEST
 
 /* Functions */
 
 /**
  * @brief Write column bits to MUXs and read the value of each row. Keep track of piece moves.
  */
-void Track(void);
+uint8_t Track(void);
 
 
 /**
@@ -120,57 +74,28 @@ void InitTracker(void);
 
 
 /**
- * @brief Make sure that all the pieces are in the 0th, 1st, 7th and 6th rows, and no piece is anywhere else.
+ * @brief Make sure top and bottom 2 rows sensors are HIGH at the beginning of the match
  */
 uint8_t ValidateStartPositions(void);
 
 
 /**
- * @brief Trigger peripherals to switch teams
+ * @brief Gets the current turn in the chess game.
  */
-void SwitchTeam();
-
-
-// Castling //
-uint8_t KingCanCastle(struct PieceCoordinate kingCoordinate);
-uint8_t RookCanCastle(struct PieceCoordinate rookCoordinate);
-void CalculateCastlingPositions(struct PieceCoordinate rookPieceCoordinate, struct PieceCoordinate* expectedKingPieceCoordinate, struct PieceCoordinate* expectedRookPieceCoordinate);
+enum PieceOwner GetCurrentTurn();
 
 
 /**
  * @brief Returns the piece at the specified row and column.
  */
 struct Piece GetPiece(uint8_t row, uint8_t column);
-
-
-/**
- * @brief Sets the piece at the specified row and column
- */
-void SetPiece(uint8_t row, uint8_t column, struct Piece piece);
-
-
-/**
- * @brief Triggers a piece to be killed in software
- */
-void KillPiece(struct Piece piece);
-
-
-/**
- * @brief Returns 1 if team opposing the given piece picked up a piece last
- * - Used to detect killing because the opposite team must pick up a piece right before picking up this piece to kill it
- */
-uint8_t DidOtherTeamPickupLast(struct Piece piece);
-
-
-/**
- * @brief Returns 1 if same team as the given piece picked up a piece last
- * - Used to detect castling because a team must pick up ROOK and KING in a row
- */
-uint8_t DidSameTeamPickupLast(struct Piece piece);
+struct PieceCoordinate GetPieceCoordinate(uint8_t row, uint8_t column);
 
 // Comparison //
 uint8_t IsPieceEqual(struct Piece piece1, struct Piece piece2);
+uint8_t IsPiecePresent(uint8_t row, uint8_t column);
 uint8_t IsPieceCoordinateEqual(struct PieceCoordinate pieceCoordinate1, struct PieceCoordinate pieceCoordinate2);
 uint8_t IsPieceCoordinateSamePosition(struct PieceCoordinate pieceCoordinate1, struct PieceCoordinate pieceCoordinate2);
+
 
 #endif // TRACKER_H

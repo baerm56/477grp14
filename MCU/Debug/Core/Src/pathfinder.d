@@ -1,5 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
- ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h \
+Core/Src/pathfinder.o: ../Core/Src/pathfinder.c ../Core/Inc/pathfinder.h \
+ ../Core/Inc/types.h ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h \
  ../Core/Inc/stm32l1xx_hal_conf.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_rcc.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_def.h \
@@ -29,16 +29,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_tim_ex.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_uart.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h \
- ../FATFS/App/fatfs.h ../Middlewares/Third_Party/FatFs/src/ff.h \
- ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
- ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
- ../Middlewares/Third_Party/FatFs/src/diskio.h \
- ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Inc/leds.h ../Core/Inc/speaker.h ../Core/Inc/waveplayer.h \
- ../Core/Inc/uart.h ../Core/Inc/tracker.h ../Core/Inc/main.h \
- ../Core/Inc/types.h
+ ../Core/Inc/tracker.h ../Core/Inc/main.h
 
-../Core/Inc/main.h:
+../Core/Inc/pathfinder.h:
+
+../Core/Inc/types.h:
 
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:
 
@@ -100,32 +95,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h:
 
-../FATFS/App/fatfs.h:
-
-../Middlewares/Third_Party/FatFs/src/ff.h:
-
-../Middlewares/Third_Party/FatFs/src/integer.h:
-
-../FATFS/Target/ffconf.h:
-
-../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
-
-../Middlewares/Third_Party/FatFs/src/diskio.h:
-
-../Middlewares/Third_Party/FatFs/src/ff.h:
-
-../FATFS/Target/user_diskio.h:
-
-../Core/Inc/leds.h:
-
-../Core/Inc/speaker.h:
-
-../Core/Inc/waveplayer.h:
-
-../Core/Inc/uart.h:
-
 ../Core/Inc/tracker.h:
 
 ../Core/Inc/main.h:
-
-../Core/Inc/types.h:

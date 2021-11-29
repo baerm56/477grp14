@@ -1,0 +1,63 @@
+18:16:09 **** Incremental Build of configuration Debug for project RealOneThisTime ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_dma.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_dma.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_dma.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_exti.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_exti.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_exti.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ex.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ex.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ex.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ramfunc.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ramfunc.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ramfunc.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ramfunc.o"
+arm-none-eabi-gcc "../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.d" -MT"Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.o"
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.c:109:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_dma.c:84:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+compilation terminated.
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_exti.c:87:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_dma.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_cortex.o] Error 1
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_exti.o] Error 1
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash.c:153:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ex.c:51:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash.o] Error 1
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ex.o] Error 1
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.c:118:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ramfunc.c:45:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+compilation terminated.
+In file included from ../Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.c:36:
+../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal.h:30:10: fatal error: stm32l1xx_hal_conf.h: No such file or directory
+   30 | #include "stm32l1xx_hal_conf.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_gpio.o] Error 1
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal_flash_ramfunc.o] Error 1
+make: *** [Drivers/STM32L1xx_HAL_Driver/Src/subdir.mk:61: Drivers/STM32L1xx_HAL_Driver/Src/stm32l1xx_hal.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+18:16:11 Build Failed. 17 errors, 0 warnings. (took 1s.306ms)
+

@@ -1,0 +1,20 @@
+13:30:28 **** Incremental Build of configuration Debug for project IHateEverything3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "IHateEverything3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\IHateEverything2\STM32L152ZCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IHateEverything3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: IHateEverything3.elf
+ 
+arm-none-eabi-size   IHateEverything3.elf 
+arm-none-eabi-objdump -h -S  IHateEverything3.elf  > "IHateEverything3.list"
+arm-none-eabi-objcopy  -O binary  IHateEverything3.elf  "IHateEverything3.bin"
+   text	   data	    bss	    dec	    hex	filename
+  11776	     24	   2120	  13920	   3660	IHateEverything3.elf
+Finished building: default.size.stdout
+ 
+Finished building: IHateEverything3.list
+ 
+Finished building: IHateEverything3.bin
+ 
+
+13:30:31 Build Finished. 0 errors, 0 warnings. (took 2s.796ms)
+

@@ -1,8 +1,0 @@
-waveplayer.c:16:13:ResetAudio	8	static
-waveplayer.c:22:6:GetFile	64	static
-waveplayer.c:35:6:PlayAudio	16	static
-waveplayer.c:48:6:ProcessAudio	8	static
-waveplayer.c:86:5:GetAudioStatus	4	static
-waveplayer.c:90:6:HAL_DAC_ConvCpltCallbackCh1	16	static
-waveplayer.c:94:6:HAL_DAC_ConvHalfCpltCallbackCh1	16	static
-waveplayer.c:98:6:WaveplayerInit	48	static

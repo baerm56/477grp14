@@ -1,0 +1,11 @@
+leds.c:3:6:enableHex	16	static
+leds.c:7:6:setIntensity	16	static
+leds.c:11:6:setScanLimit	16	static
+leds.c:15:6:enableOutput	16	static
+leds.c:19:6:disableOutput	16	static
+leds.c:23:6:writeTime	32	static
+leds.c:40:6:LEDSInit	48	static
+leds.c:84:6:ChessTimerLEDInit	16	static
+leds.c:91:6:BoardLEDInit	16	static
+leds.c:97:6:writeBoardValue	32	static
+leds.c:109:6:writeHexVal	16	static

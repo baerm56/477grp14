@@ -277,6 +277,8 @@ static void HandlePlaceIllegalState(struct PieceCoordinate placedPiece)
 static void HandlePlaceNoMove(struct PieceCoordinate placedPiece)
 {
 	SetPiece(placedPiece.row, placedPiece.column, LastPickedUpPiece.piece);
+	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
+	writeBoardValue(&hspi1, board);
 }
 
 static void HandlePlaceKill(struct PieceCoordinate placedPiece)
@@ -629,44 +631,28 @@ static uint8_t ValidateCastling(struct PieceCoordinate rook, struct PieceCoordin
 
 uint8_t ValidateStartPositions()
 {
-#ifdef TEST
-	WriteColumn(0);
-	uint8_t cellValue = ReadRow(0);
-	return (cellValue == 1);
-#else
+	uint8_t thing[8][8] = {0};
 	for (uint8_t columnNumber = 0; columnNumber < NUM_COLS; columnNumber++)
 	{
 		WriteColumn(columnNumber);
 		for (uint8_t rowNumber = 0; rowNumber < NUM_ROWS; rowNumber++)
 		{
 			GPIO_PinState cellValue = ReadRow(rowNumber);
+			thing[rowNumber][columnNumber] = cellValue;
 
-			switch (rowNumber)
+			if(cellValue == GPIO_PIN_SET && INITIAL_CHESSBOARD[rowNumber][columnNumber].type == NONE)
 			{
+				return 0;
+			}
 
-				// Make sure rows 0, 1, 6, 7 are all filled with pieces
-			case 0:
-			case 1:
-			case 6:
-			case 7:
-				if (cellValue == GPIO_PIN_RESET)
-				{
-					return 0;
-				}
-				break;
-
-				// Make sure other rows do not have a piece
-			default:
-				if (cellValue == GPIO_PIN_SET)
-				{
-					return 0;
-				}
+			if(cellValue == GPIO_PIN_RESET && INITIAL_CHESSBOARD[rowNumber][columnNumber].type != NONE)
+			{
+				return 0;
 			}
 		}
 	}
 
 	return 1;
-#endif // TEST
 }
 
 void TestLEDs()

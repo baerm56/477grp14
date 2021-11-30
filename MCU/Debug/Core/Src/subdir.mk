@@ -5,6 +5,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/button.c \
 ../Core/Src/leds.c \
 ../Core/Src/main.c \
 ../Core/Src/pathfinder.c \
@@ -19,6 +20,7 @@ C_SRCS += \
 ../Core/Src/waveplayer.c 
 
 OBJS += \
+./Core/Src/button.o \
 ./Core/Src/leds.o \
 ./Core/Src/main.o \
 ./Core/Src/pathfinder.o \
@@ -33,6 +35,7 @@ OBJS += \
 ./Core/Src/waveplayer.o 
 
 C_DEPS += \
+./Core/Src/button.d \
 ./Core/Src/leds.d \
 ./Core/Src/main.d \
 ./Core/Src/pathfinder.d \

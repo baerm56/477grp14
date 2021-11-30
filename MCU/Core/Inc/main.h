@@ -58,6 +58,8 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define HEARTBEAT_LED_Pin GPIO_PIN_2
+#define HEARTBEAT_LED_GPIO_Port GPIOE
 #define HALLSEL0_Pin GPIO_PIN_0
 #define HALLSEL0_GPIO_Port GPIOA
 #define HALLSEL1_Pin GPIO_PIN_1
@@ -80,6 +82,12 @@ void Error_Handler(void);
 #define HALLOUT6_GPIO_Port GPIOE
 #define HALLOUT7_Pin GPIO_PIN_9
 #define HALLOUT7_GPIO_Port GPIOE
+#define BUTTON1_Pin GPIO_PIN_12
+#define BUTTON1_GPIO_Port GPIOD
+#define BUTTON1_EXTI_IRQn EXTI15_10_IRQn
+#define BUTTON2_Pin GPIO_PIN_13
+#define BUTTON2_GPIO_Port GPIOD
+#define BUTTON2_EXTI_IRQn EXTI15_10_IRQn
 #define SD_CS_Pin GPIO_PIN_0
 #define SD_CS_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */

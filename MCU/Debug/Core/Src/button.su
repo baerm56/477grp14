@@ -1,0 +1,7 @@
+button.c:10:6:InitButtons	16	static
+button.c:16:6:Button1DebounceTimerCallback	8	static
+button.c:25:6:Button2DebounceTimerCallback	8	static
+button.c:34:6:Button1Callback	8	static
+button.c:39:6:Button2Callback	8	static
+button.c:44:13:OnButton1Press	4	static
+button.c:49:13:OnButton2Press	4	static

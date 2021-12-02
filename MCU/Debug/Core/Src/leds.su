@@ -8,4 +8,5 @@ leds.c:40:6:LEDSInit	48	static
 leds.c:84:6:ChessTimerLEDInit	16	static
 leds.c:91:6:BoardLEDInit	16	static
 leds.c:97:6:writeBoardValue	32	static
-leds.c:109:6:writeHexVal	16	static
+leds.c:109:6:writeAIMove	48	static
+leds.c:127:6:writeHexVal	16	static

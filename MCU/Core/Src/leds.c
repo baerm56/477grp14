@@ -84,7 +84,7 @@ void LEDSInit(SPI_HandleTypeDef * hspi, uint8_t spi_num){
 void ChessTimerLEDInit(SPI_HandleTypeDef * hspi){
 	enableOutput(hspi);
 	setScanLimit(hspi, 0x07);
-	setIntensity(hspi, 0x01);
+	setIntensity(hspi, 0x00);
 	enableHex(hspi);
 }
 
@@ -104,6 +104,24 @@ void writeBoardValue(SPI_HandleTypeDef * hspi, uint8_t board[8][8]){
 
 		writeHexVal(hspi, LED_1 + row, val);
 	}
+}
+
+void writeAIMove(SPI_HandleTypeDef * hspi, uint8_t board[8][8], char move[4]){
+	for (int i = 0; i < 8; i++){
+		for (int j = 0; j < 8; j++){
+			board[i][j] = 0;
+		}
+	}
+	int row1, row2, col1, col2 = 0;
+
+	row1 = move[1] - '1';
+	col1 = (move[0] - 'a');
+	row2 = move[3] - '1';
+	col2 = (move[2] - 'a');
+
+	board[row1][col1] = 1;
+	board[row2][col2] = 1;
+	writeBoardValue(hspi, board);
 }
 
 void writeHexVal(SPI_HandleTypeDef * hspi, uint8_t reg, uint8_t val){

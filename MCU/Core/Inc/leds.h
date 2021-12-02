@@ -26,5 +26,6 @@ void writeBoardValue(SPI_HandleTypeDef * hspi, uint8_t board[8][8]);
 void writeTime(SPI_HandleTypeDef * hspi, int time, int player);
 void disableOutput(SPI_HandleTypeDef * hspi);
 void enableOutput(SPI_HandleTypeDef * hspi);
+void writeAIMove(SPI_HandleTypeDef * hspi, uint8_t board[8][8], char move[4]);
 
 #endif

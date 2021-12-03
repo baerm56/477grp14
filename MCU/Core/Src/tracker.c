@@ -4,6 +4,8 @@
 #include "types.h"
 #include "leds.h"
 #include "button.h"
+#include "uart.h"
+#include "waveplayer.h"
 
 // Debouncing //
 static void AppendHistory(uint8_t row, uint8_t column, uint8_t cellValue);
@@ -86,6 +88,16 @@ static struct PieceCoordinate PawnToPromote;
 
 // Integration //
 extern SPI_HandleTypeDef hspi1; // LED matrix controller
+extern SPI_HandleTypeDef hspi2; // Timer
+extern UART_HandleTypeDef huart1;
+extern DAC_HandleTypeDef hdac;
+char * audio[] = {"a.wav", "b.wav", "c.wav", "d.wav", "e.wav", "f.wav", "g.wav", "h.wav",
+		  	  	  "1.wav", "2.wav", "3.wav", "4.wav", "5.wav", "6.wav", "7.wav", "8.wav",
+				  "jazz.wav"};
+
+// Uart Move Buffer //
+char MoveBuffer[4] = {0};
+char ReceiveBuffer[5] = {0};
 
 void InitTracker()
 {
@@ -296,6 +308,33 @@ static void HandlePlaceKill(struct PieceCoordinate placedPiece)
 	{
 		ClearPiece(&PieceToKill);
 		EndTurn();
+
+		// Get move from AI for BLACK
+		if (LastPickedUpPiece.piece.owner == WHITE){
+			MoveBuffer[2] = 'h' - placedPiece.column;
+			MoveBuffer[3] = '1' + placedPiece.row;
+			ReceiveBuffer[0] = '-';
+			ReceiveBuffer[1] = '-';
+			ReceiveBuffer[2] = '-';
+			ReceiveBuffer[3] = '-';
+			ReceiveBuffer[4] = '-';
+			sendMove(&huart1, MoveBuffer);
+			receiveData(&huart1, ReceiveBuffer);
+			if (memcmp(ReceiveBuffer, "-----", 5) != 0){
+				struct Coordinate from[2] = {0};
+				from[0].row = (int8_t)(ReceiveBuffer[1] - '1');
+				from[0].column = (int8_t)('h' - ReceiveBuffer[0]);
+				from[1].row = (int8_t)(ReceiveBuffer[3] - '1');
+				from[1].column = (int8_t)('h' - ReceiveBuffer[2]);
+				IlluminateCoordinates(from, 2);
+				prepAudio(&hspi1, &hspi2, &hdac);
+				PlayAudio(audio[ReceiveBuffer[0] - 'a'], &hdac);
+				PlayAudio(audio[ReceiveBuffer[1] - '1' + 8], &hdac);
+				PlayAudio(audio[ReceiveBuffer[2] - 'a'], &hdac);
+				PlayAudio(audio[ReceiveBuffer[3] - '1' + 8], &hdac);
+				resetAudio(&hspi1, &hspi2, &hdac);
+			}
+		}
 	}
 	// If player didn't put killer in the victim's spot, must put the killer in the victim spot
 	else
@@ -357,6 +396,33 @@ static void HandlePlaceMove(struct PieceCoordinate placedPiece)
 	if (isMoveValid)
 	{
 		EndTurn();
+
+		// Get move from AI for BLACK
+		if (LastPickedUpPiece.piece.owner == WHITE){
+			MoveBuffer[2] = 'h' - placedPiece.column;
+			MoveBuffer[3] = '1' + placedPiece.row;
+			ReceiveBuffer[0] = '-';
+			ReceiveBuffer[1] = '-';
+			ReceiveBuffer[2] = '-';
+			ReceiveBuffer[3] = '-';
+			ReceiveBuffer[4] = '-';
+			sendMove(&huart1, MoveBuffer);
+			receiveData(&huart1, ReceiveBuffer);
+			if (memcmp(ReceiveBuffer, "-----", 5) != 0){
+				struct Coordinate from[2] = {0};
+				from[0].row = (int8_t)(ReceiveBuffer[1] - '1');
+				from[0].column = (int8_t)('h' - ReceiveBuffer[0]);
+				from[1].row = (int8_t)(ReceiveBuffer[3] - '1');
+				from[1].column = (int8_t)('h' - ReceiveBuffer[2]);
+				IlluminateCoordinates(from, 2);
+				prepAudio(&hspi1, &hspi2, &hdac);
+				PlayAudio(audio[ReceiveBuffer[0] - 'a'], &hdac);
+				PlayAudio(audio[ReceiveBuffer[1] - '1' + 8], &hdac);
+				PlayAudio(audio[ReceiveBuffer[2] - 'a'], &hdac);
+				PlayAudio(audio[ReceiveBuffer[3] - '1' + 8], &hdac);
+				resetAudio(&hspi1, &hspi2, &hdac);
+			}
+		}
 	}
 	// If move was invalid, put piece back
 	else
@@ -488,6 +554,10 @@ static void HandlePickupKill(struct PieceCoordinate pickedUpPiece)
 	if(ValidateKill(PieceToKill, pickedUpPiece))
 	{
 		IlluminatePieceCoordinates(&PieceToKill, 1);
+
+		// Update Move Buffer
+		MoveBuffer[0] = 'h' - pickedUpPiece.column;
+		MoveBuffer[1] = '1' + pickedUpPiece.row;
 	}
 	// If pickedUpPiece can't kill PieceToKill, they need to be put back to their initial positions, and PieceToKill is not a piece to kill anymore
 	else
@@ -569,7 +639,12 @@ static void HandlePickupMove(struct PieceCoordinate pickedUpPiece)
 		CalculateAllLegalPathsAndChecks(pickedUpPiece, allLegalPaths, &numLegalPaths);
 
 		// Illuminate legal paths on LEDs
-		IlluminateCoordinates(allLegalPaths, numLegalPaths);
+		if (pickedUpPiece.piece.owner == WHITE)
+			IlluminateCoordinates(allLegalPaths, numLegalPaths);
+
+		// Update Move Buffer
+		MoveBuffer[0] = 'h' - pickedUpPiece.column;
+		MoveBuffer[1] = '1' + pickedUpPiece.row;
 	}
 }
 

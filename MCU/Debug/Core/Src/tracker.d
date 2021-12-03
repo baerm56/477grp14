@@ -30,7 +30,13 @@ Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Inc/tracker.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_uart.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h \
  ../Core/Inc/types.h ../Core/Inc/button.h ../Core/Inc/pathfinder.h \
- ../Core/Inc/types.h ../Core/Inc/leds.h ../Core/Inc/button.h
+ ../Core/Inc/types.h ../Core/Inc/leds.h ../Core/Inc/button.h \
+ ../Core/Inc/uart.h ../Core/Inc/waveplayer.h ../FATFS/App/fatfs.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
+ ../Core/Inc/main.h ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h
 
 ../Core/Inc/tracker.h:
 
@@ -107,3 +113,25 @@ Core/Src/tracker.o: ../Core/Src/tracker.c ../Core/Inc/tracker.h \
 ../Core/Inc/leds.h:
 
 ../Core/Inc/button.h:
+
+../Core/Inc/uart.h:
+
+../Core/Inc/waveplayer.h:
+
+../FATFS/App/fatfs.h:
+
+../Middlewares/Third_Party/FatFs/src/ff.h:
+
+../Middlewares/Third_Party/FatFs/src/integer.h:
+
+../FATFS/Target/ffconf.h:
+
+../Core/Inc/main.h:
+
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+
+../Middlewares/Third_Party/FatFs/src/diskio.h:
+
+../Middlewares/Third_Party/FatFs/src/ff.h:
+
+../FATFS/Target/user_diskio.h:

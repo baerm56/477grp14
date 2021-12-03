@@ -33,7 +33,8 @@ Core/Src/waveplayer.o: ../Core/Src/waveplayer.c ../Core/Inc/waveplayer.h \
  ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
  ../Core/Inc/main.h ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
- ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
+ ../Core/Inc/leds.h ../Core/Inc/types.h
 
 ../Core/Inc/waveplayer.h:
 
@@ -114,3 +115,7 @@ Core/Src/waveplayer.o: ../Core/Src/waveplayer.c ../Core/Inc/waveplayer.h \
 ../Middlewares/Third_Party/FatFs/src/ff.h:
 
 ../FATFS/Target/user_diskio.h:
+
+../Core/Inc/leds.h:
+
+../Core/Inc/types.h:

@@ -91,7 +91,7 @@ void ChessTimerLEDInit(SPI_HandleTypeDef * hspi){
 void BoardLEDInit(SPI_HandleTypeDef * hspi){
 	enableOutput(hspi);
 	setScanLimit(hspi, 0x07);
-	setIntensity(hspi, 0x01);
+	setIntensity(hspi, 0x05);
 }
 
 void writeBoardValue(SPI_HandleTypeDef * hspi, uint8_t board[8][8]){

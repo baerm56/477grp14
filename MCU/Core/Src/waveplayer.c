@@ -1,4 +1,5 @@
 #include "waveplayer.h"
+#include "leds.h"
 #include <string.h>
 
 static FIL wavFile;
@@ -40,12 +41,12 @@ void PlayAudio(const char* filePath, DAC_HandleTypeDef * hdac){
 	f_read(&wavFile, &audioBuffer[0], AUDIO_BUFFER_SIZE, &playerReadBytes);
 	audioRemainSize = fileLength - playerReadBytes - sizeof(WAV_Header);
 
-	HAL_DAC_Start_DMA(hdac, DAC_CHANNEL_2, (uint32_t *) audioBuffer, AUDIO_BUFFER_SIZE, DAC_ALIGN_8B_R);
+	//HAL_DAC_Start_DMA(hdac, DAC_CHANNEL_2, (uint32_t *) audioBuffer, AUDIO_BUFFER_SIZE, DAC_ALIGN_8B_R);
 
 	while(!GetAudioStatus()){
 		ProcessAudio();
 	}
-	HAL_DAC_Stop_DMA(hdac, DAC_CHANNEL_2);
+	//HAL_DAC_Stop_DMA(hdac, DAC_CHANNEL_2);
 	HAL_Delay(200);
 }
 
@@ -140,3 +141,29 @@ void WaveplayerInit(SPI_HandleTypeDef * hspi, DAC_HandleTypeDef *hdac){
 
 	memset(audioBuffer, 128, AUDIO_BUFFER_SIZE * sizeof(audioBuffer[0]));
 }
+
+void prepAudio(SPI_HandleTypeDef * hspi1, SPI_HandleTypeDef * hspi2, DAC_HandleTypeDef *hdac){
+	disableOutput(hspi1);
+	disableOutput(hspi2);
+	HAL_DAC_Start_DMA(hdac, DAC_CHANNEL_2, (uint32_t *) audioBuffer, AUDIO_BUFFER_SIZE, DAC_ALIGN_8B_R);
+	HAL_Delay(1000);
+}
+
+void resetAudio(SPI_HandleTypeDef * hspi1, SPI_HandleTypeDef * hspi2, DAC_HandleTypeDef *hdac){
+	HAL_DAC_Stop_DMA(hdac, DAC_CHANNEL_2);
+	enableOutput(hspi1);
+	enableOutput(hspi2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

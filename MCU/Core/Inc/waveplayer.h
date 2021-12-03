@@ -38,5 +38,7 @@ void PlayAudio(const char* filePath, DAC_HandleTypeDef * hdac);
 void ProcessAudio();
 int GetAudioStatus();
 void GetFile(const char* filePath);
+void prepAudio(SPI_HandleTypeDef * hspi1, SPI_HandleTypeDef * hspi2, DAC_HandleTypeDef *hdac);
+void resetAudio(SPI_HandleTypeDef * hspi1, SPI_HandleTypeDef * hspi2, DAC_HandleTypeDef *hdac);
 
 #endif /* WAVEPLAYER_H */

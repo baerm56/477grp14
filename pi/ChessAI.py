@@ -95,7 +95,7 @@ def runChess():
     while(not strt and uart.receive_data() != 'STRT'):
         pass
 
-    if (uart.receive_data() == "BLCK"):
+    '''if (uart.receive_data() == "BLCK"):
         game.change_turn()
 
     if (uart.receive_data() == "EDUM"):
@@ -105,7 +105,7 @@ def runChess():
     diff = uart.receive_data()
 
     if (diff in ["DF05", "DF10", "DF15", "DF20"]):
-        game.engine.configure({"Skill Level": int(diff[2:])})
+        game.engine.configure({"Skill Level": int(diff[2:])})'''
 
     strt = 0
 

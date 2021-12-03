@@ -1,36 +1,23 @@
-16:29:30 **** Incremental Build of configuration Debug for project IHateEverything3 ****
+13:39:07 **** Incremental Build of configuration Debug for project IHateEverything3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:209:6: warning: implicit declaration of function 'memcmp' [-Wimplicit-function-declaration]
-  209 |  if (memcmp(recv, "-----", 5) != 0){
-      |      ^~~~~~
-../Core/Src/main.c:209:28: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
-  209 |  if (memcmp(recv, "-----", 5) != 0){
-      |                            ^
+arm-none-eabi-gcc "../Core/Src/tracker.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tracker.d" -MT"Core/Src/tracker.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tracker.o"
+../Core/Src/tracker.c: In function 'HandlePlaceKill':
+../Core/Src/tracker.c:323:8: warning: implicit declaration of function 'memcmp' [-Wimplicit-function-declaration]
+  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
+      |        ^~~~~~
+../Core/Src/tracker.c:323:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
+  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
+      |                                       ^
+<built-in>: note: built-in 'memcmp' declared here
+../Core/Src/tracker.c: In function 'HandlePlaceMove':
+../Core/Src/tracker.c:411:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
+  411 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
+      |                                       ^
 <built-in>: note: built-in 'memcmp' declared here
 At top level:
-../Core/Src/main.c:630:13: warning: 'MX_DMA_Init' defined but not used [-Wunused-function]
-  630 | static void MX_DMA_Init(void)
-      |             ^~~~~~~~~~~
-../Core/Src/main.c:599:13: warning: 'MX_USART1_UART_Init' defined but not used [-Wunused-function]
-  599 | static void MX_USART1_UART_Init(void)
-      |             ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:509:13: warning: 'MX_TIM4_Init' defined but not used [-Wunused-function]
-  509 | static void MX_TIM4_Init(void)
-      |             ^~~~~~~~~~~~
-../Core/Src/main.c:381:13: warning: 'MX_SPI3_Init' defined but not used [-Wunused-function]
-  381 | static void MX_SPI3_Init(void)
-      |             ^~~~~~~~~~~~
-../Core/Src/main.c:343:13: warning: 'MX_SPI2_Init' defined but not used [-Wunused-function]
-  343 | static void MX_SPI2_Init(void)
-      |             ^~~~~~~~~~~~
-../Core/Src/main.c:305:13: warning: 'MX_SPI1_Init' defined but not used [-Wunused-function]
-  305 | static void MX_SPI1_Init(void)
-      |             ^~~~~~~~~~~~
-../Core/Src/main.c:267:13: warning: 'MX_DAC_Init' defined but not used [-Wunused-function]
-  267 | static void MX_DAC_Init(void)
-      |             ^~~~~~~~~~~
+../Core/Src/tracker.c:671:13: warning: 'IlluminateSquare' defined but not used [-Wunused-function]
+  671 | static void IlluminateSquare(uint8_t row, uint8_t column)
+      |             ^~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "IHateEverything3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\IHateEverything2\STM32L152ZCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IHateEverything3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: IHateEverything3.elf
  
@@ -38,13 +25,13 @@ arm-none-eabi-size   IHateEverything3.elf
 arm-none-eabi-objdump -h -S  IHateEverything3.elf  > "IHateEverything3.list"
 arm-none-eabi-objcopy  -O binary  IHateEverything3.elf  "IHateEverything3.bin"
    text	   data	    bss	    dec	    hex	filename
-  39236	    192	  10672	  50100	   c3b4	IHateEverything3.elf
-Finished building: IHateEverything3.list
+  41136	    260	  10692	  52088	   cb78	IHateEverything3.elf
 Finished building: default.size.stdout
- 
  
 Finished building: IHateEverything3.bin
  
+Finished building: IHateEverything3.list
+ 
 
-16:29:32 Build Finished. 0 errors, 9 warnings. (took 2s.132ms)
+13:39:08 Build Finished. 0 errors, 4 warnings. (took 1s.202ms)
 

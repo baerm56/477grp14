@@ -1,7 +1,8 @@
-button.c:10:6:InitButtons	16	static
-button.c:16:6:Button1DebounceTimerCallback	8	static
-button.c:25:6:Button2DebounceTimerCallback	8	static
-button.c:34:6:Button1Callback	8	static
-button.c:39:6:Button2Callback	8	static
-button.c:44:13:OnButton1Press	4	static
-button.c:49:13:OnButton2Press	4	static
+button.c:11:6:InitButtons	16	static
+button.c:18:6:Button1DebounceTimerCallback	8	static
+button.c:27:6:Button2DebounceTimerCallback	8	static
+button.c:36:6:Button1Callback	8	static
+button.c:41:6:Button2Callback	8	static
+button.c:46:13:OnButton1Press	4	static
+button.c:51:13:OnButton2Press	4	static
+button.c:56:17:GetLastButtonPressed	4	static

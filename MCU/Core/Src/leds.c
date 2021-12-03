@@ -121,6 +121,7 @@ void writeAIMove(SPI_HandleTypeDef * hspi, uint8_t board[8][8], char move[4]){
 
 	board[row1][col1] = 1;
 	board[row2][col2] = 1;
+
 	writeBoardValue(hspi, board);
 }
 

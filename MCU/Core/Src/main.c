@@ -138,25 +138,7 @@ int main(void)
   uint8_t board[NUM_ROWS][NUM_COLS] = {0};
   writeBoardValue(&hspi1, board);
   /*
-  uint8_t board[8][8] = {0};
-  board[0][0] = 1;
-  board[1][1] = 1;
-  board[2][2] = 1;
-  board[3][3] = 1;
-  board[4][4] = 1;
-  board[5][5] = 1;
-  board[6][6] = 1;
-  board[7][7] = 1;
 
-  board[0][7] = 1;
-  board[1][6] = 1;
-  board[2][5] = 1;
-  board[3][4] = 1;
-  board[4][3] = 1;
-  board[5][2] = 1;
-  board[6][1] = 1;
-  board[7][0] = 1;
-  writeBoardValue(&hspi1, board);
   */
 
   char * audio[] = {"max.wav", "tom.wav", "jazz.wav", "d2d4.wav"};
@@ -169,7 +151,7 @@ int main(void)
   enableOutput(&hspi1);
   enableOutput(&hspi2);*/
 
-  EnableUart(&huart1);
+  /*   EnableUart(&huart1);
 
   char send[4] = {'S', 'T', 'R', 'T'};
   char recv[6] = {'-', '-', '-', '-', '-'};
@@ -180,17 +162,28 @@ int main(void)
   if (color){
 	  receiveData(&huart1, recv);
   }
+  */
 
   // Initialize Buttons
   InitButtons(&htim2, &htim5);
 
   // Initialize Tracker component
   InitTracker();
-  if(!ValidateStartPositions())
+  while(!ValidateStartPositions())
   {
 	  /// @todo: play audio cue and invoke LEDs to put pieces in correct starting positions
-	  return 0;
+	  HAL_Delay(10);
   }
+
+  // Splash LEDs when ready
+  for(uint8_t i = 0; i < 8; i++)
+  {
+	  board[i][0] = 1;
+	  board[i][7] = 1;
+	  board[0][i] = 1;
+	  board[7][i] = 1;
+  }
+  writeBoardValue(&hspi1, board);
 
   /* USER CODE END 2 */
 
@@ -204,7 +197,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	sendMove(&huart1, send);
+	/*sendMove(&huart1, send);
 	receiveData(&huart1, recv);
 	if (memcmp(recv, "-----", 5) != 0){
 		writeAIMove(&hspi1, board, recv);
@@ -213,7 +206,7 @@ int main(void)
 		PlayAudio(audio[3], &hdac);
 		enableOutput(&hspi1);
 		enableOutput(&hspi2);
-	}
+	}*/
   }
   /* USER CODE END 3 */
 }

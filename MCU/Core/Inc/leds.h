@@ -2,6 +2,7 @@
 #define LEDS_H
 
 #include "stm32l1xx_hal.h"
+#include "types.h"
 
 #define LED_NO_OP 0x00
 #define LED_DECODE_MODE 0x01
@@ -23,6 +24,7 @@ void writeHexVal(SPI_HandleTypeDef * hspi1, uint8_t reg, uint8_t val);
 void ChessTimerLEDInit(SPI_HandleTypeDef * hspi);
 void BoardLEDInit(SPI_HandleTypeDef * hspi);
 void writeBoardValue(SPI_HandleTypeDef * hspi, uint8_t board[8][8]);
+void writeCoordinates(SPI_HandleTypeDef * hspi, struct Coordinate* coordinates, uint8_t numCoordinates);
 void writeTime(SPI_HandleTypeDef * hspi, int time, int player);
 void disableOutput(SPI_HandleTypeDef * hspi);
 void enableOutput(SPI_HandleTypeDef * hspi);

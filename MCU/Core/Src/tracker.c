@@ -3,6 +3,7 @@
 #include "pathfinder.h"
 #include "types.h"
 #include "leds.h"
+#include "button.h"
 
 // Debouncing //
 static void AppendHistory(uint8_t row, uint8_t column, uint8_t cellValue);
@@ -50,6 +51,11 @@ static uint8_t PawnReachedEnd(struct PieceCoordinate pieceCoordinate);
 static uint8_t PieceExists(struct PieceCoordinate placedPiece);
 static void GetPiecesForTeam(enum PieceOwner team, enum PieceType type, struct PieceCoordinate* pieces, uint8_t* numPieces);
 
+// LEDs
+static void IlluminatePieceCoordinates(struct PieceCoordinate* pieceCoordinates, uint8_t numPieceCoordinates);
+static void IlluminateCoordinates(struct Coordinate* coordinates, uint8_t numCoordinates);
+static void IlluminateSquare(uint8_t row, uint8_t column);
+
 // Debouncing //
 uint8_t History[NUM_ROWS][NUM_COLS][NUM_HISTORY_ENTRIES];
 
@@ -61,7 +67,7 @@ static struct PieceCoordinate LastPickedUpPiece;
 
 // Legal Piece Detection/Recovery Fields //
 static struct PieceCoordinate PieceToKill;
-static struct IllegalMove IllegalPieces[NUM_ILLEGAL_PIECES];
+static struct IllegalMove IllegalPieces[MAX_ILLEGAL_PIECES];
 static uint8_t NumIllegalPieces;
 static uint8_t SwitchTurnsAfterLegalState;
 
@@ -107,6 +113,7 @@ void InitTracker()
 		{
 			Chessboard[row][column] = INITIAL_CHESSBOARD[row][column];
 
+			// Initialize debouncing history array
 			for(uint8_t i = 0; i < NUM_HISTORY_ENTRIES; i++)
 			{
 				History[row][column][i] = 0;
@@ -116,14 +123,11 @@ void InitTracker()
 
 	// Initialize illegal piece destinations to empty pieces
 	NumIllegalPieces = 0;
-	for (uint8_t i = 0; i < NUM_ILLEGAL_PIECES; i++)
+	for (uint8_t i = 0; i < MAX_ILLEGAL_PIECES; i++)
 	{
 		IllegalPieces[i].destination = EMPTY_PIECE_COORDINATE;
 		IllegalPieces[i].current = EMPTY_PIECE_COORDINATE;
 	}
-
-	// Initialize debouncing history array
-
 
 	// Initialize PathFinder
 	CalculateTeamsLegalMoves(CurrentTurn);
@@ -158,10 +162,10 @@ uint8_t Track()
 		{
 			uint8_t cellValue = ReadRow(row);
 
-			// Add cellValue to front of History array for this cell
+			// Add cellValue to front of debouncing History array for this cell
 			AppendHistory(row, column, cellValue);
 
-			// If the History of this cell is all the same value, then we can consider it for a transition
+			// If the debouncing History of this cell is all the same value, then we can consider it for a transition
 			if(IsHistoryConsensus(row, column))
 			{
 				struct PieceCoordinate currentPieceCoordinate = GetPieceCoordinate(row, column);
@@ -271,14 +275,16 @@ static void HandlePlaceIllegalState(struct PieceCoordinate placedPiece)
 	}
 
 	// A piece was placed in an unexpected destination, add it as an illegal piece that must be removed from the board
+	SetPiece(placedPiece.row, placedPiece.column, LastPickedUpPiece.piece);
 	AddIllegalPiece(placedPiece, OFFBOARD_PIECE_COORDINATE);
 }
 
 static void HandlePlaceNoMove(struct PieceCoordinate placedPiece)
 {
 	SetPiece(placedPiece.row, placedPiece.column, LastPickedUpPiece.piece);
-	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
-	writeBoardValue(&hspi1, board);
+
+	// Turn off all squares
+	IlluminateCoordinates(NULL, 0);
 }
 
 static void HandlePlaceKill(struct PieceCoordinate placedPiece)
@@ -362,15 +368,33 @@ static void HandlePlaceMove(struct PieceCoordinate placedPiece)
 static void HandlePlacePreemptPromotion(struct PieceCoordinate placedPiece)
 {
 	PawnToPromote = placedPiece;
+
+	// Illuminate the PawnToPromote
+	IlluminatePieceCoordinates(&PawnToPromote, 1);
 }
 
 static void HandlePlacePromotion(struct PieceCoordinate placedPiece)
 {
-	// If placed the promoted piece back into the pawn's old spot, get the PieceType (knight or queen) from the stored button state and set the piece as that type
+	// If placed the promoted piece back into the pawn's old spot, get the PieceType (knight or queen) from the last button pressed and set the piece as that type
 	if (IsPieceCoordinateSamePosition(placedPiece, PawnToPromote))
 	{
-		/// @todo get button data, and set the right piececoordinate to the right PieceType
-		struct Piece promotedPiece = {QUEEN, CurrentTurn};
+		// Get last button pressed, choose the piece type based on which button was pressed
+		enum PieceType selectedPieceType;
+		switch(GetLastButtonPressed())
+		{
+			case QUEEN_BUTTON:
+				selectedPieceType = QUEEN;
+				break;
+			case KNIGHT_BUTTON:
+				selectedPieceType = KNIGHT;
+				break;
+			default:
+				/// @todo: play audio cue to select the piece type to promote to
+				return;
+		}
+
+		// Set piece on chessboard and end the turn
+		struct Piece promotedPiece = {selectedPieceType, CurrentTurn};
 		SetPiece(placedPiece.row, placedPiece.column, promotedPiece);
 		ClearPiece(&PawnToPromote);
 		EndTurn();
@@ -434,7 +458,7 @@ static void HandlePickupIllegalState(struct PieceCoordinate pickedUpPiece)
 	for (uint8_t i = 0; i < NumIllegalPieces; i++)
 	{
 		// If pickup for illegal piece, let it slide
-		if (IsPieceCoordinateEqual(IllegalPieces[i].current, pickedUpPiece))
+		if (IsPieceCoordinateSamePosition(IllegalPieces[i].current, pickedUpPiece))
 		{
 			// If pickup an illegal piece which is to be removed from the board is picked up, it is no longer illegal
 			if (IsPieceCoordinateEqual(IllegalPieces[i].destination, OFFBOARD_PIECE_COORDINATE))
@@ -460,8 +484,13 @@ static void HandlePickupPreemptKill(struct PieceCoordinate pickedUpPiece)
 
 static void HandlePickupKill(struct PieceCoordinate pickedUpPiece)
 {
-	// If piece can't kill PieceToKill, they need to be put back to their initial positions, and PieceToKill is not a piece to kill anymore
-	if (!ValidateKill(PieceToKill, pickedUpPiece))
+	// If pickedUpPiece can kill it, illuminate PieceToKill's spot
+	if(ValidateKill(PieceToKill, pickedUpPiece))
+	{
+		IlluminatePieceCoordinates(&PieceToKill, 1);
+	}
+	// If pickedUpPiece can't kill PieceToKill, they need to be put back to their initial positions, and PieceToKill is not a piece to kill anymore
+	else
 	{
 		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, PieceToKill);
 		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
@@ -503,6 +532,11 @@ static void HandlePickupCastling(struct PieceCoordinate pickedUpPiece)
 		{
 			ExpectedKingCastleCoordinate = expectedKingPieceCoordinate;
 			ExpectedRookCastleCoordinate = expectedRookPieceCoordinate;
+
+			// Illuminate LEDs to the target castling locations
+			struct PieceCoordinate pieceCoordinatesToIlluminate[] = { expectedKingPieceCoordinate, expectedRookPieceCoordinate};
+			IlluminatePieceCoordinates(pieceCoordinatesToIlluminate, sizeof(pieceCoordinatesToIlluminate) / sizeof(*pieceCoordinatesToIlluminate));
+
 			return;
 		}
 	}
@@ -535,16 +569,36 @@ static void HandlePickupMove(struct PieceCoordinate pickedUpPiece)
 		CalculateAllLegalPathsAndChecks(pickedUpPiece, allLegalPaths, &numLegalPaths);
 
 		// Illuminate legal paths on LEDs
-		uint8_t board[NUM_ROWS][NUM_COLS] = {0};
-		for(uint8_t i = 0; i < numLegalPaths; i++)
-		{
-			struct Coordinate legalPath = allLegalPaths[i];
-			board[legalPath.row][legalPath.column] = 1;
-		}
-		writeBoardValue(&hspi1, board);
+		IlluminateCoordinates(allLegalPaths, numLegalPaths);
 	}
 }
 
+static void IlluminatePieceCoordinates(struct PieceCoordinate* pieceCoordinates, uint8_t numPieceCoordinates)
+{
+	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
+	for(uint8_t i = 0; i < numPieceCoordinates; i++)
+	{
+		board[pieceCoordinates[i].row][pieceCoordinates[i].column] = 1;
+	}
+	writeBoardValue(&hspi1, board);
+}
+
+static void IlluminateCoordinates(struct Coordinate* coordinates, uint8_t numCoordinates)
+{
+	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
+	for(uint8_t i = 0; i < numCoordinates; i++)
+	{
+		board[coordinates[i].row][coordinates[i].column] = 1;
+	}
+	writeBoardValue(&hspi1, board);
+}
+
+static void IlluminateSquare(uint8_t row, uint8_t column)
+{
+	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
+	board[row][column] = 1;
+	writeBoardValue(&hspi1, board);
+}
 
 /**
  * @brief Put an illegal piece in the IllegalPieceDestinations array. Destination is the correct destination of the piece and Current is the current position of the piece.
@@ -553,9 +607,29 @@ static void AddIllegalPiece(struct PieceCoordinate current, struct PieceCoordina
 {
 	current.piece = destination.piece;
 
+	// Do not add duplicate pieces
+	for(uint8_t i = 0; i < NumIllegalPieces; i++)
+	{
+		if(IsPieceCoordinateSamePosition(IllegalPieces[i].current, current))
+		{
+			return;
+		}
+	}
+
+	// Add illegal pieces to array
 	IllegalPieces[NumIllegalPieces].current = current;
 	IllegalPieces[NumIllegalPieces].destination = destination;
 	NumIllegalPieces++;
+
+	// Illuminate all illegal pieces
+	uint8_t j = 0;
+	struct PieceCoordinate pieceCoordinates[2 * MAX_ILLEGAL_PIECES] = {0};
+	for(uint8_t i = 0; i < NumIllegalPieces; i++)
+	{
+		pieceCoordinates[j++] = IllegalPieces[i].current;
+		pieceCoordinates[j++] = IllegalPieces[i].destination;
+	}
+	IlluminatePieceCoordinates(pieceCoordinates, sizeof(pieceCoordinates) / sizeof(*pieceCoordinates));
 }
 
 /**
@@ -563,11 +637,22 @@ static void AddIllegalPiece(struct PieceCoordinate current, struct PieceCoordina
  */
 static void RemoveIllegalPiece(uint8_t index)
 {
+	// Remove illegal piece from array
 	NumIllegalPieces--;
 	for (uint8_t i = index; i < NumIllegalPieces; i++)
 	{
 		IllegalPieces[i] = IllegalPieces[i + 1];
 	}
+
+	// Unilluminate the piece that was removed
+	uint8_t j = 0;
+	struct PieceCoordinate pieceCoordinates[2 * MAX_ILLEGAL_PIECES] = {0};
+	for(uint8_t i = 0; i < NumIllegalPieces; i++)
+	{
+		pieceCoordinates[j++] = IllegalPieces[i].current;
+		pieceCoordinates[j++] = IllegalPieces[i].destination;
+	}
+	IlluminatePieceCoordinates(pieceCoordinates, sizeof(pieceCoordinates) / sizeof(*pieceCoordinates));
 }
 
 /**
@@ -631,45 +716,32 @@ static uint8_t ValidateCastling(struct PieceCoordinate rook, struct PieceCoordin
 
 uint8_t ValidateStartPositions()
 {
-	uint8_t thing[8][8] = {0};
-	for (uint8_t columnNumber = 0; columnNumber < NUM_COLS; columnNumber++)
-	{
-		WriteColumn(columnNumber);
-		for (uint8_t rowNumber = 0; rowNumber < NUM_ROWS; rowNumber++)
-		{
-			GPIO_PinState cellValue = ReadRow(rowNumber);
-			thing[rowNumber][columnNumber] = cellValue;
+	struct Coordinate invalidCoordinates[NUM_COLS * NUM_ROWS] = {0};
+	uint8_t numInvalidCoordinates = 0;
 
-			if(cellValue == GPIO_PIN_SET && INITIAL_CHESSBOARD[rowNumber][columnNumber].type == NONE)
-			{
-				return 0;
-			}
-
-			if(cellValue == GPIO_PIN_RESET && INITIAL_CHESSBOARD[rowNumber][columnNumber].type != NONE)
-			{
-				return 0;
-			}
-		}
-	}
-
-	return 1;
-}
-
-void TestLEDs()
-{
-	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
-
-	for(uint8_t column = 0; column < NUM_COLS; column++)
+	for (uint8_t column = 0; column < NUM_COLS; column++)
 	{
 		WriteColumn(column);
-		for(uint8_t row = 0; row < NUM_ROWS; row++)
+		for (uint8_t row = 0; row < NUM_ROWS; row++)
 		{
 			GPIO_PinState cellValue = ReadRow(row);
-			board[row][column] = cellValue;
+			struct Coordinate coordinate = {row, column};
+
+			if(cellValue == GPIO_PIN_SET && INITIAL_CHESSBOARD[row][column].type == NONE)
+			{
+				invalidCoordinates[numInvalidCoordinates++] = coordinate;
+			}
+
+			if(cellValue == GPIO_PIN_RESET && INITIAL_CHESSBOARD[row][column].type != NONE)
+			{
+				invalidCoordinates[numInvalidCoordinates++] = coordinate;
+			}
 		}
 	}
 
-	writeBoardValue(&hspi1, board);
+
+	IlluminateCoordinates(invalidCoordinates, numInvalidCoordinates);
+	return (numInvalidCoordinates == 0);
 }
 
 static void EndTurn()
@@ -684,8 +756,7 @@ static void EndTurn()
 #endif // !TEST
 
 	// Turn LEDs off
-	uint8_t LEDs[NUM_ROWS][NUM_COLS] = {0};
-	writeBoardValue(&hspi1, LEDs);
+	IlluminateCoordinates(NULL, 0);
 
 #ifndef TEST
 	// Check if any rooks or kings moved so they can be flagged as not castleable

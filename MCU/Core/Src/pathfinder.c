@@ -479,8 +479,8 @@ void CalculateCastlingPositions(
 	// Calculate expected ROOK and KING columns
 	if (rookPieceCoordinate.column == 0)
 	{
-		expectedKingPieceCoordinate->column = 2;
-		expectedRookPieceCoordinate->column = 3;
+		expectedKingPieceCoordinate->column = 1;
+		expectedRookPieceCoordinate->column = 2;
 	}
 	else if (rookPieceCoordinate.column == 7)
 	{

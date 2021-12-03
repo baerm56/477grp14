@@ -34,9 +34,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
  ../Middlewares/Third_Party/FatFs/src/diskio.h \
  ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
- ../Core/Inc/leds.h ../Core/Inc/speaker.h ../Core/Inc/waveplayer.h \
- ../Core/Inc/uart.h ../Core/Inc/tracker.h ../Core/Inc/main.h \
- ../Core/Inc/types.h ../Core/Inc/button.h
+ ../Core/Inc/leds.h ../Core/Inc/types.h ../Core/Inc/speaker.h \
+ ../Core/Inc/waveplayer.h ../Core/Inc/uart.h ../Core/Inc/tracker.h \
+ ../Core/Inc/main.h ../Core/Inc/button.h ../Core/Inc/button.h
 
 ../Core/Inc/main.h:
 
@@ -118,6 +118,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/leds.h:
 
+../Core/Inc/types.h:
+
 ../Core/Inc/speaker.h:
 
 ../Core/Inc/waveplayer.h:
@@ -128,6 +130,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 
 ../Core/Inc/main.h:
 
-../Core/Inc/types.h:
+../Core/Inc/button.h:
 
 ../Core/Inc/button.h:

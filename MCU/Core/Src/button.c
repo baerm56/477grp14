@@ -6,11 +6,13 @@ static void OnButton2Press();
 
 TIM_HandleTypeDef* Button1DebounceTimer;
 TIM_HandleTypeDef* Button2DebounceTimer;
+static enum ButtonType LastButtonPressed;
 
 void InitButtons(TIM_HandleTypeDef *button1DebounceTimer, TIM_HandleTypeDef *button2DebounceTimer)
 {
 	Button1DebounceTimer = button1DebounceTimer;
 	Button2DebounceTimer = button2DebounceTimer;
+	LastButtonPressed = NO_BUTTON;
 }
 
 void Button1DebounceTimerCallback()
@@ -43,10 +45,15 @@ void Button2Callback()
 
 static void OnButton1Press()
 {
-
+	LastButtonPressed = BUTTON1;
 }
 
 static void OnButton2Press()
 {
+	LastButtonPressed = BUTTON2;
+}
 
+enum ButtonType GetLastButtonPressed()
+{
+	return LastButtonPressed;
 }

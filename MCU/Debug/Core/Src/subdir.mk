@@ -6,6 +6,7 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Core/Src/button.c \
+../Core/Src/chessclock.c \
 ../Core/Src/leds.c \
 ../Core/Src/main.c \
 ../Core/Src/pathfinder.c \
@@ -21,6 +22,7 @@ C_SRCS += \
 
 OBJS += \
 ./Core/Src/button.o \
+./Core/Src/chessclock.o \
 ./Core/Src/leds.o \
 ./Core/Src/main.o \
 ./Core/Src/pathfinder.o \
@@ -36,6 +38,7 @@ OBJS += \
 
 C_DEPS += \
 ./Core/Src/button.d \
+./Core/Src/chessclock.d \
 ./Core/Src/leds.d \
 ./Core/Src/main.d \
 ./Core/Src/pathfinder.d \

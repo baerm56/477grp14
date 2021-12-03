@@ -1,8 +1,10 @@
 button.c:11:6:InitButtons	16	static
-button.c:18:6:Button1DebounceTimerCallback	8	static
-button.c:27:6:Button2DebounceTimerCallback	8	static
-button.c:36:6:Button1Callback	8	static
-button.c:41:6:Button2Callback	8	static
-button.c:46:13:OnButton1Press	4	static
-button.c:51:13:OnButton2Press	4	static
-button.c:56:17:GetLastButtonPressed	4	static
+button.c:18:15:GetGameModeSwitchState	8	static
+button.c:38:19:GetDifficultySwitchState	8	static
+button.c:58:6:Button1DebounceTimerCallback	8	static
+button.c:67:6:Button2DebounceTimerCallback	8	static
+button.c:76:6:Button1Callback	8	static
+button.c:81:6:Button2Callback	8	static
+button.c:86:13:OnButton1Press	4	static
+button.c:91:13:OnButton2Press	4	static
+button.c:96:17:GetLastButtonPressed	4	static

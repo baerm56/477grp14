@@ -29,7 +29,7 @@ Core/Src/button.o: ../Core/Src/button.c ../Core/Inc/button.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_tim_ex.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_uart.h \
  ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h \
- ../Core/Inc/main.h
+ ../Core/Inc/types.h ../Core/Inc/main.h
 
 ../Core/Inc/button.h:
 
@@ -92,5 +92,7 @@ Core/Src/button.o: ../Core/Src/button.c ../Core/Inc/button.h \
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_uart.h:
 
 ../Drivers/STM32L1xx_HAL_Driver/Inc/stm32l1xx_hal_exti.h:
+
+../Core/Inc/types.h:
 
 ../Core/Inc/main.h:

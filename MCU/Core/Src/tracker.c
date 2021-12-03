@@ -87,6 +87,7 @@ static struct PieceCoordinate ExpectedRookCastleCoordinate;
 static struct PieceCoordinate PawnToPromote;
 
 // Integration //
+enum GameMode CurrentGameMode;
 extern SPI_HandleTypeDef hspi1; // LED matrix controller
 extern SPI_HandleTypeDef hspi2; // Timer
 extern UART_HandleTypeDef huart1;
@@ -99,9 +100,10 @@ char * audio[] = {"a.wav", "b.wav", "c.wav", "d.wav", "e.wav", "f.wav", "g.wav",
 char MoveBuffer[4] = {0};
 char ReceiveBuffer[5] = {0};
 
-void InitTracker()
+void InitTracker(enum GameMode gameMode)
 {
 	// Initialize globals
+	CurrentGameMode = gameMode;
 	LastTransitionType = PLACE;
 	CurrentTurn = WHITE;
 	CanA1Castle = 1;
@@ -240,16 +242,16 @@ static void HandlePlace(struct PieceCoordinate placedPiece)
 		HandlePlacePromotion(placedPiece);
 	}
 
-	// If the piece lifted did not move, don't do anything except update Chessboard
-	else if (IsPieceCoordinateSamePosition(placedPiece, LastPickedUpPiece))
-	{
-		HandlePlaceNoMove(placedPiece);
-	}
-
 	// If there's a piece being killed, this placement should be in its stead
 	else if (PieceExists(PieceToKill))
 	{
 		HandlePlaceKill(placedPiece);
+	}
+
+	// If the piece lifted did not move, don't do anything except update Chessboard
+	else if (IsPieceCoordinateSamePosition(placedPiece, LastPickedUpPiece))
+	{
+		HandlePlaceNoMove(placedPiece);
 	}
 
 	// If player is castling, this placement should be the king or rook being placed in the right spots
@@ -306,35 +308,15 @@ static void HandlePlaceKill(struct PieceCoordinate placedPiece)
 	// If player put killer in victim's place, clear PieceToKill
 	if (IsPieceCoordinateSamePosition(PieceToKill, placedPiece))
 	{
-		ClearPiece(&PieceToKill);
-		EndTurn();
-
-		// Get move from AI for BLACK
-		if (LastPickedUpPiece.piece.owner == WHITE){
+		// Store move for AI
+		if(CurrentTurn == WHITE)
+		{
 			MoveBuffer[2] = 'h' - placedPiece.column;
 			MoveBuffer[3] = '1' + placedPiece.row;
-			ReceiveBuffer[0] = '-';
-			ReceiveBuffer[1] = '-';
-			ReceiveBuffer[2] = '-';
-			ReceiveBuffer[3] = '-';
-			ReceiveBuffer[4] = '-';
-			sendMove(&huart1, MoveBuffer);
-			receiveData(&huart1, ReceiveBuffer);
-			if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-				struct Coordinate from[2] = {0};
-				from[0].row = (int8_t)(ReceiveBuffer[1] - '1');
-				from[0].column = (int8_t)('h' - ReceiveBuffer[0]);
-				from[1].row = (int8_t)(ReceiveBuffer[3] - '1');
-				from[1].column = (int8_t)('h' - ReceiveBuffer[2]);
-				IlluminateCoordinates(from, 2);
-				prepAudio(&hspi1, &hspi2, &hdac);
-				PlayAudio(audio[ReceiveBuffer[0] - 'a'], &hdac);
-				PlayAudio(audio[ReceiveBuffer[1] - '1' + 8], &hdac);
-				PlayAudio(audio[ReceiveBuffer[2] - 'a'], &hdac);
-				PlayAudio(audio[ReceiveBuffer[3] - '1' + 8], &hdac);
-				resetAudio(&hspi1, &hspi2, &hdac);
-			}
 		}
+
+		ClearPiece(&PieceToKill);
+		EndTurn();
 	}
 	// If player didn't put killer in the victim's spot, must put the killer in the victim spot
 	else
@@ -395,34 +377,14 @@ static void HandlePlaceMove(struct PieceCoordinate placedPiece)
 
 	if (isMoveValid)
 	{
-		EndTurn();
-
-		// Get move from AI for BLACK
-		if (LastPickedUpPiece.piece.owner == WHITE){
+		// Store move to send to AI
+		if(CurrentTurn == WHITE)
+		{
 			MoveBuffer[2] = 'h' - placedPiece.column;
 			MoveBuffer[3] = '1' + placedPiece.row;
-			ReceiveBuffer[0] = '-';
-			ReceiveBuffer[1] = '-';
-			ReceiveBuffer[2] = '-';
-			ReceiveBuffer[3] = '-';
-			ReceiveBuffer[4] = '-';
-			sendMove(&huart1, MoveBuffer);
-			receiveData(&huart1, ReceiveBuffer);
-			if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-				struct Coordinate from[2] = {0};
-				from[0].row = (int8_t)(ReceiveBuffer[1] - '1');
-				from[0].column = (int8_t)('h' - ReceiveBuffer[0]);
-				from[1].row = (int8_t)(ReceiveBuffer[3] - '1');
-				from[1].column = (int8_t)('h' - ReceiveBuffer[2]);
-				IlluminateCoordinates(from, 2);
-				prepAudio(&hspi1, &hspi2, &hdac);
-				PlayAudio(audio[ReceiveBuffer[0] - 'a'], &hdac);
-				PlayAudio(audio[ReceiveBuffer[1] - '1' + 8], &hdac);
-				PlayAudio(audio[ReceiveBuffer[2] - 'a'], &hdac);
-				PlayAudio(audio[ReceiveBuffer[3] - '1' + 8], &hdac);
-				resetAudio(&hspi1, &hspi2, &hdac);
-			}
 		}
+
+		EndTurn();
 	}
 	// If move was invalid, put piece back
 	else
@@ -555,9 +517,12 @@ static void HandlePickupKill(struct PieceCoordinate pickedUpPiece)
 	{
 		IlluminatePieceCoordinates(&PieceToKill, 1);
 
-		// Update Move Buffer
-		MoveBuffer[0] = 'h' - pickedUpPiece.column;
-		MoveBuffer[1] = '1' + pickedUpPiece.row;
+		// Store move for AI
+		if(CurrentTurn == WHITE)
+		{
+			MoveBuffer[0] = 'h' - pickedUpPiece.column;
+			MoveBuffer[1] = '1' + pickedUpPiece.row;
+		}
 	}
 	// If pickedUpPiece can't kill PieceToKill, they need to be put back to their initial positions, and PieceToKill is not a piece to kill anymore
 	else
@@ -633,18 +598,25 @@ static void HandlePickupMove(struct PieceCoordinate pickedUpPiece)
 	}
 	else
 	{
-		// Calculate all legal paths
-		struct Coordinate allLegalPaths[MAX_LEGAL_MOVES];
-		uint8_t numLegalPaths;
-		CalculateAllLegalPathsAndChecks(pickedUpPiece, allLegalPaths, &numLegalPaths);
+		// If in practice mode, don't illuminate the legal paths of the AI (BLACK)
+		// In other mode, illuminate the legal paths of BLACK
+		if (!(CurrentGameMode == PRACTICE && CurrentTurn == BLACK))
+		{
+			// Calculate all legal paths
+			struct Coordinate allLegalPaths[MAX_LEGAL_MOVES];
+			uint8_t numLegalPaths;
+			CalculateAllLegalPathsAndChecks(pickedUpPiece, allLegalPaths, &numLegalPaths);
 
-		// Illuminate legal paths on LEDs
-		if (pickedUpPiece.piece.owner == WHITE)
+			// Illuminate legal paths on LEDs
 			IlluminateCoordinates(allLegalPaths, numLegalPaths);
+		}
 
-		// Update Move Buffer
-		MoveBuffer[0] = 'h' - pickedUpPiece.column;
-		MoveBuffer[1] = '1' + pickedUpPiece.row;
+		// Store move for AI
+		if(CurrentTurn == WHITE)
+		{
+			MoveBuffer[0] = 'h' - pickedUpPiece.column;
+			MoveBuffer[1] = '1' + pickedUpPiece.row;
+		}
 	}
 }
 
@@ -821,19 +793,16 @@ uint8_t ValidateStartPositions()
 
 static void EndTurn()
 {
-#ifndef TEST
 	// Check for a promotion. If found, do not end turn, HandlePlacePreemptPromotion
 	CheckForPromotion();
 	if (PieceExists(PawnToPromote))
 	{
 		return;
 	}
-#endif // !TEST
 
 	// Turn LEDs off
 	IlluminateCoordinates(NULL, 0);
 
-#ifndef TEST
 	// Check if any rooks or kings moved so they can be flagged as not castleable
 	UpdateCastleFlags();
 
@@ -841,7 +810,34 @@ static void EndTurn()
 
 	// Switch teams
 	CurrentTurn = CurrentTurn == WHITE ? BLACK : WHITE;
-#endif // !TEST
+
+	// If in practice mode and the current turn is the AI, generate a move
+	if(CurrentGameMode == PRACTICE && CurrentTurn == BLACK)
+	{
+		ReceiveBuffer[0] = '-';
+		ReceiveBuffer[1] = '-';
+		ReceiveBuffer[2] = '-';
+		ReceiveBuffer[3] = '-';
+		ReceiveBuffer[4] = '-';
+		sendMove(&huart1, MoveBuffer);
+		receiveData(&huart1, ReceiveBuffer);
+		if (memcmp(ReceiveBuffer, "-----", 5) != 0){
+			struct Coordinate from[2] = {0};
+			from[0].row = (int8_t)(ReceiveBuffer[1] - '1');
+			from[0].column = (int8_t)('h' - ReceiveBuffer[0]);
+			from[1].row = (int8_t)(ReceiveBuffer[3] - '1');
+			from[1].column = (int8_t)('h' - ReceiveBuffer[2]);
+			IlluminateCoordinates(from, 2);
+			/*
+			prepAudio(&hspi1, &hspi2, &hdac);
+			PlayAudio(audio[ReceiveBuffer[0] - 'a'], &hdac);
+			PlayAudio(audio[ReceiveBuffer[1] - '1' + 8], &hdac);
+			PlayAudio(audio[ReceiveBuffer[2] - 'a'], &hdac);
+			PlayAudio(audio[ReceiveBuffer[3] - '1' + 8], &hdac);
+			resetAudio(&hspi1, &hspi2, &hdac);
+			*/
+		}
+	}
 
 	// Invoke PathFinder to store all legal moves for this team
 	CalculateTeamsLegalMoves(CurrentTurn);

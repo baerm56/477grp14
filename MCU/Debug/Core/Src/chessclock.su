@@ -1,0 +1,4 @@
+chessclock.c:9:6:InitChessClock	16	static
+chessclock.c:19:6:StartChessClock	8	static
+chessclock.c:24:6:StopChessClock	8	static
+chessclock.c:29:6:ChessClockTimerCallback	16	static

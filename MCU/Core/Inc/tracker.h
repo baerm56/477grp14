@@ -71,10 +71,7 @@ volatile static const struct Piece INITIAL_CHESSBOARD[NUM_ROWS][NUM_COLS] = {
 uint8_t Track(void);
 
 
-/**
- * @brief Initialize IO ports to use for tracking via the Hall Effect sensors.
- */
-void InitTracker(void);
+void InitTracker(enum GameMode gameMode);
 
 
 /**

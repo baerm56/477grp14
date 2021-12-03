@@ -29,6 +29,8 @@
 #include "uart.h"
 #include "tracker.h"
 #include "button.h"
+#include "chessclock.h"
+#include "types.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -67,7 +69,14 @@ UART_HandleTypeDef huart1;
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void MX_SPI2_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_SPI1_Init(void);
+static void MX_SPI3_Init(void);
+static void MX_DMA_Init(void);
+static void MX_DAC_Init(void);
+static void MX_TIM4_Init(void);
+static void MX_USART1_UART_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM5_Init(void);
 /* USER CODE BEGIN PFP */
@@ -108,34 +117,34 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_SPI2_Init();
   MX_TIM3_Init();
+  MX_SPI1_Init();
+  MX_SPI3_Init();
+  MX_DMA_Init();
+  MX_DAC_Init();
+  MX_FATFS_Init();
+  MX_TIM4_Init();
+  MX_USART1_UART_Init();
   MX_TIM2_Init();
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
-  LEDSInit(&hspi2, 2);
-  HAL_TIM_Base_Start_IT(&htim3);
-  ChessTimerLEDInit(&hspi2);
-  writeTime(&hspi2, timer1, 0);
-  writeTime(&hspi2, timer2, 1);
 
+  // Initialize LEDs //
   LEDSInit(&hspi1, 1);
   BoardLEDInit(&hspi1);
   uint8_t board[NUM_ROWS][NUM_COLS] = {0};
   writeBoardValue(&hspi1, board);
-  /*
 
-  */
+  // Initialize Chessclock //
+  LEDSInit(&hspi2, 2);
+  ChessTimerLEDInit(&hspi2);
+  InitChessClock(&hspi2, &htim3);
+
+  // Initialize Audio //
   SpeakerInit(&hdac, &htim4);
   WaveplayerInit(&hspi3, &hdac);
 
-  EnableUart(&huart1);
-
-  char send[4] = {'S', 'T', 'R', 'T'};
-  char recv[6] = {'-', '-', '-', '-', '-'};
-  uint8_t color = 0;
-  uint8_t edum = 0;
-  sendStart(&huart1, color, edum);
-  sendDifficulty(&huart1, 1);
   /*if (color){
 	  receiveData(&huart1, recv);
   }*/
@@ -144,15 +153,40 @@ int main(void)
   // Initialize Buttons
   InitButtons(&htim2, &htim5);
 
+  /* USER CODE END 2 */
+
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  char a, b;
+  a = 'd';
+  b = '2';
+
+
+
+  // Get GameMode //
+  enum GameMode gameMode = GetGameModeSwitchState();
+
+  // Initialize AI //
+  if(gameMode == PRACTICE)
+  {
+	EnableUart(&huart1);
+	char send[4] = {'S', 'T', 'R', 'T'};
+	char recv[6] = {'-', '-', '-', '-', '-'};
+	uint8_t color = 0;
+	uint8_t edum = 0;
+	sendStart(&huart1, color, edum);
+	sendDifficulty(&huart1, 1);
+  }
+
   // Initialize Tracker component
-  InitTracker();
+  InitTracker(gameMode);
   while(!ValidateStartPositions())
   {
 	  /// @todo: play audio cue and invoke LEDs to put pieces in correct starting positions
 	  HAL_Delay(10);
   }
 
-  // Splash LEDs when ready
+  // Splash LEDs
   for(uint8_t i = 0; i < 8; i++)
   {
 	  board[i][0] = 1;
@@ -162,13 +196,9 @@ int main(void)
   }
   writeBoardValue(&hspi1, board);
 
-  /* USER CODE END 2 */
+  // Start ChessClock
+  StartChessClock();
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  char a, b;
-  a = 'd';
-  b = '2';
   while (1)
   {
 	  //TestLEDs();
@@ -225,6 +255,158 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief DAC Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_DAC_Init(void)
+{
+
+  /* USER CODE BEGIN DAC_Init 0 */
+
+  /* USER CODE END DAC_Init 0 */
+
+  DAC_ChannelConfTypeDef sConfig = {0};
+
+  /* USER CODE BEGIN DAC_Init 1 */
+
+  /* USER CODE END DAC_Init 1 */
+  /** DAC Initialization
+  */
+  hdac.Instance = DAC;
+  if (HAL_DAC_Init(&hdac) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** DAC channel OUT2 config
+  */
+  sConfig.DAC_Trigger = DAC_TRIGGER_T4_TRGO;
+  sConfig.DAC_OutputBuffer = DAC_OUTPUTBUFFER_ENABLE;
+  if (HAL_DAC_ConfigChannel(&hdac, &sConfig, DAC_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN DAC_Init 2 */
+
+  /* USER CODE END DAC_Init 2 */
+
+}
+
+/**
+  * @brief SPI1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI1_Init(void)
+{
+
+  /* USER CODE BEGIN SPI1_Init 0 */
+
+  /* USER CODE END SPI1_Init 0 */
+
+  /* USER CODE BEGIN SPI1_Init 1 */
+
+  /* USER CODE END SPI1_Init 1 */
+  /* SPI1 parameter configuration*/
+  hspi1.Instance = SPI1;
+  hspi1.Init.Mode = SPI_MODE_MASTER;
+  hspi1.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi1.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi1.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi1.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi1.Init.NSS = SPI_NSS_SOFT;
+  hspi1.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi1.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi1.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi1.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi1.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI1_Init 2 */
+
+  /* USER CODE END SPI1_Init 2 */
+
+}
+
+/**
+  * @brief SPI2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI2_Init(void)
+{
+
+  /* USER CODE BEGIN SPI2_Init 0 */
+
+  /* USER CODE END SPI2_Init 0 */
+
+  /* USER CODE BEGIN SPI2_Init 1 */
+
+  /* USER CODE END SPI2_Init 1 */
+  /* SPI2 parameter configuration*/
+  hspi2.Instance = SPI2;
+  hspi2.Init.Mode = SPI_MODE_MASTER;
+  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi2.Init.NSS = SPI_NSS_SOFT;
+  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
+  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi2.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI2_Init 2 */
+
+  /* USER CODE END SPI2_Init 2 */
+
+}
+
+/**
+  * @brief SPI3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_SPI3_Init(void)
+{
+
+  /* USER CODE BEGIN SPI3_Init 0 */
+
+  /* USER CODE END SPI3_Init 0 */
+
+  /* USER CODE BEGIN SPI3_Init 1 */
+
+  /* USER CODE END SPI3_Init 1 */
+  /* SPI3 parameter configuration*/
+  hspi3.Instance = SPI3;
+  hspi3.Init.Mode = SPI_MODE_MASTER;
+  hspi3.Init.Direction = SPI_DIRECTION_2LINES;
+  hspi3.Init.DataSize = SPI_DATASIZE_8BIT;
+  hspi3.Init.CLKPolarity = SPI_POLARITY_LOW;
+  hspi3.Init.CLKPhase = SPI_PHASE_1EDGE;
+  hspi3.Init.NSS = SPI_NSS_SOFT;
+  hspi3.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
+  hspi3.Init.FirstBit = SPI_FIRSTBIT_MSB;
+  hspi3.Init.TIMode = SPI_TIMODE_DISABLE;
+  hspi3.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+  hspi3.Init.CRCPolynomial = 10;
+  if (HAL_SPI_Init(&hspi3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SPI3_Init 2 */
+
+  /* USER CODE END SPI3_Init 2 */
+
 }
 
 /**
@@ -317,6 +499,50 @@ static void MX_TIM3_Init(void)
 
 }
 
+/**
+  * @brief TIM4 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM4_Init(void)
+{
+
+  /* USER CODE BEGIN TIM4_Init 0 */
+
+  /* USER CODE END TIM4_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM4_Init 1 */
+
+  /* USER CODE END TIM4_Init 1 */
+  htim4.Instance = TIM4;
+  htim4.Init.Prescaler = 0;
+  htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim4.Init.Period = 250-1;
+  htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim4, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_UPDATE;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim4, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM4_Init 2 */
+
+  /* USER CODE END TIM4_Init 2 */
+
+}
 
 /**
   * @brief TIM5 Initialization Function
@@ -360,6 +586,55 @@ static void MX_TIM5_Init(void)
   /* USER CODE BEGIN TIM5_Init 2 */
 
   /* USER CODE END TIM5_Init 2 */
+
+}
+
+/**
+  * @brief USART1 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART1_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART1_Init 0 */
+
+  /* USER CODE END USART1_Init 0 */
+
+  /* USER CODE BEGIN USART1_Init 1 */
+
+  /* USER CODE END USART1_Init 1 */
+  huart1.Instance = USART1;
+  huart1.Init.BaudRate = 9600;
+  huart1.Init.WordLength = UART_WORDLENGTH_9B;
+  huart1.Init.StopBits = UART_STOPBITS_1;
+  huart1.Init.Parity = UART_PARITY_EVEN;
+  huart1.Init.Mode = UART_MODE_TX_RX;
+  huart1.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart1.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART1_Init 2 */
+
+  /* USER CODE END USART1_Init 2 */
+
+}
+
+/**
+  * Enable DMA controller clock
+  */
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Channel3_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Channel3_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Channel3_IRQn);
 
 }
 
@@ -413,8 +688,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : HALLOUT3_Pin HALLOUT4_Pin */
-  GPIO_InitStruct.Pin = HALLOUT3_Pin|HALLOUT4_Pin;
+  /*Configure GPIO pins : HALLOUT3_Pin HALLOUT4_Pin SWITCH1_1_Pin SWITCH1_2_Pin
+                           SWITCH1_3_Pin SWITCH2_1_Pin SWITCH2_2_Pin SWITCH2_3_Pin */
+  GPIO_InitStruct.Pin = HALLOUT3_Pin|HALLOUT4_Pin|SWITCH1_1_Pin|SWITCH1_2_Pin
+                          |SWITCH1_3_Pin|SWITCH2_1_Pin|SWITCH2_2_Pin|SWITCH2_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
@@ -450,8 +727,7 @@ static void MX_GPIO_Init(void)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if (htim->Instance == TIM3) {
-	  timer1--;
-	  writeTime(&hspi2, timer1, 0);
+	  ChessClockTimerCallback(GetCurrentTurn());
   }
   if (htim->Instance == TIM2) {
 	  Button1DebounceTimerCallback();

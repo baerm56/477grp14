@@ -4,15 +4,55 @@
 static void OnButton1Press();
 static void OnButton2Press();
 
-TIM_HandleTypeDef* Button1DebounceTimer;
-TIM_HandleTypeDef* Button2DebounceTimer;
+static TIM_HandleTypeDef* Button1DebounceTimer;
+static TIM_HandleTypeDef* Button2DebounceTimer;
 static enum ButtonType LastButtonPressed;
 
 void InitButtons(TIM_HandleTypeDef *button1DebounceTimer, TIM_HandleTypeDef *button2DebounceTimer)
 {
 	Button1DebounceTimer = button1DebounceTimer;
 	Button2DebounceTimer = button2DebounceTimer;
-	LastButtonPressed = NO_BUTTON;
+	LastButtonPressed = INVALID_BUTTON;
+}
+
+enum GameMode GetGameModeSwitchState()
+{
+	if(HAL_GPIO_ReadPin(SWITCH1_1_GPIO_Port, SWITCH1_1_Pin) == GPIO_PIN_SET)
+	{
+		return EDUCATION;
+	}
+	else if(HAL_GPIO_ReadPin(SWITCH1_2_GPIO_Port, SWITCH1_2_Pin) == GPIO_PIN_SET)
+	{
+		return PRACTICE;
+	}
+	else if(HAL_GPIO_ReadPin(SWITCH1_3_GPIO_Port, SWITCH1_3_Pin) == GPIO_PIN_SET)
+	{
+		return COMPETITIVE;
+	}
+	else
+	{
+		return INVALID_GAMEMODE;
+	}
+}
+
+enum AiDifficulty GetDifficultySwitchState()
+{
+	if(HAL_GPIO_ReadPin(SWITCH2_1_GPIO_Port, SWITCH2_1_Pin) == GPIO_PIN_SET)
+	{
+		return EASY;
+	}
+	else if(HAL_GPIO_ReadPin(SWITCH2_2_GPIO_Port, SWITCH2_2_Pin) == GPIO_PIN_SET)
+	{
+		return MEDIUM;
+	}
+	else if(HAL_GPIO_ReadPin(SWITCH2_3_GPIO_Port, SWITCH2_3_Pin) == GPIO_PIN_SET)
+	{
+		return HARD;
+	}
+	else
+	{
+		return INVALID_AIDIFFICULTY;
+	}
 }
 
 void Button1DebounceTimerCallback()

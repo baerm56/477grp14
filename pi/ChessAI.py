@@ -64,7 +64,7 @@ def CPUTurn(game, uart):
     uart.send_data(str(cpu_move) + '-')
 
 def checkCases(input):
-    if input in ["STOP", "STRT", "DF05", "DF10", "DF15", "DF20"]:
+    if input in ["STOP", "STRT", "DF01", "DF08", "DF15"]:
         return True
     return False
     

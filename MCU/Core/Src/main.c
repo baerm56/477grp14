@@ -85,8 +85,8 @@ static void MX_TIM5_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-uint16_t timer1 = 5 * 60;
-uint16_t timer2 = 5 * 60;
+enum AiDifficulty difficulty;
+enum GameMode gameMode;
 /* USER CODE END 0 */
 
 /**
@@ -117,15 +117,7 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_SPI2_Init();
   MX_TIM3_Init();
-  MX_SPI1_Init();
-  MX_SPI3_Init();
-  MX_DMA_Init();
-  MX_DAC_Init();
-  MX_FATFS_Init();
-  MX_TIM4_Init();
-  MX_USART1_UART_Init();
   MX_TIM2_Init();
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
@@ -157,32 +149,24 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  char a, b;
-  a = 'd';
-  b = '2';
-
-
-
   // Get GameMode //
-  enum GameMode gameMode = GetGameModeSwitchState();
+  gameMode = GetGameModeSwitchState();
+  difficulty = GetDifficultySwitchState();
 
   // Initialize AI //
   if(gameMode == PRACTICE)
   {
 	EnableUart(&huart1);
-	char send[4] = {'S', 'T', 'R', 'T'};
-	char recv[6] = {'-', '-', '-', '-', '-'};
 	uint8_t color = 0;
 	uint8_t edum = 0;
 	sendStart(&huart1, color, edum);
-	sendDifficulty(&huart1, 1);
+	sendDifficulty(&huart1, difficulty);
   }
 
   // Initialize Tracker component
   InitTracker(gameMode);
   while(!ValidateStartPositions())
   {
-	  /// @todo: play audio cue and invoke LEDs to put pieces in correct starting positions
 	  HAL_Delay(10);
   }
 
@@ -207,11 +191,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	//sendMove(&huart1, send);
-	/*sendData2(&huart1, a, b);
-	receiveData(&huart1, recv);
-	if (memcmp(recv, "-----", 5) != 0){
-	}*/
   }
   /* USER CODE END 3 */
 }
@@ -689,9 +668,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOF, &GPIO_InitStruct);
 
   /*Configure GPIO pins : HALLOUT3_Pin HALLOUT4_Pin SWITCH1_1_Pin SWITCH1_2_Pin
-                           SWITCH1_3_Pin SWITCH2_1_Pin SWITCH2_2_Pin SWITCH2_3_Pin */
+                           SWITCH1_3_Pin */
   GPIO_InitStruct.Pin = HALLOUT3_Pin|HALLOUT4_Pin|SWITCH1_1_Pin|SWITCH1_2_Pin
-                          |SWITCH1_3_Pin|SWITCH2_1_Pin|SWITCH2_2_Pin|SWITCH2_3_Pin;
+                          |SWITCH1_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
@@ -715,7 +694,16 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : SWITCH2_1_Pin SWITCH2_2_Pin SWITCH2_3_Pin */
+  GPIO_InitStruct.Pin = SWITCH2_1_Pin|SWITCH2_2_Pin|SWITCH2_3_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
+
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI9_5_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+
   HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
@@ -747,6 +735,15 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	else if(GPIO_Pin == BUTTON2_Pin)
 	{
 		Button2Callback();
+	}
+	else if (GPIO_Pin == SWITCH2_1_Pin ||
+			 GPIO_Pin == SWITCH2_2_Pin ||
+			 GPIO_Pin == SWITCH2_3_Pin){
+		enum AiDifficulty diff = GetDifficultySwitchState();
+		if (diff != difficulty){
+			sendDifficulty(&huart1, diff);
+			difficulty = diff;
+		}
 	}
 }
 /* USER CODE END 4 */

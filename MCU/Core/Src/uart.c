@@ -31,7 +31,7 @@ void sendMove(UART_HandleTypeDef * huart, char buffer[]){
 
 void sendStart(UART_HandleTypeDef * huart, uint8_t color, uint8_t edum){
 	sendData(huart, 'S', 'T', 'R', 'T');
-	HAL_Delay(3000);
+	//HAL_Delay(3000);
 	/*if (color){
 		sendData(huart, 'B', 'L', 'C', 'K');
 	}
@@ -49,13 +49,13 @@ void sendStart(UART_HandleTypeDef * huart, uint8_t color, uint8_t edum){
 
 void sendDifficulty(UART_HandleTypeDef * huart, uint8_t df){
 	if (df == 1){
-		sendData(huart, 'D', 'F', '0', '5');
+		sendData(huart, 'D', 'F', '0', '1');
+	}
+	else if (df == 2){
+		sendData(huart, 'D', 'F', '0', '8');
 	}
 	else if (df == 3){
 		sendData(huart, 'D', 'F', '1', '5');
-	}
-	else {
-		sendData(huart, 'D', 'F', '1', '0');
 	}
 }
 

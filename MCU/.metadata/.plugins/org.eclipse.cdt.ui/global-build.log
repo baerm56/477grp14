@@ -1,79 +1,20 @@
-13:35:32 **** Incremental Build of configuration Debug for project IHateEverything3 ****
-make -j8 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc "../Core/Src/tracker.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tracker.d" -MT"Core/Src/tracker.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tracker.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:169:11: warning: variable 'b' set but not used [-Wunused-but-set-variable]
-  169 |   char a, b;
-      |           ^
-../Core/Src/main.c:169:8: warning: variable 'a' set but not used [-Wunused-but-set-variable]
-  169 |   char a, b;
-      |        ^
-../Core/Src/main.c:134:8: warning: unused variable 'recv' [-Wunused-variable]
-  134 |   char recv[6] = {'-', '-', '-', '-', '-'};
-      |        ^~~~
-../Core/Src/main.c:133:8: warning: unused variable 'send' [-Wunused-variable]
-  133 |   char send[4] = {'S', 'T', 'R', 'T'};
-      |        ^~~~
-../Core/Src/tracker.c: In function 'HandlePlaceKill':
-../Core/Src/tracker.c:323:8: warning: implicit declaration of function 'memcmp' [-Wimplicit-function-declaration]
-  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |        ^~~~~~
-../Core/Src/tracker.c:323:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
-  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |                                       ^
-<built-in>: note: built-in 'memcmp' declared here
-../Core/Src/tracker.c: In function 'HandlePlaceMove':
-../Core/Src/tracker.c:411:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
-  411 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |                                       ^
-<built-in>: note: built-in 'memcmp' declared here
-At top level:
-../Core/Src/tracker.c:665:13: warning: 'IlluminateSquare' defined but not used [-Wunused-function]
-  665 | static void IlluminateSquare(uint8_t row, uint8_t column)
-      |             ^~~~~~~~~~~~~~~~
-arm-none-eabi-gcc -o "IHateEverything3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\IHateEverything2\STM32L152ZCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IHateEverything3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
-Finished building target: IHateEverything3.elf
- 
-arm-none-eabi-size   IHateEverything3.elf 
-arm-none-eabi-objdump -h -S  IHateEverything3.elf  > "IHateEverything3.list"
-arm-none-eabi-objcopy  -O binary  IHateEverything3.elf  "IHateEverything3.bin"
-Finished building: IHateEverything3.bin
- 
-   text	   data	    bss	    dec	    hex	filename
-  41016	    260	  10692	  51968	   cb00	IHateEverything3.elf
-Finished building: default.size.stdout
- 
-Finished building: IHateEverything3.list
- 
-13:35:38 **** Incremental Build of configuration Debug for project IHateEverything3 ****
+12:23:02 **** Incremental Build of configuration Debug for project IHateEverything3 ****
 make -j8 all 
 arm-none-eabi-size   IHateEverything3.elf 
    text	   data	    bss	    dec	    hex	filename
-  41016	    260	  10692	  51968	   cb00	IHateEverything3.elf
+  30576	    188	   9548	  40312	   9d78	IHateEverything3.elf
 Finished building: default.size.stdout
  
-13:38:54 **** Incremental Build of configuration Debug for project IHateEverything3 ****
+12:23:06 **** Incremental Build of configuration Debug for project IHateEverything3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/tracker.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tracker.d" -MT"Core/Src/tracker.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tracker.o"
-arm-none-eabi-gcc "../Core/Src/waveplayer.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/waveplayer.d" -MT"Core/Src/waveplayer.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/waveplayer.o"
-../Core/Src/tracker.c: In function 'HandlePlaceKill':
-../Core/Src/tracker.c:323:8: warning: implicit declaration of function 'memcmp' [-Wimplicit-function-declaration]
-  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |        ^~~~~~
-../Core/Src/tracker.c:323:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
-  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |                                       ^
-<built-in>: note: built-in 'memcmp' declared here
-../Core/Src/tracker.c: In function 'HandlePlaceMove':
-../Core/Src/tracker.c:411:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
-  411 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |                                       ^
-<built-in>: note: built-in 'memcmp' declared here
-At top level:
-../Core/Src/tracker.c:665:13: warning: 'IlluminateSquare' defined but not used [-Wunused-function]
-  665 | static void IlluminateSquare(uint8_t row, uint8_t column)
-      |             ^~~~~~~~~~~~~~~~
+arm-none-eabi-size   IHateEverything3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30576	    188	   9548	  40312	   9d78	IHateEverything3.elf
+Finished building: default.size.stdout
+ 
+12:25:15 **** Incremental Build of configuration Debug for project IHateEverything3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/uart.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/uart.d" -MT"Core/Src/uart.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/uart.o"
 arm-none-eabi-gcc -o "IHateEverything3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\IHateEverything2\STM32L152ZCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IHateEverything3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: IHateEverything3.elf
  
@@ -81,33 +22,23 @@ arm-none-eabi-size   IHateEverything3.elf
 arm-none-eabi-objdump -h -S  IHateEverything3.elf  > "IHateEverything3.list"
 arm-none-eabi-objcopy  -O binary  IHateEverything3.elf  "IHateEverything3.bin"
    text	   data	    bss	    dec	    hex	filename
-  41016	    260	  10692	  51968	   cb00	IHateEverything3.elf
+  30568	    188	   9548	  40304	   9d70	IHateEverything3.elf
 Finished building: default.size.stdout
  
 Finished building: IHateEverything3.bin
  
 Finished building: IHateEverything3.list
  
-13:39:07 **** Incremental Build of configuration Debug for project IHateEverything3 ****
+12:27:18 **** Incremental Build of configuration Debug for project IHateEverything3 ****
 make -j8 all 
-arm-none-eabi-gcc "../Core/Src/tracker.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tracker.d" -MT"Core/Src/tracker.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tracker.o"
-../Core/Src/tracker.c: In function 'HandlePlaceKill':
-../Core/Src/tracker.c:323:8: warning: implicit declaration of function 'memcmp' [-Wimplicit-function-declaration]
-  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |        ^~~~~~
-../Core/Src/tracker.c:323:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
-  323 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |                                       ^
-<built-in>: note: built-in 'memcmp' declared here
-../Core/Src/tracker.c: In function 'HandlePlaceMove':
-../Core/Src/tracker.c:411:39: warning: 'memcmp' argument 3 type is 'int' where 'unsigned int' is expected in a call to built-in function declared without prototype [-Wbuiltin-declaration-mismatch]
-  411 |    if (memcmp(ReceiveBuffer, "-----", 5) != 0){
-      |                                       ^
-<built-in>: note: built-in 'memcmp' declared here
-At top level:
-../Core/Src/tracker.c:671:13: warning: 'IlluminateSquare' defined but not used [-Wunused-function]
-  671 | static void IlluminateSquare(uint8_t row, uint8_t column)
-      |             ^~~~~~~~~~~~~~~~
+arm-none-eabi-size   IHateEverything3.elf 
+   text	   data	    bss	    dec	    hex	filename
+  30568	    188	   9548	  40304	   9d70	IHateEverything3.elf
+Finished building: default.size.stdout
+ 
+12:35:03 **** Incremental Build of configuration Debug for project IHateEverything3 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/chessclock.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32L152xCA -c -I../Core/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc -I../Drivers/STM32L1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32L1xx/Include -I../Drivers/CMSIS/Include -I../FATFS/Target -I../FATFS/App -I../Middlewares/Third_Party/FatFs/src -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/chessclock.d" -MT"Core/Src/chessclock.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/chessclock.o"
 arm-none-eabi-gcc -o "IHateEverything3.elf" @"objects.list"   -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\IHateEverything2\STM32L152ZCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IHateEverything3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: IHateEverything3.elf
  
@@ -115,7 +46,7 @@ arm-none-eabi-size   IHateEverything3.elf
 arm-none-eabi-objdump -h -S  IHateEverything3.elf  > "IHateEverything3.list"
 arm-none-eabi-objcopy  -O binary  IHateEverything3.elf  "IHateEverything3.bin"
    text	   data	    bss	    dec	    hex	filename
-  41136	    260	  10692	  52088	   cb78	IHateEverything3.elf
+  30568	    188	   9548	  40304	   9d70	IHateEverything3.elf
 Finished building: default.size.stdout
  
 Finished building: IHateEverything3.bin

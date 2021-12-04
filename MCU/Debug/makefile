@@ -65,8 +65,8 @@ all: main-build
 main-build: IHateEverything3.elf secondary-outputs
 
 # Tool invocations
-IHateEverything3.elf: $(OBJS) $(USER_OBJS) C:\Users\pengy\OneDrive\Documents\477grp14\MCU\STM32L152ZCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "IHateEverything3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\pengy\OneDrive\Documents\477grp14\MCU\STM32L152ZCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IHateEverything3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+IHateEverything3.elf: $(OBJS) $(USER_OBJS) C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\IHateEverything2\STM32L152ZCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "IHateEverything3.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\baer12\STM32CubeIDE\workspace_1.7.0\IHateEverything2\STM32L152ZCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="IHateEverything3.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

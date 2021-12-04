@@ -1,17 +1,22 @@
 #include "chessclock.h"
 #include "leds.h"
+#include "button.h"
 
 static SPI_HandleTypeDef* SpiHandle;
 static TIM_HandleTypeDef* TimerHandle;
 static uint32_t WhiteTime;
 static uint32_t BlackTime;
 
+extern enum AiDifficulty difficulty;
+extern enum GameMode gameMode;
+uint8_t updateAiClock = 0;
+
 void InitChessClock(SPI_HandleTypeDef* spiHandle, TIM_HandleTypeDef* timerHandle)
 {
 	SpiHandle = spiHandle;
 	TimerHandle = timerHandle;
-	WhiteTime = 5 * 60;
-	BlackTime = 5 * 60;
+	WhiteTime = 10 * 60;
+	BlackTime = 10 * 60;
 	writeTime(SpiHandle, WhiteTime, 0);
 	writeTime(SpiHandle, BlackTime, 1);
 }
@@ -30,6 +35,7 @@ void ChessClockTimerCallback(enum PieceOwner turn)
 {
 	if(turn == WHITE)
 	{
+		updateAiClock = 1;
 		writeTime(SpiHandle, WhiteTime, 0);
 		if(WhiteTime == 0)
 		{
@@ -41,11 +47,27 @@ void ChessClockTimerCallback(enum PieceOwner turn)
 	else
 	{
 		writeTime(SpiHandle, BlackTime, 1);
-		if(BlackTime == 0)
+		if(BlackTime <= 0)
 		{
 			StopChessClock();
 		}
 
-		BlackTime--;
+		if (gameMode == PRACTICE){
+			if (updateAiClock){
+				updateAiClock = 0;
+				if (difficulty == EASY){
+					BlackTime -= 60;
+				}
+				else if (difficulty == MEDIUM){
+					BlackTime -= 30;
+				}
+				else if (difficulty == HARD){
+					BlackTime -= 20;
+				}
+			}
+		}
+		else{
+			BlackTime--;
+		}
 	}
 }

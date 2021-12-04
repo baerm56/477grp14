@@ -96,10 +96,13 @@ void Error_Handler(void);
 #define SWITCH1_3_GPIO_Port GPIOG
 #define SWITCH2_1_Pin GPIO_PIN_6
 #define SWITCH2_1_GPIO_Port GPIOG
+#define SWITCH2_1_EXTI_IRQn EXTI9_5_IRQn
 #define SWITCH2_2_Pin GPIO_PIN_7
 #define SWITCH2_2_GPIO_Port GPIOG
+#define SWITCH2_2_EXTI_IRQn EXTI9_5_IRQn
 #define SWITCH2_3_Pin GPIO_PIN_8
 #define SWITCH2_3_GPIO_Port GPIOG
+#define SWITCH2_3_EXTI_IRQn EXTI9_5_IRQn
 #define SD_CS_Pin GPIO_PIN_0
 #define SD_CS_GPIO_Port GPIOD
 /* USER CODE BEGIN Private defines */

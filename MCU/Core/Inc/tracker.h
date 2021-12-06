@@ -16,8 +16,8 @@
 #define A8_COORDINATE 7, 0
 #define H1_COORDINATE 0, 7
 #define H8_COORDINATE 7, 7
-#define E1_COORDINATE 0, 4
-#define E8_COORDINATE 7, 4
+#define E1_COORDINATE 0, 3
+#define E8_COORDINATE 7, 3
 
 static const struct GPIO_Pin ROW_NUMBER_TO_PIN_TABLE[NUM_ROWS] = {
 	{ HALLOUT0_Pin, HALLOUT0_GPIO_Port },

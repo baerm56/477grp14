@@ -10,7 +10,7 @@
 //#define TEST 1
 
 #define NUM_HISTORY_ENTRIES 8
-#define MAX_ILLEGAL_PIECES 32
+#define MAX_ILLEGAL_PIECES 16 // To reduce memory - the real max should be 32
 #define NUM_COL_BITS 3
 #define A1_COORDINATE 0, 0
 #define A8_COORDINATE 7, 0

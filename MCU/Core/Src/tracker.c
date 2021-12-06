@@ -14,7 +14,7 @@ static uint8_t IsHistoryConsensus(uint8_t row, uint8_t column);
 // Placement Handlers //
 static void HandlePlace(struct PieceCoordinate placedPiece);
 static void HandlePlaceIllegalState(struct PieceCoordinate placedPiece);
-static void HandlePlaceKill(struct PieceCoordinate placedPiece);
+static void HandlePlaceKiller(struct PieceCoordinate placedPiece);
 static void HandlePlaceCastling(struct PieceCoordinate placedPiece);
 static void HandlePlaceMove(struct PieceCoordinate placedPiece);
 static void HandlePlaceNoMove(struct PieceCoordinate placedPiece);
@@ -24,8 +24,8 @@ static void HandlePlacePromotion(struct PieceCoordinate placedPiece);
 // Pickup Handlers //
 static void HandlePickup(struct PieceCoordinate pickedUpPiece);
 static void HandlePickupIllegalState(struct PieceCoordinate pickedUpPiece);
-static void HandlePickupPreemptKill(struct PieceCoordinate pickedUpPiece);
-static void HandlePickupKill(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupVictim(struct PieceCoordinate pickedUpPiece);
+static void HandlePickupKiller(struct PieceCoordinate pickedUpPiece);
 static void HandlePickupCastling(struct PieceCoordinate pickedUpPiece);
 static void HandlePickupMove(struct PieceCoordinate pickedUpPiece);
 static void HandlePickupPromotion(struct PieceCoordinate pickedUpPiece);
@@ -56,7 +56,6 @@ static void GetPiecesForTeam(enum PieceOwner team, enum PieceType type, struct P
 // LEDs
 static void IlluminatePieceCoordinates(struct PieceCoordinate* pieceCoordinates, uint8_t numPieceCoordinates);
 static void IlluminateCoordinates(struct Coordinate* coordinates, uint8_t numCoordinates);
-static void IlluminateSquare(uint8_t row, uint8_t column);
 
 // Debouncing //
 uint8_t History[NUM_ROWS][NUM_COLS][NUM_HISTORY_ENTRIES];
@@ -68,7 +67,8 @@ static enum TransitionType LastTransitionType;
 static struct PieceCoordinate LastPickedUpPiece;
 
 // Legal Piece Detection/Recovery Fields //
-static struct PieceCoordinate PieceToKill;
+static struct PieceCoordinate Victim;
+static struct PieceCoordinate Killer;
 static struct IllegalMove IllegalPieces[MAX_ILLEGAL_PIECES];
 static uint8_t NumIllegalPieces;
 static uint8_t SwitchTurnsAfterLegalState;
@@ -115,7 +115,8 @@ void InitTracker(enum GameMode gameMode)
 	SwitchTurnsAfterLegalState = 0;
 
 	ClearPiece(&LastPickedUpPiece);
-	ClearPiece(&PieceToKill);
+	ClearPiece(&Victim);
+	ClearPiece(&Killer);
 	ClearPiece(&ExpectedKingCastleCoordinate);
 	ClearPiece(&ExpectedRookCastleCoordinate);
 	ClearPiece(&PawnToPromote);
@@ -243,9 +244,9 @@ static void HandlePlace(struct PieceCoordinate placedPiece)
 	}
 
 	// If there's a piece being killed, this placement should be in its stead
-	else if (PieceExists(PieceToKill))
+	else if (PieceExists(Victim))
 	{
-		HandlePlaceKill(placedPiece);
+		HandlePlaceKiller(placedPiece);
 	}
 
 	// If the piece lifted did not move, don't do anything except update Chessboard
@@ -301,12 +302,19 @@ static void HandlePlaceNoMove(struct PieceCoordinate placedPiece)
 	IlluminateCoordinates(NULL, 0);
 }
 
-static void HandlePlaceKill(struct PieceCoordinate placedPiece)
+static void HandlePlaceKiller(struct PieceCoordinate placedPiece)
 {
+	// If there's no killer, then a kill isn't occurring so put victim back
+	if(!PieceExists(Killer))
+	{
+		AddIllegalPiece(placedPiece, Victim);
+		ClearPiece(&Victim);
+		return;
+	}
 	SetPiece(placedPiece.row, placedPiece.column, LastPickedUpPiece.piece);
 
-	// If player put killer in victim's place, clear PieceToKill
-	if (IsPieceCoordinateSamePosition(PieceToKill, placedPiece))
+	// If player put killer in victim's place, clear Victim and Killer
+	if (IsPieceCoordinateSamePosition(Victim, placedPiece))
 	{
 		// Store move for AI
 		if(CurrentTurn == WHITE)
@@ -315,14 +323,15 @@ static void HandlePlaceKill(struct PieceCoordinate placedPiece)
 			MoveBuffer[3] = '1' + placedPiece.row;
 		}
 
-		ClearPiece(&PieceToKill);
+		ClearPiece(&Killer);
+		ClearPiece(&Victim);
 		EndTurn();
 	}
 	// If player didn't put killer in the victim's spot, must put the killer in the victim spot
 	else
 	{
 		// Put killer in victim spot
-		struct PieceCoordinate killerDestination = PieceToKill;
+		struct PieceCoordinate killerDestination = Victim;
 		killerDestination.piece = LastPickedUpPiece.piece;
 		AddIllegalPiece(placedPiece, killerDestination);
 		SwitchTurnsAfterLegalState = 1;
@@ -454,13 +463,13 @@ static void HandlePickup(struct PieceCoordinate pickedUpPiece)
 	// If player picked up piece from other team, they will kill it
 	else if (pickedUpPiece.piece.owner != CurrentTurn)
 	{
-		HandlePickupPreemptKill(pickedUpPiece);
+		HandlePickupVictim(pickedUpPiece);
 	}
 
 	// If there's a piece to kill, this picked up piece must be able to kill it
-	else if (PieceExists(PieceToKill))
+	else if (PieceExists(Victim))
 	{
-		HandlePickupKill(pickedUpPiece);
+		HandlePickupKiller(pickedUpPiece);
 	}
 
 	// If there's a pawn to promote, the picked up piece must be this pawn
@@ -509,17 +518,18 @@ static void HandlePickupIllegalState(struct PieceCoordinate pickedUpPiece)
 	AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
 }
 
-static void HandlePickupPreemptKill(struct PieceCoordinate pickedUpPiece)
+static void HandlePickupVictim(struct PieceCoordinate pickedUpPiece)
 {
-	PieceToKill = pickedUpPiece;
+	Victim = pickedUpPiece;
 }
 
-static void HandlePickupKill(struct PieceCoordinate pickedUpPiece)
+static void HandlePickupKiller(struct PieceCoordinate pickedUpPiece)
 {
-	// If pickedUpPiece can kill it, illuminate PieceToKill's spot
-	if(ValidateKill(PieceToKill, pickedUpPiece))
+	// If pickedUpPiece can kill it, illuminate Victim's spot
+	if(ValidateKill(Victim, pickedUpPiece))
 	{
-		IlluminatePieceCoordinates(&PieceToKill, 1);
+		Killer = pickedUpPiece;
+		IlluminatePieceCoordinates(&Victim, 1);
 
 		// Store move for AI
 		if(CurrentTurn == WHITE)
@@ -528,12 +538,12 @@ static void HandlePickupKill(struct PieceCoordinate pickedUpPiece)
 			MoveBuffer[1] = '1' + pickedUpPiece.row;
 		}
 	}
-	// If pickedUpPiece can't kill PieceToKill, they need to be put back to their initial positions, and PieceToKill is not a piece to kill anymore
+	// If pickedUpPiece can't kill Victim, they need to be put back to their initial positions, and Victim is not a piece to kill anymore
 	else
 	{
-		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, PieceToKill);
+		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, Victim);
 		AddIllegalPiece(OFFBOARD_PIECE_COORDINATE, pickedUpPiece);
-		ClearPiece(&PieceToKill);
+		ClearPiece(&Victim);
 	}
 }
 
@@ -641,13 +651,6 @@ static void IlluminateCoordinates(struct Coordinate* coordinates, uint8_t numCoo
 	{
 		board[coordinates[i].row][coordinates[i].column] = 1;
 	}
-	writeBoardValue(&hspi1, board);
-}
-
-static void IlluminateSquare(uint8_t row, uint8_t column)
-{
-	uint8_t board[NUM_ROWS][NUM_COLS] = {0};
-	board[row][column] = 1;
 	writeBoardValue(&hspi1, board);
 }
 
